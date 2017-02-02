@@ -1,0 +1,20 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<fieldset data-bind="enable: ControlEnabling, visible: ControlVisibility" data-control-path="{{>Path}}" class="nvx-dfjsr-fieldset" data-control-type="form">
+		<div class="nvx-dfjsr-form">
+			{{if ControlKey != 'InPlaceCollapsedView'}}
+			<fieldset>
+				<div>
+			{{else}}
+				<p class="nvx-dfjsr-formTitle" onclick="Nvx.ReDoc.Workflow.DynamicForm.mainForm.collapseFormBlock(this);">▼ {{>Caption}}</p>
+				<fieldset>
+					<div class="group line">
+						{{/if}}
+						<!--Разметка детей-->
+						<div data-control-fragment-id="FormElements-{{>Path}}"></div>
+					</div>
+				</fieldset>
+		</div>
+	</fieldset>
+<!-- /ko -->
+</script>

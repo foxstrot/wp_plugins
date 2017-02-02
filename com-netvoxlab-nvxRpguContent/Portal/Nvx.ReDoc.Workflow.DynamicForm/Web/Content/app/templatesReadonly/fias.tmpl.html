@@ -1,0 +1,15 @@
+<!-- ko with: fieldDef -->
+<h3 data-bind="visible: displayName, text: displayName"></h3>
+<!-- /ko -->
+<div class="group line table-new null cols-50p">
+	<!-- ko foreach: $data.selectFiasModels -->
+	<div class="input-container" data-bind="visible: $data.text">
+		<span class="f-light" data-bind="text: caption + ':'"></span><span data-bind="text: text"></span>
+	</div>
+	<!-- /ko -->
+	<!-- ko foreach: $data.simpleFiasModels -->
+	<div class="input-container" data-bind="visible: $data.text">
+		<span class="f-light" data-bind="text: caption + ':'"></span><span data-bind="text: text"></span>
+	</div>
+	<!-- /ko -->
+</div>

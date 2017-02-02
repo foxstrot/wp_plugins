@@ -1,0 +1,14 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	{{if ControlKey == 'Label'}}
+		<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="paragraph">
+			<h3>{{>Caption}}</h3>
+		</div>
+	{{/if}}
+	{{if ControlKey == 'Title'}}
+		<div data-bind="enable: ControlEnabling, element: element" data-control-path="{{>Path}}" data-control-type="paragraph">
+			<p><h2><u>{{>Caption}}</h2></u></p>
+		</div>
+	{{/if}}
+<!-- /ko -->
+</script>

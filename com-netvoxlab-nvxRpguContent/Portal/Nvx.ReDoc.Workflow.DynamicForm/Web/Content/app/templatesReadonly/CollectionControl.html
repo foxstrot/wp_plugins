@@ -1,0 +1,16 @@
+<script type="text/x-jsrender">
+<div data-bind="with: {{>viewModelPath}}">
+	<fieldset data-bind="visible: ControlVisibility, enable: ControlEnabling" data-control-path="{{>Path}}" class="nvx-dfjsr-collection" data-control-type="collection">
+		<p>{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+			<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</p>
+		<div class="nvx-dfjsr-verticalLine" data-control-fragment-id="CollectionItems">
+			<div data-bind="foreach: { data: CollectionItems }" data-control-fragment-id="FormElements-{{>Path}}">
+				<div data-control-fragment-id="CollectionItemDescriptor" data-bind="attr: { 'data-control-path': $parent.Path + '[' + $index() + ']' }" class="nvx-dfjsr-verticalLine" style="margin-bottom: 10px;"></div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+</script>

@@ -1,0 +1,17 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="input">
+		<h4 data-bind="css: { 'input-required': IsMandatory, 'input-err': notValidClass }, attr: { title: errorMessage }">{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+			<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h4>
+			<input type="text" data-control-fragment-id="ValueHolder" value="{{>DefaultValue}}" data-bind="value: Value, attr: { pattern: Mask, max: MaxValue, min: MinValue, title: errorMessage }, enable: ControlEnabling" 
+				name="{{>Path.replace('.','').replace('_','')}}" step="0.1"
+				{{if IsMandatory}}
+					required="required"
+				{{/if}}
+			/>
+	</div>
+<!-- /ko -->
+</script>

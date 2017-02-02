@@ -1,0 +1,2386 @@
+<!-- bundle -->
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestGeneralInfo.tmpl.html">
+	<div class="group formData wideLabel m-btm">
+		<dl>
+			<dt data-bind="text: requestNumberTitle"></dt>
+			<dd data-bind="text: requestNumber"></dd>
+		</dl>
+		<dl data-bind="if: serviceName">
+			<dt>Услуга:</dt>
+			<dd>
+				<!-- ko if: serviceLink() != '' -->
+				<a data-bind="text: serviceName, attr: { 'href': serviceLink }"></a>
+				<!-- /ko -->
+				<!-- ko if: serviceLink() == '' -->
+				<span data-bind="text: serviceName"></span>
+				<!-- /ko -->
+			</dd>
+		</dl>
+		<dl data-bind="if: statusText">
+			<dt>Статус:</dt>
+			<dd>
+				<span data-bind="text: statusText"></span> 
+				<!-- ko if: isArchived && statusCode <= 1 -->
+				(Архивировано)
+				<!-- /ko -->
+			</dd>
+		</dl>
+		<dl data-bind="if: departmentName">
+			<dt>Ведомство:</dt>
+			<dd>
+				<a data-bind="text: departmentName, attr: { 'href': departmentLink }"></a>
+			</dd>
+		</dl>
+		<dl data-bind="if: createDate">
+			<dt>Дата создания:</dt>
+			<dd data-bind="text: createDate"></dd>
+		</dl>
+		<dl data-bind="if: lastUpdateDate">
+			<dt>Дата последнего изменения:</dt>
+			<dd data-bind="text: lastUpdateDate"></dd>
+		</dl>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.DynamicForm/Web/Content/app/templates2/fias.tmpl.html">
+	<!-- ko with: fieldDef -->
+	<h3 data-bind="visible: displayName, text: displayName"></h3>
+	<!-- /ko -->
+	<div class="group line">
+		<!-- ko with: $data.postalIndexViewModel -->
+		<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+			<!-- ko if: $data.visible -->
+			<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+			<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }">
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->
+		<!-- ko foreach: $data.selectFiasModels -->
+		<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+			<!-- ko if: $data.visible -->
+			<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+			<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }, autocomplete: autoCompleteOpt">
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->
+		<!-- ko foreach: $data.simpleFiasModelsWithoutIndex -->
+		<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+			<!-- ko if: $data.visible -->
+			<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+			<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }">
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.DynamicForm/Web/Content/app/templatesReadonly/fias.tmpl.html">
+	<!-- ko with: fieldDef -->
+	<h3 data-bind="visible: displayName, text: displayName"></h3>
+	<!-- /ko -->
+	<div class="group line table-new null cols-50p">
+		<!-- ko foreach: $data.selectFiasModels -->
+		<div class="input-container" data-bind="visible: $data.text">
+			<span class="f-light" data-bind="text: caption + ':'"></span><span data-bind="text: text"></span>
+		</div>
+		<!-- /ko -->
+		<!-- ko foreach: $data.simpleFiasModels -->
+		<div class="input-container" data-bind="visible: $data.text">
+			<span class="f-light" data-bind="text: caption + ':'"></span><span data-bind="text: text"></span>
+		</div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/complaint/complaintHistoryView.tmpl.html" type="text/html">
+	<div class="table-new table-admin changes" data-bind="foreach: $data">
+		<div class="change">
+			<span class="col-270" data-bind="text: dateStr"></span>
+			<span data-bind="text: stateText"></span>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.MfcUiModule/Web/View/Wizzard/Step03QuestionsTemplate.tmpl.html">
+	<div id="questionsListPlaceHolder" data-bind="foreach: questionItems">
+		<div data-bind="visible: isVisible">
+			<h3 data-bind="html: questionTitle"></h3>
+			<div class="labels" data-bind="visible: isSingleAnswer, foreach: answerItems">
+				<label>
+					<input type="radio" data-bind="value: answerId, attr: { name: questionId, disabled: $parent.isDisable }, click: $parent.answerChanged, checked: $parent.singleAnswer">
+					<span data-bind="text: answerTitle"></span>
+				</label>
+			</div>
+			<div class="labels" data-bind="visible: isMultiAnswers, foreach: answerItems">
+				<label>
+					<input type="checkbox" data-bind="value: answerId, attr: { name: questionId, disabled: $parent.isDisable }, click: $parent.answerChanged, checked: $parent.selectedAnswers">
+					<span data-bind="text: answerTitle"></span>
+				</label>
+			</div>
+			<div data-bind="visible: hasWarning">
+				<i class="color-warning" data-bind="text: warningMessage"></i>
+			</div>
+		</div>
+	</div>
+	<div class="color-danger m-top-dbl" data-bind="visible: hasReject">
+		<h2 class="i m-btm-no">Услуга не может быть оказана заявителю по причине:</h2>
+		<div data-bind="text: rejectMessage"></div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.MfcUiModule/Web/View/Wizzard/Step04DepartmentsTemplate.tmpl.html">
+	<div id="questionsListPlaceHolder" data-bind="foreach: questionItems">	
+		<h3 data-bind="text: questionTitle"></h3>	
+		<div class="labels" data-bind="foreach: answerItems">
+			<label>
+				<input type="radio" data-bind="value: answerId, attr: { name: questionId, disabled: $parent.isDisable }, click: $parent.answerChanged, checked: $parent.singleAnswer">
+				<span data-bind="text: answerTitle"></span>
+			</label>
+		</div>
+	</div>
+	<div data-bind="visible: hasError">
+		<h2 class="i color-danger" data-bind="text: errorMessage"></h2>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.MfcUiModule/Web/View/Wizzard/Step05Template.tmpl.html">
+	<div id="step5ServiceInfo">
+		<div>
+			<div class="btn primary" data-bind="click: printInfo">Печать</div>
+			<!-- ko if: $parent.isRpgu -->
+			<div style="margin-top: 0" class="btn primary b-modal-right" data-bind="click: $parent.registerTreatment">Завершить консультацию</div>
+			<div style="margin-top: 0" class="btn b-modal-right" data-bind="click: $parent.createFile, visible: $parent.canCreateFile, text: $parent.createFileTitle"></div>
+			<!-- /ko -->
+		</div>
+		<div class="m-top bigText" id="printServiceInfo">
+			<div class="color-danger m-btm" data-bind="visible: hasReject">
+				<h2 class="i m-top-no m-btm-no">Услуга не может быть оказана заявителю по причине:</h2>
+				<div data-bind="text: wizzardReject"></div>
+			</div>
+
+			<h2 class="color-success i m-top-no" data-bind="visible: wizzardAccept, text: wizzardAccept"></h2>
+			<h2 class="color-default i m-top-no" data-bind="visible: wizzardNone, text: wizzardNone"></h2>
+			<div data-bind="html: serviceDescription"></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.MfcUiModule/Web/View/Wizzard/WizzardFilter.tmpl.html">
+	<div data-bind="data: $data">
+		<div id="task-filter-form" data-bind="enterkey: filterSubmit">
+			<input type="text" class="withIcon icon-search-black-op" style="width: 450px" name="title" data-bind="value: title, valueUpdate: 'afterkeydown'" placeholder="Введите слова для поиска">
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.MfcUiModule/Web/View/Wizzard/WizzardPager.Template.tmpl.html">
+	<div class="withBBack">
+		<span class="btn primary larr" data-bind="click: previousStep"><span></span>Оформление обращения</span>
+		<!--отображение состояния визарда, название шага и нумерация-->
+		<h3 class="pave-table-header">
+			<!--ko text: stepName--><!--/ko--><i class="small m-lft"> (шаг <span data-bind="text: Math.round(numStep()/2)"></span> из <span data-bind="text: countSteps"></span>)</i>
+		</h3>
+		<!--тут будут меняться шаблоны с содержимым шага визарда-->
+		<div data-bind="template: { name: listTemplateId, data: viewModel, if: viewModel }"></div>
+
+		<div data-bind="visible: showWizzardNav">
+			<div class="btn primary" data-bind="click: cancelTreatment">Отменить оформление обращения</div>
+			<div class="btn primary" data-bind="click: skipConsult, visible: showSkip, css: canSkip">Пропустить анкетирование</div>
+			<div class="btn" data-bind="click: nextStep, css: canMoveNext, visible: showMoveNext">Далее</div>
+		</div>
+
+		<!-- ko if: !isRpgu -->
+		<div data-bind="visible: showWizzardResult">
+			<div class="btn primary" data-bind="click: registerTreatment">Завершить консультацию</div>
+			<div class="btn" data-bind="click: createFile, visible: canCreateFile, text: createFileTitle"></div>
+		</div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/DocsSubmitFormView.tmpl.html">
+	<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html', data: modalDialog }"></div>
+	<!-- ko template: { name: 'doc-submit-form', foreach: items, data: $data } --><!-- /ko -->
+	<h3>Необязательные документы</h3>
+	<!-- ko template: { name: 'doc-submit-form', foreach: otherItems, data: $data } --><!-- /ko -->
+	<div class="btn  b-create m-top" data-bind="visible: haveOtherDoc, click: addOtherDocs" >Добавить документ</div>
+
+	<div class="m-top" data-bind="visible: showIssueDate">
+		<p>Дата выдачи документов<p>
+								<input type="text" data-bind="filterDatepicker: issueDate" role="datepicker" />
+	</div>
+
+	<div class="m-top" data-bind="visible: showCommentary">
+		<p>Комментарий<p>
+					<textarea data-bind="value: commentary"></textarea>
+	</div>
+
+	<script type="text/html" id="doc-submit-form">
+	<div class="group" data-bind="visible: $data.otherDocVisible == undefined ? true : $data.otherDocVisible ">
+		<h3 data-bind="text: title"></h3>
+		<!-- ko foreach: infos -->
+		<div class="group">
+			<table>
+				<tr>
+					<td class="small-a">Название документа для отображения в расписке</td>
+					<td class="small-a" style="width: 130px">Дата</td>
+				</tr>
+				<tr>
+					<td><input type="text" data-bind="value: alias, enable: $parent.titleEnable" /></td>
+					<td><input type="text" data-bind="filterDatepicker: date" role="datepicker" /></td>
+				</tr>
+			</table>
+			<div class="table-new clear cols-30p m-top">
+				<div>
+					<span></span>
+					<span class="th">Количество страниц:</span>
+					<span class="th">Количество экземпляров:</span>
+				</div>
+				<div>
+					<span class="th t-r">Оригиналы документа:</span>
+					<span><input type="text" data-bind="value: originalPageCount, valueUpdate: 'afterkeydown', event: { 'keyup': function () { $parent.validateDigits($element) }}"/></span>
+					<span><input type="text" data-bind="value: originalSubjectCount, valueUpdate: 'afterkeydown', event: { 'keyup': function () { $parent.validateDigits($element) } }"/></span>
+				</div>
+				<div>
+					<span class="th t-r">Копии документа:</span>
+					<span><input type="text" data-bind="value: copyPageCount, valueUpdate: 'afterkeydown', event: { 'keyup': function () { $parent.validateDigits($element) } }"/></span>
+					<span><input type="text" data-bind="value: copySubjectCount, valueUpdate: 'afterkeydown', event: { 'keyup': function () { $parent.validateDigits($element) } }"/></span>
+				</div>
+			</div>
+
+			<div class="fileLoaded" data-bind="visible: fileIsLoaded() || isFileLoad()">
+				<span class="descr">Документ загружен:</span>
+				<span class="title">
+					<span class="textLikeInput" data-bind="visible: fileIsLoaded, text: fileName"></span>
+					<a class="textLikeInput" data-bind="visible: isFileLoad, text: name, attr: { href: fileUrl }" title="Загрузить файл"></a>
+					<span class="btn button b-trash-icon" data-bind="visible: hasFile, click: function () { $parent.removeDoc(id) }"></span>
+				</span>
+			</div>
+			<span class="btn button b-modal" data-bind="visible: fileNotLoaded"><input name="docsInfoUpload" type="file" data-bind="fileInput: fileData"/>Приложить файл</span>
+		</div>
+		<!-- /ko -->
+		<div class="btn button b-create" data-bind="visible: isMultiDoc, click: addDocInfo" >Добавить</div>
+	</div>
+	</script>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/DocsSubmitRpguFormView.tmpl.html">
+	<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html', data: modalDialog }"></div>
+	<!-- ko template: { name: 'doc-submit-form', foreach: items, data: $data } --><!-- /ko -->
+	<h3>Необязательные документы</h3>
+	<!-- ko template: { name: 'doc-submit-form', foreach: otherItems, data: $data } --><!-- /ko -->
+	<div class="btn button b-create m-top" data-bind="visible: haveOtherDoc, click: addOtherDocs" >Добавить документ</div>
+
+	<div class="m-top" data-bind="visible: showIssueDate">
+		<p>Дата выдачи документов<p>
+								<input type="text" data-bind="filterDatepicker: issueDate" role="datepicker" />
+	</div>
+
+	<div class="m-top" data-bind="visible: showCommentary">
+		<p>Комментарий<p>
+					<textarea data-bind="value: commentary"></textarea>
+	</div>
+
+	<script type="text/html" id="doc-submit-form">
+	<div class="group" data-bind="visible: $data.otherDocVisible == undefined ? true : $data.otherDocVisible ">
+		<h3 data-bind="text: title"></h3>
+		<!-- ko foreach: infos -->
+		<div class="group">
+			<table>
+				<tr>
+					<td class="small-a">Название документа для отображения в расписке</td>
+					<td class="small-a" style="width: 130px">Дата</td>
+				</tr>
+				<tr>
+					<td><input type="text" data-bind="value: alias, enable: $parent.titleEnable" /></td>
+					<td><input type="text" data-bind="filterDatepicker: date" role="datepicker" /></td>
+				</tr>
+			</table>
+
+			<div class="fileLoaded" data-bind="visible: fileIsLoaded() || isFileLoad()">
+				<span class="descr">Документ загружен:</span>
+				<span class="title">
+					<span class="textLikeInput" data-bind="visible: fileIsLoaded, text: fileName"></span>
+					<a class="textLikeInput" data-bind="visible: isFileLoad, text: name, attr: { href: fileUrl }" title="Загрузить файл"></a>
+					<span class="btn button b-trash-icon" data-bind="visible: hasFile, click: function () { $parent.removeDoc(id) }"></span>
+				</span>
+			</div>
+			<span class="btn button b-modal" data-bind="visible: fileNotLoaded"><input name="docsInfoUpload" type="file" data-bind="	fileInput: fileData"/>Приложить файл</span>
+		</div>
+		<!-- /ko -->
+		<div class="btn button b-create" data-bind="visible: isMultiDoc, click: addDocInfo" >Добавить</div>
+	</div>
+	</script>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/OtherDocsSelectionView.tmpl.html">
+	<div class="modalWindowOverlay">
+		<div class="modalWindow">
+			<h2>Выбор документа</h2>
+			<div class="modalWindowContent table-new table-admin">
+				<label class="th">
+					<span class="col-checkbox"><input data-bind="checked: allSelected" name="sample-check" value="1" type="checkbox"></span>
+					<span>Наименование</span>
+				</label>
+				<!-- ko foreach: items -->
+				<label>
+					<span class="col-checkbox"><input data-bind="checked: selected" name="sample-check" value="1" type="checkbox"></span>
+					<span data-bind="text: name"></span>
+				</label>
+				<!-- /ko -->
+			</div>
+			<div class="btn button" data-bind="event: { click: cancel }">Отмена</div>
+			<div class="btn button b-accept" data-bind="event: { click: apply }">Принять</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/PartReadonlyView.tmpl.html">
+	<!--ko foreach: items-->
+	<div class="group">
+		<h3 data-bind="text: title"></h3>
+		<span class="m-top" data-bind="visible: emptyFiles">Документы не были загружены</span>
+		<div data-bind="foreach: infos">
+			<div>
+				<a data-bind="visible: fileIsLoaded, text: urlName, attr: { href: fileUrl }"></a>
+				<span data-bind="visible: fileNotLoaded, text: docName"></span>	
+				<div data-bind="visible: isOrigin">
+					<label><input disabled="disabled" style="cursor: pointer" type="checkbox" data-bind="checked: isOrigin"><span>Является оригиналом документа</span></label>
+				</div>
+			</div>
+			<table data-bind="visible: isSubmitted">
+				<tr>
+					<td>Оригиналы документа<span style="margin-left: 10px">Количество страниц: </span><span data-bind="text: originalPageCount"></span><span style="margin-left: 10px">Количество экземпляров: </span><span data-bind="text: originalSubjectCount"></span></td>
+				</tr>
+				<tr>
+					<td>Копии документа<span style="margin-left: 10px">Количество страниц: </span><span data-bind="text: copyPageCount"></span><span style="margin-left: 10px">Количество экземпляров: </span><span data-bind="	text: copySubjectCount"></span></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!--/ko-->
+	
+	<div data-bind="visible: showIssueDate">
+		<p>Дата выдачи документов</p>
+		<input type="text" class="disabled" data-bind="filterDatepicker: issueDate" role="datepicker">
+	</div>
+
+	<div data-bind="visible: showCommentary">
+		<p>Комментарий</p>
+		<span class="text" data-bind="bodyreformat: commentary"></span>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/PartSingleUploadView.tmpl.html">
+	<h3>Подписанная расписка о приеме документов</h3>
+	<div class="btn button" data-bind="visible: canLoad">
+		<input type="file" id="uploadDocsSingleFileUpload" data-bind="fileInput: fileData, event: { change: function () { changeFile($element); } }">Приложить файл</div>
+	<div data-bind="visible: fileIsLoaded">
+		<span class="textLikeInput" data-bind="text: fileName"></span>
+		<div class="btn button b-trash-icon" data-bind="click: function () { removeDoc(); }"></div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/UploadDocsFormView.tmpl.html">
+	<input type="hidden" name="componentId" data-bind="value: componentId" />
+	<div class="panel-secondary panel-secondary-form right-panel-form">
+		<h2 id="form-title-content" data-bind="text: title"></h2>
+
+		<div data-bind="template: { name: contentTemplateId, data: contentViewModel, if: contentViewModel }"></div>
+		<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/_CommonTemplate/RelatedItemsView.tmpl.html', data: relatedItemsViewModel, if: relatedItemsViewModel }"></div>
+	
+		<div id="transition-buttons" class="m-lft" data-bind="if: taskOpen">
+			<div data-bind="foreach: transitions">
+				<div data-bind="attr: { class: bclass }, text: title, event: { click: onclick }"></div>
+			</div>
+		</div>
+	
+		<!-- прикладываю расписку и перехожу на след шаг -->
+		<div data-bind="visible: showConfirm">
+			<div class="btn button b-accept b-modal" data-bind="event: { click: goToNextStep }, css: canGoToNext">Подтвердить</div>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/UploadDocsPartFormView.tmpl.html">
+	<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html', data: modalDialog }"></div>
+
+	<!-- ko template: { name: 'tmpl-docItem', foreach: items, data: $data } --><!-- /ko -->
+	<h3>Необязательные документы</h3>
+	<!-- ko template: { name: 'tmpl-docItem', foreach: otherItems, data: $data } --><!-- /ko -->
+	<div class="btn button b-create m-top" data-bind="visible: haveOtherDoc, click: addOtherDocs">Добавить документ</div>
+	
+	<div class="group" data-bind="visible: showIssueDate">
+		<p>Дата выдачи документов</p>
+		<input type="text" data-bind="filterDatepicker: issueDate" role="datepicker">
+	</div>
+
+	<div class="group" data-bind="visible: showCommentary">
+		<p>Комментарий</p>
+		<textarea data-bind="value: commentary"></textarea>
+	</div>	
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Workflow.UploadDocsForm/Web/View/UploadDocsPartRpguFormView.tmpl.html">
+	<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html', data: modalDialog }"></div>
+
+	<!-- ko template: { name: 'tmpl-docItem', foreach: items, data: $data } --><!-- /ko -->
+	<h3>Необязательные документы</h3>
+	<!-- ko template: { name: 'tmpl-docItem', foreach: otherItems, data: $data } --><!-- /ko -->
+	<div class="btn button b-create m-top" data-bind="visible: haveOtherDoc, click: addOtherDocs">Добавить документ</div>
+	
+	<div class="group" data-bind="visible: showIssueDate">
+		<p>Дата выдачи документов</p>
+		<input type="text" data-bind="filterDatepicker: issueDate" role="datepicker">
+	</div>
+
+	<div class="group" data-bind="visible: showCommentary">
+		<p>Комментарий</p>
+		<textarea data-bind="value: commentary"></textarea>
+	</div>
+</script>
+<script type="text/html" id="tmpl-docItem">
+	<div class="group" data-bind="visible: $data.otherDocVisible == undefined ? true : $data.otherDocVisible ">
+		<div>
+			<h4 data-bind="text: title" style="display: inline;"></h4>
+			<!-- ko if: filenfo != null && filenfo.fileDescription != null && filenfo.fileDescription != '' -->
+			<span class="icon icon-question-gray transparent nvx-dfjsr-tooltip" data-bind="attr: { title: filenfo.fileDescription }"></span>
+			<!-- /ko -->
+		</div>
+		<!-- ko foreach: infos -->
+		<div class="group">
+			<span class="btn button b-upload" data-bind="visible: fileNotLoaded"><input name="docsInfoUpload" type="file" data-bind="fileInput: fileData"/>Приложить файл</span>
+			<div class="hasPopUp background-transparent" data-bind="visible: isFileLoad() || isLoaded()">
+				<a data-bind="visible: isFileLoad, text: name, attr: { href: fileUrl }"></a>
+				<div data-bind="visible: isLoaded">
+					<div class="p" data-bind="visible: isLoaded">Документ загружен: <i data-bind="	text: fileName"></i></div>
+				</div>
+				<div class="btn button b-solid danger icon icon-cross-white popUp" data-bind="click: function () { $parent.removeDoc(id) }"></div>
+			</div>
+		</div>
+		<!-- /ko -->
+		<div class="btn button b-create m-btm" data-bind="visible: isMultiDoc, click: addDocInfo">Добавить</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/AttachmentController/browseCertificateBase.tmpl.html">
+	<h2 data-bind="text: title"></h2>
+	<!--<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/AuthenticationController/certificates.tmpl.html', data: $data }"></div>-->
+	<div class="modalWindowContent">
+		<!-- ko if: certificates -->
+		<div class="table-new rowh-60 background-dark a" data-bind="foreach: certificates" id="certificates">
+			<div data-bind="attr: { 'data-redoc-id': thumbprint, 'data-redoc-certificate-thumbprint': thumbprint }, css: { 'background-default': valid() }">
+				<div class="col-50p" data-bind="event: { click: action }">
+					<p data-bind="text: subjectName, attr: { title: subjectTitle }" rel="tooltip"></p>
+					<p class="transparent" data-bind="text: subjectEmail"></p>
+				</div>
+				<!--mouseleave/mouseout не всегда срабатывает, так что в mouseenter добавляется кастомный обработчик-->
+				<a class="col-50p more_block" data-bind="template: { name: rightSideTemplateId, data: $data }, event: { click: saveCertificate, mouseenter: mouseenter }"></a>
+			</div>
+		</div>
+		<!-- /ko -->
+		<!-- ko if: certificates == null -->
+		<div>Для использования сертификатов необходимо разрешить использование плагина «CryptoPro CAdES NPAPI Browser» и обновить страницу </div>
+		<!-- /ko -->
+	</div>
+	<div class="btn button" data-bind="click: closeWindow">Отмена</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/AuthenticationController/certificates.tmpl.html">
+	<!-- Выбор сертификата. -->
+	<div class="table-new rowh-60 background-dark a" id="certificates" data-bind="foreach: certificates">
+		<div data-bind="attr: { 'data-redoc-id': thumbprint, 'data-redoc-certificate-thumbprint': thumbprint }, css: { 'background-default': valid() }">
+			<div class="col-50p" data-bind="event: { click: action }">
+				<p data-bind="text: subjectName, attr: { title: subjectTitle }" rel="tooltip"></p>
+				<p class="transparent" data-bind="	text: subjectEmail"></p>
+			</div>
+			<!--mouseleave/mouseout не всегда срабатывает, так что в mouseenter добавляется кастомный обработчик-->
+			<a class="col-50p more_block" data-bind="template: { name: rightSideTemplateId, data: $data }, event: { click: saveCertificate, mouseenter: mouseenter }"></a>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/Certificates/rightSideCertificatePave.tmpl.html">
+	<!-- Шаблон подписи. -->
+	<!--ВАЖНО!!! если изменяется структура, то может потребуется изменить mouseenter в VM-->
+	<p class="small transparent" rel="tooltip" data-bind="text: issuerStr, attr: { title: issuerTitle }"></p>
+	<p class="small transparent" data-bind="text: validToDateStr"></p>
+</script>
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/Certificates/detailsRightSideCertificatePave.tmpl.html">
+	<!-- Правая сторона плашки сертификата. -->
+	<!--ВАЖНО!!! если изменяется структура, то может потребуется изменить mouseenter в VM-->
+	<span class="pic icon icon-download-white" style="background-size: 30px"></span>
+	<div class="text" rel="tooltip">Скачать</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html">
+	<div data-bind="template: { name: modalTemplateId, data: modalTemplateViewModel, 'if': modalTemplateViewModel }"></div>
+</script>
+
+<script type="text/html" id="placeholderTemplate"></script>
+
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestInfoChanges.tmpl.html">
+	<div class="table-new table-admin changes" data-bind="foreach: $data">
+		<div class="change">
+			<span class="col-200" data-bind="text: dateStr"></span>
+			<div class="itms" data-bind="foreach: modifications">
+				<div data-bind="bodyreformat: caption"></div>
+			</div>
+			<span class="col-200" data-bind="text: userName"></span>
+		</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestUserInformationPage.tmpl.html">
+	<div data-bind="text: userInformation"></div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/request.tmpl.html">
+	<h1 data-bind="text: pageTitle"></h1>
+	<!-- ko if: backText -->
+	<a class="btn primary larr" data-bind="attr: {href: backUrl }, text: backText" rel="back"></a>
+	<!-- /ko -->
+	<div class="paddings" data-bind="css: { 'hasBack': backText }">
+		<!-- ko with: requestInfoViewModel -->
+		<!-- ko template: { name: 'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestGeneralInfo.tmpl.html' } -->
+		<!-- /ko -->
+		<!-- /ko -->
+		<div>
+			<!-- ko if: visibleEditButton -->
+			<div class="btn primary" data-bind="click: editButtonClick">Редактировать</div>
+			<!-- /ko -->
+			<!-- ko if: visibleRemoveDraftButton -->
+			<div class="btn primary" data-bind="click: removeDraftClick, text: removeDraftTitle"></div>
+			<!-- /ko -->
+		</div>
+		<div class="m-top-dbl" data-bind="template: { name: templateId, data: templateViewModel, if: templateViewModel }"></div>
+		<!-- ko if: useNextButton -->
+		<div class="btn b-solid withIcon icon-arrow-right-white b-modal" data-bind="click: nextAction, text: nextText"></div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestInfoAttachments.tmpl.html">
+	<div class="paddings">
+		<div data-bind="foreach: $data">
+			<div class="m-btm"><a data-bind="text: linkTitle, attr: { href: downloadLink }"></a></div>
+		</div>
+		<!-- ko if: $data.length == 0 -->
+		<div class="m-top-hlf">Файлов нет</div>
+		<!-- /ko -->
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestInfoResult.tmpl.html">
+	<!-- ko if: resultComment && resultComment() !== '' -->
+	<div class="paddings">
+		<div data-bind="text: resultDate"></div>
+		<div data-bind="text: resultComment"></div>
+	</div>
+	<!-- /ko -->
+	<!-- ko if: !resultComment || resultComment() === '' -->
+	<div class="m-top-hlf">Результат еще не готов </div>
+	<!-- /ko -->
+</script>
+<script type="text/html" id="Nvx.ReDoc.Workflow.DynamicForm/Web/View/DynamicFormForm.html">
+	<input data-bind="value: componentId" type="hidden" id="componentId">
+	<div class="panel-secondary panel-secondary-form right-panel-form">
+		<h2 data-bind="text: formTitle"></h2>
+		<div data-bind="if: readOnly()===false">
+			<form data-bind="" enctype="multipart/form-data" method="GET" id="form_dynamic_form_content_right" autocomplete="on" target="formFrameData" action="/content/blank">
+				<input type="hidden" id="dynamic_form_right_typename_to_controller">
+				<input type="hidden" id="dynamic_form_right_projectNameWithSuffix">
+				<div id="dynamic_form_content_right"></div>
+			</form>
+			<iframe name="formFrameData" id="formFrameData" src="javascript:false" class="hidden"></iframe>
+		</div>
+		<div data-bind="if: readOnly()===true">
+			<div data-bind="" id="dynamic_form_content_right"></div>
+		</div>
+	
+		<!--Кнопки переходов-->
+		<div id="transition-buttons" data-bind="if: transitions">
+			<div data-bind="foreach: transitions">
+				<div data-bind="attr: { class: bclass }, text: title, event: { click: onclick }"></div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.WebInterfaceModule/View/DefaultController/moreButton.tmpl.html">
+	<div class="btn primary" data-bind="visible: showNextButton, click: next"><span class="icon icon-showMore-white"></span>Показать еще</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/groupRowTemplate.tmpl.html">
+	<!--ko if: childs.length > 0 -->
+	<div class="rowh-60 paddings background-dark" id="childsPlaceHolder">
+		<div data-bind="foreach: childs">
+			<div>
+				<div class="pave-table-header pointer" data-bind="element: groupElement, click: groupClick, slideArrowBefore: { minimizedGroup: minimizedGroup }, attr: { 'groupId': groupId }">
+					<span data-bind="text: rowTitle"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+</script>
+
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception1Place.tmpl.html" type="text/html">
+
+	<h3>Выбор учреждения</h3>
+
+	<!-- ko foreach: level1objects -->
+	<div class="receptionGroup" data-bind="click: changeVisibility">
+		<h3 data-bind="text: name"></h3>
+	</div>
+
+	<!-- ko if: placesVisible -->
+	<!-- ko foreach: places -->
+	<div class="receptionPlace" data-bind="click: $parent.goLevel2, css: { 'disabled': isEnabled === false }">
+		<p data-bind="text: name"></p>
+		<p class="info" data-bind="text: address"></p>
+	</div>
+	<!-- /ko -->
+	<!-- /ko -->
+
+	<!-- /ko -->
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception2Service.tmpl.html" type="text/html">
+
+	<h3>Выбор направления</h3>
+
+	<!-- ko foreach: level2objects -->
+	<div class="receptionGroup" data-bind="click: $parent.goLevel3">
+		<h3 data-bind="text: name"></h3>
+		<p class="info" data-bind="visible: additionalInfo"><!--<span>Свободно талонов: </span>--><span data-bind="text: additionalInfo"></span></p>
+	</div>
+	<!-- /ko -->
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception3Date.tmpl.html" type="text/html">
+
+	<h3>Выбор специалиста и даты</h3>
+
+	<div style="text-align: center; height: 40px;">
+		<div class="btn primary" style="float: left" data-bind="click: prevWeek">Назад</div>
+		<span>Период с <span data-bind="dateFormat: dateFrom"></span> по <span data-bind="dateFormat: dateTo"></span></span>
+		<div class="btn primary" style="float: right" data-bind="click: nextWeek">Вперёд</div>
+	</div>
+
+	<div data-bind="visible: info() == null" style="height: 50px; margin-top: 20px;">
+		<div class="col-xs-3">Специалист</div>
+		<div class="col-xs-1">Кабинет</div>
+		<div class="col-xs-1" data-bind="dateFormat: dateFrom"></div>
+		<div class="col-xs-1" data-bind="dateFormat: date1"></div>
+		<div class="col-xs-1" data-bind="dateFormat: date2"></div>
+		<div class="col-xs-1" data-bind="dateFormat: date3"></div>
+		<div class="col-xs-1" data-bind="dateFormat: date4"></div>
+		<div class="col-xs-1" data-bind="dateFormat: date5"></div>
+		<div class="col-xs-1" data-bind="dateFormat: dateTo"></div>
+	</div>
+
+	<!-- ko foreach: level3objects -->
+	<div style="height: 25px; margin-top: 25px;">
+		<div>
+			<div class="col-xs-3">
+				<p data-bind="text: specialist.name"></p>
+				<span style="opacity: 0.75" data-bind="text: specialist.post"></span>
+			</div>
+			<div class="col-xs-1" data-bind="text: specialist.receptionPlace" style="text-align: center"></div>
+
+			<!-- ko foreach: dateList -->
+			<div class="col-xs-1 receptionDate" data-bind="click: function(data, event) { $parent.goLevel4(data, $parent.specialist) }, css: { 'disabled': ticketCount == 0 }">
+				<!-- ko if: ticketCount > 0 -->
+				<div>
+					<span data-bind="text: timeFrom"></span> - <span data-bind="text: timeTo"></span>
+				</div>
+				<div class="small">
+					Талонов: <span data-bind="text: ticketCount"></span>
+				</div>
+				<!-- /ko -->
+				<!-- ko if: ticketCount == 0 -->
+				<div>Нет записи</div>
+				<!-- /ko -->
+				<input type="hidden" data-bind="value: id">
+				<input type="hidden" data-bind="value: name">
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<p class="m-top-dbl" data-bind="text: info"></p>
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception4Position.tmpl.html" type="text/html">
+	<h3>Выбор времени приёма</h3>
+	<div style="text-align: center; height: 50px;">
+		<div class="btn primary" style="float: left" data-bind="click: prevDay">Назад</div>
+		<span data-bind="dateFormat: currentDay"></span>
+		<div class="btn primary" style="float: right" data-bind="click: nextDay">Вперёд</div>
+	</div>
+	<div style="text-align: center; height: 60px;">
+		<!-- ko foreach: level4objects -->
+		<div class="col-xs-1 receptionDate" data-bind="click: $parent.goLevel5, css: { 'disabled': isAvailable == false }">
+			<span data-bind="text: name"></span>
+		</div>
+		<!-- /ko -->
+	</div>
+	<p class="m-top-dbl" data-bind="text: info"></p>
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception5Fields.tmpl.html" type="text/html">
+	<h3>Заполнение полей для записи</h3>
+	<form id="reception-fields-form" class="nvx-dfjsr-form">
+		<!-- ko foreach: fields -->	
+		<!-- ko if: type != 'date'-->
+		<h4 data-bind="text: text, css: { 'input-required' : isRequired }"></h4>
+		<input type="text" data-bind="value: value, attrs: { name: name }"/>
+		<!-- /ko -->
+		<!-- ko if: type == 'date'-->
+		<h4 data-bind="text: text, css: { 'input-required' : isRequired }"></h4>
+		<input type="text" data-bind="value: value, attrs: { name: name }, datepicker: {}"/>
+		<!-- /ko -->
+		<!-- /ko -->
+	</form>
+	<div class="button btn m-top-dbl" data-bind="click: goReception, text: buttonText"></div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/Reception6Create.tmpl.html" type="text/html">
+	<div class="btn primary m-top-dbl" data-bind="click: cancelReceptionReserve">Отменить бронирование</div>
+	<div class="btn m-top-dbl" data-bind="click: goReception">Записаться на приём</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.Reception/Web/View/ReceptionTicketsView.tmpl.html" type="text/html">
+	<div class="button btn m-top-dbl" data-bind="click: getTickets">Получить все талоны</div>
+	<!-- ko foreach: tickets -->
+	<div class="reception-ticket m-top-dbl">
+		<div>Талон на приём</div>
+		<!-- ko if: specialist -->
+		<div class="m-top"><span class="opa">Специалист: </span><span data-bind="text: specialist.name"></span></div>
+		<!-- /ko -->
+		<!--<div class="m-top"><span class="opa">Место приёма: </span><span data-bind="text: place"></span></div>-->
+		<div class="m-top"><span class="opa">Время приёма: </span><span data-bind="dateFormat: ticketDateTime, format: 'Simple'"></span></div>	
+		<div class="button btn b-delete m-top" data-bind="click: $parent.cancelReception">Отменить запись</div>
+	</div>
+	<!-- /ko -->
+</script>
+
+<script id="nvx/listBlockView.tmpl.html" type="text/html">
+	<!-- ko foreach: items -->
+	<article class="post col-4">
+		<a href="#" data-bind="attr: { 'href': link }">
+			<i class="icon-arrowCategory" data-bind="css:recId"></i>
+			<h3 data-bind="text: title"></h3>
+		</a>
+	</article>
+	<!-- /ko -->
+</script>
+
+<script id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentView.tmpl.html" type="text/html">
+	<h1  data-bind="text: $data.name, css: $data.departmentId " class="headerPave"></h1>
+	<div class="servicePassportContent">
+		<nav class="nav-tabset nav-tabset-small">
+			<ul>
+				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
+				<li data-bind=" css: { 'active': tabs.services.active }"><a href="#services" data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }"></a></li>
+				<li data-bind="css: { 'active': tabs.funcs.active }"><a href="#funcs" data-bind="text: tabs.funcs.title, event: { click: tabs.funcs.onclick }"></a></li>
+				<!-- ko if: visibleTabSubDepartments -->
+				<li data-bind="css: { 'active': tabs.subDepartments.active }"><a href="#subDepartments" data-bind="text: tabs.subDepartments.title, event: { click: tabs.subDepartments.onclick }"></a></li>
+				<!-- /ko -->
+				<!-- ko if: visibleTabTerritorialSubDepartment -->
+				<li data-bind="css: { 'active': tabs.territorialSubDepartments.active }"><a href="#territorialSubDepartments" data-bind="text: tabs.territorialSubDepartments.title, event: { click: tabs.territorialSubDepartments.onclick }"></a></li>
+				<!-- /ko -->
+			</ul>
+		</nav>
+		<!-- Информация о ведомстве -->
+		<div class="tab" data-bind="'visible': tabs.info.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentInfo.tmpl.html', data: $data, if: $data }"></div>
+		<!-- Список услуг -->
+		<div class="tab" data-bind="'visible': tabs.services.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if:mfcServicesViewModel }"></div>
+		<!-- Список функций -->
+		<div class="tab" data-bind="'visible': tabs.funcs.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcFunctionsViewModel, if: mfcFunctionsViewModel }"></div>
+		<!-- Подведомсва -->
+		<div class="tab" data-bind="'visible': tabs.subDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: subDepartments, if: subDepartments }"></div>
+		<!-- Территориальные органы -->
+		<div class="tab" data-bind="'visible': tabs.territorialSubDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: territorialSubDepartments, if: territorialSubDepartments }"></div>
+	</div>	
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentInfo.tmpl.html">
+	<div class="formData likeInputs">
+		<h3>Общие сведения</h3>
+		<!-- ko if: headName && headName != '' -->
+		<dl>
+			<dt>Руководитель</dt>
+			<dd data-bind="scriptdel: headName"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: phone && phone != '' -->
+		<dl>
+			<dt>Автоинформатор</dt>
+			<dd data-bind="scriptdel: phone"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: webSite -->
+		<dl>
+			<dt>Веб - сайт</dt>
+			<dd><a target="_blank" data-bind="attr: { href: webSite }">Посетить сайт</a></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: email && email != '' -->
+		<dl>
+			<dt>Электронная почта</dt>
+			<dd data-bind="scriptdel: email"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: workTime && workTime != '' -->
+		<dl>
+			<dt>Режим работы</dt>
+			<dd data-bind="scriptdel: workTime"></dd>
+		</dl>
+		<!-- /ko -->
+	</div>
+
+	<!-- Контакты -->
+	<div class="formData likeInputs" data-bind="if: contacts() && contacts().length > 0">
+		<h3>Контактные лица</h3>
+		<!--ko foreach: contacts-->
+		<div class="group">
+			<!-- ko if: fIO && fIO != '' -->
+			<dl>
+				<dt>Фамилия, имя, отчество</dt>
+				<dd data-bind="scriptdel: fIO"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: position && position != '' -->
+			<dl>
+				<dt>Должность</dt>
+				<dd data-bind="scriptdel: position"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: phone && phone != '' -->
+			<dl>
+				<dt>Телефон</dt>
+				<dd data-bind="scriptdel: phone"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: fax && fax != '' -->
+			<dl>
+				<dt>Факс</dt>
+				<dd data-bind="scriptdel: fax"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: email && email != '' -->
+			<dl>
+				<dt>Электронная почта</dt>
+				<dd data-bind="scriptdel: email"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: schedule && schedule != '' -->
+			<dl>
+				<dt>График работы</dt>
+				<dd data-bind="scriptdel: schedule"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: comment && comment != '' -->
+			<dl>
+				<dt>Комментарий</dt>
+				<dd data-bind="scriptdel: comment"></dd>
+			</dl>
+			<!-- /ko -->
+		</div>
+		<!--/ko-->
+	</div>
+
+	<!-- Места обращения -->
+	<div class="formData likeInputs" data-bind="if: placesTreatment() && placesTreatment().length > 0">
+		<h3>Места обращения</h3>
+		<!--ko foreach: placesTreatment-->
+		<div class="group">
+			<h4 class="b m-lft" data-bind="text: name"></h4>
+			<!-- ko if: address && address != '' -->
+			<dl>
+				<dt>Адрес</dt>
+				<dd data-bind="scriptdel: address"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: schedule && schedule != '' -->
+			<dl>
+				<dt>График работы</dt>
+				<dd data-bind="scriptdel: schedule"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: contacts && contacts != '' -->
+			<dl>
+				<dt>Контакты</dt>
+				<dd data-bind="scriptdel: contacts"></dd>
+			</dl>
+			<!-- /ko -->
+		</div>
+		<!--/ko-->
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html">
+	<ul class="paddings stateStructure" data-bind="foreach: $data">
+		<li>
+			<a data-bind="text: name, attr: {href: link}"></a>
+		</li>
+	</ul>
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/groupedPagerTemplate.tmpl.html">
+	<!-- ko if: initialized -->
+	<div class="filterForm">
+		<!--ko if: canFilter-->
+		<span class="filter-itm">
+			<span class="filter-label" data-bind="text: filterTitle"></span>
+			<select data-bind="value: filterId, select2simpleArray: { data: filters }, initValue: initFilterId"></select>
+		</span>
+		<!--/ko-->
+		<span class="filter-itm" data-bind="visible: canSorts">
+			<span class="filter-label">Сортировать</span>
+			<select data-bind="value: sortId, select2simpleArray: { data: sorts }, initValue: initSortId"></select>
+		</span>
+		<span class="filter-itm">
+			<span class="filter-label" data-bind="text: groupTitle"></span>
+			<select data-bind="value: groupId, select2simpleArray: { data: groups }, initValue: initGroupId"></select>
+		</span>
+		<!--если у вью-модели нет свойства checkOnline то не показываем чекбокс-->
+		<!--ko if: $data.hasOwnProperty('checkOnline')-->
+		<span class="filter-itm">
+			<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span>Только электронные услуги</span></label>
+		</span>
+		<!--/ko-->
+		<div class="filter-itm input-big fa-search" data-bind="visible: canSearch">
+			<input class="withIcon" type="text" name="title" data-bind="value: searchText, valueUpdate: 'afterkeydown', event: { keypress: filterKeypress }" placeholder="Поиск по услугам">
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<div id="select-content" data-bind="if: initialized">
+		<!--ko if: title-->
+		<h1 data-bind="text: title"></h1>
+		<!--/ko-->
+		<div data-bind="if: showPageControls, element: listElement">
+			<!-- Вкладки для ведомств -->
+			<div class="tabsCont" data-bind="visible: visibleTabsAdminLevel">
+				<ul class="tabs two-line">
+					<li data-bind="text: tabsAdminLevels.regional.title, event: { click: tabsAdminLevels.regional.onclick }, css: { 'current': tabsAdminLevels.regional.active }"></li>
+					<li data-bind="text: tabsAdminLevels.municipal.title, event: { click: tabsAdminLevels.municipal.onclick }, css: { 'current': tabsAdminLevels.municipal.active }"></li>
+					<li data-bind="text: tabsAdminLevels.federal.title, event: { click: tabsAdminLevels.federal.onclick }, css: { 'current': tabsAdminLevels.federal.active }"></li>
+				</ul>
+			</div>
+		
+			<!--Группы-->
+			<div data-bind="foreach: items">
+				<!--Если в группе есть записи-->
+				<div data-bind="if: count() > 0">
+					<div class="pave-table-header pointer" data-bind="element: groupElement, click: groupClick, slideArrowBefore: { minimizedGroup: minimizedGroup }, attr: { 'groupId': groupId }">
+						<span data-bind="text: rowTitle"></span>
+					</div>
+				</div>
+			</div>
+			<div data-bind="if: allItemsCount() == 0">
+				<h2 class="declinePlate withIcon fa-exclamation-triangle m-top">Не найдены</h2>
+			</div>
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceListTemplate.tmpl.html" type="text/html">
+	<div class="table-new rowh-60 pave-content paddings background-dark m-btm" id="serviceListPlaceHolder">
+		<ul class="department-sevice-list" data-bind="foreach: items">
+			<li class="department-service-item"><a href="#" data-bind="event: { click: function () { $parent.readAboutServiceInfo(id); return false; } }">
+													<span data-bind="attr: {title : name}, scriptdel: name"></span>
+													<span class="icon-arrow-right"></span>
+												</a></li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/servicePassportInfo.tmpl.html">
+	<!-- ko with: department -->
+	<div class="departmentAside">
+		<img src="<?=SITE_TEMPLATE_PATH?>/../rpgu-main/Parts/Img/img_RUSSIA.png">
+		<a href="#department" data-bind="text: name, click: $parent.goToProfile"></a>
+	</div>
+	<!-- /ko -->
+
+	<h1 data-bind="text: passportFullName" class="headerPave"></h1>
+
+	<!-- ko if: servicesView().length > 1 -->
+	<div class="serviceVariant">
+		<b class="b-brand">Вариант услуги</b>
+		<select data-bind="select2simpleArray: { placeholder: 'Выберите услугу', data: servicesView }, value: currentServiceId"></select>
+	</div>
+	<!-- /ko -->
+
+	<div class="tabs-area servicePassportContent">
+		<nav class="nav-tabset nav-tabset-small">
+			<ul>
+				<!-- Описание -->
+				<li data-bind="css: { 'active': tabs.description.active }"><a href="#tabDescription" data-bind="text: tabs.description.title, event: { click: tabs.description.onclick }"></a></li>
+				<!-- ko if: hasDocuments -->
+				<!-- Документы -->
+				<li data-bind=" css: { 'active': tabs.documents.active }"><a href="#tabDocs" data-bind="text: tabs.documents.title, event: { click: tabs.documents.onclick }"></a></li>
+				<!-- /ko -->
+				<!-- Дополнительная информация -->
+				<li data-bind="css: { 'active': tabs.additionalInformation.active }"><a href="#tabInfo" data-bind="text: tabs.additionalInformation.title, event: { click: tabs.additionalInformation.onclick }"></a></li>
+				<!-- ko if: tabs.mfcList.visible -->
+				<!-- МФЦ -->
+				<li data-bind="css: { 'active': tabs.mfcList.active }"><a href="#tabInfo" data-bind="text: tabs.mfcList.title, event: { click: tabs.mfcList.onclick }"></a></li>
+				<!-- /ko -->
+			</ul>
+		</nav>
+
+		<!-- ko if: currentService -->
+		<div class="btn" data-bind="click: createTreatment, visible: currentService().description.canCreateTreatment">Получить консультацию и оформить заявку</div>
+		<!-- /ko -->
+		
+		<!-- ko if: canComplaint -->
+		<div style="margin: 20px 20px 0 0; float: right" class="btn b-create" data-bind="click: createComplaint">Подать жалобу</div>
+		<!-- /ko -->
+
+		<!-- Описание -->
+		<div id="tabDescription" class="tab" data-bind="'visible': tabs.description.active">			
+			<div class="service-name" data-bind="'visible': tabs.description.active, if: currentService">
+				<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDescription.tmpl.html', data: currentService().description }"></div>
+			</div>
+		</div>
+		<!-- Документы. -->
+		<div id="tabDocs" class="tab" data-bind="'visible': tabs.documents.active, if: currentService">
+			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocuments.tmpl.html', data: currentService().documents }"></div>
+		</div>
+		<!-- Дополнительная информация. -->
+		<div id="tabInfo" class="tab" data-bind="'visible': tabs.additionalInformation.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceAditionalInformation.tmpl.html', data: additionalInformation, if: additionalInformation }"></div>
+		<!-- МФЦ. -->
+		<div id="tabMFC" class="tab" data-bind="'visible': tabs.mfcList.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html', data: mfcListViewModel, if: mfcListViewModel }"></div>
+
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceAditionalInformation.tmpl.html">
+	<!-- ko if: appealDescription != null && appealDescription.length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Порядок обжалования</span>
+		</div>
+		<div class="pave-content group niceList" style="display: none" data-bind="scriptdel: appealDescription"></div>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: Array.isArray(participantOrganisations) && participantOrganisations.length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Участвующие организации</span>
+		</div>
+		<div class="pave-content group" style="display: none" data-bind="foreach: participantOrganisations">
+			<div class="group">
+				<h3 data-bind="text: title"></h3>
+				<ul data-bind="foreach: actionTypes">
+					<li data-bind="text: $data"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: Array.isArray(regulatoryActs) && regulatoryActs.length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Нормативно-правовые акты</span>	
+		</div>
+		<div class="pave-content group" style="display: none">
+			<ul class="niceList" data-bind="foreach: regulatoryActs">
+				<li>
+					<h3 data-bind="text: title"></h3>
+					<div data-bind="if: sn != null && sn !== '' ">
+						<span>Регистрационный номер: </span><span data-bind="text: sn"></span>
+					</div>
+					<div data-bind="if: approvalDate != null && approvalDate !== '' ">
+						<span>Дата утверждения: </span><span data-bind="text: approvalDate"></span>
+					</div>
+					<div data-bind="if: url != null && url !== '' ">
+						<span>Источник официального опубликования: </span>
+						<div>
+							<a data-bind="text: url, attr: { href: url }"></a>
+						</div>
+					</div>
+					<!-- ko if: offDocId && offDocId !== '' -->
+					<div><a class="fa-download inline" data-bind="attr: { href: '/portal/serviceDocument/' + offDocId }, text: 'Документ'"></a></div>
+					<!-- /ko -->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: $parent.currentServiceRightsAndDutuesObject() != null && $parent.currentServiceRightsAndDutuesObject().length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Права и обязанности должностных лиц при осуществлении государственного контроля (надзора)</span>
+		</div>
+		<div class="pave-content group niceList" style="display: none" data-bind="scriptdel: $parent.currentServiceRightsAndDutuesObject"></div>
+	</div>
+	<!-- /ko -->	
+
+	<!-- ko if: $parent.currentServiceRightsAndDutuesSubject() != null && $parent.currentServiceRightsAndDutuesSubject().length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Права и обязанности лиц, в отношении которых осуществляются мероприятия по контролю (надзору)</span>
+		</div>
+		<div class="pave-content group niceList" style="display: none" data-bind="scriptdel: $parent.currentServiceRightsAndDutuesSubject"></div>
+	</div>
+	<!-- /ko -->
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocument.tmpl.html">
+	<div class="group formData likeInputs">
+		<h4 data-bind="text: title"></h4>
+		<!-- ko if: docType && docType !== '' -->
+		<dl>
+			<dt>Тип</dt><dd data-bind="scriptdel: docType"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: requiredType && requiredType !== '' -->
+		<dl>
+			<dt>Необходимость</dt><dd data-bind="scriptdel: requiredType"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: quantity && quantity !== '' -->
+		<dl>
+			<dt>Количество</dt><dd data-bind="scriptdel: quantity"></dd>
+		</dl>
+		<!-- /ko -->
+		<dl>
+			<dt>Использование</dt>
+			<dd data-bind="foreach: useTypes">
+				<div data-bind="text: $data"></div>
+			</dd>
+		</dl>
+		<!-- ko if: description && description !== '' -->
+		<dl>
+			<dt>Описание</dt><dd data-bind="scriptdel: description"></dd>
+		</dl>
+		<!-- /ko -->
+
+		<!-- ko if: templateId && templateId !== '' -->
+		<a class="fa-download" data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + templateId }, text: 'Шаблон'"></a>
+		<!-- /ko -->
+		<!-- ko if: sampleId && sampleId !== '' -->
+		<a class="fa-download" data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + sampleId }, text: 'Пример заполнения'"></a>
+		<!-- /ko -->
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocuments.tmpl.html">
+	<!-- ko if: Array.isArray(inDocuments) && inDocuments.length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Документы, необходимые для получения услуги</span> 
+		</div>
+		<div class="pave-content" style="display: none" data-bind="foreach: inDocuments">
+			<div class="group" data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocument.tmpl.html', data: $data }"></div>
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: Array.isArray(completions) && completions.length > 0 -->
+	<div>
+		<div class="pave-table-header pointer" data-bind="slideArrowBefore: { minimizedGroup: true }">
+			<span>Документы, предоставляемые по завершении оказания услуги</span>	
+		</div>
+		<div class="pave-content" style="display: none">
+			<div class="group formData likeInputs" data-bind="foreach: completions">
+				<h3 data-bind="text: title"></h3>
+				<!-- ko if: type && type !== '' -->
+				<dl>
+					<dt>Тип</dt><dd data-bind="scriptdel: type"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: comments && comments !== '' -->
+				<dl>
+					<dt>Описание</dt><dd data-bind="scriptdel: comments"></dd>
+				</dl>
+				<!-- /ko -->
+				<div data-bind="foreach: outDocuments">
+					<!-- ko template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocument.tmpl.html', data: $data } --><!-- /ko -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDescription.tmpl.html">
+	<!-- Описание -->
+	<div data-bind="visible: description != null && description != ''">
+		<div class="pave-table-header" ><!-- data-bind="slideArrowBefore: {}"-->
+			<span>Описание</span> 
+		</div>
+		<div class="pave-content" data-bind="html: description">
+		</div>
+	</div>
+
+	<!-- Как получить услугу -->
+	<!-- ko if: $parent.visibleRequestMethods || $parent.visibleResponseMethods -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Как получить услугу</span> 
+		</div>
+		<div class="pave-content">
+			<!-- ko if: $parent.visibleRequestMethods -->
+			<div data-bind="if: Array.isArray(requestMethods) && requestMethods.length > 0">
+				<h3>Способы подачи заявления:</h3>
+				<ul data-bind="foreach: requestMethods">
+					<li data-bind="text: title"></li>
+				</ul>
+			</div>
+			<!-- /ko -->
+			<!-- ko if: $parent.visibleResponseMethods -->
+			<div data-bind="if: Array.isArray(responseMethods) && responseMethods.length > 0">
+				<h3>Способы получения результата:</h3>
+				<ul data-bind="foreach: responseMethods">
+					<li data-bind="text: title"></li>
+				</ul>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- Стоимость и порядок оплаты-->
+	<!-- ko with: payments -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Стоимость и порядок оплаты</span>
+		</div>
+		<div class="pave-content">
+			<!-- ko if: isFree -->
+			<div>Услуга оказывается бесплатно.</div>
+			<!-- /ko -->
+			<!-- ko if: freeComment != null && freeComment !== '' -->
+			<div data-bind="scriptdel: freeComment"></div>
+			<!-- /ko -->
+
+			<!-- ko if: (Array.isArray(payments) && payments.length > 0) -->
+			<div data-bind="foreach: payments">
+				<h3 data-bind="text: title"></h3>
+				<div>
+					<h4>Вид платежа: </h4>
+					<span data-bind="text: title"></span>
+				</div>
+				<div>
+					<h4>Стоимость: </h4>
+					<span data-bind="text: amount"></span>
+				</div>
+				<h4>Вариант оплаты:</h4>
+				<ul data-bind="foreach: paymentMethods">
+					<li data-bind="text: $data"></li>
+				</ul>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- Сроки оказания услуги-->
+	<!-- ko if: (submitPeriod && submitPeriod != '') || (requestRegistration && requestRegistration != '') ||(maxTermQueue && maxTermQueue != '')  -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Сроки оказания услуги</span>
+		</div>
+		<div class="pave-content">
+			<!-- ko if: submitPeriod && submitPeriod != '' -->
+			<h3>Срок выполнения услуги:</h3>
+			<div data-bind="scriptdel: submitPeriod"></div>
+			<!-- /ko -->
+
+			<!-- ko if: requestRegistration && requestRegistration != '' -->
+			<h3>Срок, в течение которого заявление о предоставлении услуги должно быть зарегистрировано:</h3>
+			<div data-bind="scriptdel: requestRegistration"></div>
+			<!-- /ko -->
+
+			<!-- ko if: maxTermQueue && maxTermQueue != '' -->
+			<h3>Максимальный срок ожидания в очереди при подаче заявления о предоставлении услуги лично:</h3>
+			<div data-bind="scriptdel: maxTermQueue"></div>
+			<!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- Категории получателей -->
+	<!-- ko if: Array.isArray(customers) && customers.length > 0 -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Категории получателей</span>
+		</div>
+		<div class="pave-content">
+			<ul data-bind="foreach: customers">
+				<li>
+					<h4 data-bind="text: value"></h4>
+					<div data-bind="scriptdel: description"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- Основание для оказания услуги, основания для отказа -->
+	<!-- ko if: (groundForAction && groundForAction.length != '') || (rejects && rejects != '' ) -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Основание для оказания услуги, основания для отказа</span>	
+		</div>
+		<div class="pave-content">
+			<!-- ko if: groundForAction != null && groundForAction.length > 0 -->
+			<h3>Основание для оказания услуг:</h3>
+			<div data-bind="scriptdel: groundForAction"></div>
+			<!-- /ko -->
+
+			<!-- ko if: rejects != null && rejects.length > 0 -->
+			<h3>Основания для отказа:</h3>
+			<ul data-bind="foreach: rejects">
+				<li data-bind="scriptdel: $data"></li>
+			</ul>
+			<!-- /ko -->
+		</div>
+	</div>
+	<!-- /ko -->
+
+	<!-- Результат оказания услуги -->
+	<!-- ko if: result != null && result.length > 0 -->
+	<div>
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Результат оказания услуги</span>	
+		</div>
+		<div class="pave-content" data-bind="scriptdel: result">
+		</div>
+		<span data-bind="if: result == null || result.length == 0">Список не заполнен</span>
+	</div>
+	<!-- /ko -->   
+
+	<!-- Сведения о консультировании -->
+	<div data-bind="visible: consultationDescription != null && consultationDescription != ''">
+		<div class="pave-table-header" data-bind="slideArrowBefore: {}">
+			<span>Сведения о консультировании</span> 
+		</div>
+		<div class="pave-content" data-bind="scriptdel: consultationDescription">
+		</div>
+	</div>
+</script>
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html">
+	<div class="cols-2" style="position: relative; height: 100%">
+		<div style="padding-left: 5px">
+			<div id="MfcListYMaps" data-bind="value: mfcMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
+				<div class="throbber">
+					<div class="icon-throbber-black"></div>
+				</div>
+			</div>
+			<div style="padding: 10px 0 0 10px">
+				<span class="filter-itm">
+					<label class="filter-label"><input type="checkbox" data-bind="checked: visibleTosp"><span>Показывать дополнительные офисы</span></label>	
+				</span>
+			</div>
+		</div>
+		<div type="1" class="stateStructure maps" data-bind="foreach: stateStructureList">
+			<!-- Если есть функция обработки клика по блоку, то вызываем ее. Иначе - перейти на страницу с МФЦ -->
+			<a class="formData" data-bind="css: { hasMap: $data.hasOwnProperty('clickBlock') },
+	attr: { href: $data.hasOwnProperty('clickBlock') ? '#' : link },
+	click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
+	element: element">
+				<h4 data-bind="scriptdel: name"></h4>
+				<!-- ko if: address && address != '' -->
+				<dl>
+					<dt>Адрес</dt>
+					<dd data-bind="scriptdel: address"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: workTime && workTime != '' -->
+				<dl>
+					<dt>График работы</dt>
+					<dd data-bind="scriptdel: workTime"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: phone && phone != '' -->
+				<dl>
+					<dt>Телефон</dt>
+					<dd data-bind="scriptdel: phone"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: email && email != '' -->
+				<dl>
+					<dt>Email</dt>
+					<dd data-bind="scriptdel: email"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: webSite && webSite != '' -->
+				<dl>
+					<dt>Сайт</dt>
+					<dd class="a" data-bind="scriptdel: webSite, attr: { href: webSite }, click: function () { window.open(webSite, '_blank') }, clickBubble: false"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: headName && headName != '' -->
+				<dl>
+					<dt>Руководитель</dt>
+					<dd data-bind="scriptdel: headName"></dd>
+				</dl>
+				<!-- /ko -->
+				<!--ko if: $data.hasOwnProperty('openBalloon')-->
+				<span class="btn primary moreButton" data-bind="attr: { href: link }, click: golink, clickBubble: false">Подробнее</span>
+				<!--/ko-->
+			</a>
+
+			<!-- ko if: tospList != null -->
+			<!-- ko foreach:tospList -->
+			<div class="formDataTosp" data-bind="visible: $parents[1].visibleTosp,
+			click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
+			element: element" style="width: 95%; margin-left: 5%; padding-bottom: 5px; padding-top: 5px">
+				<h4 data-bind="scriptdel: name"></h4>
+				<span data-bind="text: address"></span>	   
+				<a class="btn primary withIcon fa- icon-arrow-right-white moreButton" data-bind="attr: { href: link }, click: function () { document.location.href = link }">Подробнее</a>
+			</div>
+			<!-- /ko -->
+			<!-- /ko -->
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcView.tmpl.html">
+	<h1 data-bind="text: name"></h1>
+	<div class="tabsCont">
+		<nav class="nav-tabset nav-tabset-small">
+			<ul>
+				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
+				<li data-bind=" css: { 'active': tabs.services.active }"><a href="#services" data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }"></a></li>
+				<li data-bind="css: { 'active': tabs.tosp.active }, visible: visibleTospTab"><a href="#tosp" data-bind="text: tabs.tosp.title, event: { click: tabs.tosp.onclick }"></a></li>
+			</ul>
+		</nav>
+
+		<div data-bind="visible: tabs.info.active">
+			<!-- ko template: {name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcContactInfoView.tmpl.html'} --><!-- /ko -->
+		</div>
+		<div class="tab" data-bind="visible: tabs.services.active">
+			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if: mfcServicesViewModel }"></div>
+		</div>
+		<div class="tab" data-bind="visible: tabs.tosp.active">
+			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcTospListContacts.tmpl.html', data: mfcTospListViewModel, if: mfcTospListViewModel }"></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html">
+	<div>
+		<!-- ko if: serviceFilterModel -->
+		<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/groupedPagerTemplate.tmpl.html', data: serviceFilterModel }"></div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcTospListContacts.tmpl.html">
+	<div class="cols-2" style="position: relative; height: 100%">
+		<div style="padding-left: 5px">
+			<div id="MfcListYMaps" data-bind="value: mfcMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
+				<div class="throbber">
+					<div class="icon-throbber-black"></div>
+				</div>
+			</div>
+		</div>
+		<div type="1" class="stateStructure maps" data-bind="foreach: stateStructureList">
+			<!-- Если есть функция обработки клика по блоку, то вызываем ее. Иначе - перейти на страницу с МФЦ -->
+			<a class="formData" data-bind="css: { hasMap: $data.hasOwnProperty('clickBlock') },
+	attr: { href: $data.hasOwnProperty('clickBlock') ? '#' : link },
+	click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
+	element: element">
+				<h4 data-bind="scriptdel: name"></h4>
+				<!-- ko if: address && address != '' -->
+				<dl>
+					<dt>Адрес</dt>
+					<dd data-bind="scriptdel: address"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: workTime && workTime != '' -->
+				<dl>
+					<dt>График работы</dt>
+					<dd data-bind="scriptdel: workTime"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: phone && phone != '' -->
+				<dl>
+					<dt>Телефон</dt>
+					<dd data-bind="scriptdel: phone"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: email && email != '' -->
+				<dl>
+					<dt>Email</dt>
+					<dd data-bind="scriptdel: email"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: webSite && webSite != '' -->
+				<dl>
+					<dt>Сайт</dt>
+					<dd class="a" data-bind="scriptdel: webSite, attr: { href: webSite }, click: function () { window.open(webSite, '_blank') }, clickBubble: false"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: headName && headName != '' -->
+				<dl>
+					<dt>Руководитель</dt>
+					<dd data-bind="scriptdel: headName"></dd>
+				</dl>
+				<!-- /ko -->
+				<!--ko if: $data.hasOwnProperty('openBalloon')-->
+				<span class="btn primary moreButton larr" data-bind="attr: { href: link }, click: function () { document.location.href = link }, clickBubble: false">Подробнее</span>
+				<!--/ko-->
+			</a>
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcList.tmpl.html" type="text/html">
+	<div class="tabsCont">
+		<nav class="nav-tabset nav-tabset-small">
+			<ul>
+				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
+				<!-- ko if: tabs.rating -->
+				<li data-bind=" css: { 'active': tabs.rating.active }"><a href="#rating" data-bind="text: tabs.rating.title, event: { click: tabs.rating.onclick }"></a></li>
+				<!-- /ko -->
+			</ul>
+		</nav>
+
+		<!-- Список МФЦ с контактами -->
+		<div class="tab" data-bind="'visible': tabs.info.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html', data: $data }"></div>
+		<!-- Рейтинг МФЦ -->
+		<!-- ko if: tabs.rating -->
+		<div class="tab" data-bind="'visible': tabs.rating.active, template: { name: 'Nvx.ReDoc.Rpgu.PortalModule/FilePage/View/filePage.tmpl.html', data: ratingModel, if: ratingModel }"></div>
+		<!-- /ko -->
+	</div>
+</script>
+
+<script id='Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcContactInfoView.tmpl.html' type="text/html">
+	<div class="tab cols-2">
+		<!-- ko if: locationCoord != null && locationCoord().length > 1 -->
+		<div id="MfcYMaps" data-bind="value: locationCoord, workWithOneOnYMap: {}">
+			<div class="throbber"><div class="icon-throbber-black"></div></div>
+		</div>
+		<!-- /ko -->
+		<div class="paddings">
+			<div class="formData likeInputs">
+				<!-- ko if: address -->
+				<dl>
+					<dt>Адрес</dt>
+					<dd data-bind="scriptdel: address"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: headName -->
+				<dl>
+					<dt>Руководитель</dt>
+					<dd data-bind="scriptdel: headName"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: workTime -->
+				<dl>
+					<dt>График работы</dt>
+					<dd data-bind="scriptdel: workTime"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: phone -->
+				<dl>
+					<dt>Телефон</dt>
+					<dd data-bind="scriptdel: phone"></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: webSite -->
+				<dl>
+					<dt>Сайт</dt>
+					<dd><a target="_blank" data-bind="scriptdel: webSite, attr: { href: webSite }"></a></dd>
+				</dl>
+				<!-- /ko -->
+				<!-- ko if: email -->
+				<dl>
+					<dt>Email</dt>
+					<dd data-bind="scriptdel: email"></dd>
+				</dl>
+				<!-- /ko -->
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="nvxServiceList.tmpl.html">
+	<!-- ko foreach: cats -->
+	<article class="post-tab col-4">
+		<header data-bind="click: goCategory">
+			<img width="73" height="79" class="ico" alt="icon description" src="<?=SITE_TEMPLATE_PATH?>/../rpgu-main/Parts/Img/nut_arrow.svg" data-bind="css: groupId">
+			<h2 data-bind="css: groupId"><a href="#" data-bind="text: groupTitle"></a></h2>
+		</header>
+		<ul class="list">
+			<!-- ko foreach: list -->
+			<li><a href="#" data-bind="html: name + '<span class=\'icon-arrow-right\'></span>', click: goPassport"></a></li>
+			<!-- /ko -->
+		</ul>
+		<a class="btn primary" data-bind="click: goCategory">Все услуги</a>
+	</article>
+	<!-- /ko -->
+	<!-- ko if: cats().length == 0 && isLoading() == false -->
+	<h2>Для заданных критериев услуги отсутствуют</h2>
+	<!-- /ko -->
+</script>
+
+<script type="text/html" id="nvxDepartments.tmpl.html">
+	<ul class="accordion-list" >
+		<li class="open-close-open" data-bind="with: territorialDepartments">
+			<!--ko if: subDepartments.length > 0-->
+			<a href="#" class="opener" data-bind="click: $parent.tdvisClick">
+				Территориальный орган Федеральных органов исполнительной власти
+				<i class="icon-arrow-circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+			</a>
+								
+			<div class="slide" data-bind="css: {'js-slide-hidden': $parent.tdvis }">
+				<ul class="list" data-bind="foreach: subDepartments">
+					<li data-bind="template: { name: 'Nvx/departmentsTreeItemView.tmpl.html', data: $data }"></li>
+				</ul>
+			</div>
+			<!--/ko-->
+		</li>
+		<li class="open-close-open" data-bind="with: regionalDepartments">
+			<!--ko if: subDepartments.length > 0-->
+			<a href="#" class="opener" data-bind="click: $parent.rdvisClick">
+				Региональные органы исполнительной власти
+				<i class="icon-arrow-circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+			</a>
+								
+			<div class="slide" data-bind="css: {'js-slide-hidden': $parent.rdvis }">
+				<ul class="list" data-bind="foreach: subDepartments">
+					<li data-bind="template: { name: 'Nvx/departmentsTreeItemView.tmpl.html', data: $data }"></li>
+				</ul>
+			</div>
+			<!--/ko-->
+		</li>
+		<li class="open-close-open" data-bind="with: municipalDepartments">
+			<!--ko if: subDepartments.length > 0-->
+			<a href="#" class="opener" data-bind="click: $parent.mdvisClick">
+				Органы местного самоуправления
+				<i class="icon-arrow-circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+			</a>
+								
+			<div class="slide" data-bind="css: {'js-slide-hidden': $parent.mdvis }">
+				<ul class="list" data-bind="foreach: subDepartments">
+					<li data-bind="template: { name: 'Nvx/departmentsTreeItemView.tmpl.html', data: $data }"></li>
+				</ul>
+			</div>
+			<!--/ko-->
+		</li>
+	</ul>
+</script>
+
+<script type="text/html" id="Nvx/departmentsTreeItemView.tmpl.html">
+	<a data-bind="attr: { href: link }, css:'departmentsLink '+ id">
+		<div class="text" data-bind="text:name"></div>
+	</a>
+	
+	<!--ko if: subDepartments.length > 0 -->
+	<ul class="sub-list" data-bind="foreach: subDepartments">
+		<li data-bind="template: { name: 'Nvx/departmentsTreeItemViewSub.tmpl.html', data: $data }"></li>
+	</ul>
+	<!-- /ko -->
+</script>
+
+<script type="text/html" id="Nvx/departmentsTreeItemViewSub.tmpl.html">
+	<a data-bind="text:name, attr: { href: link }, css:'departmentsLink ' + id"> </a>
+	<!--ko if: subDepartments.length > 0 -->
+	<ul class="sub-list" data-bind="foreach: subDepartments">
+		<li data-bind="template: { name: 'Nvx/departmentsTreeItemViewSub.tmpl.html', data: $data }"></li>
+	</ul>
+	<!-- /ko -->
+</script>
+
+<script type="text/html" id="nvxLifeSituations.tmpl.html">
+	<div class="block categoriesServices" data-bind="template: { name: 'nvx/articleBlock.tmpl.html', data: serviceCategoriesBlock }"></div>
+</script>
+
+<script type="text/html" id="nvx/articleBlock.tmpl.html">
+	<!-- ko foreach: items -->
+	<article data-bind="css:'post-tab col-6 '+recId">
+		<div class="img-holder pull-left"></div>
+		<div class="post-content">
+			<h2 class="post-title"><a data-bind="text: title, attr: { 'href': link }"></a></h2>
+		</div>
+	</article>
+	<!-- /ko -->
+</script>
+
+<script id="Nvx.ReDoc.Rpgu.Parking31/View/parkingCommonView.tmpl.html" type="text/html">
+	<!--оплата абонемента-->
+	<div class="paddings tab" data-bind="visible: abonTabVisible">
+		<h3></h3>
+	
+		<div class="formData">
+			<dl>
+				<dt>Абонемент</dt>
+				<dd>
+					<select data-bind="value: abonType, select2admin: abonTypeSelectOpt"></select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Дата начала действия абонемента</dt>
+				<dd>
+					<input type="text" data-bind="value: abonStartDate, datepicker: { }">
+				</dd>
+			</dl>
+			<dl>
+				<dt>Регистрационный номер ТС</dt>
+				<dd>
+					<!-- ko ifnot: numberPlatesVisible -->
+					<input type="text" data-bind="value: tsNumber" maxlength="9" placeholder="А000АА000"/>
+					<!-- /ko -->
+					<!-- ko if: numberPlatesVisible -->
+					<select data-bind="select2simpleArray:{ placeholder: 'Выберите номер', data: numberPlates}, value: tsNumber"></select>
+					<!-- /ko -->
+				</dd>
+			</dl>
+			<dl>
+				<dt>Ваш номер телефона, зарегистрированный на сайте belparking.ru</dt>
+				<dd>
+					<input type="text" data-bind="value: phone, attr: { 'readonly': phoneReadonly }" maxlength="11"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt></dt>
+				<dd>
+					<div data-bind="click: abonPayRequest, css: { 'disabled': abonPayDisabled }" class="btn b-solid">Рассчитать стоимость</div>
+				</dd>
+			</dl>
+
+			<!-- ko if: abonTransactionId-->
+			<div class="declinePlate m-top-dbl">
+				<div style="text-align: center">Номер транзакции для оплаты: <span data-bind="text: abonTransactionId"></span></div>
+			</div>
+
+			<dl class="m-top-dbl">
+				<dt>Номер платежа</dt>
+				<dd>
+					<input type="text" data-bind="value: abonPaymentId">
+				</dd>
+			</dl>
+			<dl>
+				<dt></dt>
+				<dd>
+					<div data-bind="click: abonFinishRequest" class="btn b-solid">Завершить оплату абонемента</div>
+				</dd>
+			</dl>
+			<!-- /ko -->
+
+			<!-- ko if: finalAbonPayInfo -->
+			<div class="declinePlate m-top-dbl">
+				<div style="text-align: center" data-bind="text: finalAbonPayInfo"></div>
+			</div>
+			<!-- /ko -->
+		
+		</div>
+	</div>
+	
+	<!--оплата парковки-->
+	<div class="paddings tab" data-bind="visible: parkingTabVisible">
+		<h3></h3>
+		<div class="formData">
+
+			<div class="m-btm-dbl" data-bind="template: { name: 'Nvx.ReDoc.Rpgu.Parking31/View/parkingMapView.tmpl.html', data: mapViewModel, if: mapViewModel }"></div>
+		
+			<dl class="m-top-dbl">
+				<dt>Зона</dt>
+				<dd>
+					<select data-bind="select2simpleArray: { placeholder: 'Выберите парковочную зону', data: zoneSelectArray }, value: currentSelectedZone" id="selectedZoneElementId"></select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Регистрационный номер ТС</dt>
+				<dd>
+					<!-- ko ifnot: numberPlatesVisible -->
+					<input type="text" data-bind="value: tsNumber" maxlength="9" placeholder="А000АА000"/>
+					<!-- /ko -->
+					<!-- ko if: numberPlatesVisible -->
+					<select data-bind="select2simpleArray:{ placeholder: 'Выберите номер', data: numberPlates}, value: tsNumber"></select>
+					<!-- /ko -->
+				</dd>
+			</dl>
+			<dl>
+				<dt>Длительность парковки</dt>
+				<dd>
+					<input type="text" placeholder="ЧЧ:ММ" data-bind="textInput: parkingTime, digitMask: '__:__'" maxlength="5">
+				</dd>
+			</dl>
+			<!--
+				<dl>
+					<dt>Pin-код плательщика на сайте belparking.ru</dt>
+					<dd>
+						<input type="text" data-bind="value: pin" maxlength="20">
+					</dd>
+				</dl>
+				-->
+			<dl>
+				<dt></dt>
+				<dd>
+					<div class="btn b-solid" data-bind="click: parkingPayRequest, css: { 'disabled': parkingPayDisabled }">Рассчитать стоимость парковки</div>
+				</dd>
+			</dl>
+			<!-- ko if: parkingTransactionId -->
+			<div class="declinePlate m-top-dbl">
+				<div style="text-align: center">Номер транзакции для оплаты: <span data-bind="text: parkingTransactionId"></span>, полная стоимость: <span data-bind="text: parkingCost"></span> руб.</div>
+			</div>
+			<!-- ko if: savedSum -->
+			<div class="m-top">Сэкономленная сумма: <span data-bind="text: savedSum"></span></div>
+			<div>Полученные льготы: <span data-bind="html: grantsText"></span></div>
+			<!-- /ko -->
+			<!-- /ko -->
+		
+			<!-- ko if: parkingFinishVisible -->
+			<dl class="m-top-dbl">
+				<dt>Ваш номер телефона, зарегистрированный на сайте belparking.ru</dt>
+				<dd>
+					<input type="text" data-bind="value: phone, attr: { 'readonly': phoneReadonly }" maxlength="11"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Номер платежа</dt>
+				<dd>
+					<input type="text" data-bind="value: parkingPaymentId">
+				</dd>
+			</dl>
+			<dl>
+				<dt></dt>
+				<dd>
+					<div class="btn b-solid" data-bind="click: parkingFinishRequest">Подтвердить факт оплаты</div>
+				</dd>
+			</dl>
+			<!-- /ko -->
+		
+			<!-- ko if: finalParkingPayInfo -->
+			<div class="declinePlate m-top-dbl">
+				<div style="text-align: center" data-bind="text: finalParkingPayInfo"></div>
+			</div>
+			<div style="text-align: center" data-bind="text: finalParkingPayInfo2"></div>
+			<!-- /ko -->
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.Parking31/View/parkingMapView.tmpl.html" type="text/html">
+	<div id="MfcListYMaps" data-bind="value: zonesMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
+		<div class="throbber">
+			<div class="icon-throbber-black"></div>
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/ChargeView.tmpl.html" type="text/html">
+	<div class="modalWindowOverlay">
+		<div class="modalWindow">
+			<h2>Информация о платеже</h2>
+			<div class="modalWindowContent">
+				<!-- ko with: model -->
+				<table>
+					<tr><td>Сумма начисления</td> <td><label data-bind="text: amount"></label></td></tr>
+					<tr><td>Дата выставления начисления</td> <td><label data-bind="text: billDate"></label></td></tr>
+					<tr><td>Признак того, что начисление оплачено</td> <td><label data-bind="text: isPaid"></label></td></tr>
+					<tr><td>Идентификатор начисления</td> <td><label data-bind="text: billId"></label></td></tr>
+					<!-- ko if: billNumber -->
+					<tr><td>Номер начисления у поставщика</td> <td><label data-bind="text: billNumber"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: billName -->
+					<tr><td>Наименование</td> <td><label data-bind="text: billName"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: supplierInn -->
+					<tr><td>ИНН поставщика услуги</td> <td><label data-bind="text: supplierInn"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: supplierName -->
+					<tr><td>Наименование поставщика услуги</td> <td><label data-bind="text: supplierName"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: payBeforeDate -->
+					<tr><td>Дата, до которой необходимо оплатить начисление</td> <td><label data-bind="text: payBeforeDate"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: billStatus -->
+					<tr><td>Статус начисления</td> <td><span data-bind="text: billStatus.name"></span> (<span data-bind="text: billStatus.code"></span>)</td></tr>
+					<!-- /ko -->
+					<!-- ko if: billType -->
+					<tr><td>Тип начисления</td> <td><span data-bind="text: billType.name"></span> (<span data-bind="text: billType.code"></span>)</td></tr>
+					<!-- /ko -->
+					<!-- ko if: comment -->
+					<tr><td>Комментарий к начислению</td> <td><label data-bind="text: comment"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: service -->
+					<tr><td>Данные по услуге</td> <td><span data-bind="text: service.name"></span> (<span data-bind="text: service.code"></span>)</td></tr>
+					<!-- /ko -->
+					<!-- ko if: billSource -->
+					<tr><td>Данные по поставщику начисления</td> <td><span data-bind="text: billSource.name"></span> (<span data-bind="text: billSource.code"></span>)</td></tr>
+					<!-- /ko -->
+					<!-- ko if: serviceType -->
+					<tr><td>Вид услуги, к которому относилось оплаченное начисление</td> <td><span data-bind="text: serviceType.name"></span> (<span data-bind="text: serviceType.code"></span>)</td></tr>
+					<!-- /ko -->
+				</table>
+				<!-- /ko -->
+			</div>
+			<div class="btn b-solid" data-bind="event: { click: close }">
+				Закрыть
+			</div>
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/lkPaymentsListViewModel.tmpl.html" type="text/html">
+	<h1>Запрос штрафов ГИБДД</h1>
+	<div class="paddings">
+		<table>
+			<tr>
+				<td style="width: 120px; font-weight: 600">Номерной знак</td>
+				<td style="width: 128px">
+					<input class="input30" data-bind="value: regNumber" maxlength="12">
+				</td>
+				<td>
+					<div class="btn b-solid m-lft" data-bind="event: { click: taxRequest }">
+						Узнать штрафы
+					</div>
+				</td>
+				<td style="width: 250px">
+					<input type="checkbox" data-bind="checked: taxNotPayed" class="m-lft">
+					<span style="font-weight: 600; padding-top: 2px">Только неоплаченные</span>
+				</td>
+			</tr>
+		</table>
+		<p class="h3" style="padding: 3px" data-bind="text: taxRequestResultText, visible: taxRequestResultText"></p>
+	</div>
+
+	<!-- ko if: taxes().length > 0 -->
+	<div class="table-new table-admin a paymentBlockLk m-top-dbl">
+		<div class="th">
+			<span class="col-180">Дата и время</span>
+			<span class="col-100">Сумма&nbsp;(р.)</span>
+			<span class="col-100">Тип</span>
+			<span style="width: 100%; text-align: left">Статус</span>
+		</div>
+		<!--ko foreach: taxes -->
+		<div>
+			<span class="col-180" data-bind="text: breachDateTime, click: $parent.taxWindow"></span>
+			<span class="col-100" data-bind="text: decisionSumma, click: $parent.taxWindow"></span>
+			<span class="col-100" data-bind="text: penalty, click: $parent.taxWindow"></span>
+			<span style="word-break: break-all; width: 100%; text-align: left" data-bind="text: executionState, click: $parent.taxWindow"></span>
+			<!-- ko if: mvdServiceCode != null && roskaznaIn != '1'-->
+			<div>
+				<div class="btn b-solid" data-bind="event: { click: $parent.paythis }">
+					Оплатить
+				</div>
+			</div>
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: savedData().length > 0 -->
+	<h1>Список сохранённых услуг</h1>
+	<div class="table-new table-admin a paymentBlockLk">
+		<div class="th">
+			<span>Поставщик и наименование услуги</span>
+			<span>Данные</span>
+		</div>
+		<!-- ko foreach: savedData -->
+		<div>
+			<span data-bind="text: $data[0]"></span>
+			<span data-bind="text: $data[1]"></span>
+		</div>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: paymentsList().length > 0-->
+	<h1>Список платежей</h1>
+	<div class="table-new table-admin a paymentBlockLk">
+		<div class="th">
+			<span class="col-100">Статус</span>
+			<span class="col-100">Дата</span>
+			<span class="col-100">Сумма&nbsp;(р.)</span>
+			<span>Идентификатор плательщика</span>
+			<span>Назначение платежа</span>
+			<span class="col-100">Файлы</span>
+		</div>
+		<!--ko foreach: paymentsList-->
+		<div>
+			<span class="col-100" data-bind="click: goLink">
+				<span data-bind="css: statusCss"></span>
+			</span>
+			<span class="col-100" data-bind="text: created, click: goLink"></span>
+			<span class="col-100" data-bind="text: amount, click: goLink"></span>
+			<span style="word-break: break-all" data-bind="text: payerIdentifier, click: goLink"></span>
+			<span style="word-break: break-all" data-bind="text: narrative, click: goLink"></span>
+			<span class="col-100">
+				<!-- ko if: file1Exist-->
+				<a data-bind="attr: { href: getfile1 }">Квитанция</a>
+				<!-- /ko-->
+				<!-- ko if: file2Exist-->
+				<br>
+				<a data-bind="attr: { href: getfile2 }">Чек</a>
+				<!-- /ko-->
+			</span>
+		</div>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+
+	<div class="btn b-solid m-lft m-top m-btm" data-bind="click: getPayments">
+		Запросить платежи ИПШ
+	</div>
+
+	<!-- ko if: paymentsIpsh().length > 0 -->
+	<div class="table-new table-admin a paymentBlockLk">
+		<div class="th">
+			<span class="col-100">Статус</span>
+			<span class="col-100">Дата</span>
+			<span class="col-100">Сумма&nbsp;(р.)</span>
+			<span>Наименование платежа</span>
+			<span class="col-100">Файлы</span>
+		</div>
+		<!--ko foreach: paymentsIpsh-->
+		<div>
+			<span class="col-100" data-bind="click: $parent.paymentWindow">
+				<span data-bind="text: status.name"></span>
+			</span>
+			<span class="col-100" data-bind="text: createTime, click: $parent.paymentWindow"></span>
+			<span class="col-100" data-bind="text: amount, click: $parent.paymentWindow"></span>
+			<span style="word-break: break-all" data-bind="text: paymentName, click: $parent.paymentWindow"></span>
+			<span class="col-100">
+				<!-- ko if: paymentHref-->
+				<a data-bind="attr: { href: paymentHref }" target="blank">Чек</a>
+				<!-- /ko-->
+			</span>
+		</div>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: errors-->
+	<h2 class="declinePlate  m-top-hlf" data-bind="text: errors"></h2>
+	<!-- /ko -->
+
+	<div data-bind="template: { name: 'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html', data: taxModalDialog }"></div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/orderPayView.tmpl.html" type="text/html">
+
+	<h1 class="fa-info">Просмотр информации об оплате</h1>
+	<div class="paddings">
+		<h3 data-bind="text: textData, visible: textData() != null"></h3>
+	
+		<h4 data-bind="text: commonErrorText, visible: commonErrorText() != null"></h4>
+
+		<div data-bind="visible: textData() != null">
+			<h3>Пользовательские данные</h3>
+			<label class="hdr m-btm">Сумма: <span data-bind="text: amount"></span> р.<br/>
+				Идентификатор плательщика: <span data-bind="text: payerIdentifier"></span><br/>
+				Назначение платежа: <span data-bind="text: narrative"></span>
+			</label>
+		</div>
+
+		<!-- ko with: serviceItem -->
+		<h3>Реквизиты</h3>
+		<div class="m-btm">
+			Наименование услуги: <span data-bind="text: serviceName"></span><br/>
+			Комиссия при оплате <span data-bind="text: tax"></span>% (минимальная комиссия: <span data-bind="text: minTax"></span> р.)<br/>
+			Поставщик: <span data-bind="text: provider"></span>, ИНН: <span data-bind="text: inn"></span>, КПП: <span data-bind="text: kpp"></span><br/>
+			Наименование банка: <span data-bind="text: bankName"></span><br/>
+			БИК: <span data-bind="text: bankBik"></span>, р/счёт: <span data-bind="text: bankAccount"></span>
+		</div>
+		<!-- /ko -->
+
+		<!-- ko with: payItem-->
+		<h3>Результат авторизации платежа</h3>
+		<table style="border: 1px solid">
+			<tr><td style="width: 140px">Номер заказа</td><td data-bind="text: ordernumber"></td></tr>
+			<tr><td>Результат</td><td data-bind="text: recommendation"></td></tr>
+			<tr><td>Дата</td><td data-bind="text: date"></td></tr>
+			<tr><td>Сумма</td><td data-bind="text: total"></td></tr>
+			<tr><td>Код валюты</td><td data-bind="text: currency"></td></tr>
+			<tr><td>Номер карты</td><td data-bind="text: cardnumber"></td></tr>
+			<tr><td>Код авторизации</td><td data-bind="text: approvalcode"></td></tr>
+			<tr><td>Держатель карты</td><td data-bind="text: cardholder"></td></tr>
+			<tr><td>Номер транзакции</td><td data-bind="text: billnumber"></td></tr>
+			<tr><td>Статус</td><td data-bind="text: status"></td></tr>
+			<!-- ko if: errorCode -->
+			<tr><td>Код ошибки</td><td data-bind="text: errorCode"></td></tr>
+			<tr><td>Описание ошибки</td><td data-bind="text: errorComment"></td></tr>
+			<!-- /ko -->
+		</table>
+		<!-- /ko -->
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/paymentView.tmpl.html" type="text/html">
+
+	<div class="modalWindowOverlay">
+		<div class="modalWindow" style="width: 750px">
+			<!-- ko if: supplier -->
+			<h2 data-bind="text: supplier.name"></h2>
+			<!-- /ko -->
+			<!-- ko if: supplier == null -->
+			<h2>Информация об оплате</h2>
+			<!-- /ko -->
+			<div class="modalWindowContent">
+				<table>
+					<tr><td style="width: 220px; text-align: right; padding-right: 10px">Наименование платежа</td> <td><label data-bind="text: paymentName"></label></td></tr>
+					<tr><td style="text-align: right; padding-right: 10px">Дата выставления счета</td> <td><label data-bind="text: billDate"></label></td></tr>
+					<tr><td style="text-align: right; padding-right: 10px">Уникальный идентификатор начисления</td> <td><label data-bind="text: billNumber"></label></td></tr>
+				</table>
+
+				<h3>Платёж</h3>
+				<table>
+					<tr style="display: none"></tr>
+					<!-- ko if: payTime -->
+					<tr><td style="width: 220px; text-align: right; padding-right: 10px">Дата и время оплаты</td> <td><label data-bind="text: payTime"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: payMethod -->
+					<tr><td style="text-align: right; padding-right: 10px">Средство платежа</td> <td><label data-bind="text: payMethod.name"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: bank -->
+					<tr><td style="text-align: right; padding-right: 10px">Кредитная организация</td> <td><label data-bind="text: bank.name"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: paymentId -->
+					<tr><td style="text-align: right; padding-right: 10px">Номер транзакции</td> <td><label data-bind="text: paymentId"></label></td></tr>
+					<!-- /ko -->
+					<!-- ko if: status -->
+					<tr>
+						<td style="text-align: right; padding-right: 10px">Статус</td> 
+						<td>
+							<label data-bind="text: status.name" class="m-top"></label>
+							<div class="btn b-solid m-lft" data-bind="event: { click: getPaymentStatus }">
+								Обновить статус
+							</div>
+						</td>
+					</tr>
+					<!-- /ko -->
+					<!-- ko if: cardTransactionInfo -->
+					<tr><td style="text-align: right; padding-right: 10px">Внешний номер транзакции</td> <td><label data-bind="text: cardTransactionInfo.rrn"></label></td></tr>
+					<tr><td style="text-align: right; padding-right: 10px">Код авторизации</td> <td><label data-bind="text: cardTransactionInfo.authCode"></label></td></tr>
+					<!-- /ko -->
+					<tr>
+						<td style="text-align: right; padding-right: 10px">Статус ГИС ГМП</td> 
+						<td>
+							<label data-bind="text: statusGis" class="m-top"></label>
+							<div class="btn b-solid m-lft" data-bind="event: { click: refreshPaymentQuittance }">
+								Обновить статус
+							</div>
+						</td>
+					</tr>
+					<tr><td style="text-align: right; padding-right: 10px">Сумма платежа</td> <td><label data-bind="text: amount"></label></td></tr>
+				</table>
+			</div>
+			<div class="btn b-solid" data-bind="event: { click: close }">
+				Закрыть
+			</div>
+		</div>
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/servicePayView.tmpl.html" type="text/html">
+	<!--Поиск услуг-->
+	<div class="paddings" data-bind="visible: tabSearch">
+		<h3></h3>
+		<div data-bind="template: { name: templateId, data: templateViewModel, if: templateViewModel }"></div>
+	</div>
+	
+	<!--Мои счета-->
+	<div class="paddings" data-bind="visible: tabMy">
+		<h3></h3>
+	
+		<div style="height: 30px;">
+			<div class="btn primary larr b-back" data-bind="event: { click: backToBills }, visible: payOptions().length > 0 && billDetailsModel" style="float: left">Назад к списку счетов</div>
+
+			<div style="float: right; margin-top: 3px;" class="btn primary b-solid m-lft " data-bind="event: { click: refreshBills }">
+				Обновить
+			</div>
+			<label style="float: right; text-align: right;" class="small">В этом разделе отображаются выставленные вам счета по государственным и коммерческим услугам.<br/>Для актуализации счетов нажмите на кнопку «Обновить»</label>
+		</div>
+		
+		<!-- ko if: billsListVisible -->
+		<!-- ko if: chargesData().length > 0 -->
+		<div class="table-new table-admin a paymentBlockLk m-top-dbl" style="width: 100%;">
+			<div class="th" style="padding-left: 10px;">
+				<span style="width: 50%; text-align: left;">Наименование</span>
+				<span style="width: 70px; min-width: 80px;">Дата поступления</span>
+				<span style="width: 80px; min-width: 80px;">Оплатить до</span>
+				<span style="width: 50px; min-width: 50px;">Сумма&nbsp;(р.)</span>
+			</div>
+			<!--ko foreach: chargesData -->
+			<div data-bind="click: $parent.prepay" style="padding-left: 10px; height: 55px;">
+				<span data-bind="text: billName" style="text-align: left; width: 50%;"></span>
+				<span style="width: 70px; min-width: 80px;" data-bind="text: billDate"></span>
+				<span style="width: 80px; min-width: 80px;" data-bind="text: payBeforeDate"></span>
+				<span style="width: 50px; min-width: 50px;" data-bind="text: amount"></span>
+			</div>
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->
+		<!-- /ko -->
+	
+		<!-- ko if: payOptions().length > 0 && billDetailsModel-->
+		<div class="paddings">
+			<!-- ko with: billDetailsModel -->
+			<table class="billDetailsTable" >
+				<tbody>
+					<tr><td style="width: 22%;"></td><td><h3 data-bind="text: supplierName"></h3></td></tr>
+					<tr><td class="tdalignright opa">Вид платежа:</td> <td><label data-bind="text: service.name"></label></td></tr>
+					<tr><td class="tdalignright opa">Назначение платежа:</td> <td><label data-bind="text: billName"></label></td></tr>
+					<tr><td class="tdalignright opa">Дата выставления счета:</td> <td><label data-bind="text: billDate"></label></td></tr>
+					<tr><td class="tdalignright opa">Номер счета:</td> <td><label data-bind="text: billId"></label></td></tr>
+					<tr><td class="tdalignright opa">Уникальный идентификатор начисления:</td> <td style="vertical-align: bottom;"><label data-bind="text: billNumber"></label></td></tr>
+					<tr><td class="tdalignright opa">Статус:</td> <td><label data-bind="text: billStatus.name"></label></td></tr>
+					<tr><td class="tdalignright b">Сумма (руб.):</td> <td><label data-bind="text: amount" class="b"></label></td></tr>
+				</tbody>
+			</table>
+			<!-- /ko -->
+
+			<table class="billDetailsTable" >
+				<tbody>
+					<tr>
+						<td style="width: 22%;"></td>
+						<td><h3>Выбрать способ оплаты</h3></td>
+					</tr>
+					<!--ko foreach: payOptions -->
+					<tr>
+						<td></td>
+						<td>
+							<input type="radio" name="paymethods" data-bind="event: { mouseup: checkedsubscribe } ">
+							<span data-bind="text: payMethod.name"></span>
+						</td>
+					</tr>
+					<!-- /ko -->
+				</tbody>
+			</table>
+
+			<!-- ko if: finalAmount -->
+			<h2 class="declinePlate m-top-dbl" style="font-style: normal;" data-bind="text: finalAmount"></h2>
+			<!-- /ko -->
+
+			<div class="c">
+				<div class="btn b-solid" data-bind="click: createPayment">Оплатить*</div>
+				<div class="btn primary" data-bind="click: function() { window.location = billDetailsModel().href; } " target="blank">Квитанция</div>
+			</div>
+
+			<label class="small opa m-top-dbl">* Для совершения оплаты вы будете перенаправлены на другую страницу. После оплаты вы сможете вернуться на страницу информации о совершённом платеже</label>
+		</div>
+		<!-- /ko -->
+	
+		<!-- ko if: chargesError-->
+		<h2 class="declinePlate m-top-dbl" data-bind="text: chargesError"></h2>
+		<!-- /ko -->
+		<!-- ko if: chargesInfo-->
+		<h2 class="m-top-hlf" data-bind="text: chargesInfo"></h2>
+		<!-- /ko -->
+	</div>	
+</script>
+
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/servicePayUntView.tmpl.html" type="text/html">
+	<div class="filter-itm fa-search m-lft-no m-btm-dbl" style="display: block; height: 40px;">
+		<input type="text" data-bind="value: searchString, valueUpdate: 'afterkeydown', enterkey: search" placeholder="Для поиска введите название услуги, наименование поставщика, ИНН или КПП"/>
+	</div>
+
+	<!-- ko if: services -->
+	<div class="serviceCatalogItem">
+		<!-- ko foreach: services-->
+		<div data-bind="click: $parent.selectService">
+			<h3 data-bind="text: provider"></h3>
+			<label class="m-btm-dbl">
+				<span class="opa">Услуга:</span> <span data-bind="text: name"></span><br/>
+				<span class="opa">ИНН/КПП:</span> <span data-bind="text: inn"></span><span> / </span><span data-bind="text: kpp"></span><br/>
+				<span class="opa">р/сч:</span> <span data-bind="text: bankAccount"></span>
+			</label>
+		</div>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+</script>
+
+<script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/servicePayView2.tmpl.html" type="text/html">
+
+	<div class="paddings">
+		<div class="btn primary larr b-back" data-bind="event: { click: back }">Назад к выбору услуги</div>
+
+		<div class="hasBack serviceCatalogItemRek" style="padding-left: 10px">
+			<div data-bind="visible: serviceExist" style="margin-right: 20px; margin-left: -20px">
+				<div class="pave-table-header pointer m-top" data-bind="click: infoRequest">
+					<span>Запрос у поставщика
+						<span data-bind="css: infoRequestRightIcon"></span>
+					</span>
+				</div>
+			
+				<div data-bind="visible: infoRequestFieldsVisible">
+					<table data-bind="foreach: infoFields" style="width: 100%">
+						<tr>
+							<td class="m-rgh" style="text-align: right; width: 30%">
+								<span class="h3" style="margin: 0 0 7px 0" data-bind="text: n"></span>
+							</td>
+							<td style="width: 70%">
+								<input style="width: 440px" type="text" data-bind="attr: { name: k, pattern: m }, value: v" class="m-btm m-lft">
+							</td>
+						</tr>
+					</table>
+
+					<div class="btn b-solid b-modal " data-bind="event: { click: sendInfoRequest }" style="margin-right: 0">
+						ЗАПРОСИТЬ
+					</div>
+					<div class="btn b-solid b-modal m-rgh" data-bind="event: { click: saveInfoRequest }, visible: saveInfoRequestVisible" style="margin-right: 0">
+						СОХРАНИТЬ
+					</div>
+				</div>
+			</div>
+
+			<!-- ko with: serviceItem -->
+			<h3>Реквизиты</h3>
+			<div class="m-btm" style="padding-left: 20px">
+				<span class="opa">Поставщик:</span> <span data-bind="text: provider"></span><br/>
+				<span class="opa">Наименование услуги:</span> <span data-bind="text: serviceName"></span><br/>
+				<span class="opa">ИНН:</span> <span data-bind="text: inn"></span><br/>
+				<span class="opa">КПП:</span> <span data-bind="text: kpp"></span><br/>
+				<span class="opa">Наименование банка:</span> <span data-bind="text: bankName"></span><br/>
+				<span class="opa">БИК: </span><span data-bind="text: bankBik"></span><br/>
+				<span class="opa">Р/счёт:</span> <span data-bind="text: bankAccount"></span><br/>
+				Комиссия при оплате <span data-bind="text: tax"></span>% (минимальная комиссия: <span data-bind="text: minTax"></span> р.)<br/>
+			</div>
+			<!-- /ko -->
+
+			<h3>Данные платежа</h3>
+		
+			<table style="width: 100%">
+				<tr>
+					<td class="m-rgh" style="text-align: right; width: 30%">
+						<span class="h3" style="margin: 0 0 7px 0">Сумма оплаты в рублях</span>
+					</td>
+					<td style="width: 70%">
+						<input type="text" data-bind="value: amount" class="m-btm m-lft" style="width: 440px">
+					</td>
+				</tr>
+				<tr>
+					<td class="m-rgh" style="text-align: right; width: 30%">
+						<span class="h3" style="margin: 0 0 7px 0">Идентификатор плательщика</span>
+					</td>
+					<td style="width: 70%">
+						<input type="text" data-bind="value: payerIdentifier" class="m-btm m-lft" style="width: 440px">
+					</td>
+				</tr>
+				<tr>
+					<td class="m-rgh" style="text-align: right; width: 30%">
+						<span class="h3" style="margin: 0 0 7px 0">Номер лицевого счёта (если&nbsp;имеется)</span>
+					</td>
+					<td style="width: 70%">
+						<input type="text" data-bind="value: personalAccount" class="m-btm m-lft" style="width: 440px">
+					</td>
+				</tr>
+				<tr>
+					<td class="m-rgh" style="text-align: right; width: 30%">
+						<span class="h3" style="margin: 0 0 7px 0">Назначение платежа</span>
+					</td>
+					<td style="width: 70%">
+						<input type="text" data-bind="value: narrative" class="m-btm m-lft m-lft" style="width: 440px">
+					</td>
+				</tr>
+				<tr>
+					<td class="m-rgh" style="text-align: right; width: 30%">
+						<span class="h3" style="margin: 0 0 7px 0">E-mail</span>
+					</td>
+					<td style="width: 70%">
+						<input type="text" class="m-lft m-btm" data-bind="value: email" style="width: 440px">
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<div class="btn primary m-lft b-brand" data-bind="event: { click: comissionRequest }"><div class="fa-rouble">&nbsp;<span class="small">Уточнить комиссию</span></div></div>
+					</td>
+					<td></td>
+				</tr>
+			</table>
+
+			<div data-bind="visible: comissionVisible">
+				<label class="hdr">Размер комиссии: <span data-bind="text: comissionAmount" id="comissionValueId"></span> (Значение комиссии в рублях от суммы платежа для текущих платежных реквизитов)</label>
+			</div>
+		
+			<div>
+				<div class="btn b-solid b-modal m-top-dbl " data-bind="event: { click: regRequest }">
+					ОПЛАТИТЬ *
+				</div>
+			</div>
+			<label class="small">* Для совершения оплаты вы будете перенаправлены на другую страницу. После оплаты вы сможете вернуться на страницу информации о совершённом платеже</label>
+		</div>
+	</div>
+</script>
+<!-- /bundle -->

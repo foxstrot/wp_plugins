@@ -1,0 +1,12 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="input">
+		<p>{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+				<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</p>
+		<p data-bind="text: Value"></p>
+	</div>
+<!-- /ko -->
+</script>

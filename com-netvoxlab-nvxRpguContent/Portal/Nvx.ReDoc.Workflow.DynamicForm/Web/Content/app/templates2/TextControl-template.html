@@ -1,0 +1,42 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	{{if ControlKey == 'SimpleText'}}
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="input">
+		<h4 data-bind="css: { 'input-required': IsMandatory, 'input-err': notValidClass }, attr: { title: errorMessage }">{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+				<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h4>
+		<input type="text" data-control-fragment-id="ValueHolder" data-bind="value: Value, maskedInput: Mask, enable: ControlEnabling, visible: ControlVisibility, attr: { title: errorMessage, maxlength: MaxLength}"
+			   name="{{>Path.replace('.','').replace('_','')}}" value="{{>DefaultValue}}"
+			   {{if IsMandatory}}
+			   required="required"
+			   {{/if}} />
+	</div>
+	{{/if}}
+	{{if ControlKey == 'MultiStringText'}}
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="textarea">
+		<h4 data-bind="css: { 'input-required': IsMandatory, 'input-err': notValidClass }, attr: { title: errorMessage }">{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+				<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h4>
+		<textarea data-control-fragment-id="ValueHolder" 
+			{{if IsMandatory}}
+				required="required"
+			{{/if}}
+			data-bind="value: Value, enable: ControlEnabling, visible: ControlVisibility, attr: { title: errorMessage }"
+			>{{>DefaultValue}}</textarea>
+	</div>
+	{{/if}}
+	{{if ControlKey == 'OnlyCaption'}}
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="paragraph">
+		<h3>{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+				<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h3>
+	</div>
+	{{/if}}
+<!-- /ko -->
+</script>
