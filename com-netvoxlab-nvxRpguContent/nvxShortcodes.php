@@ -1,5 +1,5 @@
 <?php	
-	//Страница с поиском услуг
+	//РЎС‚СЂР°РЅРёС†Р° СЃ РїРѕРёСЃРєРѕРј СѓСЃР»СѓРі
 	function nvxSearchService_shortcode ($atts, $content = null)
     {
 		return $content . '<div id="nvxSearchService">
@@ -9,7 +9,7 @@
 					</div>';
     }
 	
-	//Авторизация
+	//РђРІС‚РѕСЂРёР·Р°С†РёСЏ
 	function nvxAuth_shortcode ($atts, $content = null)
     {
 		return $content .'<div id="nvxAuth">
@@ -23,26 +23,26 @@
 					</div>';
     }
 	
-	//запись на приём
+	//Р·Р°РїРёСЃСЊ РЅР° РїСЂРёС‘Рј
 	function nvxReception_shortcode ($atts, $content = null)
     {
 		return $content . '<div id="nvxReception">	
 						<div class="paddings reception-redoc-form">
-							<h2 class="declinePlate m-top" data-bind="visible: userInfo() == null">Для записи на приём вы должны быть авторизованы</h2>							
+							<h2 class="declinePlate m-top" data-bind="visible: userInfo() == null">Р”Р»СЏ Р·Р°РїРёСЃРё РЅР° РїСЂРёС‘Рј РІС‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹</h2>							
 							<div class="reception-selected-pave" data-bind="click: goLevel1, if: place">
-								<span>Организация: <span data-bind="text: place().name"></span></span>
+								<span>РћСЂРіР°РЅРёР·Р°С†РёСЏ: <span data-bind="text: place().name"></span></span>
 							</div>
 							<div class="reception-selected-pave" data-bind="click: goLevel2, if: service">
-								<span>Направление: <span data-bind="text: service().name"></span></span>
+								<span>РќР°РїСЂР°РІР»РµРЅРёРµ: <span data-bind="text: service().name"></span></span>
 							</div>						
 							<div class="reception-selected-pave" data-bind="click: goLevel3, if: specialist">
-								<span>Специалист: <span data-bind="text: specialist().name"></span></span>
+								<span>РЎРїРµС†РёР°Р»РёСЃС‚: <span data-bind="text: specialist().name"></span></span>
 							</div>
 							<div class="reception-selected-pave" data-bind="click: goLevel3, if: date">
-								<span>Дата приёма: <span data-bind="text: date().name"></span></span>
+								<span>Р”Р°С‚Р° РїСЂРёС‘РјР°: <span data-bind="text: date().name"></span></span>
 							</div>
 							<div class="reception-selected-pave" data-bind="click: goLevel4, if: position">
-								<span>Время приёма: <span data-bind="text: position().name"></span></span>
+								<span>Р’СЂРµРјСЏ РїСЂРёС‘РјР°: <span data-bind="text: position().name"></span></span>
 							</div>
 							<p class="m-top-dbl" data-bind="html: commonInfoString, visible: commonInfoString() != null"></p>
 							<div data-bind="template: { name: templateId, data: templateViewModel }"></div>
@@ -50,7 +50,7 @@
 					</div>';
     }
 	
-	//Информация по услуге
+	//РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СѓСЃР»СѓРіРµ
 	function nvxServiceInfo_shortcode ($atts, $content = null) {
 		return $content.
 			'<div id="nvxServiceInfo">
@@ -61,7 +61,7 @@
 			</div>';
 	}
 
-	//Информация по ведомству
+	//РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РІРµРґРѕРјСЃС‚РІСѓ
 	function nvxDepartmentInfo_shortcode ($atts, $content = null) {
 		return $content.
 			'<div id="nvxDepartmentInfo">
@@ -72,18 +72,18 @@
 			</div>';
 	}
 	
-	//Отчёты шины
+	//РћС‚С‡С‘С‚С‹ С€РёРЅС‹
 	function esbProblemRequests_shortcode ($atts, $content = null) {
 		return $content.
 			'<div id="esbProblemRequests">
 				<div class="textRow" data-bind="visible: showAllCount">
-					<p>Всего необработанных запросов<span data-bind="text: allCount"></span></p>
+					<p>Р’СЃРµРіРѕ РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… Р·Р°РїСЂРѕСЃРѕРІ<span data-bind="text: allCount"></span></p>
 				</div>
 				<div class="textRow" data-bind="visible: showCurCount">
-					<p>Отображены данные по первым <span data-bind="text: currentCount"></span> неотвеченным заявкам</p>
+					<p>РћС‚РѕР±СЂР°Р¶РµРЅС‹ РґР°РЅРЅС‹Рµ РїРѕ РїРµСЂРІС‹Рј <span data-bind="text: currentCount"></span> РЅРµРѕС‚РІРµС‡РµРЅРЅС‹Рј Р·Р°СЏРІРєР°Рј</p>
 				</div>
 				<div class="textRow" data-bind="visible: showLoading">
-					<p>Идет загрузка данных</p>
+					<p>РРґРµС‚ Р·Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…</p>
 				</div>
 				<!-- ko if: list -->
 				<div data-bind="visible: list().length > 0">
@@ -91,10 +91,10 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Дата</th>
-								<th>Кто запросил</th>
-								<th>У кого запросили</th>
-								<th>Номер заявки</th>
+								<th>Р”Р°С‚Р°</th>
+								<th>РљС‚Рѕ Р·Р°РїСЂРѕСЃРёР»</th>
+								<th>РЈ РєРѕРіРѕ Р·Р°РїСЂРѕСЃРёР»Рё</th>
+								<th>РќРѕРјРµСЂ Р·Р°СЏРІРєРё</th>
 							</tr>
 						</thead>
 						<tbody data-bind="foreach: list">
@@ -112,7 +112,7 @@
 			</div>';
 	}
 	
-	//Категории услуг
+	//РљР°С‚РµРіРѕСЂРёРё СѓСЃР»СѓРі
 	function nvxCategory_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxCategory">
@@ -124,12 +124,12 @@
 			</div>';
     }
 	
-	//Услуги для выбранной категории
+	//РЈСЃР»СѓРіРё РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё
 	function nvxCategoryServiceList_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxCategoryServiceList">
 				<h2 data-bind="text: title"></h2>				
-				<a data-bind="click: goCatalog" class="btn primary larr"><span></span>Вернуться в каталог</a>
+				<a data-bind="click: goCatalog" class="btn primary larr"><span></span>Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РєР°С‚Р°Р»РѕРі</a>
 				<div class="brdr"></div>				
 				<ul class="list">
 					<!-- ko foreach: services -->
@@ -142,11 +142,11 @@
 					</li>
 					<!-- /ko -->
 				</ul>
-				<div class="btn primary" data-bind="visible: loadMoreVisible, click: loadList">Показать ещё</div>
+				<div class="btn primary" data-bind="visible: loadMoreVisible, click: loadList">РџРѕРєР°Р·Р°С‚СЊ РµС‰С‘</div>
 			</div>';
     }
 	
-	//Перечень ведомств
+	//РџРµСЂРµС‡РµРЅСЊ РІРµРґРѕРјСЃС‚РІ
 	function nvxDepartments_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxDepartments">
@@ -154,7 +154,7 @@
 					<div data-bind="with: territorialDepartments">
 						<!--ko if: subDepartments.length > 0-->
 						<a class="itm spoiler" data-bind="css: { hasSubs: subDepartments.length > 0 }, slideArrowBefore2: { \'contentClass\': \'spoilerContent\', \'hideClass\': \'hide\' }">
-							Территориальный орган Федеральных органов исполнительной власти
+							РўРµСЂСЂРёС‚РѕСЂРёР°Р»СЊРЅС‹Р№ РѕСЂРіР°РЅ Р¤РµРґРµСЂР°Р»СЊРЅС‹С… РѕСЂРіР°РЅРѕРІ РёСЃРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РІР»Р°СЃС‚Рё
 							<span class="spoiler" data-bind="slideArrowBefore2: { \'contentClass\': \'spoilerContent\', \'hideClass\': \'hide\' }"></span>
 						</a>
 						<ul class="spoilerContent" data-bind="foreach: subDepartments, visible: renderChildren">
@@ -165,7 +165,7 @@
 					<div data-bind="with: regionalDepartments">
 						<!--ko if: subDepartments.length > 0-->
 						<a class="itm" data-bind="css: { hasSubs: subDepartments.length > 0 }">
-							Региональные органы исполнительной власти
+							Р РµРіРёРѕРЅР°Р»СЊРЅС‹Рµ РѕСЂРіР°РЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РІР»Р°СЃС‚Рё
 							<span class="spoiler" data-bind="slideArrowBefore2: { \'contentClass\': \'spoilerContent\', \'hideClass\': \'hide\' }"></span>
 						</a>
 						<ul class="spoilerContent" data-bind="foreach: subDepartments, visible: renderChildren">
@@ -176,7 +176,7 @@
 					<div data-bind="with: municipalDepartments">
 						<!--ko if: subDepartments.length > 0-->
 						<a class="itm" data-bind="css: { hasSubs: subDepartments.length > 0 }">
-							Органы местного самоуправления
+							РћСЂРіР°РЅС‹ РјРµСЃС‚РЅРѕРіРѕ СЃР°РјРѕСѓРїСЂР°РІР»РµРЅРёСЏ
 							<span class="spoiler" data-bind="slideArrowBefore2: { \'contentClass\': \'spoilerContent\', \'hideClass\': \'hide\' }"></span>
 						</a>
 						<ul class="spoilerContent" data-bind="foreach: subDepartments, visible: renderChildren">
@@ -188,7 +188,7 @@
 			</div>';
     }
 	
-	//Жизненные ситуации
+	//Р–РёР·РЅРµРЅРЅС‹Рµ СЃРёС‚СѓР°С†РёРё
 	function nvxLifeSituations_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxLifeSituations">
@@ -198,7 +198,7 @@
 			</div>';
     }
 	
-	//Информация по МФЦ
+	//РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РњР¤Р¦
 	function nvxMfcInfo_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxMfcInfo">
@@ -209,19 +209,19 @@
 			</div>';		
     }
 
-	//Страница с функционалом оплаты
+	//РЎС‚СЂР°РЅРёС†Р° СЃ С„СѓРЅРєС†РёРѕРЅР°Р»РѕРј РѕРїР»Р°С‚С‹
 	function nvxPaymentsCommon_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxPaymentsCommon">
 				<nav class="nav-tabset tabset">
 					<ul>
 						<!-- ko if: servicePayViewModelVisible -->
-						<li class="active" data-bind="click: clicktab1, css: { \'active\': tab1 }"><a href="#tab1">Поиск услуг</a></li>
-						<li data-bind="click: clicktab2, css: { \'active\': tab2 }"><a href="#tab2">Мои счета</a></li>
+						<li class="active" data-bind="click: clicktab1, css: { \'active\': tab1 }"><a href="#tab1">РџРѕРёСЃРє СѓСЃР»СѓРі</a></li>
+						<li data-bind="click: clicktab2, css: { \'active\': tab2 }"><a href="#tab2">РњРѕРё СЃС‡РµС‚Р°</a></li>
 						<!-- /ko -->
 						<!-- ko if: parking31CommonViewModelVisible -->
-						<li data-bind="click: clicktab3, css: { \'active\': tab3 }"><a href="#tab3">Оплата абонемента</a></li>
-						<li data-bind="click: clicktab4, css: { \'active\': tab4 }"><a href="#tab4">Оплата парковки</a></li>
+						<li data-bind="click: clicktab3, css: { \'active\': tab3 }"><a href="#tab3">РћРїР»Р°С‚Р° Р°Р±РѕРЅРµРјРµРЅС‚Р°</a></li>
+						<li data-bind="click: clicktab4, css: { \'active\': tab4 }"><a href="#tab4">РћРїР»Р°С‚Р° РїР°СЂРєРѕРІРєРё</a></li>
 						<!-- /ko -->
 					</ul>
 				</nav>
@@ -235,7 +235,7 @@
 			</div>';		
     }
 	
-	//Популярные услуги
+	//РџРѕРїСѓР»СЏСЂРЅС‹Рµ СѓСЃР»СѓРіРё
 	function nvxPopularService_shortcode ($atts, $content = null) {
 		return $content.'<div id="nvxPopularService">
 				<div>
@@ -244,7 +244,7 @@
 			</div>';
 	}
 
-	//Форма прикладывания вложений заявления
+	//Р¤РѕСЂРјР° РїСЂРёРєР»Р°РґС‹РІР°РЅРёСЏ РІР»РѕР¶РµРЅРёР№ Р·Р°СЏРІР»РµРЅРёСЏ
 	function nvxRequestAttachment_shortcode ($atts, $content = null) {
 		return $content.'<div id="nvxRequestAttachment">
 				<h1 data-bind="text: pageTitle"></h1>
@@ -258,7 +258,7 @@
 					<!-- /ko -->
 					<div>
 						<!-- ko if: visibleEditButton -->
-						<div class="btn button b-solid" data-bind="click: editButtonClick">Редактировать</div>
+						<div class="btn button b-solid" data-bind="click: editButtonClick">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</div>
 						<!-- /ko -->
 						<!-- ko if: visibleRemoveDraftButton -->
 						<div class="btn button b-solid" data-bind="click: removeDraftClick, text: removeDraftTitle"></div>
@@ -272,7 +272,7 @@
 			</div>';
 	}
 	
-	//Динамическая форма заявления
+	//Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ С„РѕСЂРјР° Р·Р°СЏРІР»РµРЅРёСЏ
 	function nvxRequestForm_shortcode ($atts, $content = null) {
 		return $content.'<div id="nvxRequestForm">
 				<h1 data-bind="text: pageTitle"></h1>
@@ -286,7 +286,7 @@
 					<!-- /ko -->
 					<div>
 						<!-- ko if: visibleEditButton -->
-						<div class="btn button b-solid" data-bind="click: editButtonClick">Редактировать</div>
+						<div class="btn button b-solid" data-bind="click: editButtonClick">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</div>
 						<!-- /ko -->
 						<!-- ko if: visibleRemoveDraftButton -->
 						<div class="btn button b-solid" data-bind="click: removeDraftClick, text: removeDraftTitle"></div>
@@ -300,10 +300,10 @@
 			</div>';
 	}
 
-	//Информация о заявлении
+	//РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°СЏРІР»РµРЅРёРё
 	function nvxRequestInfo_shortcode ($atts, $content = null) {
 		return $content.'<div id="nvxRequestInfo">
-				<h1>Информация о заявлении</h1>
+				<h1>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°СЏРІР»РµРЅРёРё</h1>
 				<div class="paddings">
 				<!-- ko template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestGeneralInfo.tmpl.html\' } --><!-- /ko -->
 				</div>
@@ -312,34 +312,34 @@
 					<nav class="nav-tabset tabset">
 						<ul> 
 							<li class="active" data-bind="event: { click: tabs.formPreview.onclick }, css: { \'active\': tabs.formPreview.active }">
-								<a href="#tab1" data-bind="text: tabs.formPreview.title">Заявление</a>
+								<a href="#tab1" data-bind="text: tabs.formPreview.title">Р—Р°СЏРІР»РµРЅРёРµ</a>
 							</li>
 							<li data-bind="event: { click: tabs.result.onclick }, css: { \'active\': tabs.result.active }">
-								<a href="#tab2" data-bind="text: tabs.result.title">Результаты</a>
+								<a href="#tab2" data-bind="text: tabs.result.title">Р РµР·СѓР»СЊС‚Р°С‚С‹</a>
 							</li>
 							
 							<li data-bind="event: { click: tabs.changes.onclick }, css: { \'active\': tabs.changes.active }">
-								<a href="#tab3" data-bind="text: tabs.changes.title">История</a>
+								<a href="#tab3" data-bind="text: tabs.changes.title">РСЃС‚РѕСЂРёСЏ</a>
 							</li>
 							<li data-bind="event: { click: tabs.attachments.onclick }, css: { \'active\': tabs.attachments.active }">
-								<a href="#tab4" data-bind="text: tabs.attachments.title">Файлы</a>
+								<a href="#tab4" data-bind="text: tabs.attachments.title">Р¤Р°Р№Р»С‹</a>
 							</li>				
 						</ul>
 					</nav>	
 					
-					<!-- Заявление. -->
+					<!-- Р—Р°СЏРІР»РµРЅРёРµ. -->
 					<div class="tab paddings" data-bind="visible: tabs.formPreview.active, template: { name: formPreviewTemplateId, data: formPreviewModel, if: formPreviewModel }"></div>
-					<!-- Результат. -->
+					<!-- Р РµР·СѓР»СЊС‚Р°С‚. -->
 					<div class="tab tab2tr" data-bind="visible: tabs.result.active , template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestInfoResult.tmpl.html\', data: $data }"></div>
-					<!-- История изменений. -->
+					<!-- РСЃС‚РѕСЂРёСЏ РёР·РјРµРЅРµРЅРёР№. -->
 					<div class="tab tab3tr" data-bind="visible: tabs.changes.active, template: { name: tabs.changes.template, data: requestChangesModel, if: requestChangesModel }"></div>	
-					<!-- Файлы. -->
+					<!-- Р¤Р°Р№Р»С‹. -->
 					<div class="tab tab4tr" data-bind="visible: tabs.attachments.active, template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestInfoAttachments.tmpl.html\', data: requestAttachmentsModel, if: requestAttachmentsModel }"></div>
 				</div>
 			</div>';
 	}
 	
-	//Список категорий с услугами
+	//РЎРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№ СЃ СѓСЃР»СѓРіР°РјРё
 	function nvxServiceList_shortcode ($atts, $content = null) {
 		return $content.'<div id="nvxServiceList">
 				<!-- ko foreach: cats -->
@@ -353,26 +353,26 @@
 						<li><a href="#" data-bind="html: name + \'<span class=\'icon-arrow-right\'></span>\', click: goPassport"></a></li>
 						<!-- /ko -->
 					</ul>
-					<a class="btn primary" href="#">Все услуги</a>
+					<a class="btn primary" href="#">Р’СЃРµ СѓСЃР»СѓРіРё</a>
 				</article>
 				<!-- /ko -->
 				<!-- ko if: cats().length == 0 -->
-				<h2>Для заданных критериев услуги отсутствуют</h2>
+				<h2>Р”Р»СЏ Р·Р°РґР°РЅРЅС‹С… РєСЂРёС‚РµСЂРёРµРІ СѓСЃР»СѓРіРё РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚</h2>
 				<!-- /ko -->
 			</div>';
 	}
 
-	//Личный кабинет
+	//Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚
 	function nvxLkFullPage_shortcode ($atts, $content = null) {
 		return $content.'<div class="container tabs-area">	
 			<div id="nvxStartCreateFile"></div>
 			<nav class="nav-tabset tabset">
 				<ul> 
-					<li class="active"><a href="#tab1">Персональная информация</a></li>
-					<li><a href="#tab2">Заявления</a></li>
-					<li><a href="#tab3">Платежи</a></li>
-					<li><a href="#tab4">Жалобы</a></li>
-					<li><a href="#tab5">Запись на приём</a></li>
+					<li class="active"><a href="#tab1">РџРµСЂСЃРѕРЅР°Р»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</a></li>
+					<li><a href="#tab2">Р—Р°СЏРІР»РµРЅРёСЏ</a></li>
+					<li><a href="#tab3">РџР»Р°С‚РµР¶Рё</a></li>
+					<li><a href="#tab4">Р–Р°Р»РѕР±С‹</a></li>
+					<li><a href="#tab5">Р—Р°РїРёСЃСЊ РЅР° РїСЂРёС‘Рј</a></li>
 				</ul>
 			</nav>
 					
@@ -381,46 +381,46 @@
 					<div id="nvxCustomerInfo">
 						<div class="formData likeInputs">
 							<dl>
-								<dt>ФИО</dt><dd data-bind="text: fio"></dd>
+								<dt>Р¤РРћ</dt><dd data-bind="text: fio"></dd>
 							</dl>
 							<!-- ko if: birthDate -->
 							<dl>
-								<dt>Дата рождения</dt><dd data-bind="text: birthDate"></dd>
-								<dt>Пол</dt><dd data-bind="text: gender"></dd>
+								<dt>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ</dt><dd data-bind="text: birthDate"></dd>
+								<dt>РџРѕР»</dt><dd data-bind="text: gender"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: birthPlace -->
 							<dl>
-								<dt>Место рождения</dt><dd data-bind="text: birthPlace"></dd>
+								<dt>РњРµСЃС‚Рѕ СЂРѕР¶РґРµРЅРёСЏ</dt><dd data-bind="text: birthPlace"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: citizenship -->
 							<dl>
-								<dt>Гражданство</dt>
+								<dt>Р“СЂР°Р¶РґР°РЅСЃС‚РІРѕ</dt>
 								<dd data-bind="text: citizenship"></dd>
 							</dl>
 							<!-- /ko -->
 							<!--ko if: passport-->
 							<dl>
-								<dt>Документ</dt><dd>паспорт</dd>
+								<dt>Р”РѕРєСѓРјРµРЅС‚</dt><dd>РїР°СЃРїРѕСЂС‚</dd>
 							</dl>
 							<dl>
-								<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
-								<dt>Дата выдачи</dt><dd data-bind="text: passport().issueDate"></dd>
+								<dt>РЎРµСЂРёСЏ Рё РЅРѕРјРµСЂ</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
+								<dt>Р”Р°С‚Р° РІС‹РґР°С‡Рё</dt><dd data-bind="text: passport().issueDate"></dd>
 							</dl>
 							<dl>
-								<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
+								<dt>РљРµРј РІС‹РґР°РЅ</dt><dd data-bind="text: passport().issuedBy"></dd>
 							</dl>
 							<dl>
-								<dt>Код подразделения</dt><dd data-bind="text: passport().issuedByCode"></dd>
+								<dt>РљРѕРґ РїРѕРґСЂР°Р·РґРµР»РµРЅРёСЏ</dt><dd data-bind="text: passport().issuedByCode"></dd>
 							</dl>
 							<!--/ko-->
 							<dl>
 								<!-- ko if: inn -->
-								<dt>ИНН</dt><dd data-bind="text: inn"></dd>
+								<dt>РРќРќ</dt><dd data-bind="text: inn"></dd>
 								<!-- /ko -->
 								<!-- ko if: snils -->
-								<dt>СНИЛС</dt><dd data-bind="text: snils"></dd>
+								<dt>РЎРќРР›РЎ</dt><dd data-bind="text: snils"></dd>
 								<!-- /ko -->
 							</dl>
 							<!-- ko if: email -->
@@ -430,68 +430,68 @@
 							<!-- /ko -->
 							<dl>
 								<!-- ko if: homePhone -->
-								<dt>Домашний телефон</dt><dd data-bind="text: homePhone"></dd>
+								<dt>Р”РѕРјР°С€РЅРёР№ С‚РµР»РµС„РѕРЅ</dt><dd data-bind="text: homePhone"></dd>
 								<!-- /ko -->
 								<!-- ko if: mobilePhone -->
-								<dt>Мобильный телефон</dt><dd data-bind="text: mobilePhone"></dd>
+								<dt>РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ</dt><dd data-bind="text: mobilePhone"></dd>
 								<!-- /ko -->
 							</dl>
 							<!-- ko if: registrationAddress -->
 							<dl>
-								<dt>Адрес регистрации</dt><dd data-bind="text: registrationAddress"></dd>
+								<dt>РђРґСЂРµСЃ СЂРµРіРёСЃС‚СЂР°С†РёРё</dt><dd data-bind="text: registrationAddress"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: facticalAddress -->
 							<dl>
-								<dt>Адрес проживания</dt><dd data-bind="text: facticalAddress"></dd>
+								<dt>РђРґСЂРµСЃ РїСЂРѕР¶РёРІР°РЅРёСЏ</dt><dd data-bind="text: facticalAddress"></dd>
 							</dl>
 							<!-- /ko -->
 								
 							<!-- ko if: drivingLicense -->
 							<dl>
-								<dt>Водительское удостоверение</dt>
+								<dt>Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ</dt>
 								<dd data-bind="text: drivingLicense"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: birthCertificate -->
 							<dl>
-								<dt>Свидетельство о рождении</dt>
+								<dt>РЎРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЂРѕР¶РґРµРЅРёРё</dt>
 								<dd data-bind="text: birthCertificate"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: medicalPolicy -->
 							<dl>
-								<dt>Полис обязательного медицинского страхования</dt>
+								<dt>РџРѕР»РёСЃ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРіРѕ РјРµРґРёС†РёРЅСЃРєРѕРіРѕ СЃС‚СЂР°С…РѕРІР°РЅРёСЏ</dt>
 								<dd data-bind="text: medicalPolicy"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: internationalPassport -->
 							<dl>
-								<dt>Заграничный паспорт</dt>
+								<dt>Р—Р°РіСЂР°РЅРёС‡РЅС‹Р№ РїР°СЃРїРѕСЂС‚</dt>
 								<dd data-bind="text: internationalPassport"></dd>
 							</dl>
 							<!-- /ko -->
 							<!-- ko if: militaryIdDoc -->
 							<dl>
-								<dt>Военный билет</dt>
+								<dt>Р’РѕРµРЅРЅС‹Р№ Р±РёР»РµС‚</dt>
 								<dd data-bind="text: militaryIdDoc"></dd>
 							</dl>
 							<!-- /ko -->
 
 							<!-- ko foreach: vehicles -->
 							<dl class="m-top-dbl">
-								<dt>Транспортное средство</dt><dd data-bind="text: name"></dd>
+								<dt>РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРµ СЃСЂРµРґСЃС‚РІРѕ</dt><dd data-bind="text: name"></dd>
 							</dl>
 							<dl>
-								<dt>Номерной знак</dt><dd data-bind="text: numberPlate"></dd>
-								<dt>Серия СТС</dt><dd data-bind="text: regSer"></dd>
-								<dt>Номер СТС</dt><dd data-bind="text: regNum"></dd>
+								<dt>РќРѕРјРµСЂРЅРѕР№ Р·РЅР°Рє</dt><dd data-bind="text: numberPlate"></dd>
+								<dt>РЎРµСЂРёСЏ РЎРўРЎ</dt><dd data-bind="text: regSer"></dd>
+								<dt>РќРѕРјРµСЂ РЎРўРЎ</dt><dd data-bind="text: regNum"></dd>
 							</dl>
 							<!-- /ko -->
 								
 						</div>
 						<div class="tab paddings" style="text-align: center">
-							Для изменения личных данных Вам необходимо внести изменения в личном кабинете на <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, затем заново пройти авторизацию.
+							Р”Р»СЏ РёР·РјРµРЅРµРЅРёСЏ Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С… Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРЅРµСЃС‚Рё РёР·РјРµРЅРµРЅРёСЏ РІ Р»РёС‡РЅРѕРј РєР°Р±РёРЅРµС‚Рµ РЅР° <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, Р·Р°С‚РµРј Р·Р°РЅРѕРІРѕ РїСЂРѕР№С‚Рё Р°РІС‚РѕСЂРёР·Р°С†РёСЋ.
 						</div>
 					</div>
 				</div>
@@ -500,9 +500,9 @@
 						<!--ko if: requestList().length > 0-->
 						<table class="table-new">
 							<tr class="table-new-header">
-								<th>Заявление</th>
-								<th class="col-150">Дата подачи</th>
-								<th class="col-150">Статус</th>
+								<th>Р—Р°СЏРІР»РµРЅРёРµ</th>
+								<th class="col-150">Р”Р°С‚Р° РїРѕРґР°С‡Рё</th>
+								<th class="col-150">РЎС‚Р°С‚СѓСЃ</th>
 							</tr>
 							<!--ko foreach: requestList-->
 							<tr class="table-new-row" data-bind="click: $parent.goFile">
@@ -515,7 +515,7 @@
 								<td class="col-150" data-bind="text: rpguFileStatus">
 									<span data-bind="text: rpguFileStatus"></span>
 									<!-- ko if: isArchived && status <= 1 -->
-									<span>(Архивировано)</span>
+									<span>(РђСЂС…РёРІРёСЂРѕРІР°РЅРѕ)</span>
 									<!-- /ko -->
 								</td>
 							</tr>
@@ -523,21 +523,21 @@
 						</table>
 						<!--/ko-->
 						<!--ko if: requestList().length == 0-->
-						<h2>Заявлений нет</h2>
+						<h2>Р—Р°СЏРІР»РµРЅРёР№ РЅРµС‚</h2>
 						<!--/ko-->
 					</div>
 				</div>
 				<div id="tab3" class="row">
 					<div id="nvxLkPayments">
-						<!--штрафы мвд отсутствуют-->
+						<!--С€С‚СЂР°С„С‹ РјРІРґ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚-->
 
 						<!-- ko if: taxes().length > 0 -->
 						<div class="table-new table-admin a paymentBlockLk m-top-dbl">
 							<div class="th">
-								<span class="col-180">Дата и время</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span class="col-100">Тип</span>
-								<span style="width: 100%; text-align: left;">Статус</span>
+								<span class="col-180">Р”Р°С‚Р° Рё РІСЂРµРјСЏ</span>
+								<span class="col-100">РЎСѓРјРјР°&nbsp;(СЂ.)</span>
+								<span class="col-100">РўРёРї</span>
+								<span style="width: 100%; text-align: left;">РЎС‚Р°С‚СѓСЃ</span>
 							</div>
 							<!--ko foreach: taxes -->
 							<div>
@@ -548,7 +548,7 @@
 								<!-- ko if: mvdServiceCode != null && roskaznaIn != \'1\'-->
 								<div>
 									<div class="btn b-solid" data-bind="event: { click: $parent.paythis }">
-										Оплатить
+										РћРїР»Р°С‚РёС‚СЊ
 									</div>
 								</div>
 								<!-- /ko -->
@@ -558,11 +558,11 @@
 						<!-- /ko -->
 
 						<!-- ko if: savedData().length > 0 -->
-						<h1>Список сохранённых услуг</h1>
+						<h1>РЎРїРёСЃРѕРє СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… СѓСЃР»СѓРі</h1>
 						<div class="table-new table-admin a paymentBlockLk">
 							<div class="th">
-								<span>Поставщик и наименование услуги</span>
-								<span>Данные</span>
+								<span>РџРѕСЃС‚Р°РІС‰РёРє Рё РЅР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРіРё</span>
+								<span>Р”Р°РЅРЅС‹Рµ</span>
 							</div>
 							<!-- ko foreach: savedData -->
 							<div>
@@ -574,15 +574,15 @@
 						<!-- /ko -->
 
 						<!-- ko if: paymentsList().length > 0-->
-						<h1>Список платежей</h1>
+						<h1>РЎРїРёСЃРѕРє РїР»Р°С‚РµР¶РµР№</h1>
 						<div class="table-new table-admin a paymentBlockLk">
 							<div class="th">
-								<span class="col-100">Статус</span>
-								<span class="col-100">Дата</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span>Идентификатор плательщика</span>
-								<span>Назначение платежа</span>
-								<span class="col-100">Файлы</span>
+								<span class="col-100">РЎС‚Р°С‚СѓСЃ</span>
+								<span class="col-100">Р”Р°С‚Р°</span>
+								<span class="col-100">РЎСѓРјРјР°&nbsp;(СЂ.)</span>
+								<span>РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїР»Р°С‚РµР»СЊС‰РёРєР°</span>
+								<span>РќР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°</span>
+								<span class="col-100">Р¤Р°Р№Р»С‹</span>
 							</div>
 							<!--ko foreach: paymentsList-->
 							<div>
@@ -595,11 +595,11 @@
 								<span style="word-break: break-all;" data-bind="text: narrative, click: goLink"></span>
 								<span class="col-100">
 									<!-- ko if: file1Exist-->
-									<a data-bind="attr: { href: getfile1 }">Квитанция</a>
+									<a data-bind="attr: { href: getfile1 }">РљРІРёС‚Р°РЅС†РёСЏ</a>
 									<!-- /ko-->
 									<!-- ko if: file2Exist-->
 									<br/>
-									<a data-bind="attr: { href: getfile2 }">Чек</a>
+									<a data-bind="attr: { href: getfile2 }">Р§РµРє</a>
 									<!-- /ko-->
 								</span>
 							</div>
@@ -608,17 +608,17 @@
 						<!-- /ko -->
 
 						<div class="btn b-solid m-lft m-top m-btm" data-bind="click: getPayments">
-							Запросить платежи ИПШ
+							Р—Р°РїСЂРѕСЃРёС‚СЊ РїР»Р°С‚РµР¶Рё РРџРЁ
 						</div>
 
 						<!-- ko if: paymentsIpsh().length > 0 -->
 						<div class="table-new table-admin a paymentBlockLk">
 							<div class="th">
-								<span class="col-100">Статус</span>
-								<span class="col-100">Дата</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span>Наименование платежа</span>
-								<span class="col-100">Файлы</span>
+								<span class="col-100">РЎС‚Р°С‚СѓСЃ</span>
+								<span class="col-100">Р”Р°С‚Р°</span>
+								<span class="col-100">РЎСѓРјРјР°&nbsp;(СЂ.)</span>
+								<span>РќР°РёРјРµРЅРѕРІР°РЅРёРµ РїР»Р°С‚РµР¶Р°</span>
+								<span class="col-100">Р¤Р°Р№Р»С‹</span>
 							</div>
 							<!--ko foreach: paymentsIpsh-->
 							<div>
@@ -630,7 +630,7 @@
 								<span style="word-break: break-all;" data-bind="text: paymentName, click: $parent.paymentWindow"></span>
 								<span class="col-100">
 									<!-- ko if: paymentHref-->
-									<a data-bind="attr: { href: paymentHref }" target="blank">Чек</a>
+									<a data-bind="attr: { href: paymentHref }" target="blank">Р§РµРє</a>
 									<!-- /ko-->
 								</span>
 							</div>
@@ -650,10 +650,10 @@
 						<!--ko if: complaintList().length > 0-->
 						<div class="table-new table-admin a">
 							<div class="th noa">
-								<span class="col-140">Дата подачи</span>
-								<span class="col-200">Номер</span>
-								<span>Ведомство</span>
-								<span class="col-245">Статус</span>
+								<span class="col-140">Р”Р°С‚Р° РїРѕРґР°С‡Рё</span>
+								<span class="col-200">РќРѕРјРµСЂ</span>
+								<span>Р’РµРґРѕРјСЃС‚РІРѕ</span>
+								<span class="col-245">РЎС‚Р°С‚СѓСЃ</span>
 							</div>
 							<!--ko foreach: complaintList-->
 							<a data-bind="attr: { href: fileLink }">
@@ -666,7 +666,7 @@
 						</div>
 						<!--/ko-->
 						<!--ko if: complaintList().length == 0-->
-						<h2 class="declinePlate withIcon fa-exclamation-triangle m-top-hlf">Жалоб нет</h2>
+						<h2 class="declinePlate withIcon fa-exclamation-triangle m-top-hlf">Р–Р°Р»РѕР± РЅРµС‚</h2>
 						<!--/ko-->
 					</div>
 				</div>
@@ -682,20 +682,20 @@
 										<span data-bind="dateFormat: ticketDateTime, format: \'Simple\'"></span>
 										<br/>
 										<!-- ko if: status -->
-										<span class="opa">Статус: </span><span data-bind="text: status.recName"></span>
+										<span class="opa">РЎС‚Р°С‚СѓСЃ: </span><span data-bind="text: status.recName"></span>
 										<!-- /ko -->
 									</div>
 									<div class="reception-ticket-hrz-2">
 										<!-- ko if: service -->
-										<span class="opa">Услуга: </span><span data-bind="text: service.name"></span>
+										<span class="opa">РЈСЃР»СѓРіР°: </span><span data-bind="text: service.name"></span>
 										<br/>
 										<!-- /ko -->
 										<!-- ko if: specialist -->
-										<span class="opa">Специалист: </span><span data-bind="text: specialist.name"></span>
+										<span class="opa">РЎРїРµС†РёР°Р»РёСЃС‚: </span><span data-bind="text: specialist.name"></span>
 										<!-- /ko -->
 									</div>
-									<div class="reception-ticket-hrz-4 button btn primary" data-bind="click: $parent.printTicket">Печать</div>
-									<div class="reception-ticket-hrz-3 button btn b-delete" data-bind="click: $parent.cancelReception, visible: canCancel">Отменить запись</div>
+									<div class="reception-ticket-hrz-4 button btn primary" data-bind="click: $parent.printTicket">РџРµС‡Р°С‚СЊ</div>
+									<div class="reception-ticket-hrz-3 button btn b-delete" data-bind="click: $parent.cancelReception, visible: canCancel">РћС‚РјРµРЅРёС‚СЊ Р·Р°РїРёСЃСЊ</div>
 								</div>
 								<!-- /ko -->
 							</div>
@@ -707,7 +707,7 @@
 		</div>';
 	}
 	
-	//Обращение
+	//РћР±СЂР°С‰РµРЅРёРµ
 	function nvxTreatment_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxTreatment">
@@ -715,7 +715,7 @@
 			</div>';		
     }
 
-	//Каталог тройной
+	//РљР°С‚Р°Р»РѕРі С‚СЂРѕР№РЅРѕР№
 	function nvxTripleCatalog_shortcode ($atts, $content = null)
     {
 		return $content.'<div id="nvxTripleCatalog">
@@ -723,12 +723,12 @@
 					<form class="search-area static" data-bind="submit: goSearch ">
 						<div class="container">
 							<div class="field-holder">
-								<input type="search" class="form-control" placeholder="Введите название услуги" data-bind="value: searchText">
+								<input type="search" class="form-control" placeholder="Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СѓСЃР»СѓРіРё" data-bind="value: searchText">
 								<button class="btn" type="submit" data-bind="click: goSearch"><i class="icon-zoom_white_desk"></i></button>
 							</div>
 						</div>
 						<span class="filter-itm">
-							<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span> Только электронные услуги</span></label>
+							<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span> РўРѕР»СЊРєРѕ СЌР»РµРєС‚СЂРѕРЅРЅС‹Рµ СѓСЃР»СѓРіРё</span></label>
 						</span>
 					</form>
 				<!--/div-->
@@ -739,9 +739,9 @@
 						<!-- nav-tabs -->
 						<nav class="nav-tabset tabset">
 							<ul> 
-								<li class="active"><a href="#tab1">Категории услуг</a></li>
-								<li><a href="#tab2">Органы власти</a></li>
-								<li><a href="#tab3">Жизненные ситуации <span class="tag-new">Новинка</span></a></li>
+								<li class="active"><a href="#tab1">РљР°С‚РµРіРѕСЂРёРё СѓСЃР»СѓРі</a></li>
+								<li><a href="#tab2">РћСЂРіР°РЅС‹ РІР»Р°СЃС‚Рё</a></li>
+								<li><a href="#tab3">Р–РёР·РЅРµРЅРЅС‹Рµ СЃРёС‚СѓР°С†РёРё <span class="tag-new">РќРѕРІРёРЅРєР°</span></a></li>
 							</ul>
 						</nav>
 						
