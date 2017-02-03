@@ -9,19 +9,20 @@
 		update_option('nvxrpgucontentoptions', 
 		array(
             'rdcurl' => null,
-			'departmentView' => '/department/index.php?departmentId=',
+			'esbRvUrl' => 'http://esbtest.egspace.ru:8080/RequestViewer',
+			'departmentView' => '/department/?departmentId=',
 			'mfcCommonView' => '/mfc/',
-			'mfcView' => '/mfc/index.php?mfcId=',
-			'mfcTospView' => '/mfc/index.php?tosp=true&mfcId=',
-			'serviceView' => '/service/index.php?serviceId=',
-			'categoryView' => '/category/index.php?categoryId=',
-			'situationView' => '/category/index.php?situationId=',
+			'mfcView' => '/mfc/?mfcId=',
+			'mfcTospView' => '/mfc/?tosp=true&mfcId=',
+			'serviceView' => '/service/?serviceId=',
+			'categoryView' => '/category/?categoryId=',
+			'situationView' => '/category/?situationId=',
 			'catalogView' => '/services/',
-			'formView' => '/cabinet/request/index.php?fileId=',
-			'infoView' => '/cabinet/information/index.php?fileId=',
-			'attachmentView' => '/cabinet/attachment/index.php?fileId=',
+			'formView' => '/cabinet/request/?fileId=',
+			'infoView' => '/cabinet/information/?fileId=',
+			'attachmentView' => '/cabinet/attachment/?fileId=',
 			'cabinetReceptionList' => '/cabinet/#tab5',
-			'treatmentCreateView' => '/treatment/index.php?serviceId=',
+			'treatmentCreateView' => '/treatment/?serviceId=',
 			'searchView' => '/searchservice/',
 			'payView' => '/pay/'
         ));
@@ -37,8 +38,31 @@
 	 
 	//Рендер страницы настроек
 	function renderOptionsPage(){
-		global $true_page;
+		global $true_page;		
 		?><div class="wrap">			
+			<h2 style="cursor: pointer;" onclick="{ document.getElementById('nvxrpgucontentoptionsshortcodes').hidden = !document.getElementById('nvxrpgucontentoptionsshortcodes').hidden; }"><u>Список шорткодов</u></h2>
+			<div id="nvxrpgucontentoptionsshortcodes" hidden="" style="position: absolute; background-color: white; padding: 10px; border: 2px solid black;">
+			[com.netvoxlab.nvxRpguContent.nvxSearchService] — Поиск услуг/просмотр услуг<br/>
+			[com.netvoxlab.nvxRpguContent.nvxServiceInfo] — Информация по услуге<br/>
+			[com.netvoxlab.nvxRpguContent.nvxDepartmentInfo] — Информация по ведомству<br/>
+			[com.netvoxlab.nvxRpguContent.nvxAuth] — Блок авторизации ЕСИА<br/>
+			[com.netvoxlab.nvxRpguContent.nvxPopularService] — Популярные услуги<br/>
+			[com.netvoxlab.nvxRpguContent.nvxServiceList] — Список категорий с услугами<br/>
+			[com.netvoxlab.nvxRpguContent.nvxCategory] — Категории услуг<br/>
+			[com.netvoxlab.nvxRpguContent.nvxLifeSituations] — Жизненные ситуации<br/>
+			[com.netvoxlab.nvxRpguContent.nvxDepartments] — Иерархический список ведомств<br/>
+			[com.netvoxlab.nvxRpguContent.nvxCategoryServiceList] — Услуги для выбранной категории<br/>
+			[com.netvoxlab.nvxRpguContent.nvxMfcInfo] — Информация по МФЦ<br/>
+			[com.netvoxlab.nvxRpguContent.nvxReception] — Запись на приём<br/>
+			[com.netvoxlab.nvxRpguContent.nvxPaymentsCommon] — Страница с функционалом оплаты (Юнителлер, парковки)<br/>
+			[com.netvoxlab.nvxRpguContent.nvxRequestForm] — Динамическая форма заявления<br/>
+			[com.netvoxlab.nvxRpguContent.nvxRequestAttachment] — Форма вложений заявления<br/>
+			[com.netvoxlab.nvxRpguContent.nvxRequestInfo] — Просмотр информации по заявлению<br/>
+			[com.netvoxlab.nvxRpguContent.nvxLkFullPage] — Страница личного кабинета со встроенными разделами<br/>
+			[com.netvoxlab.nvxRpguContent.nvxTreatment] — Обращение<br/>
+			[com.netvoxlab.nvxRpguContent.nvxTripleCatalog] — Каталог с разделами Категории/Ведомства/Жизненные ситуации<br/>
+			[com.netvoxlab.nvxRpguContent.esbProblemRequests] — Отчёты шины по необработанным заявкам
+			</div>
 			<form method="post" enctype="multipart/form-data" action="options.php">
 				<?php 
 				settings_fields('nvxrpgucontentoptions');//Это название нашего конфига
@@ -64,6 +88,9 @@
 		// Создадим текстовое поле в первой секции
 		$true_field_params = array('type' => 'text', 'id' => 'rdcurl', 'desc' => 'Адрес удалённого портала РПГУ, с которого будут тянуться данные. Например: http://testrpgu.egspace.ru');
 		add_settings_field( 'rdcurl', 'Адрес удалённого Re:Doc', 'option_display_settings', $true_page, 'nvxOptionsSection1', $true_field_params );
+		
+		$true_field_params = array('type' => 'text', 'id' => 'esbRvUrl', 'desc' => 'Адрес приложения RequestViewer на шине. Например тестовый: http://esbtest.egspace.ru:8080/RequestViewer');
+		add_settings_field( 'esbRvUrl', 'Адрес RV на шине', 'option_display_settings', $true_page, 'nvxOptionsSection1', $true_field_params );		
 		
 		$true_field_params = array('type' => 'text', 'id' => 'searchView', 'desc' => 'Страница поиска услуг. Например: /searchservice/');
 		add_settings_field( 'searchView', 'Поиск услуг', 'option_display_settings', $true_page, 'nvxOptionsSection2', $true_field_params );

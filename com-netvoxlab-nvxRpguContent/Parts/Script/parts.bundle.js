@@ -71,6 +71,70 @@ define('Nvx.ReDoc.Rpgu.PortalModule/Portal/Script/cabinetPageController', [], fu
 
 	return controller;
 });
+define('Esb/EsbProblemRequestsViewModel', [ 'knockout', 'jquery' ],
+function (ko, $) {
+	var EsbProblemRequestsViewModel = function() {
+		var self = this;
+		self.baseUrl = window.nvxCommonPath.esbRvUrl || 'http://esbtest.egspace.ru:8080/RequestViewer';
+
+		self.allCount = ko.observable(0);
+		self.showAllCount = ko.observable(false);
+
+		self.currentCount = ko.observable(0);
+		self.showCurCount = ko.observable(false);
+		self.list = ko.observableArray([]);
+		self.showLoading = ko.observable(true);
+
+		self.start = function() {
+			self.loadList();
+			self.loadListCount();
+		};
+
+		self.loadList = function() {
+			$.ajax({
+				url: self.baseUrl + '/problemrequests',
+				cache: false,
+			}).done(function (response) {
+				if (response.hasError) {
+					console.error(response.message);
+				} else {
+					self.currentCount(response.current);
+					self.showLoading(false);
+					self.showCurCount(true);
+					self.list(response.list);
+				}
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.responseJSON) {
+					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
+				} else {
+					console.error(jqXHR.responseText);
+				}
+			});
+		};
+
+		self.loadListCount = function() {
+			$.ajax({
+				url: self.baseUrl + '/problemrequestscount',
+				cache: false,
+			}).done(function (response) {
+				if (response.hasError) {
+					console.error(response.message);
+				} else {
+					self.allCount(response.all);
+					self.showAllCount(true);
+				}
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.responseJSON) {
+					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
+				} else {
+					console.error(jqXHR.responseText);
+				}
+			});
+		};
+	}
+
+	return EsbProblemRequestsViewModel;
+});
 define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/dynamicFormBindingHandlers',
 	[
 		'jquery',
@@ -27766,7 +27830,8 @@ require(['knockout',
 		'Nvx.ReDoc.Rpgu.HousingUtilities/Script/LkPaymentsListViewModel',
 		'Nvx.ReDoc.Rpgu.PortalModule/Complaint/Script/ComplaintPageModel',
 		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/complaint/ComplaintListViewModel',
-		'Nvx.ReDoc.Rpgu.Gostehnadzor/Web/Script/ChargeViewModel'
+		'Nvx.ReDoc.Rpgu.Gostehnadzor/Web/Script/ChargeViewModel',
+		'Esb/EsbProblemRequestsViewModel'
 	],
 	function(ko,
 		domReady,
@@ -27798,7 +27863,8 @@ require(['knockout',
 		LkPaymentsListViewModel,
 		ComplaintPageModel,
 		ComplaintListViewModel,
-		ChargeViewModel
+		ChargeViewModel,
+		EsbProblemRequestsViewModel
 	) {
 		domReady(function() {
 			if (document.getElementById('nvxTopmenuComplaint') != null) {
@@ -27951,6 +28017,11 @@ require(['knockout',
 			if (document.getElementById('nvxIgtnCharge') != null) {
 				var chargeViewModel = new ChargeViewModel();
 				ko.applyBindings(chargeViewModel, document.getElementById('nvxIgtnCharge'));
+			}
+			if (document.getElementById('esbProblemRequests') != null) {
+				var eprViewModel = new EsbProblemRequestsViewModel();
+				eprViewModel.start();
+				ko.applyBindings(eprViewModel, document.getElementById('esbProblemRequests'));
 			}
 		});
 	});

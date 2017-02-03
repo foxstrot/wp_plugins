@@ -8,9 +8,10 @@
 	Author URI: http://www.netvoxlab.ru/
 	*/
 	
-	define('nvxRpguContentUri', plugin_dir_url( __FILE__ ));
+	define('nvxRpguContentUri', plugin_dir_url( __FILE__ ));	
+	$GLOBALS['nvxRpguContentUriPluginDir'] = plugin_dir_path( __FILE__ );
 
-	//Èìïîðòèðóåì áèáëèîòåêè è áàíäë ñêðèïòîâ ôóíêöèîíàëà
+	//Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÐ¼ Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ¸ Ð¸ Ð±Ð°Ð½Ð´Ð» ÑÐºÑ€Ð¸Ð¿Ñ‚Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¾Ð½Ð°Ð»Ð°
 	function regBundleAndLibs(){
 		
 		$options = get_option('nvxrpgucontentoptions');		
@@ -33,6 +34,7 @@
 					searchView: '".$options['searchView']."',
 					payView: '".$options['payView']."',
 					rdcurl: '".$options['rdcurl']."',
+					esbRvUrl: '".$options['esbRvUrl']."',
 					authPortalPath: '".$options['rdcurl']."',
 					authRedirectPath: '".nvxRpguContentUri."authRequest.php',
 					fileProxyPath: '".nvxRpguContentUri."proxy4file.php',
@@ -51,9 +53,9 @@
 		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js' );
 	}
 
-	//Èìïîðòèðóåì áàíäë ñ âüõàìè
+	//Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÐ¼ Ð±Ð°Ð½Ð´Ð» Ñ Ð²ÑŒÑ…Ð°Ð¼Ð¸
 	function nvxRpguContentAdminFooterText($content) {
-		include_once('wp-content/plugins/nvxRpguContent/Parts/View/commonHtml.html');
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
 		return $content;
 	}
 	
@@ -62,13 +64,13 @@
 	}
 
 	if (is_admin()){
-		//Äîáàâëÿåì ìåíþ â àäìèíêó
+		//Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð¼ÐµÐ½ÑŽ Ð² Ð°Ð´Ð¼Ð¸Ð½ÐºÑƒ
 		include_once('nvxrpgucontentadminmenu.php');
 	} else {
-		//Èìïîðò áàíäëà ñ âüõàìè ïðîèñõîäèò íà êàæäîé ñòðàíèöå ñ ïîñòîì
+		//Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð±Ð°Ð½Ð´Ð»Ð° Ñ Ð²ÑŒÑ…Ð°Ð¼Ð¸ Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð´Ð¸Ñ‚ Ð½Ð° ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ Ð¿Ð¾ÑÑ‚Ð¾Ð¼
 		add_filter('the_content', 'nvxRpguContentAdminFooterText');	
 		add_action('template_redirect', 'templateRedirectFunction');
-		//Ðåãèñòðèðóåì øîðòêîäû
+		//Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€ÑƒÐµÐ¼ ÑˆÐ¾Ñ€Ñ‚ÐºÐ¾Ð´Ñ‹
 		include_once('nvxShortcodes.php');
 	}	
 ?>
