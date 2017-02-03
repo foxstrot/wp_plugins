@@ -1,0 +1,28 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="file">
+		<h4 data-bind="css: { 'input-required': IsMandatory }">
+			{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+			<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h4>
+		<label data-bind="text: certificateFileText"></label>
+		<div style="overflow:hidden"><i data-bind="visible: certificateFileSelected, text: certificateFileName"></i></div>
+	
+		<span class="custom-file-input-button button b-solid l m-top" data-bind="visible: previousExist, event: { click: clearPrevious }">
+			<span class="custom-file-input-button-text">Очистить выбор</span>
+		</span>
+
+		<div data-bind="visible: previousExist() == false">
+			<input data-bind="value: Value, fileInput: certificateFile, customFileInput: { fileName: true, clearButton: true, onClear: onClear }"
+				data-control-fragment-id="ValueHolder"
+				name="{{>InputName}}"
+				{{if IsMandatory}}
+				required="required"
+				{{/if}}
+				type="file" />
+		</div>
+	</div>
+<!-- /ko -->
+</script>

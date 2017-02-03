@@ -1,0 +1,14 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} --><!-- ko if: ControlVisibility -->
+	<div data-control-path="{{>Path}}">
+	{{if ControlKey != 'InPlaceCollapsedView'}}
+		<fieldset data-bind="visible: ControlVisibility, enable: ControlEnabling" class="nvx-dfjsr-fieldset" data-control-type="form">
+	{{else}}
+		<h3>{{>Caption}}</h3>
+		<fieldset data-bind="visible: ControlVisibility, enable: ControlEnabling" class="nvx-dfjsr-fieldset nvx-dfjsr-verticalLine" data-control-type="form">
+	{{/if}}
+			<div data-control-fragment-id="FormElements-{{>Path}}"></div>
+		</fieldset>
+	</div>
+<!-- /ko --><!-- /ko -->
+</script>

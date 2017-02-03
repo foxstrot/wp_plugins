@@ -1,0 +1,13 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<div data-bind="enable: ControlEnabling, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="checkbox">
+		<label data-bind="css: { 'input-required': IsMandatory, 'input-err': notValidClass }, attr: { title: errorMessage }">
+			<input type="checkbox" data-bind="checked: Value, enable: ControlEnabling"/>
+			<span>{{>Caption}}</span>
+		</label>
+	{{if Tooltip != null && Tooltip != ""}}
+		<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+	{{/if}}
+	</div>
+<!-- /ko -->
+</script>

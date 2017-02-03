@@ -1,0 +1,29 @@
+<!-- ko with: fieldDef -->
+<h3 data-bind="visible: displayName, text: displayName"></h3>
+<!-- /ko -->
+<div class="group line">
+	<!-- ko with: $data.postalIndexViewModel -->
+	<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+		<!-- ko if: $data.visible -->
+		<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+		<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }" />
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+	<!-- ko foreach: $data.selectFiasModels -->
+	<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+		<!-- ko if: $data.visible -->
+		<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+		<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }, autocomplete: autoCompleteOpt"/>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+	<!-- ko foreach: $data.simpleFiasModelsWithoutIndex -->
+	<div class="input-container" data-bind="attr: { title: notValidError !== null ? notValidError : null }, css: $parent.cssClass(code)">
+		<!-- ko if: $data.visible -->
+		<h4 data-bind="text: caption, css: { 'input-required' : $data.required }"></h4>
+		<input type="text" data-bind="value: text, valueUpdate: 'blur', css: { 'input-err': notValid }"/>
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+</div>

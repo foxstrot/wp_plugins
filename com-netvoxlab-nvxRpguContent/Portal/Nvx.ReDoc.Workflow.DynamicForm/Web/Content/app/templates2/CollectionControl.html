@@ -1,0 +1,23 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<fieldset data-bind="css: { 'disabled': !ControlEnabling() }, element: element, visible: ControlVisibility" data-control-path="{{>Path}}" class="nvx-dfjsr-collection" data-control-type="collection">
+		<h3>
+			{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+			<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h3>
+
+		<fieldset class="group line" data-control-fragment-id="CollectionItems">
+			<!--Элементы коллекции-->
+			<div data-bind="foreach: { data: CollectionItems }, css: { 'm-btm' : CollectionItems()[0] }" data-control-fragment-id="FormElements-{{>Path}}">
+				<!--Разметка элемента коллекции-->
+				<div class="group hasPopUp background-transparent" data-control-fragment-id="CollectionItemDescriptor" data-bind="attr: { 'data-control-path': $parent.Path + '[' + $index() + ']' }">
+					<div class="button b-icon b-delete popUp" data-bind="click: $parent.removeItem"></div>
+				</div>
+			</div>
+			<div class="button b-create m-top-no" data-bind="visible: ControlEnabling() && ShowAddItemsButton(), click: addItemOnServer">{{>ButtonCaption}}</div>
+		</fieldset>
+	</fieldset>
+<!-- /ko -->
+</script>

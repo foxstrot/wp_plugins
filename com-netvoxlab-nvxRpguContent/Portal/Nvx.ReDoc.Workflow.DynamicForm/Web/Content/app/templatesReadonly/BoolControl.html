@@ -1,0 +1,10 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} --><!-- ko if: ControlVisibility -->
+	<div data-control-path="{{>Path}}" data-control-type="bool">
+		<label>
+			<input type="checkbox" id="{{>Path}}" disabled="disabled"/>
+			<span>{{>Caption}}</span>
+		</label>
+	</div>
+<!-- /ko --><!-- /ko -->
+</script>

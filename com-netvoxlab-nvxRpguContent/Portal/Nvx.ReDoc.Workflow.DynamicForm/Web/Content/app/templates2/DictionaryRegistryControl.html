@@ -1,0 +1,23 @@
+<script type="text/x-jsrender">
+<!-- ko with: {{>viewModelPath}} -->
+	<div data-bind="element: element, visible: ControlVisibility" data-control-path="{{>Path}}" data-control-type="select">
+		<h4 data-bind="css: { 'input-required': IsMandatory, 'input-err': notValidClass }, attr: { title: errorMessage }">
+			{{>Caption}}
+			{{if Tooltip != null && Tooltip != ""}}
+			<span class="icon icon-question-white transparent nvx-dfjsr-tooltip" title="{{>Tooltip}}"></span>
+			{{/if}}
+		</h4>
+		<div data-bind="enable: ControlEnabling">
+	{{if ControlKey == 'CheckComboBox'}}
+			<select multiple="multiple" data-bind="selectExternalmulti: selectedValueS2, attr: { dictionaryId: DictionaryId, parentId: ParentId }"></select>
+	{{else}}
+		{{if DictionaryId != null}}
+			<select data-bind="selectExternal: selectedValueS2, value: selectedValueS2, nullTitle : nullTitle, valueAllowUnset: true, attr: { dictionaryId: DictionaryId, parentId: ParentId }" role="combobox"></select>
+		{{else}}
+			<select data-bind="selectExternal: selectedValueS2, value: selectedValueS2, nullTitle : nullTitle, valueAllowUnset: true" role="combobox"></select>
+		{{/if}}
+	{{/if}}
+		</div>
+	</div>
+<!-- /ko -->
+</script>
