@@ -65,6 +65,7 @@
  /*background:#4eade2;*/
   position: relative;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .ownRadioPlayer-play:before {
@@ -77,7 +78,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: all .15s linear;
 }
 
 .ownRadioPlayer-play:after {
@@ -90,7 +90,6 @@
   border-width: .18em 0 .18em .32em;
   border-left-color: #fff;
   position: relative;
-  transition: all .15s linear;
 }
 
 .ownRadioPlayer-play:hover:before {
