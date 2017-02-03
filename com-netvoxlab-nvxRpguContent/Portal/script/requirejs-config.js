@@ -204,7 +204,8 @@ var reconfigJq = function(jq) {
 	jq.ajax = function(options) {
 		var setup = jq.ajaxSetup();
 		if (setup.globalUrl) {
-			options.url = setup.globalUrl + options.url;
+			if (!options.url.startsWith("http:"))
+				options.url = setup.globalUrl + options.url;			
 			var ttype = options.method || options.type;
 
 			//IE11 fix

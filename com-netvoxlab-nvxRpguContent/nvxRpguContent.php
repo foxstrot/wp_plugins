@@ -8,7 +8,8 @@
 	Author URI: http://www.netvoxlab.ru/
 	*/
 	
-	define('nvxRpguContentUri', plugin_dir_url( __FILE__ ));
+	define('nvxRpguContentUri', plugin_dir_url( __FILE__ ));	
+	$GLOBALS['nvxRpguContentUriPluginDir'] = plugin_dir_path( __FILE__ );
 
 	//Импортируем библиотеки и бандл скриптов функционала
 	function regBundleAndLibs(){
@@ -33,6 +34,7 @@
 					searchView: '".$options['searchView']."',
 					payView: '".$options['payView']."',
 					rdcurl: '".$options['rdcurl']."',
+					esbRvUrl: '".$options['esbRvUrl']."',
 					authPortalPath: '".$options['rdcurl']."',
 					authRedirectPath: '".nvxRpguContentUri."authRequest.php',
 					fileProxyPath: '".nvxRpguContentUri."proxy4file.php',
@@ -53,7 +55,7 @@
 
 	//Импортируем бандл с вьхами
 	function nvxRpguContentAdminFooterText($content) {
-		include_once('wp-content/plugins/nvxRpguContent/Parts/View/commonHtml.html');
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
 		return $content;
 	}
 	
