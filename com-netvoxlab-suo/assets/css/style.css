@@ -1,0 +1,176 @@
+﻿*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+h1 {
+  color: #E04E39;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  font: 25px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 20px 0 0 0;
+}
+form {
+  border: 1px solid #E04E39;
+  border-radius: 5px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  margin: 0 50px 0 50px;
+}
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.suo-info {
+  padding: 20px 20px 0 20px;
+}
+.suo-info label {
+  color: #333;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.suo-info input {
+  background: #fff;
+  border: 1px solid #c6c7cc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+  color: #636466;
+  margin-top: 6px;
+  width: 100%;
+  height: 45px;
+}
+.suo-info select {
+  display: block;
+  background: #fff4f4;
+  border-radius: 5px;
+  width: 100%;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  height: 45px;
+}
+.suo-action {
+  background: #ffe2e2;
+  border-top: 1px solid #E04E39;
+  padding: 20px;
+}
+.suo-action .btn {
+  background: linear-gradient(#E04E39, #E05E49);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+  padding: 8px 16px;
+}
+.suo-action label {
+  color: #7c7c80;
+  font-size: 12px;
+  float: left;
+  margin: 10px 0 0 20px;
+}
+
+/*-------------- v2 --------------*/
+
+.suo-header {
+	background: #573e39;
+	padding: 20px 20px 10px 20px;
+}
+.suo-header h1, h2 {
+	padding: 0;
+	margin: 0;
+	color: #fffdff;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: left;
+}
+.suo-header h2 {
+	padding: 0;
+	margin: 0;
+	font-size: 15px;
+	font-weight: normal;
+}
+.suo-form {
+	background: #f9e6d9;
+	padding: 0 20px 10px 20px;
+}
+.suo-form label {
+	display: block;
+	color: #e5725c;
+	font-size: 17px;
+	padding-top: 20px;
+}
+.suo-form input, select {
+	border: 1px solid black;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+	font: 17px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	border-radius: 0;
+	height: 45px;
+	width: 100%;
+	margin-top: 3px;
+}
+.suo-calendar {
+	display: block;
+	padding: 15px 0 0 0;
+	color: #573f38;
+	width: 50%;
+	margin: 0 auto;
+}
+.suo-form table {
+	width: 100%;
+	border: 0px;
+}
+.suo-form td {
+	padding:2px;
+	border: 0px;
+}
+.suo-form td > div {
+	display: table;
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+	background: #dbbfab;
+	color: #624d43;
+}
+.suo-form td > div:hover {
+	background: #8c747b !important;
+	color: #fff !important;
+	cursor: pointer;
+}
+.suo-disabled {
+	color: #cda78b !important;
+}
+.suo-active {
+	background: #5c443b !important;
+	color: #fdf8fb !important;
+}
+.suo-footer {
+	width: 100%;
+	display: table;
+	margin-top: 10px;
+}
+.suo-button {
+	display:table-cell;
+	width:50%;
+	margin: 20px 2px 20px 2px;
+	padding: 7px;
+	font-size: 15px !important;
+	text-align: center;
+	vertical-align: middle;
+	background: #66493d;
+	color: #fffeff;
+}
+.suo-button:hover {
+	color: #fffeff;
+	cursor: pointer;
+}
+.suo-clear {
+	background: #ab8569 !important;
+}
+
+
+
+
+
+
