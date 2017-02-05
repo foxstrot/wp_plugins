@@ -1,33 +1,6 @@
 <?php
 	$true_page = 'nvxrpgucontentadminmenu.php';
 	 
-	//Предзаполнение дефолтными значениями, если их нет
-	$options = get_option('nvxrpgucontentoptions');
-	if (is_array($options)){
-		//Всё норм
-	} else {
-		update_option('nvxrpgucontentoptions', 
-		array(
-            'rdcurl' => null,
-			'esbRvUrl' => 'http://esbtest.egspace.ru:8080/RequestViewer',
-			'departmentView' => '/department/?departmentId=',
-			'mfcCommonView' => '/mfc/',
-			'mfcView' => '/mfc/?mfcId=',
-			'mfcTospView' => '/mfc/?tosp=true&mfcId=',
-			'serviceView' => '/service/?serviceId=',
-			'categoryView' => '/category/?categoryId=',
-			'situationView' => '/category/?situationId=',
-			'catalogView' => '/services/',
-			'formView' => '/cabinet/request/?fileId=',
-			'infoView' => '/cabinet/information/?fileId=',
-			'attachmentView' => '/cabinet/attachment/?fileId=',
-			'cabinetReceptionList' => '/cabinet/#tab5',
-			'treatmentCreateView' => '/treatment/?serviceId=',
-			'searchView' => '/searchservice/',
-			'payView' => '/pay/'
-        ));
-	}
-	 
 	//Функция, добавляющая страницу в пункт меню Настройки
 	function nvxrpgucontentoptions() {
 		global $true_page;
