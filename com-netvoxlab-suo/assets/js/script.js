@@ -39,6 +39,7 @@
 
 var placeList;
 var mdl;
+var selectedTime;
 
 var getPlaces = function() {
 	console.log('getPlaces()');
@@ -59,7 +60,7 @@ var getPlaces = function() {
 		
 		placeList = data;
 		
-		var org = document.getElementById('eowpOrg');
+		var org = document.getElementById('suoOrg');
 		org.innerHTML = "";
 		
 		for(var i = 0; i < data.placeList.length; i++)
@@ -79,10 +80,10 @@ var getTimeSlots = function() {
 var getTicket = function(){
 	console.log('getTicket()');
 
-	var name = document.getElementById('eowpName').value;
+	var name = document.getElementById('suoName').value;
 	var date = document.getElementById('datepicker').value;
-	var timePicker = document.getElementById('eowpTime');
-	var org = document.getElementById('eowpOrg');
+	//var timePicker = document.getElementById('suoTime');
+	var org = document.getElementById('suoOrg');
 
 	var txt = org.options[org.selectedIndex].text;
 	//var time = date.concat(" ", timePicker.options[timePicker.selectedIndex].text);
@@ -97,7 +98,7 @@ var getTicket = function(){
 
 	var model = {
 		ticketName: name,
-		ticketTime: timePicker.options[timePicker.selectedIndex].text,
+		ticketTime: selectedTime,//timePicker.options[timePicker.selectedIndex].text,
 		ticketDate: date,
 		place: {
 			name: txt,
@@ -157,6 +158,15 @@ function suoInit() {
 			)
 		);
 		$("#datepicker").datepicker();
+	});
+	
+	$(".suo-time").click(function() {
+		console.log('$(suo-time)');
+		if(!$(this).hasClass('suo-disabled')) {
+			$('.suo-active').removeClass('suo-active');
+			$(this).addClass('suo-active');
+			selectedTime = $(this).first().text().substring(0, 5);
+		}
 	});
 }
 
