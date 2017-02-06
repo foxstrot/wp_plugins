@@ -93,7 +93,7 @@ fieldset {
 }
 .suo-form {
 	background: #f9e6d9;
-	padding: 0 20px 10px 20px;
+	padding: 0 20px 20px 20px;
 }
 .suo-form label {
 	display: block;
@@ -110,22 +110,17 @@ fieldset {
 	width: 100%;
 	margin-top: 3px;
 }
-.suo-calendar {
-	display: block;
-	padding: 15px 0 0 0;
-	color: #573f38;
-	width: 50%;
-	margin: 0 auto;
-}
 .suo-form table {
 	width: 100%;
 	border: 0px;
+	margin: auto;
+	margin-top: 10px;
 }
 .suo-form td {
 	padding:2px;
 	border: 0px;
 }
-.suo-form td > div {
+.suo-time {
 	display: table;
 	width: 100%;
 	vertical-align: middle;
@@ -133,15 +128,24 @@ fieldset {
 	background: #dbbfab;
 	color: #624d43;
 }
-.suo-form td > div:hover {
-	background: #8c747b !important;
-	color: #fff !important;
+.suo-time:hover {
+	background: #fff !important;
+	color: #5c443b !important;
 	cursor: pointer;
 }
 .suo-disabled {
 	color: #cda78b !important;
 }
+.suo-disabled:hover {
+	background: #dbbfab !important;
+	color: #cda78b !important;
+	cursor: default !important;
+}
 .suo-active {
+	background: #5c443b !important;
+	color: #fdf8fb !important;
+}
+.suo-active:hover {
 	background: #5c443b !important;
 	color: #fdf8fb !important;
 }
@@ -150,27 +154,6 @@ fieldset {
 	display: table;
 	margin-top: 10px;
 }
-.suo-button {
-	display:table-cell;
-	width:50%;
-	margin: 20px 2px 20px 2px;
-	padding: 7px;
-	font-size: 15px !important;
-	text-align: center;
-	vertical-align: middle;
-	background: #66493d;
-	color: #fffeff;
+#suoSend {
+	background: #5c443b;
 }
-.suo-button:hover {
-	color: #fffeff;
-	cursor: pointer;
-}
-.suo-clear {
-	background: #ab8569 !important;
-}
-
-
-
-
-
-
