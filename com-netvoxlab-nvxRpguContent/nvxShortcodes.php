@@ -1,7 +1,62 @@
 <?php	
+class nvxRpguContentShortcodes {
+	//Флаг присутствия шорткода на странице
+	static $add_script;
+	
+	static function init () {		
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxSearchService', array(__CLASS__, 'nvxSearchService_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxAuth', array(__CLASS__, 'nvxAuth_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxReception', array(__CLASS__, 'nvxReception_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxServiceInfo', array(__CLASS__, 'nvxServiceInfo_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxDepartmentInfo', array(__CLASS__, 'nvxDepartmentInfo_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxCategory', array(__CLASS__, 'nvxCategory_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxCategoryServiceList', array(__CLASS__, 'nvxCategoryServiceList_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxDepartments', array(__CLASS__, 'nvxDepartments_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxLifeSituations', array(__CLASS__, 'nvxLifeSituations_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxMfcInfo', array(__CLASS__, 'nvxMfcInfo_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxPaymentsCommon', array(__CLASS__, 'nvxPaymentsCommon_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxPopularService', array(__CLASS__, 'nvxPopularService_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestAttachment', array(__CLASS__, 'nvxRequestAttachment_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestForm', array(__CLASS__, 'nvxRequestForm_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestInfo', array(__CLASS__, 'nvxRequestInfo_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxServiceList', array(__CLASS__, 'nvxServiceList_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxLkFullPage', array(__CLASS__, 'nvxLkFullPage_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxTreatment', array(__CLASS__, 'nvxTreatment_shortcode'));
+		add_shortcode('com.netvoxlab.nvxRpguContent.nvxTripleCatalog', array(__CLASS__, 'nvxTripleCatalog_shortcode'));	
+		add_shortcode('com.netvoxlab.nvxRpguContent.esbProblemRequests', array(__CLASS__, 'esbProblemRequests_shortcode'));
+	
+		add_action('init', array(__CLASS__, 'register_script'));
+		add_action('wp_footer', array(__CLASS__, 'print_script'));
+		//add_filter('the_content', array(__CLASS__,'nvxRpguContentAdminFooterText'));
+	}
+	
+	//Импортируем бандл с вьхами
+	static function nvxRpguContentAdminFooterText($content) {
+		if (!self::$add_script) 
+			$content;
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
+		return $content;
+	}
+
+	static function register_script() {
+		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
+		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
+		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js', [], false, true);
+	}
+
+	static function print_script() {
+		if (!self::$add_script) 
+			return;
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
+		
+		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
+		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
+		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js' );
+	}
+
 	//Страница с поиском услуг
-	function nvxSearchService_shortcode ($atts, $content = null)
-    {
+	static function nvxSearchService_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content . '<div id="nvxSearchService">
 						<div data-bind="if: serviceFilterModel">
 							<div data-bind="template: { name: \'Nvx.ReDoc.StateStructureServiceModule/Service/View/groupedPagerTemplate.tmpl.html\', data: serviceFilterModel }"></div>
@@ -10,8 +65,8 @@
     }
 	
 	//Авторизация
-	function nvxAuth_shortcode ($atts, $content = null)
-    {
+	static function nvxAuth_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content .'<div id="nvxAuth">
 						<div data-bind="ifnot: userLoggedStatus">
 							<a data-bind="click: click" class="btn-link pull-right"><i class="icon-key_new"></i><span data-bind="text: loginButtonTitle"></span></a>
@@ -24,8 +79,8 @@
     }
 	
 	//запись на приём
-	function nvxReception_shortcode ($atts, $content = null)
-    {
+	static function nvxReception_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content . '<div id="nvxReception">	
 						<div class="paddings reception-redoc-form">
 							<h2 class="declinePlate m-top" data-bind="visible: userInfo() == null">Для записи на приём вы должны быть авторизованы</h2>							
@@ -51,7 +106,8 @@
     }
 	
 	//Информация по услуге
-	function nvxServiceInfo_shortcode ($atts, $content = null) {
+	static function nvxServiceInfo_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.
 			'<div id="nvxServiceInfo">
 				<!--ko if: pageTitle-->
@@ -62,7 +118,8 @@
 	}
 
 	//Информация по ведомству
-	function nvxDepartmentInfo_shortcode ($atts, $content = null) {
+	static function nvxDepartmentInfo_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.
 			'<div id="nvxDepartmentInfo">
 				<!--ko if: pageTitle-->
@@ -73,7 +130,8 @@
 	}
 	
 	//Отчёты шины
-	function esbProblemRequests_shortcode ($atts, $content = null) {
+	static function esbProblemRequests_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.
 			'<div id="esbProblemRequests">
 				<div class="textRow" data-bind="visible: showAllCount">
@@ -113,8 +171,8 @@
 	}
 	
 	//Категории услуг
-	function nvxCategory_shortcode ($atts, $content = null)
-    {
+	static function nvxCategory_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxCategory">
 				<ul class="itemsList" data-bind="foreach: cats">
 					<li>
@@ -125,8 +183,8 @@
     }
 	
 	//Услуги для выбранной категории
-	function nvxCategoryServiceList_shortcode ($atts, $content = null)
-    {
+	static function nvxCategoryServiceList_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxCategoryServiceList">
 				<h2 data-bind="text: title"></h2>				
 				<a data-bind="click: goCatalog" class="btn primary larr"><span></span>Вернуться в каталог</a>
@@ -147,8 +205,8 @@
     }
 	
 	//Перечень ведомств
-	function nvxDepartments_shortcode ($atts, $content = null)
-    {
+	static function nvxDepartments_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxDepartments">
 				<div class="departments">
 					<div data-bind="with: territorialDepartments">
@@ -189,8 +247,8 @@
     }
 	
 	//Жизненные ситуации
-	function nvxLifeSituations_shortcode ($atts, $content = null)
-    {
+	static function nvxLifeSituations_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxLifeSituations">
 				<div>
 					<div class="block categoriesServices" data-bind="template: { name: \'nvx/listBlockView.tmpl.html\', data: serviceCategoriesBlock }"></div>
@@ -199,8 +257,8 @@
     }
 	
 	//Информация по МФЦ
-	function nvxMfcInfo_shortcode ($atts, $content = null)
-    {
+	static function nvxMfcInfo_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxMfcInfo">
 				<!--ko if: pageTitle-->
 				<h1 data-bind="text: pageTitle, css: pageIcon()"></h1>
@@ -210,8 +268,8 @@
     }
 
 	//Страница с функционалом оплаты
-	function nvxPaymentsCommon_shortcode ($atts, $content = null)
-    {
+	static function nvxPaymentsCommon_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxPaymentsCommon">
 				<nav class="nav-tabset tabset">
 					<ul>
@@ -236,7 +294,8 @@
     }
 	
 	//Популярные услуги
-	function nvxPopularService_shortcode ($atts, $content = null) {
+	static function nvxPopularService_shortcode ($atts, $content = null) {
+		self::$add_script = true;		
 		return $content.'<div id="nvxPopularService">
 				<div>
 					<div class="block" data-bind="template: { name: \'nvx/listBlockView.tmpl.html\', data: popularServicesBlock }"></div>
@@ -245,7 +304,8 @@
 	}
 
 	//Форма прикладывания вложений заявления
-	function nvxRequestAttachment_shortcode ($atts, $content = null) {
+	static function nvxRequestAttachment_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxRequestAttachment">
 				<h1 data-bind="text: pageTitle"></h1>
 				<!-- ko if: backText -->
@@ -273,7 +333,8 @@
 	}
 	
 	//Динамическая форма заявления
-	function nvxRequestForm_shortcode ($atts, $content = null) {
+	static function nvxRequestForm_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxRequestForm">
 				<h1 data-bind="text: pageTitle"></h1>
 				<!-- ko if: backText -->
@@ -301,7 +362,8 @@
 	}
 
 	//Информация о заявлении
-	function nvxRequestInfo_shortcode ($atts, $content = null) {
+	static function nvxRequestInfo_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxRequestInfo">
 				<h1>Информация о заявлении</h1>
 				<div class="paddings">
@@ -340,7 +402,8 @@
 	}
 	
 	//Список категорий с услугами
-	function nvxServiceList_shortcode ($atts, $content = null) {
+	static function nvxServiceList_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxServiceList">
 				<!-- ko foreach: cats -->
 				<article class="post-tab col-4">
@@ -363,7 +426,8 @@
 	}
 
 	//Личный кабинет
-	function nvxLkFullPage_shortcode ($atts, $content = null) {
+	static function nvxLkFullPage_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div class="container tabs-area">	
 			<div id="nvxStartCreateFile"></div>
 			<nav class="nav-tabset tabset">
@@ -708,16 +772,16 @@
 	}
 	
 	//Обращение
-	function nvxTreatment_shortcode ($atts, $content = null)
-    {
+	static function nvxTreatment_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxTreatment">
 				<div data-bind="template: { name: templateId, data: templateViewModel, if: templateViewModel }"/>
 			</div>';		
     }
 
 	//Каталог тройной
-	function nvxTripleCatalog_shortcode ($atts, $content = null)
-    {
+	static function nvxTripleCatalog_shortcode ($atts, $content = null) {
+		self::$add_script = true;
 		return $content.'<div id="nvxTripleCatalog">
 				<!--div id="nvxSearchPanel"-->
 					<form class="search-area static" data-bind="submit: goSearch ">
@@ -755,25 +819,5 @@
 				</main>
 			</div>';		
     }
-
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxSearchService', 'nvxSearchService_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxAuth', 'nvxAuth_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxReception', 'nvxReception_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxServiceInfo', 'nvxServiceInfo_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxDepartmentInfo', 'nvxDepartmentInfo_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxCategory', 'nvxCategory_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxCategoryServiceList', 'nvxCategoryServiceList_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxDepartments', 'nvxDepartments_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxLifeSituations', 'nvxLifeSituations_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxMfcInfo', 'nvxMfcInfo_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxPaymentsCommon', 'nvxPaymentsCommon_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxPopularService', 'nvxPopularService_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestAttachment', 'nvxRequestAttachment_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestForm', 'nvxRequestForm_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxRequestInfo', 'nvxRequestInfo_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxServiceList', 'nvxServiceList_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxLkFullPage', 'nvxLkFullPage_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxTreatment', 'nvxTreatment_shortcode');
-	add_shortcode('com.netvoxlab.nvxRpguContent.nvxTripleCatalog', 'nvxTripleCatalog_shortcode');	
-	add_shortcode('com.netvoxlab.nvxRpguContent.esbProblemRequests', 'esbProblemRequests_shortcode');
+}
 ?>

@@ -69,23 +69,10 @@
 				proxyPath: '".nvxRpguContentUri."proxy.php',
 				pluginScriptPath: '".nvxRpguContentUri."Portal/'				
 				};</script>";
-		}
-		
-		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
-		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
-		
-		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
-		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
-		
-		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js', [], false, true);
-		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js' );
+		}				
 	}
 
-	//Импортируем бандл с вьхами
-	function nvxRpguContentAdminFooterText($content) {
-		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
-		return $content;
-	}
+	
 	
 	function templateRedirectFunction() {
 		add_action( 'wp_enqueue_scripts', 'regBundleAndLibs' );
@@ -95,10 +82,11 @@
 		//Добавляем меню в админку
 		include_once('nvxrpgucontentadminmenu.php');
 	} else {
-		//Импорт бандла с вьхами происходит на каждой странице с постом
-		add_filter('the_content', 'nvxRpguContentAdminFooterText');	
+		//Импорт бандла с вьхами происходит на каждой странице с постом		
 		add_action('template_redirect', 'templateRedirectFunction');
 		//Регистрируем шорткоды
 		include_once('nvxShortcodes.php');
+		
+		nvxRpguContentShortcodes::init();
 	}	
 ?>
