@@ -43,12 +43,12 @@ define('OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 	
 		static function register_myscript(){
 			wp_register_script('ownradio-script', OWNRADIO_PLAYER_URL . 'assets/js/scripts.js', [], OWNRADIO_PLUGIN_VERSION);
-			wp_register_style('ownradio-style', OWNRADIO_PLAYER_URL . 'assets/css/ownRadio.css', [], OWNRADIO_PLUGIN_VERSION);
+			wp_register_style('ownradio-style', OWNRADIO_PLAYER_URL . 'assets/css/ownRadio.min.css', [], OWNRADIO_PLUGIN_VERSION);
 		}
 		
 		static function enqueue_myscripts() {
 			if ( !self::$add_script ) return;
-			wp_enqueue_style('ownradio-style', OWNRADIO_PLAYER_URL . 'assets/css/ownRadio.css');
+			wp_enqueue_style('ownradio-style', OWNRADIO_PLAYER_URL . 'assets/css/ownRadio.min.css');
 			wp_enqueue_script( 'ownradio-script', OWNRADIO_PLAYER_URL . 'assets/js/scripts.js' );
 			
 		}
