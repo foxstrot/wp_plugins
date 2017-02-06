@@ -43,9 +43,10 @@ var selectedTime;
 
 var getPlaces = function() {
 	console.log('getPlaces()');
+	console.log(suo_portal_id);
 	
 	$.ajax({
-		headers: {'portal_id': '9b1bae07-3852-412f-b26f-c4b8b3bad5f1'},
+		headers: {'portal_id': suo_portal_id},
 		//url: "http://sq.egspace.ru/v1/reception/getplaces/mfc?isAll=true",
 		url: "http://sq.egspace.ru/v1/reception/getplaces/mfc",
 		/*data: {
