@@ -107,6 +107,7 @@
   margin-left: 0;
   border-width: 0 .13em;
   border-right-color: #fff;
+  box-sizing: content-box;
 }
 
 .ownRadioPlayer-track {
