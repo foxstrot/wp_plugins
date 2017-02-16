@@ -3,8 +3,8 @@ Contributors: foxstrot
 Tags: radio, ownRadio, broadcast, music online
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 2017.02.02
-License: GPLv2
+Stable tag: 2017.02.15
+License: GPLv3
 
 == Description ==
 
@@ -37,6 +37,9 @@ You need to insert shortcode [ownradio_player] in the page.
 1. This is the main view of ownRadio player.
 
 == Changelog ==
+
+= 2017.02.15 =
+Fixed bugs.
 
 = 2017.02.02 =
 This is the first version.
