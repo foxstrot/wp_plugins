@@ -181,3 +181,38 @@ $tag(строка) -Тег шорткода. Может пригодится д�
 <https://habrahabr.ru/company/dataart/blog/265245/> - cоздание шорткодов в WordPress
 
 <http://easy-code.ru/lesson/custom-wordpress-widgets> - создание виджета. (ВАЖНО: В передаче идентификатора виджета в родительский конструктор не должно быть точек! Это значение пишется в БД и конфиг потом не прочитается)
+
+
+### Публикация плагина
+
+Подробное описание сайта находится на сайте:
+<http://www.wordpressplugins.ru/rasnoe/adding-plugin-to-wordpress-org.html>
+
+Важные моменты:
+
+При отправлении плагина на ревью: указываемое название плагина будет использовано как имя директории плагина и отображаться в ссылке на него, поэтому не следует использовать точки - они будут удалены. Это название нельзя будет поменять в дальнейшем.
+
+При добавлении плагина в SVN репозиторий следует добавить в папку assets скриншоты, иконки и баннер для плагина.
+
+По адресу https://wordpress.org/plugins/com-netvoxlab-ownradio/admin/ доступна админка плагина, где можно добавить пользователей, которым позволено изменять плагин через SVN.
+Доступ к SVN репозиторию осуществляется под учетной записью сайта wordpress.org
+
+Ниже приведены ссылки на ресурсы, которые помогут при написании и публикации плагина.
+
+WordPress Plugin Directory Guidelines:
+<https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/>
+
+Using Subversion with the WordPress Plugin Directory:
+<https://developer.wordpress.org/plugins/wordpress-org/how-to-use-subversion/>
+
+FAQ about the WordPress Plugin Directory:
+<https://developer.wordpress.org/plugins/wordpress-org/plugin-developer-faq/>
+
+WordPress Plugin Directory readme.txt standard:
+<https://wordpress.org/plugins/about/readme.txt>
+
+A readme.txt validator:
+<https://wordpress.org/plugins/about/validator/>
+
+Plugin Assets (header images etc):
+<https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/>
