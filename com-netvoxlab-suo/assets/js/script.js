@@ -40,20 +40,20 @@
 var placeList;
 var mdl;
 var selectedTime;
+var serviceId;
+var selectedTimeId;
+var suoTimeSlots;
 
 var getPlaces = function() {
 	console.log('getPlaces()');
 	console.log(suo_portal_id);
 	
 	$.ajax({
-		headers: {'portal_id': suo_portal_id},
-		//url: "http://sq.egspace.ru/v1/reception/getplaces/mfc?isAll=true",
-		url: "http://sq.egspace.ru/v1/reception/getplaces/mfc",
-		/*data: {
-			cityId: "384a7b3a-17ad-4c1b-a4d0-cad2b1c6518c",
-			isAll: "true",
-			serviceId: "379e736f-3778-4ca2-989c-d3dfebcff0fb"
-		},*/
+		headers: { 'portal_id' : suo_portal_id , 'region_id': suo_region_id},
+		url: "http://sq.mfc.ru/v1/reception/getplaces/mfc",
+		data: {
+			isAll: "true"
+		},
 		dataType: 'json',
 	}).done(function (data, status, jqxhr) {
 		console.log('ajax then()');
@@ -64,18 +64,182 @@ var getPlaces = function() {
 		var org = document.getElementById('suoOrg');
 		org.innerHTML = "";
 		
-		for(var i = 0; i < data.placeList.length; i++)
-		{
+		for(var i = 0; i < data.placeList.length; i++) {
 			var op = document.createElement("option");
 			op.text = data.placeList[i].shortName;
+			op.value = data.placeList[i].id;
 			org.add(op);
 		}
+	
+		getServices();
 	});
 }
 
-var getTimeSlots = function() {
+var getServices = function () {
+	console.log('getServices()');
+
+	var place_id = $("#suoOrg option:selected").val();
+	console.log("place_id = " + place_id);
+	serviceId = null;
+
+	$.ajax({
+		headers: {'portal_id': suo_portal_id},
+		url: "http://sq.mfc.ru/v1/reception/getservices?placeId=" + place_id,
+		data: {
+			isAll: "true"
+		},
+		dataType: 'json',
+	}).done(function (data, status, jqxhr) {
+		console.log('ajax done()');
+		console.log(data);
+		
+		serviceId = data.serviceList[0].recId;
+		console.log("serviceId = " + serviceId);
+		getSpecialists();
+	});
+}
+
+var getSpecialists = function() {
+	console.log("getSpecialists()");
+
+	$.ajax({
+		headers: {'portal_id': suo_portal_id},
+		url: "http://sq.mfc.ru/v1/reception/getspecialists?serviceId=" + serviceId + "&dateFrom=2017-02-20&dateTo=2017-02-24",
+		dataType: 'json'
+	}).done(function (data, status, jqxhr) {
+		console.log('ajax done()');
+		console.log(data);
+
+		var date = $("#datepicker").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
+		getTimeSlots(date);
+	});
+}
+
+var getTimeSlots = function(date) {
 	console.log('getTimeSlots()');
+	console.log('!!! serviceId = ' + serviceId);
+
+	$.ajax({
+		headers: {'portal_id': suo_portal_id},
+		type: "POST",
+		contentType: "application/json",
+		url: "http://sq.mfc.ru/v1/reception/gettimeslots/"+ serviceId +"/"+date,
+		data: JSON.stringify({
+			"date": {
+				"date": date + "T00:00:00"
+			}
+		}),
+		dataType: 'json',
+	}).done(function (data, status, jqxhr) {
+		console.log('ajax done()');
+		console.log(data);
+
+		suoTimeSlots = data;
+
+		$("#suoTimepicker tr").remove();
+
+		var timeData = '<tr>';
+		for (var i = 0; i < data.positions.length; i++) {
+			var isDisabled = data.positions[i].isAvailable ? '' : ' suo-disabled';
+			timeData += '<td><div class="suo-time' + isDisabled + '">' + data.positions[i].name + '</div></td>';
+			if((i + 1) % 4 == 0) {
+				timeData += '</tr><tr>';
+			}
+		}
+		timeData += '</tr>';
+		$('#suoTimepicker').html(timeData);
+
+		//---------TODO
+		$(".suo-time").click(function() {
+			console.log('$(suo-time)');
+
+			if(!$(this).hasClass('suo-disabled')) {
+				$('.suo-active').removeClass('suo-active');
+				$(this).addClass('suo-active');
+				selectedTime = $(this).first().text().substring(0, 5);
+			}
+
+			suoValidate();
+		});
+
+		suoValidate();
+		//-----------------------
+	});
+}
+
+var suoCreateReception = function() {
+	console.log("suoCreateReception()");
+
+	var date = $("#datepicker").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
+	var txt = $(".suo-active").first().text();
+	console.log("selected time : " + txt);
+
+	for (var i = 0; i < suoTimeSlots.positions.length; i++) {
+		if(txt == suoTimeSlots.positions[i].name) {
+			selectedTimeId = suoTimeSlots.positions[i].id;
+		}
+	}
+	console.log("selected time id : " + selectedTimeId);
+
 	
+	$.ajax({
+		headers: {'portal_id': suo_portal_id, 'user_token': '1000299353'},
+		type: "POST",
+		contentType: "application/json",
+		url: "http://sq.mfc.ru/v1/reception/createreception/"+ serviceId,
+		data: JSON.stringify(
+			{
+				  "User": null,
+				  "specialist": null,
+				  "date": {
+				    "id": null,
+				    "date": date + "T00:00:00",
+				    "timeFrom": "08:00",
+				    "timeTo": "17:00",
+				    "ticketCount": "36"
+				  },
+				  "position": {
+				    "recId": selectedTimeId,
+				    "id": selectedTimeId,
+				    "name": txt,
+				    "isAvailable": "true"
+				  },
+				  "fields": [
+				    {
+				      "name": "Family",
+				      "text": "Фамилия",
+				      "value": $("#suoName").val(),
+				      "required": "true",
+				      "type": "text"
+				    },
+				    {
+				      "name": "Name",
+				      "text": "Имя",
+				      "value": " ",
+				      "required": "true",
+				      "type": "text"
+				    },
+				    {
+				      "name": "Patronymic",
+				      "text": "Отчество",
+				      "value": " ",
+				      "required": "true",
+				      "type": "text"
+				    },
+				    {
+				      "name": "email",
+				      "text": "Email для уведомлений",
+				      "value": $("#suoEmail").val(),
+				      "required": "true",
+				      "type": "email"
+				    }
+				  ]
+	}),
+		dataType: 'json',
+	}).done(function (data, status, jqxhr) {
+		console.log('!!! CreateReception() ajax done() !!!');
+		console.log(data);
+	});
 }
 
 var getTicket = function(){
@@ -83,23 +247,20 @@ var getTicket = function(){
 
 	var name = document.getElementById('suoName').value;
 	var date = document.getElementById('datepicker').value;
-	//var timePicker = document.getElementById('suoTime');
 	var org = document.getElementById('suoOrg');
-
 	var txt = org.options[org.selectedIndex].text;
-	//var time = date.concat(" ", timePicker.options[timePicker.selectedIndex].text);
 
 	var addr;
 
 	for(var i = 0; i < placeList.placeList.length; i++) {
-		if(txt == placeList.placeList[i].shortName) {
+		if($("#suoOrg option:selected").val() == placeList.placeList[i].recId) {
 			addr = placeList.placeList[i].address;
 		}
 	}
 
 	var model = {
 		ticketName: name,
-		ticketTime: selectedTime,//timePicker.options[timePicker.selectedIndex].text,
+		ticketTime: selectedTime,
 		ticketDate: date,
 		place: {
 			name: txt,
@@ -117,6 +278,8 @@ var getTicket = function(){
 function submitform()
 {
 	console.log('submitform()');
+	suoCreateReception();
+	// TODO
 	getTicket();
 }
 
@@ -154,13 +317,26 @@ function suoInit() {
 	$(function(){
 		$.datepicker.setDefaults(
 			$.extend(
-				{ dateFormat: 'dd.mm.yy' }//,
+				{ dateFormat: 'yy-mm-dd' }//,
 				//$.datepicker.regional["ru"]
 			)
 		);
-		$("#datepicker").datepicker();
+		$("#datepicker").datepicker({
+			onSelect: function(date) {
+				getTimeSlots(date);
+				suoValidate();
+			},
+			minDate: 0,
+            maxDate: '+26D',
+			beforeShowDay: noWeekendsOrHolidays
+		});
 	});
 	
+	$("#suoOrg").change(function() {
+		console.log("Handler for .change() called.");
+		getServices();
+	});
+
 	$(".suo-time").click(function() {
 		console.log('$(suo-time)');
 		if(!$(this).hasClass('suo-disabled')) {
@@ -168,7 +344,52 @@ function suoInit() {
 			$(this).addClass('suo-active');
 			selectedTime = $(this).first().text().substring(0, 5);
 		}
+
+		suoValidate();
 	});
+
+	$("#suoName").keyup(function() {
+		suoValidate();
+	});
+	
+	natDays = [
+		[1, 1, 'ru'], [1, 2, 'ru'], [1, 3, 'ru'],
+		[1, 4, 'ru'], [1, 5, 'ru'], [1, 6, 'ru'],
+		[1, 7, 'ru'], [1, 8, 'ru'], [2, 23, 'ru'],
+		[3, 8, 'ru'], [5, 1, 'ru'], [5, 9, 'ru'],
+		[6, 12, 'ru'], [11, 4, 'ru']
+	];
+
+	function nationalDays(date) {
+		for (i = 0; i < natDays.length; i++) {
+		  if (date.getMonth() == natDays[i][0] - 1
+			  && date.getDate() == natDays[i][1]) {
+			return [false, natDays[i][2] + '_day'];
+		  }
+		}
+	  return [true, ''];
+	}
+	
+	function noWeekendsOrHolidays(date) {
+		var noWeekend = $.datepicker.noWeekends(date);
+		if (noWeekend[0]) {
+			return nationalDays(date);
+		} else {
+			return noWeekend;
+		}
+	}
+}
+
+function suoValidate() {
+	console.log("validate()");
+	if($(".suo-active").length > 0 && $("#suoName").val() != "") {
+		console.log("enabled");
+		$("#suoSend").removeAttr('disabled');
+	}
+	else {
+		console.log("disabled");
+		$("#suoSend").attr('disabled','disabled');
+	}
 }
 
 document.addEventListener("DOMContentLoaded", suoInit);
