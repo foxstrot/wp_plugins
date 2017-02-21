@@ -94,6 +94,7 @@ function (ko, $) {
 			$.ajax({
 				url: self.baseUrl + '/problemrequests',
 				cache: false,
+				type: 'GET'
 			}).done(function (response) {
 				if (response.hasError) {
 					console.error(response.message);
@@ -116,6 +117,7 @@ function (ko, $) {
 			$.ajax({
 				url: self.baseUrl + '/problemrequestscount',
 				cache: false,
+				type: 'GET'
 			}).done(function (response) {
 				if (response.hasError) {
 					console.error(response.message);

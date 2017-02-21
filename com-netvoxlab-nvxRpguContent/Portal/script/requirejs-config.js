@@ -192,7 +192,7 @@ var getUrlPath = function(url) {
 var jQuery = jQuery || window["$"];
 var reconfigJq = function(jq) {
 	jq.ajaxSetup({
-		globalUrl: window.nvxCommonPath.rdcurl,
+		globalUrl: (window.nvxRpguEsia != null ? window.nvxRpguEsia.rdcurl : null) || window.nvxCommonPath.rdcurl,
 		cache: false
 	});
 
@@ -236,7 +236,7 @@ var reconfigJq = function(jq) {
 				});
 			} else {
 				var setup = jq.ajaxSetup({
-					url: window.nvxCommonPath.proxyPath + '?_=' + Date.now(),
+					url: ((window.nvxRpguEsia != null ? window.nvxRpguEsia.proxyPath : null) || window.nvxCommonPath.proxyPath) + '?_=' + Date.now(),
 					crossDomain: true,
 					headers: {
 						'X-Proxy-URL': options.url,
