@@ -1,0 +1,42 @@
+.nvxCheckStatus{
+	background-color: #e4d4c4;
+	color: #623b2a;
+    padding: 40px;
+}
+
+.lupa{
+	background: url("img/lupa.png") right no-repeat;
+}
+
+.nvxCheckStatusForm{
+    height: 20px;
+	padding: 9px 10px;
+	border-radius: 0;
+    border-style: solid;
+    box-sizing: content-box;
+}
+
+.nvxCheckStatus input[type=text], textarea{
+	border-color: #623b2a;
+    border-width: 1px;
+    border-style: solid;
+	min-width: 300px;
+
+}
+
+.nvxCheckStatusBtn, #checkStatusBtn {
+	color: #ffffff;
+	background: #e04e39;
+	margin-left:10px;
+}
+
+.nvxCheckStatusBtn:disabled, #checkStatusBtn:disabled {
+	color: #ffffff;
+	background: #db8372;
+	margin-left:10px;
+}
+
+.nvxStatusImg.center{
+	display: block;
+    margin: 0 auto;
+}
