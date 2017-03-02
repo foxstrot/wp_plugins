@@ -18,7 +18,8 @@ require([], function () {
 			payView: '/pay/index.php',
 			authRedirectPath: 'http://bitx.egspace.ru/authRequest.php',
 			authPortalPath: 'http://testrpgu.egspace.ru',
-			fileProxyPath: 'http://bitx.egspace.ru/proxy4file.php'
+			fileProxyPath: 'http://bitx.egspace.ru/proxy4file.php',
+			igtnServiceList: []
 		};
 	}
 	if (window.sessionStorage) {
@@ -70,72 +71,6 @@ define('Nvx.ReDoc.Rpgu.PortalModule/Portal/Script/cabinetPageController', [], fu
 	controller.navigate = null;
 
 	return controller;
-});
-define('Esb/EsbProblemRequestsViewModel', [ 'knockout', 'jquery' ],
-function (ko, $) {
-	var EsbProblemRequestsViewModel = function() {
-		var self = this;
-		self.baseUrl = window.nvxCommonPath.esbRvUrl || 'http://esbtest.egspace.ru:8080/RequestViewer';
-
-		self.allCount = ko.observable(0);
-		self.showAllCount = ko.observable(false);
-
-		self.currentCount = ko.observable(0);
-		self.showCurCount = ko.observable(false);
-		self.list = ko.observableArray([]);
-		self.showLoading = ko.observable(true);
-
-		self.start = function() {
-			self.loadList();
-			self.loadListCount();
-		};
-
-		self.loadList = function() {
-			$.ajax({
-				url: self.baseUrl + '/problemrequests',
-				cache: false,
-				type: 'GET'
-			}).done(function (response) {
-				if (response.hasError) {
-					console.error(response.message);
-				} else {
-					self.currentCount(response.current);
-					self.showLoading(false);
-					self.showCurCount(true);
-					self.list(response.list);
-				}
-			}).fail(function (jqXHR, textStatus, errorThrown) {
-				if (jqXHR.responseJSON) {
-					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
-				} else {
-					console.error(jqXHR.responseText);
-				}
-			});
-		};
-
-		self.loadListCount = function() {
-			$.ajax({
-				url: self.baseUrl + '/problemrequestscount',
-				cache: false,
-				type: 'GET'
-			}).done(function (response) {
-				if (response.hasError) {
-					console.error(response.message);
-				} else {
-					self.allCount(response.all);
-					self.showAllCount(true);
-				}
-			}).fail(function (jqXHR, textStatus, errorThrown) {
-				if (jqXHR.responseJSON) {
-					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
-				} else {
-					console.error(jqXHR.responseText);
-				}
-			});
-		};
-	}
-
-	return EsbProblemRequestsViewModel;
 });
 define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/dynamicFormBindingHandlers',
 	[
@@ -1617,7 +1552,7 @@ define('Nvx/AuthViewModel', ['knockout', 'jquery'], function (ko, $) {
 				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 				expires = "; expires=" + date.toGMTString();
 			}
-			document.cookie = name + "=" + value + expires + "; path=/";
+			document.cookie = name + "=" + value + expires + "; path=/; domain="+ document.location.hostname;
 		};
 
 		//Запрашиваем с сервера информацию о контакте.
@@ -1851,6 +1786,50 @@ define('Nvx/CurrentLocationViewModel', ['knockout'],
 		};
 
 		return CurrentLocationViewModel;
+	});
+define('Nvx/CustomerCabinetViewModel',
+	[
+		'knockout',
+		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModelService',
+		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModel',
+		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/IndividualViewModel',
+		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/JuridicalViewModel'
+	],
+	function (ko, CustomerViewModelService, CustomerViewModel, IndividualViewModel, JuridicalViewModel) {
+		var CustomerCabinetViewModel = function() {
+			var self = this;
+
+			self.isPhysical = ko.observable(true);
+			self.isIndividual = ko.observable(false);
+			self.customerViewModel = ko.observable(null);
+		};
+
+		//Показать весь контент
+		CustomerCabinetViewModel.prototype.start = function() {
+			var self = this;
+			var cvms = new CustomerViewModelService();
+			cvms.loadCustomerInfo().done(function(response) {
+				if (cvms.physical) {
+					self.isPhysical(true);
+					self.isIndividual(false);
+					if (self.customerViewModel() == null) {
+						self.customerViewModel(new CustomerViewModel());
+						self.customerViewModel().applyResponse(cvms.physical);
+					}
+				} else if (cvms.juridical) {
+					self.isPhysical(false);
+					self.customerViewModel(new JuridicalViewModel());
+					self.customerViewModel().applyResponse(cvms.juridical);
+				} else if (cvms.individual) {
+					self.isPhysical(true);
+					self.isIndividual(true);
+					self.customerViewModel(new IndividualViewModel());
+					self.customerViewModel().applyResponse(cvms.individual);
+				}
+			});
+		};
+
+		return CustomerCabinetViewModel;
 	});
 define('Nvx/DepartmentTreeViewModel', [
 		'knockout',
@@ -4616,6 +4595,8 @@ function (ko, $, ServiceMenuItem, ServiceGroupPagedViewModel) {
 	SearchServicesViewModel.prototype.start = function () {
 		var self = this;
 		self.updateFilter();
+		if (window.BX)
+			self.serviceFilterModel().canSearch(false);
 	};
 
 	//обновить фильтр и перезагрузить список
@@ -5383,6 +5364,12 @@ define('Nvx/StartServiceViewModel', [
 
 			self.templateId('placeholderTemplate');
 			self.templateModel(new ServicePassportInfoViewModel(serviceId));
+			
+			//Ссылка для igtn, issue1157
+			if (window.nvxCommonPath && window.nvxCommonPath.igtnServiceList && window.nvxCommonPath.igtnServiceList.indexOf(serviceId) != -1) {
+				self.templateModel().canGoIgtn(true);
+			}
+
 			var promise = self.templateModel().showServicePassport(serviceId, 'description')
 				.done(function() {
 					self.templateId('Nvx.ReDoc.StateStructureServiceModule/Service/View/servicePassportInfo.tmpl.html');
@@ -6211,6 +6198,72 @@ define('Nvx/UserTypeViewModel',
 
 		return UserTypeViewModel;
 	});
+define('Esb/EsbProblemRequestsViewModel', [ 'knockout', 'jquery' ],
+function (ko, $) {
+	var EsbProblemRequestsViewModel = function() {
+		var self = this;
+		self.baseUrl = window.nvxCommonPath.esbRvUrl || 'http://esbtest.egspace.ru:8080/RequestViewer';
+
+		self.allCount = ko.observable(0);
+		self.showAllCount = ko.observable(false);
+
+		self.currentCount = ko.observable(0);
+		self.showCurCount = ko.observable(false);
+		self.list = ko.observableArray([]);
+		self.showLoading = ko.observable(true);
+
+		self.start = function() {
+			self.loadList();
+			self.loadListCount();
+		};
+
+		self.loadList = function() {
+			$.ajax({
+				method: 'GET',
+				url: self.baseUrl + '/problemrequests',
+				cache: false,
+			}).done(function (response) {
+				if (response.hasError) {
+					console.error(response.message);
+				} else {
+					self.currentCount(response.current);
+					self.showLoading(false);
+					self.showCurCount(true);
+					self.list(response.list);
+				}
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.responseJSON) {
+					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
+				} else {
+					console.error(jqXHR.responseText);
+				}
+			});
+		};
+
+		self.loadListCount = function() {
+			$.ajax({
+				method: 'GET',
+				url: self.baseUrl + '/problemrequestscount',
+				cache: false,
+			}).done(function (response) {
+				if (response.hasError) {
+					console.error(response.message);
+				} else {
+					self.allCount(response.all);
+					self.showAllCount(true);
+				}
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.responseJSON) {
+					console.error(jqXHR.responseJSON.errorMessage + ' Подробности: ' + errorThrown);
+				} else {
+					console.error(jqXHR.responseText);
+				}
+			});
+		};
+	}
+
+	return EsbProblemRequestsViewModel;
+});
 define('Nvx.ReDoc.MfcUiModule/Web/Resources/Scripts/MfcUiWebController/Wizzard/Step01CustomersViewModel',
 	[
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/inherit',
@@ -8344,6 +8397,8 @@ define('Nvx.ReDoc.StateStructureServiceModule/Service/Script/ServicePassportInfo
 
 		// отображать кнопку Подать жалобу
 		self.canComplaint = ko.observable(false);
+		//Поле для внешних порталов, issues/1157
+		self.canGoIgtn = ko.observable(false);
 
 		//проверяет не состоит ли массив из пустых записей и стоит ли его показывать
 		self.getVisibleMethods = function (methods) {
@@ -17354,6 +17409,450 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/lib.fix/maskedInput/maskedInputBind
 		}
 	};
 });
+define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModel', ['jquery',
+		'knockout',
+		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction'],
+	function($, ko, modal) {
+
+		var CustomerViewModel = function() {
+			var self = this;
+
+			// ФИО
+			self.fio = ko.observable('');
+
+			// Пол
+			self.gender = ko.observable('');
+
+			// Информация о паспорте
+			self.passport = ko.observable(null);
+
+			// СНИЛС
+			self.snils = ko.observable('');
+
+			// ИНН
+			self.inn = ko.observable('');
+
+			// Дата рождения
+			self.birthDate = ko.observable('');
+
+			// Место рождения
+			self.birthPlace = ko.observable('');
+
+			// Гражданство
+			self.citizenship = ko.observable(null);
+
+			// Домашний телефон
+			self.homePhone = ko.observable('');
+
+			// Рабочий телефон
+			self.workPhone = ko.observable('');
+
+			// Мобильный телефон
+			self.mobilePhone = ko.observable('');
+
+			// email
+			self.email = ko.observable('');
+
+			// Адрес регистрации
+			self.registrationAddress = ko.observable('');
+
+			// Адрес проживания
+			self.facticalAddress = ko.observable('');
+
+			//Сведения о транспортных средствах
+			self.vehicles = ko.observableArray();
+
+			// документы
+			self.birthCertificate = ko.observable(null);
+			self.drivingLicense = ko.observable(null);
+			self.internationalPassport = ko.observable(null);
+			self.medicalPolicy = ko.observable(null);
+			self.militaryIdDoc = ko.observable(null);
+
+			// елк
+			self.showElkBlock = ko.observable(false);
+			self.allowGetElkData = ko.observable(false);
+			self.changeAllowGetElkData = function () {
+				var newAccess = self.allowGetElkData();
+				self.changeGetElkDataAccess(newAccess);
+				return true;
+			};
+			self.allowSendElkData = ko.observable(false);
+			self.changeAllowSendElkData = function () {
+				var newAccess = self.allowSendElkData();
+				self.changeSendElkDataAccess(newAccess);
+				return true;
+			};
+		};
+
+		//применить ответ сервера
+		CustomerViewModel.prototype.applyResponse = function(response) {
+			var self = this;
+
+			// ФИО
+			self.fio(response.fio);
+			// Пол
+			self.gender(response.gender);
+			// Информация о паспорте
+			if (response.passport != null) {
+				response.passport.seriesAndNumber = response.passport.series + ' ' + response.passport.number;
+			}
+			self.passport(response.passport);
+			// СНИЛС
+			self.snils(response.snils);
+			// ИНН
+			self.inn(response.inn);
+			// Дата рождения
+			self.birthDate(response.birthDate);
+			// Место рождения
+			self.birthPlace(response.birthPlace);
+			// Гражданство
+			self.citizenship(response.citizenship);
+			// Домашний телефон
+			self.homePhone(response.homePhone);
+			// Рабочий телефон
+			self.workPhone(response.workPhone);
+			// Мобильный телефон
+			self.mobilePhone(response.mobilePhone);
+			// email
+			self.email(response.email);
+			// Адрес регистрации
+			self.registrationAddress(response.registrationAddress);
+			// Адрес проживания
+			self.facticalAddress(response.facticalAddress);
+
+			if (response.vehiclesData != null && response.vehiclesData.vehicles.length > 0) {
+				var newArray = [];
+				for (var i = 0; i < response.vehiclesData.vehicles.length; i++) {
+					newArray.push(response.vehiclesData.vehicles[i]);
+				}
+				self.vehicles(newArray);
+			}
+
+			self.birthCertificate(response.birthCertificate);
+			self.drivingLicense(response.drivingLicense);
+			self.internationalPassport(response.internationalPassport);
+			self.medicalPolicy(response.medicalPolicy);
+			self.militaryIdDoc(response.militaryIdDoc);
+
+			if (response.infoModelType === "physical") {
+				self.getElkData();
+			}
+		};
+
+		CustomerViewModel.prototype.applyElkDataResponse = function (response) {
+			var self = this;
+			self.allowGetElkData(response.allowGet);
+			self.allowSendElkData(response.allowSend);
+			self.showElkBlock(response.elkOn);
+		};
+
+		CustomerViewModel.prototype.getData = function (url) {
+			var trId = modal.CreateTrobberDiv2();
+			var promise = $.ajax({ url: url, method: 'GET', headers: { proxy: true } })
+				.done(function (response) {
+					if (response.hasError === true) {
+						modal.errorModalWindow(response.errorMessage);
+					}
+				})
+				.fail(function (jqXHR, textStatus, errorThrown) {
+					if (jqXHR.responseJSON)
+						modal.errorModalWindow(jqXHR.responseJSON.errorMessage);
+					else
+						modal.errorModalWindow(jqXHR.responseText);
+				})
+				.always(function () {
+					modal.CloseTrobberDiv2(trId);
+				});
+			return promise;
+		};
+
+		CustomerViewModel.prototype.getElkData = function () {
+			var self = this;
+			var promise = self.getData('/Nvx.ReDoc.Rpgu.PortalModule/Elk/GetElkCustomerInfo')
+				.done(function (response) {
+					if (response.hasError !== true) {
+						self.applyElkDataResponse(response.result);
+					}
+				});
+			return promise;
+		};
+
+		CustomerViewModel.prototype.changeGetElkDataAccess = function (newAccess) {
+			var self = this;
+			return self.changeElkDataAccess('/Nvx.ReDoc.Rpgu.PortalModule/Elk/ChangeGetElkDataAccess', newAccess, self.allowGetElkData);
+		};
+
+		CustomerViewModel.prototype.changeSendElkDataAccess = function(newAccess) {
+			var self = this;
+			return self.changeElkDataAccess('/Nvx.ReDoc.Rpgu.PortalModule/Elk/ChangeSendElkDataAccess', newAccess, self.allowSendElkData);
+		};
+
+		CustomerViewModel.prototype.changeElkDataAccess = function (url, newAccess, param) {
+			var model = { accessValue: newAccess };
+			var trId = modal.CreateTrobberDiv2();
+
+			var promise = $.ajax({
+				url: url,
+				method: 'POST',
+				data: model,
+				headers: { proxy: true }
+			})
+				.done(function (response) {
+					if (response.hasError !== true) {
+						modal.informationModalWindow("Смена статуса подписки прошла успешно", "");
+					} else {
+						// revert
+						var curAccess = param();
+						param(!curAccess);
+						modal.errorModalWindow(response.errorMessage);
+					}
+				})
+				.fail(function (jqXHR, textStatus, errorThrown) {
+					if (jqXHR.responseJSON)
+						modal.errorModalWindow(jqXHR.responseJSON.errorMessage);
+					else
+						modal.errorModalWindow(jqXHR.responseText);
+				})
+				.always(function () {
+					modal.CloseTrobberDiv2(trId);
+				});
+			return promise;
+		};
+
+		return CustomerViewModel;
+	});
+
+define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModelService', ['jquery',
+	'knockout',
+	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction'],
+	function ($, ko, modal) {
+
+		var CustomerViewModelService = function () {
+			var self = this;
+
+			self.juridical = null;
+			self.physical = null;
+			self.individual = null;
+		};
+
+		//загрузить информацию о пользователе
+		CustomerViewModelService.prototype.loadCustomerInfo = function ()
+		{
+			var self = this;
+
+			//Показать тробер
+			var trobberId = modal.CreateTrobberDiv2();
+
+			var promise = $.ajax({ url: '/Nvx.ReDoc.Rpgu.PortalModule/CustomerController/GetCustomerInfo', method: 'GET', headers: { proxy: true } })
+				.done(function(response)
+				{
+					if (response.hasError !== true)
+						self.applyResponse(response.result);
+					else
+						modal.errorModalWindow(response.errorMessage);
+				})
+				.fail(function(jqXHR, textStatus, errorThrown)
+				{
+					if (jqXHR.responseJSON)
+						modal.errorModalWindow(jqXHR.responseJSON.errorMessage);
+					else
+						modal.errorModalWindow(jqXHR.responseText);
+				})
+				.always(function()
+				{
+					modal.CloseTrobberDiv2(trobberId);
+				});
+
+			return promise;
+		};
+
+		//применить ответ сервера
+		CustomerViewModelService.prototype.applyResponse = function (response)
+		{
+			var self = this;
+			if (response.infoModelType === "juridical")
+				self.juridical = response;
+			else if (response.infoModelType === "physical")
+				self.physical = response;
+			else
+				self.individual = response;
+		};
+
+		return CustomerViewModelService;
+	});
+
+define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/IndividualViewModel', ['jquery',
+	'knockout',
+	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction'],
+	function ($, ko) {
+
+		var IndividualViewModel = function () {
+			var self = this;
+
+			// ФИО
+			self.fio = ko.observable('');
+
+			// Пол
+			self.gender = ko.observable('');
+
+			// Информация о паспорте
+			self.passport = ko.observable(null);
+
+			// СНИЛС
+			self.snils = ko.observable('');
+
+			// ИНН
+			self.inn = ko.observable('');
+
+			// Дата рождения
+			self.birthDate = ko.observable('');
+
+			// Место рождения
+			self.birthPlace = ko.observable('');
+
+			// Гражданство
+			self.citizenship = ko.observable(null);
+
+			// Домашний телефон
+			self.homePhone = ko.observable('');
+
+			// Рабочий телефон
+			self.workPhone = ko.observable('');
+
+			// Мобильный телефон
+			self.mobilePhone = ko.observable('');
+
+			// email
+			self.email = ko.observable('');
+
+			// Адрес регистрации
+			self.registrationAddress = ko.observable('');
+
+			// Адрес проживания
+			self.facticalAddress = ko.observable('');
+			
+			//Сведения о транспортных средствах
+			self.vehicles = ko.observableArray();
+
+			// документы
+			self.birthCertificate = ko.observable(null);
+			self.drivingLicense = ko.observable(null);
+			self.internationalPassport = ko.observable(null);
+			self.medicalPolicy = ko.observable(null);
+			self.militaryIdDoc = ko.observable(null);
+
+			// данные об организации ИП
+			self.ipOrg = ko.observable(null);
+			self.postalAddress = ko.observable(null);
+			self.orgVehicles = ko.observable(null);
+		};
+
+		//применить ответ сервера
+		IndividualViewModel.prototype.applyResponse = function (response) {
+			var self = this;
+
+			// ФИО
+			self.fio(response.fio);
+			// Пол
+			self.gender(response.gender);
+			// Информация о паспорте
+			if (response.passport != null) {
+				response.passport.seriesAndNumber = response.passport.series + ' ' + response.passport.number;
+			}
+			self.passport(response.passport);
+			// СНИЛС
+			self.snils(response.snils);
+			// ИНН
+			self.inn(response.inn);
+			// Дата рождения
+			self.birthDate(response.birthDate);
+			// Место рождения
+			self.birthPlace(response.birthPlace);
+			// Гражданство
+			self.citizenship(response.citizenship);
+			// Домашний телефон
+			self.homePhone(response.homePhone);
+			// Рабочий телефон
+			self.workPhone(response.workPhone);
+			// Мобильный телефон
+			self.mobilePhone(response.mobilePhone);
+			// email
+			self.email(response.email);
+			// Адрес регистрации
+			self.registrationAddress(response.registrationAddress);
+			// Адрес проживания
+			self.facticalAddress(response.facticalAddress);
+
+			var tempArray = [];
+			if (response.vehiclesData != null && response.vehiclesData.vehicles.length > 0) {
+				tempArray = [];
+				for (var i = 0; i < response.vehiclesData.vehicles.length; i++) {
+					tempArray.push(response.vehiclesData.vehicles[i]);
+				}
+				self.vehicles(tempArray);
+			}
+
+			self.birthCertificate(response.birthCertificate);
+			self.drivingLicense(response.drivingLicense);
+			self.internationalPassport(response.internationalPassport);
+			self.medicalPolicy(response.medicalPolicy);
+			self.militaryIdDoc(response.militaryIdDoc);
+
+			self.ipOrg(response.ipOrg);
+			self.postalAddress(response.postalAddress);
+
+			if (response.orgVehiclesData != null && response.orgVehiclesData.vehicles.length > 0) {
+				tempArray = [];
+				for (var i = 0; i < response.orgVehiclesData.vehicles.length; i++) {
+					tempArray.push(response.orgVehiclesData.vehicles[i]);
+				}
+				self.orgVehicles(tempArray);
+			}
+		};
+
+		return IndividualViewModel;
+});
+define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/JuridicalViewModel', ['jquery',
+	'knockout',
+	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction'],
+	function ($, ko, modal) {
+
+		var JuridicalViewModel = function () {
+			var self = this;
+			self.companyFullName = ko.observable('');
+			self.companyShortName = ko.observable('');
+			self.kpp = ko.observable('');
+			self.inn = ko.observable('');
+			self.ogrn = ko.observable('');
+			self.registrationAddress = ko.observable('');
+			self.facticalAddress = ko.observable('');
+			self.phone1 = ko.observable('');
+			self.phone2 = ko.observable('');
+			self.phone3 = ko.observable('');
+			self.email = ko.observable('');
+		};
+
+		//применить ответ сервера
+		JuridicalViewModel.prototype.applyResponse = function (response) {
+			var self = this;
+
+			self.companyFullName(response.companyFullName);
+			self.companyShortName(response.companyShortName);
+			self.kpp(response.kpp);
+			self.inn(response.inn);
+			self.ogrn(response.ogrn);
+			self.registrationAddress(response.registrationAddress);
+			self.facticalAddress(response.facticalAddress);
+			self.phone1(response.phone1);
+			self.phone2(response.phone2);
+			self.phone3(response.phone3);
+			self.email(response.email);
+		};
+
+		return JuridicalViewModel;
+	});
+
 define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/request/RequestListViewModel', ['jquery',
 		'knockout',
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction',
@@ -18668,13 +19167,14 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception5FieldsViewModel',
 		'Nvx.ReDoc.WebInterfaceModule/Content/lib.fix/jquery-ui/datepicker'
 	],
 	function($, ko, modal) {
-		var Reception5FieldsViewModel = function (goLevel6, service, bookingExist) {
+		var Reception5FieldsViewModel = function (goLevel6, service, bookingExist, userInfo) {
 			var self = this;
 
 			self.fields = ko.observableArray([]);
 			self.service = service;
 			self.goLevel6 = goLevel6;
-			
+			self.userInfo = userInfo;
+
 			self.buttonText = bookingExist === true ? "Забронировать приём" : "Записаться на приём";
 
 			self.goReception = function() {
@@ -18704,6 +19204,51 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception5FieldsViewModel',
 							self.goLevel6();
 						} else {
 							for (var i = 0; i < response.result.length; i++) {
+								var userInfo = self.userInfo;
+								if (userInfo != null) {
+									var lastName = '', firstName = '', middleName = '', medicalPolicy = '', mobilePhone = '', birthDate = '';
+									//проставим фио
+									if (!self.isEmpty(userInfo.fio)) {
+										var fio = userInfo.fio.trim().split(' ');
+										if (fio.length == 3) {
+											lastName = fio[0];
+											firstName = fio[1];
+											middleName = fio[2];
+										}
+									}
+									if (!self.isEmpty(userInfo.mobilePhone))
+										mobilePhone = userInfo.mobilePhone;
+									if (!self.isEmpty(userInfo.birthDate))
+										birthDate = userInfo.birthDate;
+									if (!self.isEmpty(userInfo.medicalPolicy))
+										medicalPolicy = userInfo.medicalPolicy;
+
+									response.result.forEach(function(field) {
+										switch (field.name) {
+											case 'LastName':
+											case 'Family':
+												field.value = lastName;
+												break;
+											case 'FirstName':
+											case 'Name':
+												field.value = firstName;
+												break;
+											case 'MiddleName':
+											case 'Patronymic':
+												field.value = middleName;
+												break;
+											case 'N_POL':
+												field.value = medicalPolicy;
+												break;
+											case 'Phone':
+												field.value = mobilePhone;
+												break;
+											case 'Birthday':
+												field.value = birthDate;
+												break;
+										}
+									});
+								}
 								self.fields.push(response.result[i]);
 							}
 						}
@@ -18716,6 +19261,10 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception5FieldsViewModel',
 					//Выключаем троббер
 					modal.CloseTrobberDiv2(troberId);
 				});
+		};
+
+		Reception5FieldsViewModel.prototype.isEmpty = function (str) {
+			return (!str || 0 === str.length);
 		};
 
 		return Reception5FieldsViewModel;
@@ -18842,7 +19391,12 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/ReceptionFormViewModel',
 				self.position(null);
 				self.commonInfoString(null);
 
-				if (itemLevel2 != null && itemLevel2.recId != null) {
+				if (itemLevel2 != null && (itemLevel2.recId != null || itemLevel2.id != null)) {
+					//woodstick for softrust
+					if (itemLevel2.isEnabled == null)
+						itemLevel2.isEnabled = true;
+					if (itemLevel2.recId == null)
+						itemLevel2.recId = itemLevel2.id;
 					self.service(itemLevel2);
 					self.isSpecialistStepExists(itemLevel2.isSpecialistStepExists);
 					self.isBookingExists(itemLevel2.isBookingExists);
@@ -18886,7 +19440,7 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/ReceptionFormViewModel',
 				self.templateId(self.placeholderTemplateId);
 				self.templateViewModel(null);
 
-				self.templateViewModel(new Reception5FieldsViewModel(self.goLevel6, self.service(), self.isBookingExists()));
+				self.templateViewModel(new Reception5FieldsViewModel(self.goLevel6, self.service(), self.isBookingExists(), self.userInfo()));
 				self.templateId('Nvx.ReDoc.Rpgu.Reception/Web/View/Reception5Fields.tmpl.html');
 			};
 
@@ -19072,9 +19626,9 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/ReceptionFormViewModel',
 							return;
 						} else {
 							var successText = 'Запись успешна. Информацию об имеющихся талонах вы можете посмотреть в <a href="{0}">личном кабинете</a>. '.format(window.nvxCommonPath != null && window.nvxCommonPath.cabinetReceptionList != null ? window.nvxCommonPath.cabinetReceptionList : '/cabinet/reception');
-							if (response.result.message != null) {
-								successText += response.result.message;
-							}
+							//if (response.result.message != null) {
+							//	successText += response.result.message;
+							//}
 							self.commonInfoString(successText);
 							self.place(null);
 							self.service(null);
@@ -25725,149 +26279,6 @@ define('Nvx.ReDoc.Rpgu.PortalModule/Portal/Script/MainPage/listBlockViewModel',
 
 		return ListBlockViewModel;
 	});
-define('Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModel', ['jquery',
-		'knockout',
-		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction'],
-	function($, ko, modal) {
-
-		var CustomerViewModel = function() {
-			var self = this;
-
-			// ФИО
-			self.fio = ko.observable('');
-
-			// Пол
-			self.gender = ko.observable('');
-
-			// Информация о паспорте
-			self.passport = ko.observable(null);
-
-			// СНИЛС
-			self.snils = ko.observable('');
-
-			// ИНН
-			self.inn = ko.observable('');
-
-			// Дата рождения
-			self.birthDate = ko.observable('');
-
-			// Место рождения
-			self.birthPlace = ko.observable('');
-
-			// Гражданство
-			self.citizenship = ko.observable(null);
-
-			// Домашний телефон
-			self.homePhone = ko.observable('');
-
-			// Рабочий телефон
-			self.workPhone = ko.observable('');
-
-			// Мобильный телефон
-			self.mobilePhone = ko.observable('');
-
-			// email
-			self.email = ko.observable('');
-
-			// Адрес регистрации
-			self.registrationAddress = ko.observable('');
-
-			// Адрес проживания
-			self.facticalAddress = ko.observable('');
-
-			//Сведения о транспортных средствах
-			self.vehicles = ko.observableArray();
-
-			// документы
-			self.birthCertificate = ko.observable(null);
-			self.drivingLicense = ko.observable(null);
-			self.internationalPassport = ko.observable(null);
-			self.medicalPolicy = ko.observable(null);
-			self.militaryIdDoc = ko.observable(null);
-		};
-
-		//применить ответ сервера
-		CustomerViewModel.prototype.applyResponse = function(response) {
-			var self = this;
-
-			// ФИО
-			self.fio(response.fio);
-			// Пол
-			self.gender(response.gender);
-			// Информация о паспорте
-			if (response.passport != null) {
-				response.passport.seriesAndNumber = response.passport.series + ' ' + response.passport.number;
-			}
-			self.passport(response.passport);
-			// СНИЛС
-			self.snils(response.snils);
-			// ИНН
-			self.inn(response.inn);
-			// Дата рождения
-			self.birthDate(response.birthDate);
-			// Место рождения
-			self.birthPlace(response.birthPlace);
-			// Гражданство
-			self.citizenship(response.citizenship);
-			// Домашний телефон
-			self.homePhone(response.homePhone);
-			// Рабочий телефон
-			self.workPhone(response.workPhone);
-			// Мобильный телефон
-			self.mobilePhone(response.mobilePhone);
-			// email
-			self.email(response.email);
-			// Адрес регистрации
-			self.registrationAddress(response.registrationAddress);
-			// Адрес проживания
-			self.facticalAddress(response.facticalAddress);
-
-			if (response.vehiclesData != null && response.vehiclesData.vehicles.length > 0) {
-				var newArray = [];
-				for (var i = 0; i < response.vehiclesData.vehicles.length; i++) {
-					newArray.push(response.vehiclesData.vehicles[i]);
-				}
-				self.vehicles(newArray);
-			}
-
-			self.birthCertificate(response.birthCertificate);
-			self.drivingLicense(response.drivingLicense);
-			self.internationalPassport(response.internationalPassport);
-			self.medicalPolicy(response.medicalPolicy);
-			self.militaryIdDoc(response.militaryIdDoc);
-		};
-
-		//загрузить информацию о пользователе
-		CustomerViewModel.prototype.start = function() {
-			var self = this;
-
-			//Показать тробер
-			var trId = modal.CreateTrobberDiv3();
-
-			var promise = $.ajax({ url: '/Nvx.ReDoc.Rpgu.PortalModule/CustomerController/GetCustomerInfo', method: 'GET', headers: { proxy: true } })
-				.done(function(response) {
-					if (response.hasError !== true) {
-						self.applyResponse(response.result);
-						modal.CloseTrobberDiv3(trId);
-					} else {
-						modal.errorModalWindow(response.errorMessage);
-					}
-				})
-				.fail(function(jqXHR, textStatus, errorThrown) {
-					if (jqXHR.responseJSON)
-						modal.errorModalWindow(jqXHR.responseJSON.errorMessage);
-					else
-						modal.errorModalWindow(jqXHR.responseText);
-				})
-				.always(function() {
-					modal.CloseTrobberDiv3(trId);
-				});
-
-			return promise;
-		};
-
-		return CustomerViewModel;
-	});
 define('Nvx.ReDoc.Rpgu.Core/Script/Tab', ['knockout'], function (ko) {
 	var Tab = function (title) {
 		var self = this;
@@ -27805,7 +28216,7 @@ require([
 require(['knockout',
 		'domReady',
 		'Nvx/AuthViewModel',
-		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/customer/CustomerViewModel',
+		'Nvx/CustomerCabinetViewModel',
 		'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/Script/request/RequestListViewModel',
 		'Nvx/DepartmentTreeViewModel',
 		'Nvx/CategoryViewModel',
@@ -27838,7 +28249,7 @@ require(['knockout',
 	function(ko,
 		domReady,
 		AuthViewModel,
-		CustomerViewModel,
+		CustomerCabinetViewModel,
 		RequestListViewModel,
 		DepartmentTreeViewModel,
 		CategoryViewModel,
@@ -27884,7 +28295,7 @@ require(['knockout',
 				authViewModel.start();
 			}
 			if (document.getElementById('nvxCustomerInfo') != null) {
-				var customerViewModel = new CustomerViewModel();
+				var customerViewModel = new CustomerCabinetViewModel();
 				ko.applyBindings(customerViewModel, document.getElementById('nvxCustomerInfo'));
 				customerViewModel.start();
 			}
@@ -28020,6 +28431,7 @@ require(['knockout',
 				var chargeViewModel = new ChargeViewModel();
 				ko.applyBindings(chargeViewModel, document.getElementById('nvxIgtnCharge'));
 			}
+
 			if (document.getElementById('esbProblemRequests') != null) {
 				var eprViewModel = new EsbProblemRequestsViewModel();
 				eprViewModel.start();

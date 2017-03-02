@@ -16,11 +16,17 @@ try {
 		'certPath' => 'key.cer',
 		'tmpPath' => 'tmp',
 	);
-
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	$esia = new \esia\EsiaClient($config);
-	$esia->getToken($_GET['code']);
+	$oid = null;
+	
+	if (isset($_SESSION['oid']) && $_SESSION['oid'])
+		$oid = $_SESSION['oid'];
+	$esia->getToken($_GET['code'], $oid);
 } catch( Exception $e) {
 	error_log($e->getMessage());
-	http_response_code(403) and exit('Îøèáêà: '.$e->getMessage());
+	http_response_code(403) and exit('ÐžÑˆÐ¸Ð±ÐºÐ°: '.$e->getMessage());
 }	
 ?>

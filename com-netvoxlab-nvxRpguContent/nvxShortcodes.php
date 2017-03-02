@@ -34,24 +34,24 @@ class nvxRpguContentShortcodes {
 	static function nvxRpguContentAdminFooterText($content) {
 		if (!self::$add_script) 
 			$content;
-		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.0.1.35.html');
 		return $content;
 	}
 
 	static function register_script() {
 		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
 		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
-		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js', [], false, true);
+		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js', [], false, true);
 	}
 
 	static function print_script() {
 		if (!self::$add_script) 
 			return;
-		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.html');
+		include_once($GLOBALS['nvxRpguContentUriPluginDir'].'Parts/View/commonHtml.0.1.35.html');
 		
 		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
 		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
-		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.js' );
+		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js' );
 	}
 
 	//Страница с поиском услуг
@@ -443,120 +443,18 @@ class nvxRpguContentShortcodes {
 			<div>
 				<div id="tab1" class="row">
 					<div id="nvxCustomerInfo">
-						<div class="formData likeInputs">
-							<dl>
-								<dt>ФИО</dt><dd data-bind="text: fio"></dd>
-							</dl>
-							<!-- ko if: birthDate -->
-							<dl>
-								<dt>Дата рождения</dt><dd data-bind="text: birthDate"></dd>
-								<dt>Пол</dt><dd data-bind="text: gender"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: birthPlace -->
-							<dl>
-								<dt>Место рождения</dt><dd data-bind="text: birthPlace"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: citizenship -->
-							<dl>
-								<dt>Гражданство</dt>
-								<dd data-bind="text: citizenship"></dd>
-							</dl>
-							<!-- /ko -->
-							<!--ko if: passport-->
-							<dl>
-								<dt>Документ</dt><dd>паспорт</dd>
-							</dl>
-							<dl>
-								<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
-								<dt>Дата выдачи</dt><dd data-bind="text: passport().issueDate"></dd>
-							</dl>
-							<dl>
-								<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
-							</dl>
-							<dl>
-								<dt>Код подразделения</dt><dd data-bind="text: passport().issuedByCode"></dd>
-							</dl>
-							<!--/ko-->
-							<dl>
-								<!-- ko if: inn -->
-								<dt>ИНН</dt><dd data-bind="text: inn"></dd>
-								<!-- /ko -->
-								<!-- ko if: snils -->
-								<dt>СНИЛС</dt><dd data-bind="text: snils"></dd>
-								<!-- /ko -->
-							</dl>
-							<!-- ko if: email -->
-							<dl>
-								<dt>Email</dt><dd data-bind="text: email"></dd>
-							</dl>
-							<!-- /ko -->
-							<dl>
-								<!-- ko if: homePhone -->
-								<dt>Домашний телефон</dt><dd data-bind="text: homePhone"></dd>
-								<!-- /ko -->
-								<!-- ko if: mobilePhone -->
-								<dt>Мобильный телефон</dt><dd data-bind="text: mobilePhone"></dd>
-								<!-- /ko -->
-							</dl>
-							<!-- ko if: registrationAddress -->
-							<dl>
-								<dt>Адрес регистрации</dt><dd data-bind="text: registrationAddress"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: facticalAddress -->
-							<dl>
-								<dt>Адрес проживания</dt><dd data-bind="text: facticalAddress"></dd>
-							</dl>
-							<!-- /ko -->
-								
-							<!-- ko if: drivingLicense -->
-							<dl>
-								<dt>Водительское удостоверение</dt>
-								<dd data-bind="text: drivingLicense"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: birthCertificate -->
-							<dl>
-								<dt>Свидетельство о рождении</dt>
-								<dd data-bind="text: birthCertificate"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: medicalPolicy -->
-							<dl>
-								<dt>Полис обязательного медицинского страхования</dt>
-								<dd data-bind="text: medicalPolicy"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: internationalPassport -->
-							<dl>
-								<dt>Заграничный паспорт</dt>
-								<dd data-bind="text: internationalPassport"></dd>
-							</dl>
-							<!-- /ko -->
-							<!-- ko if: militaryIdDoc -->
-							<dl>
-								<dt>Военный билет</dt>
-								<dd data-bind="text: militaryIdDoc"></dd>
-							</dl>
-							<!-- /ko -->
+						<!-- Информация о заявителе. -->
+						<!-- ko if: (isPhysical() && !isIndividual()) -->
+						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/customer.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+						<!-- /ko -->
+						<!-- ko if: (!isPhysical()) -->
+						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/juridical.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+						<!-- /ko -->
 
-							<!-- ko foreach: vehicles -->
-							<dl class="m-top-dbl">
-								<dt>Транспортное средство</dt><dd data-bind="text: name"></dd>
-							</dl>
-							<dl>
-								<dt>Номерной знак</dt><dd data-bind="text: numberPlate"></dd>
-								<dt>Серия СТС</dt><dd data-bind="text: regSer"></dd>
-								<dt>Номер СТС</dt><dd data-bind="text: regNum"></dd>
-							</dl>
-							<!-- /ko -->
-								
-						</div>
-						<div class="tab paddings" style="text-align: center">
-							Для изменения личных данных Вам необходимо внести изменения в личном кабинете на <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, затем заново пройти авторизацию.
-						</div>
+						<!-- ko if: (isPhysical() && isIndividual()) -->
+						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/individual.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+						<!-- /ko -->
+					</div>
 					</div>
 				</div>
 				<div id="tab2" class="row">
