@@ -669,14 +669,20 @@
 	</div>
 
 	<!-- ko foreach: level3objects -->
-	<div style="height: 25px; margin-top: 25px;">
+	<div style="height: 25px; margin-top: 45px;">
 		<div>
+			<!-- ko if: specialist -->
 			<div class="col-xs-3">
 				<p data-bind="text: specialist.name"></p>
 				<span style="opacity: 0.75" data-bind="text: specialist.post"></span>
 			</div>
 			<div class="col-xs-1" data-bind="text: specialist.receptionPlace" style="text-align: center"></div>
-
+			<!-- /ko -->
+			<!-- ko ifnot: specialist -->
+			<div class="col-xs-3"></div>
+			<div class="col-xs-1"></div>
+			<!-- /ko -->
+			
 			<!-- ko foreach: dateList -->
 			<div class="col-xs-1 receptionDate" data-bind="click: function(data, event) { $parent.goLevel4(data, $parent.specialist) }, css: { 'disabled': ticketCount == 0 }">
 				<!-- ko if: ticketCount > 0 -->
@@ -1022,6 +1028,10 @@
 		
 		<!-- ko if: canComplaint -->
 		<div style="margin: 20px 20px 0 0; float: right" class="btn b-create" data-bind="click: createComplaint">Подать жалобу</div>
+		<!-- /ko -->
+
+		<!-- ko if: canGoIgtn -->
+		<a style="margin: 20px 20px 0 0; float: right" class="btn" href="/igtn/">Получить документ на оплату</a>
 		<!-- /ko -->
 
 		<!-- Описание -->
@@ -2382,5 +2392,350 @@
 			<label class="small">* Для совершения оплаты вы будете перенаправлены на другую страницу. После оплаты вы сможете вернуться на страницу информации о совершённом платеже</label>
 		</div>
 	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/juridical.tmpl.html" type="text/html">
+	<div class="formData likeInputs">
+		<dl><dt>Полное наименование</dt><dd data-bind="text: companyFullName"></dd></dl>
+		<dl><dt>Короткое наименование</dt><dd data-bind="text: companyShortName"></dd></dl>
+		<dl><dt>ОГРН</dt><dd data-bind="text: ogrn"></dd></dl>
+		<dl><dt>ИНН</dt><dd data-bind="text: inn"></dd></dl>
+		<dl><dt>КПП</dt><dd data-bind="text: kpp"></dd></dl>
+
+		<!-- ko if: email -->
+		<dl>
+			<dt>Адрес электронной почты</dt><dd data-bind="text: email"></dd>
+		</dl>
+		<!-- /ko -->
+		<dl>
+			<!-- ko if: phone1 -->
+			<dt>Телефон</dt><dd data-bind="text: phone1"></dd>
+			<!-- /ko -->
+			<!-- ko if: phone2 -->
+			<dt>Телефон</dt><dd data-bind="text: phone2"></dd>
+			<!-- /ko -->
+			<!-- ko if: phone3 -->
+			<dt>Факс</dt><dd data-bind="text: phone3"></dd>
+			<!-- /ko -->
+		</dl>
+
+		<!-- ko if: registrationAddress -->
+		<dl>
+			<dt>Юридический адрес</dt><dd data-bind="text: registrationAddress"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: facticalAddress -->
+		<dl>
+			<dt>Почтовый адрес</dt><dd data-bind="text: facticalAddress"></dd>
+		</dl>
+		<!-- /ko -->
+	</div>
+	<div class="tab paddings" style="text-align: center">
+		Для изменения личных данных Вам необходимо внести изменения в личном кабинете на <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, затем заново пройти авторизацию.
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/individual.tmpl.html" type="text/html">
+	<div class="formData likeInputs">
+		<dl>
+			<dt>ФИО</dt><dd data-bind="text: fio"></dd>
+		</dl>
+		<!-- ko if: birthDate -->
+		<dl>
+			<dt>Дата рождения</dt><dd class="withIcon fa-calendar" data-bind="text: birthDate"></dd>
+			<dt>Пол</dt><dd data-bind="text: gender"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: birthPlace -->
+		<dl>
+			<dt>Место рождения</dt><dd data-bind="text: birthPlace"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: citizenship -->
+		<dl>
+			<dt>Гражданство</dt>
+			<dd data-bind="text: citizenship"></dd>
+		</dl>
+		<!-- /ko -->
+		<!--ko if: passport-->
+		<dl>
+			<dt>Документ</dt><dd>паспорт</dd>
+		</dl>
+		<dl>
+			<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
+			<dt>Дата выдачи</dt><dd class="withIcon fa-calendar" data-bind="text: passport().issueDate"></dd>
+		</dl>
+		<dl>
+			<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
+		</dl>
+		<dl>
+			<dt>Код подразделения</dt><dd data-bind="text: passport().issuedByCode"></dd>
+		</dl>
+		<!--/ko-->
+		<dl>
+			<!-- ko if: inn -->
+			<dt>ИНН</dt><dd data-bind="text: inn"></dd>
+			<!-- /ko -->
+			<!-- ko if: snils -->
+			<dt>СНИЛС</dt><dd data-bind="text: snils"></dd>
+			<!-- /ko -->
+		</dl>
+		<!-- ko if: email -->
+		<dl>
+			<dt>Email</dt><dd data-bind="text: email"></dd>
+		</dl>
+		<!-- /ko -->
+		<dl>
+			<!-- ko if: homePhone -->
+			<dt>Домашний телефон</dt><dd data-bind="text: homePhone"></dd>
+			<!-- /ko -->
+			<!-- ko if: mobilePhone -->
+			<dt>Мобильный телефон</dt><dd data-bind="text: mobilePhone"></dd>
+			<!-- /ko -->
+		</dl>
+		<!-- ko if: registrationAddress -->
+		<dl>
+			<dt>Адрес регистрации</dt><dd data-bind="text: registrationAddress"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: facticalAddress -->
+		<dl>
+			<dt>Адрес проживания</dt><dd data-bind="text: facticalAddress"></dd>
+		</dl>
+		<!-- /ko -->	
+		<!-- ko if: drivingLicense -->
+		<dl>
+			<dt>Водительское удостоверение</dt>
+			<dd data-bind="text: drivingLicense"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: birthCertificate -->
+		<dl>
+			<dt>Свидетельство о рождении</dt>
+			<dd data-bind="text: birthCertificate"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: medicalPolicy -->
+		<dl>
+			<dt>Полис обязательного медицинского страхования</dt>
+			<dd data-bind="text: medicalPolicy"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: internationalPassport -->
+		<dl>
+			<dt>Заграничный паспорт</dt>
+			<dd data-bind="text: internationalPassport"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: militaryIdDoc -->
+		<dl>
+			<dt>Военный билет</dt>
+			<dd data-bind="text: militaryIdDoc"></dd>
+		</dl>
+		<!-- /ko -->
+
+		<!-- ko foreach: vehicles -->
+		<dl class="m-top-dbl">
+			<dt>Транспортное средство</dt><dd data-bind="text: name"></dd>
+		</dl>
+		<dl>
+			<dt>Номерной знак</dt><dd data-bind="text: numberPlate"></dd>
+			<dt>Серия СТС</dt><dd data-bind="text: regSer"></dd>
+			<dt>Номер СТС</dt><dd data-bind="text: regNum"></dd>
+		</dl>
+		<!-- /ko -->
+	
+		<!-- ko if: ipOrg --><!-- ko with: ipOrg -->
+
+		<h3 class="m-top-dbl">Данные индивидуального предпринимателя</h3>
+
+		<!-- ko if: fullName -->
+		<dl>
+			<dt>Полное наименование</dt><dd data-bind="text: fullName"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: ogrn -->
+		<dl>
+			<dt>ОГРНИП</dt><dd data-bind="text: ogrn"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: inn -->
+		<dl>
+			<dt>ИНН</dt><dd data-bind="text: inn"></dd>
+		</dl>
+		<!-- /ko -->
+	
+		<h3 class="m-top-dbl">Контактная информация</h3>
+	
+		<!-- ko if: email -->
+		<dl>
+			<dt>Адрес электронной почты</dt><dd data-bind="text: email"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: phone -->
+		<dl>
+			<dt>Телефон</dt>
+			<dd data-bind="text: phone"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- ko if: fax -->
+		<dl>
+			<dt>Факс</dt>
+			<dd data-bind="text: fax"></dd>
+		</dl>
+		<!-- /ko -->
+		<!-- /ko --><!-- /ko -->
+	
+		<!-- ko if: postalAddress -->
+		<dl>
+			<dt>Почтовый адрес</dt>
+			<dd data-bind="text: postalAddress"></dd>
+		</dl>
+		<!-- /ko -->
+	
+		<!-- ko foreach: orgVehicles -->
+		<dl class="m-top-dbl">
+			<dt>Транспортное средство</dt>
+			<dd data-bind="text: name"></dd>
+		</dl>
+		<dl>
+			<dt>Номерной знак</dt>
+			<dd data-bind="text: numberPlate"></dd>
+			<dt>Серия СТС</dt>
+			<dd data-bind="text: regSer"></dd>
+			<dt>Номер СТС</dt>
+			<dd data-bind="text: regNum"></dd>
+		</dl>
+		<!-- /ko -->
+	</div>
+	<div class="tab paddings" style="text-align: center">
+		Для изменения личных данных Вам необходимо внести изменения в личном кабинете на <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, затем заново пройти авторизацию.
+	</div>
+</script>
+<script id="Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/customer.tmpl.html" type="text/html">
+
+<div class="formData likeInputs">
+	<dl>
+		<dt>ФИО</dt><dd data-bind="text: fio"></dd>
+	</dl>
+	<!-- ko if: birthDate -->
+	<dl>
+		<dt>Дата рождения</dt><dd class="withIcon fa-calendar" data-bind="text: birthDate"></dd>
+		<dt>Пол</dt><dd data-bind="text: gender"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: birthPlace -->
+	<dl>
+		<dt>Место рождения</dt><dd data-bind="text: birthPlace"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: citizenship -->
+	<dl>
+		<dt>Гражданство</dt>
+		<dd data-bind="text: citizenship"></dd>
+	</dl>
+	<!-- /ko -->
+	<!--ko if: passport-->
+	<dl>
+		<dt>Документ</dt><dd>паспорт</dd>
+	</dl>
+	<dl>
+		<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
+		<dt>Дата выдачи</dt><dd class="withIcon fa-calendar" data-bind="text: passport().issueDate"></dd>
+	</dl>
+	<dl>
+		<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
+	</dl>
+	<dl>
+		<dt>Код подразделения</dt><dd data-bind="text: passport().issuedByCode"></dd>
+	</dl>
+	<!--/ko-->
+	<dl>
+		<!-- ko if: inn -->
+		<dt>ИНН</dt><dd data-bind="text: inn"></dd>
+		<!-- /ko -->
+		<!-- ko if: snils -->
+		<dt>СНИЛС</dt><dd data-bind="text: snils"></dd>
+		<!-- /ko -->
+	</dl>
+	<!-- ko if: email -->
+	<dl>
+		<dt>Email</dt><dd data-bind="text: email"></dd>
+	</dl>
+	<!-- /ko -->
+	<dl>
+		<!-- ko if: homePhone -->
+		<dt>Домашний телефон</dt><dd data-bind="text: homePhone"></dd>
+		<!-- /ko -->
+		<!-- ko if: mobilePhone -->
+		<dt>Мобильный телефон</dt><dd data-bind="text: mobilePhone"></dd>
+		<!-- /ko -->
+	</dl>
+	<!-- ko if: registrationAddress -->
+	<dl>
+		<dt>Адрес регистрации</dt><dd data-bind="text: registrationAddress"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: facticalAddress -->
+	<dl>
+		<dt>Адрес проживания</dt><dd data-bind="text: facticalAddress"></dd>
+	</dl>
+	<!-- /ko -->
+	
+	<!-- ko if: drivingLicense -->
+	<dl>
+		<dt>Водительское удостоверение</dt>
+		<dd data-bind="text: drivingLicense"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: birthCertificate -->
+	<dl>
+		<dt>Свидетельство о рождении</dt>
+		<dd data-bind="text: birthCertificate"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: medicalPolicy -->
+	<dl>
+		<dt>Полис обязательного медицинского страхования</dt>
+		<dd data-bind="text: medicalPolicy"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: internationalPassport -->
+	<dl>
+		<dt>Заграничный паспорт</dt>
+		<dd data-bind="text: internationalPassport"></dd>
+	</dl>
+	<!-- /ko -->
+	<!-- ko if: militaryIdDoc -->
+	<dl>
+		<dt>Военный билет</dt>
+		<dd data-bind="text: militaryIdDoc"></dd>
+	</dl>
+	<!-- /ko -->
+
+	<!-- ko foreach: vehicles -->
+	<dl class="m-top-dbl">
+		<dt>Транспортное средство</dt><dd data-bind="text: name"></dd>
+	</dl>
+	<dl>
+		<dt>Номерной знак</dt><dd data-bind="text: numberPlate"></dd>
+		<dt>Серия СТС</dt><dd data-bind="text: regSer"></dd>
+		<dt>Номер СТС</dt><dd data-bind="text: regNum"></dd>
+	</dl>
+	<!-- /ko -->
+	
+</div>
+<div class="tab paddings" style="text-align: center">
+	Для изменения личных данных Вам необходимо внести изменения в личном кабинете на <a target="_blank" href="https://esia.gosuslugi.ru/">gosuslugi.ru</a>, затем заново пройти авторизацию.
+</div>
+
+<div data-bind="if: showElkBlock" style="padding: 20px 20px 0 80px">
+	<label>
+		<input data-bind="checked: allowGetElkData, click: changeAllowGetElkData" name="allowGetEpguData" type="checkbox">
+		<span>Разрешить получение от ЛК ЕПГУ истории заявлений, платежей и записей на прием пользователя, а также новых заявлений, платежей и записей на прием пользователя</span>
+	</label>
+	<label>
+		<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
+		<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
+	</label>
+</div>
 </script>
 <!-- /bundle -->

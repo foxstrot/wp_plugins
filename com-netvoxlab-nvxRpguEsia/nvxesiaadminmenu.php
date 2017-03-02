@@ -20,6 +20,7 @@
 	//Рендер страницы настроек
 	function nvx_esia_prefix_renderOptionsPage(){
 		?><div class="wrap">
+			<div style="float: right;">Версия плагина: <?php echo nvxRpguContentVer; ?></div>
 			<form method="post" enctype="multipart/form-data" action="options.php">
 				<?php 
 				settings_fields('nvxesiapluginoptions');//Это название нашего конфига

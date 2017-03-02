@@ -11,8 +11,9 @@
 	 
 	//Рендер страницы настроек
 	function renderOptionsPage(){
-		global $true_page;		
-		?><div class="wrap">			
+		global $true_page;
+		?><div class="wrap">
+			<div style="float: right;">Версия плагина: <?php echo nvxRpguContentVer; ?></div>
 			<h2 style="cursor: pointer;" onclick="{ document.getElementById('nvxrpgucontentoptionsshortcodes').hidden = !document.getElementById('nvxrpgucontentoptionsshortcodes').hidden; }"><u>Список шорткодов</u></h2>
 			<div id="nvxrpgucontentoptionsshortcodes" hidden="" style="position: absolute; background-color: white; padding: 10px; border: 2px solid black;">
 			[com.netvoxlab.nvxRpguContent.nvxSearchService] — Поиск услуг/просмотр услуг<br/>
