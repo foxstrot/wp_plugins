@@ -400,6 +400,9 @@ class EsiaClient
 			if ($user->display_name == 'esia'.$currentOid) {
 				//Пользователю запросим ФИО из ЕСИА
 				$jsonresult = $this->getEsiaUserInfoWithUserCreate($user_id);
+			} else {
+				//Обновляем токен пользователя при каждой авторизации
+				update_user_meta($user_id, 'esia_user_token', $this->token );
 			}
 			$this->authorizeWpUser($user_id, $user);
 		}
@@ -496,6 +499,8 @@ class EsiaClient
 		}
 		$wpUserId = wp_insert_user($userdata);
 		if (!is_wp_error($wpUserId)) {
+			//Обновляем токен пользователя после его создания
+			update_user_meta($wpUserId, 'esia_user_token', $this->token);
 			return $wpUserId;
 		} else {
 			error_log($wpUserId->get_error_message());
