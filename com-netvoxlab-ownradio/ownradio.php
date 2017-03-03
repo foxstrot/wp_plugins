@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.ownradio
 Description: Broadcast radio ownRadio. Listen to your favorite music only.
-Version: 2017.02.15
+Version: 2017.02.18
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.02.15');
+define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.02.18');
 define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 
 	class netvoxlab_ownradio_player_shortcode {

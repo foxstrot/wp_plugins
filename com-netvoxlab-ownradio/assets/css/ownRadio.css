@@ -116,19 +116,25 @@
 }
 
 .ownRadioPlayer-name {
-  font-size: .25em;
+  font-size: .18em;
   line-height: 1.15em;
   margin-bottom: .25em;
   color: #4eade2;
   text-align: center;
   font-weight: 500;
+  max-height: 2.4em;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .ownRadioPlayer-group {
-  font-size: .15em;
+  font-size: .14em;
   line-height: 1.2em;
   color: #4a4a4a;
   text-align: center;
+  max-height: 2.4em;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .ownRadioPlayer-nextButton {
