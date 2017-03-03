@@ -2,8 +2,8 @@
 if (!isset($_SERVER['HTTP_REFERER']))
 	header("location: /".$_SERVER['SERVER_PROTOCOL'].$_SERVER['SERVER_NAME']);
 else
-	//�������� ������
-	if(strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST'])===false) // �������� ������
+	//проверка домена
+	if(strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST'])===false) // проверка домена
 		header("location: /".$_SERVER['SERVER_PROTOCOL'].$_SERVER['SERVER_NAME']);
 
 require_once("EsiaClient.php");
@@ -24,11 +24,19 @@ try {
 		'certPath' => 'key.cer',
 		'tmpPath' => 'tmp',
 	);
+	
+	//очистка возможных прошлых данных при неудачной авторизации
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	unset($_SESSION['esialoginswitch']);
+	unset($_SESSION['oid']);
+	unset($_SESSION['esiaAuthResult']);
 
 	$esia = new \esia\EsiaClient($config);
-	$url = $esia->getUrl();
+	$url = $esia->getUrl(null);
 	header('Location: '.$url);
 } catch( Exception $e) {
-	http_response_code(403) and exit('������: '.$e->getMessage());
+	http_response_code(403) and exit('Ошибка: '.$e->getMessage());
 }	
 ?>

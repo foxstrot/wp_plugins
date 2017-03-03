@@ -3,14 +3,14 @@
 	Plugin Name: com.netvoxlab.nvxRpguEsia
 	Plugin URI: 
 	Description: nvx ESIA widget for you pages
-	Version: 0.1.34
+	Version: 0.1.35
 	Author: Ltd. NetVox Lab
 	Author URI: http://www.netvoxlab.ru/
 	*/
 	if (!defined('ABSPATH')) {
 		exit;
 	}
-	
+	define('nvxRpguEsiaVer', '0.1.35');
 	define('nvxRpguEsiaUri', plugin_dir_url( __FILE__ ));
 	$GLOBALS['nvxRpguEsiaUriPluginDir'] = plugin_dir_path( __FILE__ );
 	$GLOBALS['nvxRpguEsiaUriPluginUri'] = plugin_dir_url( __FILE__ );
