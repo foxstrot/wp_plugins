@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.status
 Description: Модуль фейкового просмотра статуса заявки. Shortcode [netvoxlab_check_status]
-Version: 2017.02.22
+Version: 2017.03.33
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.02.22');
+define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.03.03');
 $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 
 	class netvoxlab_check_status_shortcode {
