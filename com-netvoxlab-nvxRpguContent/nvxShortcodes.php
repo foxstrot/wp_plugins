@@ -42,6 +42,8 @@ class nvxRpguContentShortcodes {
 		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
 		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
 		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js', [], false, true);
+		wp_register_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css', [], false, 'all');
+		wp_register_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css', [], false, 'all');
 	}
 
 	static function print_script() {
@@ -52,12 +54,14 @@ class nvxRpguContentShortcodes {
 		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
 		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
 		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js' );
+		wp_enqueue_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css');
+		wp_enqueue_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css');
 	}
 
 	//Страница с поиском услуг
 	static function nvxSearchService_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content . '<div id="nvxSearchService">
+		return $content . '<div id="nvxSearchService" class="nvxRpguContentStyleBlock">
 						<div data-bind="if: serviceFilterModel">
 							<div data-bind="template: { name: \'Nvx.ReDoc.StateStructureServiceModule/Service/View/groupedPagerTemplate.tmpl.html\', data: serviceFilterModel }"></div>
 						</div>
@@ -67,7 +71,7 @@ class nvxRpguContentShortcodes {
 	//Авторизация
 	static function nvxAuth_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content .'<div id="nvxAuth">
+		return $content .'<div id="nvxAuth" class="nvxRpguContentStyleBlock">
 						<div data-bind="ifnot: userLoggedStatus">
 							<a data-bind="click: click" class="btn-link pull-right"><i class="icon-key_new"></i><span data-bind="text: loginButtonTitle"></span></a>
 						</div>
@@ -81,7 +85,7 @@ class nvxRpguContentShortcodes {
 	//запись на приём
 	static function nvxReception_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content . '<div id="nvxReception">	
+		return $content . '<div id="nvxReception" class="nvxRpguContentStyleBlock">	
 						<div class="paddings reception-redoc-form">
 							<h2 class="declinePlate m-top" data-bind="visible: userInfo() == null">Для записи на приём вы должны быть авторизованы</h2>							
 							<div class="reception-selected-pave" data-bind="click: goLevel1, if: place">
@@ -109,7 +113,7 @@ class nvxRpguContentShortcodes {
 	static function nvxServiceInfo_shortcode ($atts, $content = null) {
 		self::$add_script = true;
 		return $content.
-			'<div id="nvxServiceInfo">
+			'<div id="nvxServiceInfo" class="nvxRpguContentStyleBlock">
 				<!--ko if: pageTitle-->
 				<h1 data-bind="text: pageTitle, css: pageIcon()"></h1>
 				<!--/ko-->
@@ -121,7 +125,7 @@ class nvxRpguContentShortcodes {
 	static function nvxDepartmentInfo_shortcode ($atts, $content = null) {
 		self::$add_script = true;
 		return $content.
-			'<div id="nvxDepartmentInfo">
+			'<div id="nvxDepartmentInfo" class="nvxRpguContentStyleBlock">
 				<!--ko if: pageTitle-->
 				<h1 data-bind="text: pageTitle, css: pageIcon()"></h1>
 				<!--/ko-->
@@ -133,7 +137,7 @@ class nvxRpguContentShortcodes {
 	static function esbProblemRequests_shortcode ($atts, $content = null) {
 		self::$add_script = true;
 		return $content.
-			'<div id="esbProblemRequests">
+			'<div id="esbProblemRequests" class="nvxRpguContentStyleBlock">
 				<div class="textRow" data-bind="visible: showAllCount">
 					<p>Всего необработанных запросов<span data-bind="text: allCount"></span></p>
 				</div>
@@ -173,7 +177,7 @@ class nvxRpguContentShortcodes {
 	//Категории услуг
 	static function nvxCategory_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxCategory">
+		return $content.'<div id="nvxCategory" class="nvxRpguContentStyleBlock">
 				<ul class="itemsList" data-bind="foreach: cats">
 					<li>
 						<a data-bind="text: title, attr: { \'href\': link }"></a>
@@ -185,7 +189,7 @@ class nvxRpguContentShortcodes {
 	//Услуги для выбранной категории
 	static function nvxCategoryServiceList_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxCategoryServiceList">
+		return $content.'<div id="nvxCategoryServiceList" class="nvxRpguContentStyleBlock">
 				<h2 data-bind="text: title"></h2>				
 				<a data-bind="click: goCatalog" class="btn primary larr"><span></span>Вернуться в каталог</a>
 				<div class="brdr"></div>				
@@ -207,7 +211,7 @@ class nvxRpguContentShortcodes {
 	//Перечень ведомств
 	static function nvxDepartments_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxDepartments">
+		return $content.'<div id="nvxDepartments" class="nvxRpguContentStyleBlock">
 				<div class="departments">
 					<div data-bind="with: territorialDepartments">
 						<!--ko if: subDepartments.length > 0-->
@@ -249,7 +253,7 @@ class nvxRpguContentShortcodes {
 	//Жизненные ситуации
 	static function nvxLifeSituations_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxLifeSituations">
+		return $content.'<div id="nvxLifeSituations" class="nvxRpguContentStyleBlock">
 				<div>
 					<div class="block categoriesServices" data-bind="template: { name: \'nvx/listBlockView.tmpl.html\', data: serviceCategoriesBlock }"></div>
 				</div>
@@ -259,7 +263,7 @@ class nvxRpguContentShortcodes {
 	//Информация по МФЦ
 	static function nvxMfcInfo_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxMfcInfo">
+		return $content.'<div id="nvxMfcInfo" class="nvxRpguContentStyleBlock">
 				<!--ko if: pageTitle-->
 				<h1 data-bind="text: pageTitle, css: pageIcon()"></h1>
 				<!--/ko-->
@@ -270,7 +274,7 @@ class nvxRpguContentShortcodes {
 	//Страница с функционалом оплаты
 	static function nvxPaymentsCommon_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxPaymentsCommon">
+		return $content.'<div id="nvxPaymentsCommon" class="nvxRpguContentStyleBlock">
 				<nav class="nav-tabset tabset">
 					<ul>
 						<!-- ko if: servicePayViewModelVisible -->
@@ -296,7 +300,7 @@ class nvxRpguContentShortcodes {
 	//Популярные услуги
 	static function nvxPopularService_shortcode ($atts, $content = null) {
 		self::$add_script = true;		
-		return $content.'<div id="nvxPopularService">
+		return $content.'<div id="nvxPopularService" class="nvxRpguContentStyleBlock">
 				<div>
 					<div class="block" data-bind="template: { name: \'nvx/listBlockView.tmpl.html\', data: popularServicesBlock }"></div>
 				</div>
@@ -306,7 +310,7 @@ class nvxRpguContentShortcodes {
 	//Форма прикладывания вложений заявления
 	static function nvxRequestAttachment_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxRequestAttachment">
+		return $content.'<div id="nvxRequestAttachment" class="nvxRpguContentStyleBlock">
 				<h1 data-bind="text: pageTitle"></h1>
 				<!-- ko if: backText -->
 				<a class="btn primary button b-back" data-bind="attr: {href: backUrl }, text: backText" rel="back"></a>
@@ -335,7 +339,7 @@ class nvxRpguContentShortcodes {
 	//Динамическая форма заявления
 	static function nvxRequestForm_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxRequestForm">
+		return $content.'<div id="nvxRequestForm" class="nvxRpguContentStyleBlock">
 				<h1 data-bind="text: pageTitle"></h1>
 				<!-- ko if: backText -->
 				<a class="btn primary button b-back" data-bind="attr: {href: backUrl }, text: backText" rel="back"></a>
@@ -364,7 +368,7 @@ class nvxRpguContentShortcodes {
 	//Информация о заявлении
 	static function nvxRequestInfo_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxRequestInfo">
+		return $content.'<div id="nvxRequestInfo" class="nvxRpguContentStyleBlock">
 				<h1>Информация о заявлении</h1>
 				<div class="paddings">
 				<!-- ko template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/request/requestGeneralInfo.tmpl.html\' } --><!-- /ko -->
@@ -404,7 +408,7 @@ class nvxRpguContentShortcodes {
 	//Список категорий с услугами
 	static function nvxServiceList_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxServiceList">
+		return $content.'<div id="nvxServiceList" class="nvxRpguContentStyleBlock">
 				<!-- ko foreach: cats -->
 				<article class="post-tab col-4">
 					<header data-bind="click: goCategory">
@@ -428,7 +432,7 @@ class nvxRpguContentShortcodes {
 	//Личный кабинет
 	static function nvxLkFullPage_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div class="container tabs-area">	
+		return $content.'<div class="container tabs-area" class="nvxRpguContentStyleBlock">	
 			<div id="nvxStartCreateFile"></div>
 			<nav class="nav-tabset tabset">
 				<ul> 
@@ -672,7 +676,7 @@ class nvxRpguContentShortcodes {
 	//Обращение
 	static function nvxTreatment_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxTreatment">
+		return $content.'<div id="nvxTreatment" class="nvxRpguContentStyleBlock">
 				<div data-bind="template: { name: templateId, data: templateViewModel, if: templateViewModel }"/>
 			</div>';		
     }
@@ -680,7 +684,7 @@ class nvxRpguContentShortcodes {
 	//Каталог тройной
 	static function nvxTripleCatalog_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div id="nvxTripleCatalog">
+		return $content.'<div id="nvxTripleCatalog" class="nvxRpguContentStyleBlock">
 				<!--div id="nvxSearchPanel"-->
 					<form class="search-area static" data-bind="submit: goSearch ">
 						<div class="container">
