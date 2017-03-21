@@ -605,7 +605,7 @@ class nvxRpguContentShortcodes {
 						<!-- /ko -->
 
 						<!-- ko if: errors-->
-						<h2 class="declinePlate withIcon fa-exclamation-triangle m-top-hlf" data-bind="text: errors"></h2>
+						<h2 class="declinePlate withIcon m-top-hlf" data-bind="text: errors"></h2>
 						<!-- /ko -->
 
 						<div data-bind="template: { name: \'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html\', data: taxModalDialog }"></div>
@@ -632,7 +632,7 @@ class nvxRpguContentShortcodes {
 						</div>
 						<!--/ko-->
 						<!--ko if: complaintList().length == 0-->
-						<h2 class="declinePlate withIcon fa-exclamation-triangle m-top-hlf">Жалоб нет</h2>
+						<h2 class="declinePlate withIcon m-top-hlf">Жалоб нет</h2>
 						<!--/ko-->
 					</div>
 				</div>
