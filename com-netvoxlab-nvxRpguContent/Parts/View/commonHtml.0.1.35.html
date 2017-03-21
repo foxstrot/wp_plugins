@@ -941,7 +941,7 @@
 			<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span>Только электронные услуги</span></label>
 		</span>
 		<!--/ko-->
-		<div class="filter-itm input-big fa-search" data-bind="visible: canSearch">
+		<div class="filter-itm input-big" data-bind="visible: canSearch">
 			<input class="withIcon" type="text" name="title" data-bind="value: searchText, valueUpdate: 'afterkeydown', event: { keypress: filterKeypress }" placeholder="Поиск по услугам">
 		</div>
 	</div>
@@ -971,7 +971,7 @@
 				</div>
 			</div>
 			<div data-bind="if: allItemsCount() == 0">
-				<h2 class="declinePlate withIcon fa-exclamation-triangle m-top">Не найдены</h2>
+				<h2 class="declinePlate withIcon m-top">Не найдены</h2>
 			</div>
 		</div>
 	</div>
@@ -1099,7 +1099,7 @@
 						</div>
 					</div>
 					<!-- ko if: offDocId && offDocId !== '' -->
-					<div><a class="fa-download inline" data-bind="attr: { href: '/portal/serviceDocument/' + offDocId }, text: 'Документ'"></a></div>
+					<div><a class="inline" data-bind="attr: { href: '/portal/serviceDocument/' + offDocId }, text: 'Документ'"></a></div>
 					<!-- /ko -->
 				</li>
 			</ul>
@@ -1156,10 +1156,10 @@
 		<!-- /ko -->
 
 		<!-- ko if: templateId && templateId !== '' -->
-		<a class="fa-download" data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + templateId }, text: 'Шаблон'"></a>
+		<a data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + templateId }, text: 'Шаблон'"></a>
 		<!-- /ko -->
 		<!-- ko if: sampleId && sampleId !== '' -->
-		<a class="fa-download" data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + sampleId }, text: 'Пример заполнения'"></a>
+		<a data-bind="attr: { href: (window.nvxCommonPath != null && window.nvxCommonPath.authPortalPath != null ? window.nvxCommonPath.authPortalPath : '') + '/portal/serviceDocument/' + sampleId }, text: 'Пример заполнения'"></a>
 		<!-- /ko -->
 	</div>
 </script>
@@ -1427,7 +1427,7 @@
 			element: element" style="width: 95%; margin-left: 5%; padding-bottom: 5px; padding-top: 5px">
 				<h4 data-bind="scriptdel: name"></h4>
 				<span data-bind="text: address"></span>	   
-				<a class="btn primary withIcon fa- icon-arrow-right-white moreButton" data-bind="attr: { href: link }, click: function () { document.location.href = link }">Подробнее</a>
+				<a class="btn primary withIcon icon-arrow-right-white moreButton" data-bind="attr: { href: link }, click: function () { document.location.href = link }">Подробнее</a>
 			</div>
 			<!-- /ko -->
 			<!-- /ko -->
@@ -2050,7 +2050,7 @@
 </script>
 <script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/orderPayView.tmpl.html" type="text/html">
 
-	<h1 class="fa-info">Просмотр информации об оплате</h1>
+	<h1>Просмотр информации об оплате</h1>
 	<div class="paddings">
 		<h3 data-bind="text: textData, visible: textData() != null"></h3>
 	
@@ -2260,7 +2260,7 @@
 </script>
 
 <script id="Nvx.ReDoc.Rpgu.HousingUtilities/View/servicePayUntView.tmpl.html" type="text/html">
-	<div class="filter-itm fa-search m-lft-no m-btm-dbl" style="display: block; height: 40px;">
+	<div class="filter-itm m-lft-no m-btm-dbl" style="display: block; height: 40px;">
 		<input type="text" data-bind="value: searchString, valueUpdate: 'afterkeydown', enterkey: search" placeholder="Для поиска введите название услуги, наименование поставщика, ИНН или КПП"/>
 	</div>
 
@@ -2374,7 +2374,7 @@
 				<tr>
 					<td>&nbsp;</td>
 					<td>
-						<div class="btn primary m-lft b-brand" data-bind="event: { click: comissionRequest }"><div class="fa-rouble">&nbsp;<span class="small">Уточнить комиссию</span></div></div>
+						<div class="btn primary m-lft b-brand" data-bind="event: { click: comissionRequest }"><div>&nbsp;<span class="small">Уточнить комиссию</span></div></div>
 					</td>
 					<td></td>
 				</tr>
@@ -2440,7 +2440,7 @@
 		</dl>
 		<!-- ko if: birthDate -->
 		<dl>
-			<dt>Дата рождения</dt><dd class="withIcon fa-calendar" data-bind="text: birthDate"></dd>
+			<dt>Дата рождения</dt><dd class="withIcon" data-bind="text: birthDate"></dd>
 			<dt>Пол</dt><dd data-bind="text: gender"></dd>
 		</dl>
 		<!-- /ko -->
@@ -2461,7 +2461,7 @@
 		</dl>
 		<dl>
 			<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
-			<dt>Дата выдачи</dt><dd class="withIcon fa-calendar" data-bind="text: passport().issueDate"></dd>
+			<dt>Дата выдачи</dt><dd class="withIcon" data-bind="text: passport().issueDate"></dd>
 		</dl>
 		<dl>
 			<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
@@ -2618,7 +2618,7 @@
 	</dl>
 	<!-- ko if: birthDate -->
 	<dl>
-		<dt>Дата рождения</dt><dd class="withIcon fa-calendar" data-bind="text: birthDate"></dd>
+		<dt>Дата рождения</dt><dd class="withIcon" data-bind="text: birthDate"></dd>
 		<dt>Пол</dt><dd data-bind="text: gender"></dd>
 	</dl>
 	<!-- /ko -->
@@ -2639,7 +2639,7 @@
 	</dl>
 	<dl>
 		<dt>Серия и номер</dt><dd data-bind="text: passport().seriesAndNumber"></dd>
-		<dt>Дата выдачи</dt><dd class="withIcon fa-calendar" data-bind="text: passport().issueDate"></dd>
+		<dt>Дата выдачи</dt><dd class="withIcon" data-bind="text: passport().issueDate"></dd>
 	</dl>
 	<dl>
 		<dt>Кем выдан</dt><dd data-bind="text: passport().issuedBy"></dd>
