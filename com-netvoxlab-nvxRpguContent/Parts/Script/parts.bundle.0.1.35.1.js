@@ -19136,10 +19136,10 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception4PositionViewModel',
 								self.level4objects.push(response.result.positions[i]);
 							}
 						}
+						response.result.date = response.result.date.split('T')[0];
 						self.currentDay(new Date(response.result.date));
 					}
-				})
-				.fail(function(jqXHR, textStatus, errorThrown) {
+				}).fail(function(jqXHR, textStatus, errorThrown) {
 					var error = errorThrown + '</br>' + jqXHR.responseText;
 					modal.errorModalWindow(error);
 				}).always(function() {
