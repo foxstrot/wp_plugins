@@ -807,18 +807,10 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction',
 				var guid = Guid.raw();
 				//Добавляем заявку в кучу.
 				self.stack.push(guid);
+				var throbberInnerContent = '<div id="trobber-ie-rotate-hook-element" class="icon-throbber-black-ie-hook"></div>';
 				if (document.getElementById(self.trobberId) == null) {
-					//Рисуем троббер, если его еще нет.
-					/*var target = $('body');
-						if (selector != null) {
-							var tmpEl = $(selector);
-							if (tmpEl.length == 1) {
-								target = tmpEl;
-							}
-						} else if ($('#main') != null && $('#main').length == 1) {
-							target = $('#main');
-						}*/
-					$('body').prepend('<div id="{0}" class="throbber throbber-svg throbber-abs"><!--?xml version="1.0" encoding="utf-8"?--><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="92px" height="100px" viewBox="0 0 92 100" enable-background="new 0 0 92 100" xml:space="preserve"><path fill="#00aadd" class="throbber-path" d="M81.765,82.649L56.607,97.19c-6.479,3.744-14.462,3.746-20.942,0.01L10.493,82.682 C4.012,78.944,0.017,72.032,0.014,64.549L0,35.493c-0.003-7.482,3.985-14.398,10.463-18.141L35.621,2.811 c6.478-3.744,14.46-3.748,20.943-0.011l25.171,14.519c6.481,3.738,10.476,10.648,10.479,18.131l0.014,29.059 C92.231,71.989,88.244,78.905,81.765,82.649"></path></svg></div>'.format(self.trobberId));
+					$('body').append('<div id="{0}" class="nvxrpguthrobber" style="opacity:0">{1}</div>'.format(self.trobberId, throbberInnerContent));
+					$('#{0}'.format(self.trobberId)).animate({ 'opacity': .4 }, 500);
 				}
 				return guid;
 			};
@@ -19144,10 +19136,10 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception4PositionViewModel',
 								self.level4objects.push(response.result.positions[i]);
 							}
 						}
+						response.result.date = response.result.date.split('T')[0];
 						self.currentDay(new Date(response.result.date));
 					}
-				})
-				.fail(function(jqXHR, textStatus, errorThrown) {
+				}).fail(function(jqXHR, textStatus, errorThrown) {
 					var error = errorThrown + '</br>' + jqXHR.responseText;
 					modal.errorModalWindow(error);
 				}).always(function() {

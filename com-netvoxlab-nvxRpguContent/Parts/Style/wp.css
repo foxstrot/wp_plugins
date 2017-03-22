@@ -1,0 +1,795 @@
+.nvxRpguContentStyleBlock {
+  /* <<< Услуги */
+  /* >>> МФЦ */
+  /* <<< МФЦ */
+  /* >>> МФЦ, ведомства, личный кабинет */
+  /* <<< МФЦ, ведомства, личный кабинет */
+  /* >>> Ведомства */
+  /* <<< Ведомства */
+  /* <<< Формы */
+  /* Платежи в личном кабинете */
+  /* Запись на приём*/
+  /* форма фильтов (справа) */
+  /* >>> Услуги */
+  /* >>> Раскрывающиеся заголовки */
+}
+.nvxRpguContentStyleBlock .input-big {
+  width: 400px;
+}
+.nvxRpguContentStyleBlock .cols-2 {
+  display: flex !important;
+  flex-direction: row;
+}
+.nvxRpguContentStyleBlock .cols-2 > * {
+  width: 50%;
+}
+.nvxRpguContentStyleBlock .cols-2 > *:first-child {
+  padding-right: 20px;
+}
+.nvxRpguContentStyleBlock .cols-2 > *.group {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle > * {
+  width: 46%;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle > *:first-child {
+  padding-right: 0;
+  margin-right: 8%;
+}
+.nvxRpguContentStyleBlock .cols-2 .middle-cont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  width: 30px;
+}
+.nvxRpguContentStyleBlock .niceList {
+  line-height: 150%;
+}
+.nvxRpguContentStyleBlock .niceList li {
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .niceList li h3 {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .niceList li .fa-download {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .serviceVariant {
+  margin: 0 0 10px 20px;
+}
+.nvxRpguContentStyleBlock .serviceVariant b {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .serviceVariant select,
+.nvxRpguContentStyleBlock .serviceVariant .select2 {
+  width: 80%;
+}
+.nvxRpguContentStyleBlock .stateStructure ul,
+.nvxRpguContentStyleBlock ul.stateStructure {
+  padding-left: 20px;
+  list-style-type: none !important;
+}
+.nvxRpguContentStyleBlock .stateStructure ul li,
+.nvxRpguContentStyleBlock ul.stateStructure li {
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > * {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 15px;
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.hasMap {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > * dt {
+  min-width: 150px;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.formData .a {
+  display: inline-block;
+  margin-left: 0;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.formData .button {
+  opacity: 0.8;
+}
+.nvxRpguContentStyleBlock .mfc-map a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock #MfcYMaps,
+.nvxRpguContentStyleBlock #MfcListYMaps {
+  position: relative;
+  height: 400px;
+}
+.nvxRpguContentStyleBlock #MfcYMaps .throbber,
+.nvxRpguContentStyleBlock #MfcListYMaps .throbber {
+  position: absolute;
+  opacity: .4;
+}
+.nvxRpguContentStyleBlock #MfcYMaps .throbber > *,
+.nvxRpguContentStyleBlock #MfcListYMaps .throbber > * {
+  top: 40%;
+}
+.nvxRpguContentStyleBlock dl {
+  margin: 0 0 10px 0;
+}
+.nvxRpguContentStyleBlock .formData > h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .formData h4 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formData a:hover,
+.nvxRpguContentStyleBlock .formData .a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock .formData.withInputs dl dt {
+  padding-top: 12px;
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd.withIcon:before {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .formData .moreButton {
+  float: right;
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .formData.current .moreButton {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formData.current .moreButton:before {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp > h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .formDataTosp h4 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formDataTosp a:hover,
+.nvxRpguContentStyleBlock .formDataTosp .a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock .formDataTosp.withInputs dl dt {
+  padding-top: 12px;
+}
+.nvxRpguContentStyleBlock .formDataTosp.likeInputs dl dd.withIcon:before {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .formDataTosp .moreButton {
+  float: right;
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .formDataTosp.current .moreButton {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp.current .moreButton:before {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp h4 {
+  margin-left: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.nvxRpguContentStyleBlock .departments {
+  margin: 0 20px;
+}
+.nvxRpguContentStyleBlock .departments > * > .itm {
+  min-height: 55px;
+  padding: 7px 10px;
+}
+.nvxRpguContentStyleBlock .departments .spoilerContent.showSubs {
+  position: relative;
+}
+.nvxRpguContentStyleBlock .departments .spoilerContent.showSubs:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  float: left;
+  width: 13px;
+  height: 100%;
+  margin-left: -13px;
+  border: 0 solid ;
+  border-width: 0 0 0 4px;
+}
+.nvxRpguContentStyleBlock .departments li:last-child > * > .spoilerContent:before {
+  content: none;
+}
+.nvxRpguContentStyleBlock .departments .itm {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+.nvxRpguContentStyleBlock .departments .itm.hasSubs {
+  padding-right: 40px;
+}
+.nvxRpguContentStyleBlock .departments .itm a {
+  display: inline-block;
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock .departments .itm .spoiler {
+  width: 40px;
+  overflow: hidden;
+  min-width: 30px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 20px auto;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .departments ul {
+  list-style-type: none;
+}
+.nvxRpguContentStyleBlock .departments ul li {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm {
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .departments ul .itm > a {
+  width: 100%;
+  padding: 7px 10px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm:before {
+  content: "";
+  position: relative;
+  top: -10px;
+  left: 10px;
+  float: left;
+  width: 13px;
+  height: 25px;
+  margin-left: -23px;
+  border-width: 0 0 4px 4px;
+  border-radius: 0 0 0 3px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  float: left;
+  width: 0;
+  height: 100%;
+  margin-left: -13px;
+  border-width: 0 0 0 4px;
+}
+.nvxRpguContentStyleBlock .departments ul li:last-child > * > .itm:after {
+  content: none;
+}
+.nvxRpguContentStyleBlock .departments > * > * > .spoiler {
+  width: 100% !important;
+  border-right: 10px solid transparent;
+  background-position: 100% 50% !important;
+}
+.nvxRpguContentStyleBlock .departments > * > * > * .spoiler {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+.nvxRpguContentStyleBlock .itemsList {
+  list-style-type: disc;
+  padding-left: 15px;
+}
+.nvxRpguContentStyleBlock .itemsList > * {
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .itemsList > *:last-child {
+  margin-bottom: 0;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk {
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > * {
+  padding: 7px 3px !important;
+  border: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(2),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(2),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(6) {
+  width: 100px;
+  min-width: 100px;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1) {
+  max-width: 100px !important;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1) span {
+  position: relative;
+  top: -1px;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(4) {
+  width: 300px;
+  min-width: 300px;
+}
+.nvxRpguContentStyleBlock .tdalignright {
+  text-align: right;
+  padding-right: 10px;
+}
+.nvxRpguContentStyleBlock .opa {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .withBBack {
+  margin-left: 60px;
+  margin-right: 20px;
+}
+.nvxRpguContentStyleBlock .withBBack .b-back {
+  margin-left: -40px !important;
+}
+.nvxRpguContentStyleBlock .withBBack .pave-table-header ~ * {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .withBBack .b-modal:first-of-type {
+  margin-right: 0 !important;
+}
+.nvxRpguContentStyleBlock .bigText .ServiceText {
+  background-color: transparent;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup {
+  width: 100%;
+  cursor: pointer;
+  padding: 5px 10px 10px;
+  margin-top: 10px;
+  border: solid 2px #999;
+  /*border-radius: 4px;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup * {
+  /*color: #fff !important;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup:hover {
+  border: 2px solid ;
+  padding: 5px 10px 10px;
+  /*padding: 3px 8px 8px;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace {
+  margin-top: 2px;
+  margin-left: 20px;
+  padding: 7px 10px 2px;
+  cursor: pointer;
+  border: solid 2px #999;
+  /*border-radius: 4px;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace * {
+  /*color: #fff;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace:hover {
+  border: 2px solid ;
+  padding: 7px 10px 2px;
+  /*padding: 5px 8px 0;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace .info {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate {
+  padding: 5px;
+  margin: 1px;
+  cursor: pointer;
+  /*border-radius: 4px;*/
+  border: solid 2px #999;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate * {
+  /*color: #fff;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate:hover {
+  border: 2px #333 solid;
+  padding: 5px;
+  /*padding: 3px;*/
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave:hover span {
+  display: none;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave:hover:before {
+  content: "Нажмите, чтобы изменить выбор";
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket {
+  border: 2px solid #333;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket .opa {
+  opacity: 0.75;
+  display: block;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container * {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container * .opa {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  border: 2px solid #c59368;
+  padding: 7px;
+  text-align: left;
+  min-height: 50px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-1 {
+  flex: 0 1 180px;
+  min-width: 180px;
+  margin-right: 5px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-2 {
+  margin-right: 5px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-3 {
+  flex: 0 1 170px;
+  min-width: 170px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-4 {
+  flex: 0 1 70px;
+  min-width: 70px;
+}
+.nvxRpguContentStyleBlock .filterForm {
+  display: inline-block;
+}
+.nvxRpguContentStyleBlock .filterForm:not(.inline) {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-itm {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 40px;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-itm .filter-label {
+  float: left;
+  margin-top: 4px;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .filterForm.itms-bounded .filter-itm {
+  width: 300px;
+}
+.nvxRpguContentStyleBlock .filterForm.itms-bounded .filter-itm .filter-label {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filterForm > .filter-label {
+  margin: 0 10px 5px 0;
+}
+.nvxRpguContentStyleBlock .filterForm * + .filter-label {
+  margin-left: 35px;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-control {
+  min-width: 100%;
+  height: 30px !important;
+  margin: 0;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-control input {
+  border-color: #999 !important;
+}
+.nvxRpguContentStyleBlock .filterForm .hasDatepicker {
+  min-width: 130px;
+}
+.nvxRpguContentStyleBlock .filter-itm {
+  margin-left: 20px;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filter-itm > * {
+  float: left;
+  display: block;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label {
+  height: 40px;
+  font-weight: 600;
+  line-height: 32px;
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label span {
+  line-height: 32px;
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label input {
+  margin-top: 7px;
+}
+.nvxRpguContentStyleBlock .department-sevice-list {
+  list-style-type: none !important;
+}
+.nvxRpguContentStyleBlock .department-service-item {
+  padding: 0;
+  margin-bottom: 25px;
+  font-size: 15px;
+  line-height: 20px;
+}
+.nvxRpguContentStyleBlock .department-service-item .icon-arrow-right {
+  font-size: .75em;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer {
+  padding: 8px 10px 10px 20px !important;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer * {
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon {
+  float: right;
+  margin-top: 2px;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon:not(.rotate90-counter-clockwise) {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon:before {
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer + * {
+  padding: 0 20px;
+}
+.nvxRpguContentStyleBlock .pave-table-header .small {
+  font-size: 100%;
+}
+.nvxRpguContentStyleBlock .pave-table-header .small * {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .pave-content {
+  width: auto;
+  /*color: @color-pave-table-content-text;*/
+}
+.nvxRpguContentStyleBlock .pave-content h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .pave-content h3 + ul {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .pave-content h4 {
+  width: auto;
+}
+.nvxRpguContentStyleBlock .pave-content > div:not(:first-of-type) {
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .pave-content ul {
+  list-style-type: disc;
+}
+.nvxRpguContentStyleBlock .pave-table-header ~ *:last-of-type {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.icon-throbber-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width=%22200%22%20height=%22200%22%20viewBox=%22100%20100%20300%20300%22%0A%20%20%20%20xmlns=%22http://www.w3.org/2000/svg%22%0A%20%20%20%20xmlns:xlink=%22http://www.w3.org/1999/xlink%22%20%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim4%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%221.2s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim4.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim3%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.9s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim3.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim2%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.6s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim2.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.3s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim1.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim0%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.0s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim0.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%3C/svg%3E');
+}
+.nvxrpguthrobber {
+  position: fixed;
+}
+.nvxrpguthrobber > * {
+  top: 40vh;
+}
+@keyframes trobber-ie-rotate-hook {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#trobber-ie-rotate-hook-element {
+  animation: trobber-ie-rotate-hook 2s linear infinite;
+}
+.nvxrpguthrobber {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100500;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+}
+.nvxrpguthrobber > * {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px;
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+  background-position: 0 0;
+}
+.nvxrpguthrobber .m-top {
+  margin-top: 10px !important;
+}
+.nvxrpguthrobber .m-btm {
+  margin-bottom: 10px !important;
+}
+.nvxrpguthrobber .m-lft {
+  margin-left: 10px !important;
+}
+.nvxrpguthrobber .m-rgh {
+  margin-right: 10px !important;
+}
+.nvxrpguthrobber .m-top-hlf {
+  margin-top: 5px !important;
+}
+.nvxrpguthrobber .m-btm-hlf {
+  margin-bottom: 5px !important;
+}
+.nvxrpguthrobber .m-top-dbl {
+  margin-top: 20px !important;
+}
+.nvxrpguthrobber .m-btm-dbl {
+  margin-bottom: 20px !important;
+}
+.nvxrpguthrobber .m-top-no {
+  margin-top: 0 !important;
+}
+.nvxrpguthrobber .m-btm-no {
+  margin-bottom: 0 !important;
+}
+.nvxrpguthrobber .m-lft-no {
+  margin-left: 0 !important;
+}
+.nvxrpguthrobber .m-rgt-no {
+  margin-right: 0 !important;
+}
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.modalWindowOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalWindowOverlay:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.modalWindow {
+  position: relative;
+  display: inline-block;
+  min-width: 750px;
+  max-width: 900px;
+  padding: 20px;
+  vertical-align: middle;
+  background-color: #fff;
+  text-align: left;
+  /*default - background-light*/
+  /*маленькое окно*/
+}
+.modalWindow:not(.background-dark) *:not(a):not(.button),
+.modalWindow:not(.background-dark) *:hover:not(a) {
+  color: rgba(0, 0, 0, 0.8);
+}
+.modalWindow .background-dark,
+.modalWindow .background-light .background-dark {
+  color: #fff !important;
+}
+.modalWindow .background-dark:hover,
+.modalWindow .background-light .background-dark:hover {
+  color: #fff !important;
+}
+.modalWindow .background-dark *,
+.modalWindow .background-light .background-dark *,
+.modalWindow .background-dark *:hover,
+.modalWindow .background-light .background-dark *:hover {
+  color: #fff !important;
+}
+.modalWindow.min {
+  min-width: 500px;
+  max-width: 500px;
+}
+.modalWindow.default {
+  width: 750px;
+}
+.modalWindow.fixHeight .modalWindowContent {
+  height: 50vh;
+}
+.modalWindow h2 {
+  margin: -10px 0 16px -2px;
+}
+.modalWindow > h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.modalWindow h2 + .hdr {
+  margin-top: 0;
+}
+.modalWindow .modalWindowContent {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 48px;
+  max-height: 70vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.modalWindow .modalWindowContent > .hdr:first-child,
+.modalWindow .modalWindowContent > label:first-child,
+.modalWindow .modalWindowContent > h3:first-child {
+  margin-top: 0;
+}
+.modalWindow .modalWindowContent.shadowTop:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.modalWindow .modalWindowContent.tab {
+  min-height: 70vh;
+}
+.modalWindow textarea {
+  width: 100%;
+  height: 50px;
+  padding: 2px 5px;
+}
+.modalWindow .button {
+  float: right;
+  margin-top: 10px;
+}
+.modalWindow:not(.background-dark) .button {
+  color: #09c;
+  border-color: #09c;
+}
+.modalWindow:not(.background-dark) .button:hover {
+  color: #09c;
+}
+.modalWindow > .button,
+.modalWindow .b-modal,
+.modalWindow .b-modal > form > .button {
+  margin-top: 20px;
+}
+.modalWindow > .button ~ .button {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.modalWindow.background-task {
+  min-width: 500px;
+  width: 500px;
+}
+.modalWindow.autoWidth {
+  min-width: inherit;
+}
+.modalWindow label.inline {
+  text-align: right;
+  margin-right: 5px;
+}
+.modalWindow table thead th {
+  border: 0;
+}
+/* < модальное окно */
+/*modal dialog windows*/
+.modalDialogInputField {
+  height: 35px;
+  padding-left: 5px;
+}
