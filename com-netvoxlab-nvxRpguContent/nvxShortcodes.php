@@ -41,7 +41,7 @@ class nvxRpguContentShortcodes {
 	static function register_script() {
 		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
 		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
-		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js', [], false, true);
+		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.1.js', [], false, true);
 		wp_register_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css', [], false, 'all');
 		wp_register_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css', [], false, 'all');
 	}
@@ -53,7 +53,7 @@ class nvxRpguContentShortcodes {
 		
 		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
 		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
-		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.js' );
+		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.1.js' );
 		wp_enqueue_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css');
 		wp_enqueue_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css');
 	}
