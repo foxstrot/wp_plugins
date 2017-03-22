@@ -1,17 +1,18 @@
 function nvxCheckStatus(){
-	jQuery.ajax({ url: 'http://sq.mfc.ru/v1' //, type: 'GET'
-		//, data: { тут вот объект с каким-то полем, номер документа})
-		// dataType: 'json',
+	jQuery.ajax({
+		type: "POST", 
+		url: nvxCheckStatus_server_url + '/status/send',
+		contentType: "application/json",
+		data: JSON.stringify({"docNumber":jQuery('#nvxNumber').val()}),
+		dataType: 'json'
 	})
-    .done(function (response) {
-		//Это будет отрабатывать в случае успеха, тут в response будет объект с ответом, скорее всего json. Ты его разбираешь и отображаешь у себя на странице
+    .done(function (response, status) {
+		console.log('Status check: Status = ' + status + ', response = ' + response);
     }).fail(function (jqXHR, textStatus, errorThrown) {
-		//это будет отрабатывать в случае ошибки
 		console.log(errorThrown);
-		var checkStatus = document.getElementById('nvxStatus');
-	checkStatus.innerHTML = '<div class="nvxCheckStatus"><div class="lupa"><h3>Статус вашего заявления неизвестен.</h3>Вы ввели неверный номер дела<br/>или<br/>МФЦ не подключен к системе Re:Doc Status.</div></div><img class="nvxStatusImg center" src="'+NETVOXLAB_URL+'assets/img/img2.jpg">'
     }).always(function () {
-		//Это будет отрабатывать всегда, если надо, например, закрыть какой-нибудь троббер
+		var checkStatus = document.getElementById('nvxStatus');
+		checkStatus.innerHTML = '<div class="nvxCheckStatus"><div class="lupa"><h3>Статус вашего заявления неизвестен.</h3>Вы ввели неверный номер дела<br/>или<br/>МФЦ не подключен к системе Re:Doc Status.</div></div><img class="nvxStatusImg center" src="'+NETVOXLAB_URL+'assets/img/img2.jpg">'
 	});
 }
 
