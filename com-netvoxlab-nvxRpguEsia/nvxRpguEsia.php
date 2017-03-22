@@ -93,7 +93,7 @@
 			$title = $options->nvxEsiaTitle;
 			if (!isset($title))
 				$title = 'Вход через ЕСИА';
-			echo "<li class='widget'><p class='wtitle'>".$title."</p>";
+			echo "<div style='float: right;'>";
 			if (is_user_logged_in()){
 				//Пользователь уже авторизован
 				$current_user = wp_get_current_user();
@@ -103,18 +103,17 @@
 					$http = 'https://';
 				$server_redirect = $http.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 				$url_redirect = esc_url(wp_logout_url($server_redirect));
-				echo "<p>Вы вошли как <b>";
 				if ($options->nvxCabinetLinkEnabled) {
-					echo "<a href='".$options->nvxCabinetPage."'>".$username."</a>";					
+					echo "<a href='".$options->nvxCabinetPage."'>".$username."</a>";
 				} else {
 					echo $username;
-				}				
-				echo "</b><br><a href='".$url_redirect."'>Выйти</a></p>";
+				}
+				echo " <a href='".$url_redirect."'>Выйти</a>";
 			} else {
 				//Кнопка для авторизации
-				echo "<a href='".nvxRpguEsiaUri."authRequest.php'>Войти</a>";
+				echo "<a href='".nvxRpguEsiaUri."authRequest.php'>".$title."</a>";
 			}
-			echo "</li>";
+			echo "</div>";
 		}
 	
 		//Создание таблицы со связью пользователей, если ещё не было
