@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.status
 Description: Модуль фейкового просмотра статуса заявки. Shortcode [netvoxlab_check_status]
-Version: 2017.03.33
+Version: 2017.03.22
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.03.03');
+define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.03.22');
 $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 
 	class netvoxlab_check_status_shortcode {
@@ -36,10 +36,26 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 	   static function netvoxlab_check_status_func ($atts, $content = null)
 		{
 			self::$netvoxlab_check_status_add_script = true; 
+
+				$options = get_option('netvoxlab_check_status_options');	
+				if (is_array($options)){
+					if (!array_key_exists("nvxstatusurl",$options) or $options[nvxstatusurl] == "") {
+						$options[nvxstatusurl] = 'http://sq.mfc.ru/v1';				
+						update_option('netvoxlab_check_status_options', $options);
+					}
+				} else {
+					update_option('netvoxlab_check_status_options', 
+					array(
+						'nvxstatusurl' => 'http://sq.mfc.ru/v1',
+						));
+				}
+
+			$netvoxlab_check_status_server_url = $options[nvxstatusurl];
 			
 			$scriptWithVar = "
 				<script type=\"text/javascript\">
 					var NETVOXLAB_URL = '". $GLOBALS['NETVOXLAB_CHECK_STATUS_URL']."';
+					var nvxCheckStatus_server_url = '".$netvoxlab_check_status_server_url."';
 				</script>";
 
 			$netvoxlab_check_status_wfm_sign = '
@@ -72,4 +88,9 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 	
 	}
 	netvoxlab_check_status_shortcode::init();
+	
+	if (is_admin()){
+		//Добавляем меню в админку
+		include_once('nvxstatusadminmenu.php');
+	}
 ?>
