@@ -1,0 +1,207 @@
+﻿.nvx-suo-admin {
+	font: 17px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: #553d34;
+}
+.nvx-suo-admin i {
+	font-size: 25px;
+	vertical-align: -10%;
+	text-align: center;
+	padding-right: 8px;
+}
+/**TODO: move to common**/
+.nvx-suo-admin h1 {
+	font-size: 18pt;
+	color: #caa980;
+}
+.nvx-suo-admin h2 {
+	font-size: 16pt;
+	color: #553d34;
+}
+.nvx-suo-admin textarea {
+	border: 1px solid #cba87f;
+	width: 100%;
+	height: 170px;
+}
+.nvx-suo-admin table {
+	border: 1px solid #cba87f;
+	border-collapse: separate;
+	text-align: left;
+	width: 100%;
+}
+.nvx-suo-admin thead {
+	border: 0;
+	background: #cba87f;
+}
+.nvx-suo-admin th {
+	border: 0;
+	background: #cba87f;
+	padding: 20px;
+}
+.nvx-suo-admin tr th:last-child {
+	border: 0;
+}
+.nvx-suo-admin tbody {
+	background: #e8d6c3;
+}
+.nvx-suo-admin td:last-child {
+	text-align: left;
+}
+.nvx-suo-admin td {
+	border: 0;
+	border-top: 2px solid white;
+	padding: 20px;
+}
+.nvx-suo-admin td:last-child {
+	padding: 0;
+}
+.nvx-suo-admin tr:first-child > td {
+	border-top: 0;
+}
+.nvx-suo-admin label {
+	display: block;
+	color: #cba87f;
+	margin-top: 15px;
+}
+.nvx-suo-admin td > label {
+	display: block;
+	color: #553d34;
+	margin: 0;
+}
+.nvx-suo-admin input[type="text"], select, input[type="number"] {
+	border: 1px solid #cba87f;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+	box-sizing: border-box;
+	font: 17px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	border-radius: 0;
+	height: 45px;
+	width: 100%;
+	margin-top: 3px;
+	color: #553d34;
+	padding: 0 7px;
+}
+.nvx-suo-admin input[type="radio"], input[type="checkbox"] {
+	margin-right: 10px;
+	width: 15px;
+	height: 15px;
+	vertical-align: -10%;
+}
+.nvx-suo-admin-link {
+	color: #553d34;
+	display: block;
+	margin-top: 10px;
+}
+.nvx-suo-admin-link:hover {
+	color: #553d34;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.nvx-suo-admin-additional {
+	display: block;
+	margin-top: 25px;
+}
+.nvx-suo-draft {
+	color: #cba87f;
+}
+.nvx-suo-admin span {
+	color: #da6b58;
+}
+.nvx-suo-actions {
+	margin-top: 15px;
+}
+.nvx-suo-check {
+	color: #553d34;
+	padding: 0;
+	padding-top: 10px;
+}
+.nvx-suo-button {
+	display: inline-block;
+	background: #553d36;
+	color: #ffffff;
+	padding: 10px 20px 10px 15px;
+	margin-right: 10px;
+	text-decoration: none;
+}
+.nvx-suo-button:hover {
+	color: #ffffff;
+	cursor: pointer;
+}
+.nvx-suo-button-minor {
+	display: inline-block;
+	background: #cba87f;
+	color: #593b34;
+	padding: 10px 20px 10px 15px;
+	text-decoration: none;
+}
+.nvx-suo-button-minor:hover {
+	color: #593b34;
+	cursor: pointer;
+}
+
+.nvx-suo-templates > table {
+	border: 0;
+}
+
+.nvx-suo-templates table tr td {
+	padding: 0 4px 3px 7px;
+	text-align: center;
+}
+.nvx-suo-templates td:last-child {
+	text-align: center;
+}
+
+
+/* change  */
+.nvx-suo-block {
+	display: block;
+	padding: 15px;
+	margin-top: 4px;
+	background: #f0e7db;
+}
+.nvx-suo-block:first-child {
+	margin: 0;
+}
+
+
+
+/* Dropdown*/
+.dropbtn {
+	display: block;
+	padding: 0 10px 0 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: -10px;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    color: #593b34;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:last-child {
+	border-top: 1px solid #cba87f;
+}
