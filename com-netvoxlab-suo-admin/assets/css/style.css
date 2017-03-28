@@ -1,0 +1,66 @@
+﻿*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.suo-header {
+	background: #623b2a;
+	padding: 20px;
+}
+.suo-header h1, h2 {
+	padding: 0;
+	margin: 0;
+	color: #fffdff;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: left;
+}
+.suo-admin {
+	background: #f3e9e0;
+	padding: 0 20px 20px 20px;
+}
+.suo-admin label {
+	display: block;
+	color: #e5725c;
+	font-size: 17px;
+	padding-top: 20px;
+}
+.suo-admin input[type="text"], input[type="button"] {
+	border: 1px solid black;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+	font: 17px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	border-radius: 0;
+	height: 45px;
+	width: 100%;
+	margin-top: 3px;
+}
+.suo-admin input[type="button"] {
+	margin-top: 20px;
+	background: #623b2a;
+}
+.suo-admin input[type="button"]:disabled {
+	background: #dbbea4 !important;
+	color: #cda78b !important;
+	border: 0;
+}
+.suo-admin input[type="button"][disabled]:hover {
+	background: #dbbea4 !important;
+	color: #cda78b !important;
+	border: 0;
+	cursor: default !important;
+}
+.suo-admin table {
+	width: 100%;
+	margin-top: 10px;
+}
+.suo-admin thead th {
+	border: 0px;
+	background: #f3e9e0;
+	color: #e5725c;
+}
+.suo-admin tbody {
+	border: 0px;
+}
+.suo-admin td a {
+	cursor: pointer;
+}
