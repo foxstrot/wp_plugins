@@ -183,7 +183,7 @@ SuoAdminModule.showCreateForm = function() {
 
 SuoAdminModule.getPlaces = function() {
   $.ajax({
-    headers: { "user_token" : SuoAdminModule.userToken, "portal_id" : "9b1bae07-3852-412f-b26f-c4b8b3bad5f1" },
+    headers: { "user_token" : SuoAdminModule.userToken, "app_id" : "9b1bae07-3852-412f-b26f-c4b8b3bad5f1" },
     url: SuoAdminModule.host + "v1/admin/place/getplaces",
     dataType: 'json',
   })
@@ -218,7 +218,7 @@ SuoAdminModule.getPlaces = function() {
 
 SuoAdminModule.createPlace = function() {
 	$.ajax({
-		headers: { "user_token" : SuoAdminModule.userToken, "portal_id" : "9b1bae07-3852-412f-b26f-c4b8b3bad5f1" },
+		headers: { "user_token" : SuoAdminModule.userToken, "app_id" : "9b1bae07-3852-412f-b26f-c4b8b3bad5f1" },
 		type: "POST",
 		contentType: "application/json",
 		url: SuoAdminModule.host + "v1/admin/place/addorupdate",

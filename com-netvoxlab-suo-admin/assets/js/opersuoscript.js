@@ -133,6 +133,8 @@ SuoModule.getServices = function(placeId) {
 	console.log("SuoModule getServices()");
 	console.log("place_id = " + placeId);
 
+	SuoModule.current.placeId = placeId;
+
 	$.ajax({
 		headers: { 'app_id': this.app_id },
 		url: this.host + "v1/reception/getservices?placeId=" + placeId,
@@ -234,6 +236,7 @@ SuoModule.getTimeSlots = function(serviceId, date) {
 				$('.suo-active').removeClass('suo-active');
 				$(this).addClass('suo-active');
 				SuoModule.current.positionId = $(this).children('input').val();
+				SuoModule.getTicketsByPlace();
 			}
 			SuoModule.checkFields();
 		});
@@ -248,7 +251,7 @@ SuoModule.createReception = function(serviceId, date, position) {
 	console.log("selected position recId: " + position.recId);
 
 	$.ajax({
-		headers: { 'app_id': this.app_id }, // 'user_token': '1000299353'
+		headers: { 'app_id': this.app_id, 'user_token': '1000299353' },
 		type: "POST",
 		contentType: "application/json",
 		url: this.host + "v1/reception/createreception/"+ serviceId,
@@ -439,6 +442,45 @@ SuoModule.available = function(date) {
 	return [false];
 };
 
+SuoModule.getTicketsByPlace = function() {
+	console.log("getTicketsByPlace()");
+
+	$.ajax({
+		headers: { 'app_id' : this.app_id, 'region_id': this.region_id },
+		url: this.host + "v1/operator/geticketsbyplace/" + SuoModule.current.placeId + "/" + SuoModule.current.date,
+		data: { isAll: "true" },
+		dataType: 'json',
+	})
+	.done(function (data, status, jqxhr) {
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!getTicketsByPlace done!");
+		console.log(data);
+
+		var content = '';
+
+		data.forEach(function(item, i, data) {
+			content += '<div class="suo-operator-entry">';
+			content += '<p>Дата: '+ $("#datepicker").val() +'</p>';
+			content += '<p>Время: '+ item.attributes.pName +'</p>';
+
+			var fields = JSON.parse(item.attributes.fields);
+
+			content += '<p>ФИО: '+ fields.Family +'</p>';
+			content += '<p>Телефон: </p>';
+			content += '<p>Email: '+ fields.email +'</p>';
+			content += '<a href="#">Удалить</a>';
+			content += '<a href="#">Редактировать</a>';
+			content += '</div>';
+		});
+
+
+		$('.suo-operator-info').html(content);
+	})
+	.fail(function() {
+		alert("Ошибка получения слотов!");
+	});
+}
+
 $(document).ready(function() {
-	SuoModule.init(SuoSettings); 
+	console.log("!!!!!!! SUO OPERATOR !!!!!!");
+	SuoModule.init(SuoSettings);
 });
