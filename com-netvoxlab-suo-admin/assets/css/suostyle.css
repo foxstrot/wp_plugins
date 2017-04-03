@@ -8,11 +8,11 @@
 	padding: 0 20px;
 }
 .suo-header h2 {
-	padding-top: 10px;
+	padding-top: 12px;
 	margin: 0;
 	color: #fff;
 	height: 57px;
-	font: 30px Arial, sans-serif !important;
+	font: 26px Arial, sans-serif !important;
 }
 .suo-form {
 	background: #f3e9e0;
@@ -26,7 +26,7 @@
 }
 .suo-form input, select {
 	border: 1px solid #dbbea4;
-	font: 17px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font: 17px/1.4 Arial, sans-serif !important;
 	border-radius: 0;
 	height: 45px;
 	width: 100%;
@@ -81,10 +81,12 @@
 	width: 100%;
 	display: table;
 	margin-top: 10px;
+    text-align: center;
 }
 #suoSend {
 	background: #623b2a;
 	color: #fff;
+	width: 240px;
 }
 #suoSend:disabled {
 	background: #7a5849 !important;
@@ -236,4 +238,16 @@
     padding: 10px;
 	background: #623b2a;
 	color: #fff;
+}
+
+.suo-operator-info {
+}
+.suo-operator-info p {
+	padding: 0;
+	margin-top: 5px;
+}
+.suo-operator-entry {
+	background: #dbbea4;
+	padding: 10px;
+	margin-top: 10px;
 }
