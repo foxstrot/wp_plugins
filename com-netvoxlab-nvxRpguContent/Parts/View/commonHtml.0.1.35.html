@@ -1375,7 +1375,6 @@
 		<div type="1" class="stateStructure maps" data-bind="foreach: stateStructureList">
 			<!-- Если есть функция обработки клика по блоку, то вызываем ее. Иначе - перейти на страницу с МФЦ -->
 			<a class="formData" data-bind="css: { hasMap: $data.hasOwnProperty('clickBlock') },
-	attr: { href: $data.hasOwnProperty('clickBlock') ? '#' : link },
 	click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
 	element: element">
 				<h4 data-bind="scriptdel: name"></h4>
@@ -1414,10 +1413,7 @@
 					<dt>Руководитель</dt>
 					<dd data-bind="scriptdel: headName"></dd>
 				</dl>
-				<!-- /ko -->
-				<!--ko if: $data.hasOwnProperty('openBalloon')-->
-				<span class="btn primary moreButton" data-bind="attr: { href: link }, click: golink, clickBubble: false">Подробнее</span>
-				<!--/ko-->
+				<!-- /ko -->				
 			</a>
 
 			<!-- ko if: tospList != null -->
