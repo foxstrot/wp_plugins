@@ -3,7 +3,7 @@ Contributors: netvoxlab
 Tags: radio, ownRadio, broadcast, music online
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 2017.02.18
+Stable tag: 2017.04.06
 License: GPLv3
 
 == Description ==
@@ -12,16 +12,14 @@ Broadcast radio ownRadio. Listen to your favorite music only.
 
 Shortcode for input radio: [ownradio_player]
 
+Check official website for live demo <http://www.ownradio.ru>
+
+*  [**Demonstration**](http://www.ownradio.ru)
+
 ### Contact us: ###
 
-> * [Facebook](https://www.facebook.com/groups/ownRadio)
-> * [VKontakte](https://vk.com/ownradio)
-
-### ownRadio available: ###
-
-> * [on the web-site](http://www.ownradio.ru)
-> * [on the App Store](https://itunes.apple.com/app/ownradio/id1179868370?mt=8)
-> * [on the Google Play](https://play.google.com/store/apps/details?id=ru.netvoxlab.ownradio)
+*   [Facebook](https://www.facebook.com/groups/ownRadio)
+*   [VKontakte](https://vk.com/ownradio)
 
 == Installation ==
 
@@ -51,6 +49,10 @@ You need to insert shortcode `[ownradio_player]` in the page.
 1. This is the main view of ownRadio player.
 
 == Changelog ==
+
+= 2017.04.06 =
+
+Added shortcodes for statistic show.
 
 = 2017.02.18 =
 Change the display of track information.
