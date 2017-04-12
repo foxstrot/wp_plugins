@@ -1,0 +1,232 @@
+.ui-dialog .ui-dialog-titlebar {
+  display: none;
+}
+/*!!фикс убирающий дефолтный хедер*/
+.ui-resizable-handle {
+  display: none !important;
+}
+/*!!фикс убирающий изменение размера модальных окон*/
+/* �������� �������������� � ��������� */
+.niceInt {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+/* �������� ����� */
+.niceHover {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.niceHover:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.hover {
+  cursor: pointer;
+}
+.hover:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.noSelect {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+}
+.click-through {
+  pointer-events: none;
+}
+/* ���������� ������� */
+.disabled {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  pointer-events: none;
+}
+/* ������� ��������� ����� */
+.dropDefaultStyle {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.dropDefaultStyle::-ms-expand {
+  display: none;
+}
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.dinamicWidthOverflow {
+  max-width: 0;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.modalWindowOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalWindowOverlay:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.modalWindow {
+  position: relative;
+  display: inline-block;
+  min-width: 750px;
+  max-width: 900px;
+  padding: 20px;
+  vertical-align: middle;
+  background-color: #fff;
+  text-align: left;
+  /*default - background-light*/
+  /*маленькое окно*/
+}
+.modalWindow:not(.background-dark) *:not(a):not(.button),
+.modalWindow:not(.background-dark) *:hover:not(a) {
+  color: rgba(0, 0, 0, 0.8);
+}
+.modalWindow .background-dark,
+.modalWindow .background-light .background-dark {
+  color: #fff !important;
+}
+.modalWindow .background-dark:hover,
+.modalWindow .background-light .background-dark:hover {
+  color: #fff !important;
+}
+.modalWindow .background-dark *,
+.modalWindow .background-light .background-dark *,
+.modalWindow .background-dark *:hover,
+.modalWindow .background-light .background-dark *:hover {
+  color: #fff !important;
+}
+.modalWindow.min {
+  min-width: 500px;
+  max-width: 500px;
+}
+.modalWindow.default {
+  width: 750px;
+}
+.modalWindow.fixHeight .modalWindowContent {
+  height: 50vh;
+}
+.modalWindow h2 {
+  margin: -10px 0 16px -2px;
+}
+.modalWindow > h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.modalWindow h2 + .hdr {
+  margin-top: 0;
+}
+.modalWindow .modalWindowContent {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 48px;
+  max-height: 70vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.modalWindow .modalWindowContent > .hdr:first-child,
+.modalWindow .modalWindowContent > label:first-child,
+.modalWindow .modalWindowContent > h3:first-child {
+  margin-top: 0;
+}
+.modalWindow .modalWindowContent.shadowTop:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.modalWindow .modalWindowContent.tab {
+  min-height: 70vh;
+}
+.modalWindow textarea {
+  width: 100%;
+  height: 50px;
+  padding: 2px 5px;
+}
+.modalWindow .button {
+  float: right;
+  margin-top: 10px;
+}
+.modalWindow:not(.background-dark) .button {
+  color: #09c;
+  border-color: #09c;
+}
+.modalWindow:not(.background-dark) .button:hover {
+  color: #09c;
+}
+.modalWindow > .button,
+.modalWindow .b-modal,
+.modalWindow .b-modal > form > .button {
+  margin-top: 20px;
+}
+.modalWindow > .button ~ .button {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.modalWindow.background-task {
+  min-width: 500px;
+  width: 500px;
+}
+.modalWindow.autoWidth {
+  min-width: inherit;
+}
+.modalWindow label.inline {
+  text-align: right;
+  margin-right: 5px;
+}
+.modalWindow table thead th {
+  border: 0;
+}
+/* < модальное окно */
+/*modal dialog windows*/
+.modalDialogInputField {
+  height: 35px;
+  padding-left: 5px;
+}
+.throbber {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100500;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+}
+.throbber > * {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px;
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+  background-position: 0 0;
+}
