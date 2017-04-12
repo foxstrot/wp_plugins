@@ -1,0 +1,5328 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/rpgu/content/font/fontawesome-webfont.eot?v=4.4.0');
+  src: url('/rpgu/content/font/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('/rpgu/content/font/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('/rpgu/content/font/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('/rpgu/content/font/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('/rpgu/content/font/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.nvxRpguContentStyleBlock h3 .small {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock ul {
+  margin: 0;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock *.filedrag {
+  border: 2px dashed #AAA;
+  border-radius: 7px;
+  cursor: default;
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .filedrag .drag-label {
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  color: #AAA;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+.nvxRpguContentStyleBlock .filedrag.hover {
+  border-color: #F00;
+  border-style: solid;
+  box-shadow: inset 0 3px 4px #888;
+}
+.nvxRpguContentStyleBlock .filedrag.hover .drag-label {
+  color: #F00;
+}
+.nvxRpguContentStyleBlock .niceInt {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .niceHover {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .niceHover:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .hover {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .hover:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .noSelect {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+}
+.nvxRpguContentStyleBlock .click-through {
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock .disabled {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock .dropDefaultStyle {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.nvxRpguContentStyleBlock .dropDefaultStyle::-ms-expand {
+  display: none;
+}
+.nvxRpguContentStyleBlock .text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .dinamicWidthOverflow {
+  max-width: 0;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .background-transparent {
+  background-color: rgba(255, 255, 255, 0);
+}
+.nvxRpguContentStyleBlock .background-white {
+  background-color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .background-attach-light {
+  background-color: #69c !important;
+}
+.nvxRpguContentStyleBlock .background-jeans {
+  background-color: #2e67b2 !important;
+}
+.nvxRpguContentStyleBlock .background-gray {
+  background-color: #e5e5e5 !important;
+}
+.nvxRpguContentStyleBlock .background-gray-mid {
+  background-color: #999 !important;
+}
+.nvxRpguContentStyleBlock .background-info {
+  background-color: #71a6b1;
+}
+.nvxRpguContentStyleBlock .background-form {
+  background-color: #09c;
+}
+.nvxRpguContentStyleBlock .background-attachment {
+  background-color: #369;
+}
+.nvxRpguContentStyleBlock .background-attachment-soap {
+  background-color: #393939 !important;
+}
+.nvxRpguContentStyleBlock .background-attachment-resp {
+  background-color: #969 !important;
+}
+.nvxRpguContentStyleBlock .background-attachment-gene {
+  background-color: #769 !important;
+}
+.nvxRpguContentStyleBlock .background-attachment-simp {
+  background-color: #369 !important;
+}
+.nvxRpguContentStyleBlock .background-task {
+  background-color: #669;
+}
+.nvxRpguContentStyleBlock .background-default {
+  background-color: #369 !important;
+}
+.nvxRpguContentStyleBlock .background-warning {
+  background-color: #f90 !important;
+}
+.nvxRpguContentStyleBlock .background-danger {
+  background-color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .color-default {
+  color: #4395d1 !important;
+}
+.nvxRpguContentStyleBlock .color-warning {
+  color: #f90 !important;
+}
+.nvxRpguContentStyleBlock .color-danger {
+  color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .color-success {
+  color: #99ca3c !important;
+}
+.nvxRpguContentStyleBlock .task-status-unset {
+  background-color: #563f7f;
+}
+.nvxRpguContentStyleBlock .task-status-in-progress {
+  background-color: #0a3b76;
+}
+.nvxRpguContentStyleBlock .task-status-completed {
+  background-color: #82be45;
+}
+.nvxRpguContentStyleBlock .task-status-canceled {
+  background-color: #c33;
+}
+.nvxRpguContentStyleBlock *,
+.nvxRpguContentStyleBlock *:before,
+.nvxRpguContentStyleBlock *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.nvxRpguContentStyleBlock body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font: 400 11pt "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock .a {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .b,
+.nvxRpguContentStyleBlock .sb {
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .i {
+  font-style: italic;
+}
+.nvxRpguContentStyleBlock .p {
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .c {
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .l {
+  float: left !important;
+}
+.nvxRpguContentStyleBlock .r {
+  float: right !important;
+}
+.nvxRpguContentStyleBlock .t-l {
+  text-align: left;
+}
+.nvxRpguContentStyleBlock .t-r {
+  text-align: right;
+}
+.nvxRpguContentStyleBlock .u {
+  text-decoration: underline !important;
+}
+.nvxRpguContentStyleBlock .t,
+.nvxRpguContentStyleBlock .transparent {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.nvxRpguContentStyleBlock .f-light {
+  font-family: "Segoe UI Light", "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock .word-wrap {
+  word-wrap: break-word;
+}
+.nvxRpguContentStyleBlock .no-transition,
+.nvxRpguContentStyleBlock .no-transition * {
+  transition: none !important;
+  position: static;
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.nvxRpguContentStyleBlock .no-transition.button:hover,
+.nvxRpguContentStyleBlock .no-transition *.button:hover {
+  color: rgba(0, 153, 204, 0.8) !important;
+  border-color: rgba(0, 153, 204, 0.8) !important;
+}
+.nvxRpguContentStyleBlock .relative {
+  position: relative;
+}
+.nvxRpguContentStyleBlock .z-top {
+  position: relative;
+  z-index: 9042;
+}
+.nvxRpguContentStyleBlock .hidden {
+  display: none;
+}
+.nvxRpguContentStyleBlock fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .m-top {
+  margin-top: 10px !important;
+}
+.nvxRpguContentStyleBlock .m-btm {
+  margin-bottom: 10px !important;
+}
+.nvxRpguContentStyleBlock .m-lft {
+  margin-left: 10px !important;
+}
+.nvxRpguContentStyleBlock .m-rgh {
+  margin-right: 10px !important;
+}
+.nvxRpguContentStyleBlock .m-top-hlf {
+  margin-top: 5px !important;
+}
+.nvxRpguContentStyleBlock .m-btm-hlf {
+  margin-bottom: 5px !important;
+}
+.nvxRpguContentStyleBlock .m-top-dbl {
+  margin-top: 20px !important;
+}
+.nvxRpguContentStyleBlock .m-btm-dbl {
+  margin-bottom: 20px !important;
+}
+.nvxRpguContentStyleBlock .m-top-no {
+  margin-top: 0 !important;
+}
+.nvxRpguContentStyleBlock .m-btm-no {
+  margin-bottom: 0 !important;
+}
+.nvxRpguContentStyleBlock .m-lft-no {
+  margin-left: 0 !important;
+}
+.nvxRpguContentStyleBlock .m-rgt-no {
+  margin-right: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-top {
+  padding-top: 10px !important;
+}
+.nvxRpguContentStyleBlock .p-btm {
+  padding-bottom: 10px !important;
+}
+.nvxRpguContentStyleBlock .p-lft {
+  padding-left: 10px !important;
+}
+.nvxRpguContentStyleBlock .p-rgh {
+  padding-right: 10px !important;
+}
+.nvxRpguContentStyleBlock .p-all {
+  padding: 10px !important;
+}
+.nvxRpguContentStyleBlock .p-top-hlf {
+  padding-top: 5px !important;
+}
+.nvxRpguContentStyleBlock .p-btm-hlf {
+  padding-bottom: 5px !important;
+}
+.nvxRpguContentStyleBlock .p-lft-hlf {
+  padding-left: 5px !important;
+}
+.nvxRpguContentStyleBlock .p-rgh-hlf {
+  padding-right: 5px !important;
+}
+.nvxRpguContentStyleBlock .p-top-no {
+  padding-top: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-btm-no {
+  padding-bottom: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-lft-no {
+  padding-left: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-rgh-no {
+  padding-right: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-no {
+  padding: 0 !important;
+}
+.nvxRpguContentStyleBlock .p-scroll {
+  padding-right: 17px;
+}
+.nvxRpguContentStyleBlock .decline {
+  font-style: italic;
+  color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .decline:not(h1):not(h2) {
+  font-weight: 600;
+}
+h1.nvxRpguContentStyleBlock .decline,
+h2.nvxRpguContentStyleBlock .decline {
+  font-weight: 300;
+}
+.nvxRpguContentStyleBlock h1,
+.nvxRpguContentStyleBlock .h1 {
+  font: 300 42pt "Segoe UI Light", "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock h2,
+.nvxRpguContentStyleBlock .h2 {
+  margin: 15px 0;
+  font: 300 20pt "Segoe UI Light", "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock h3,
+.nvxRpguContentStyleBlock .h3 {
+  font: 600 11pt "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock h4,
+.nvxRpguContentStyleBlock .h4 {
+  font: 400 11pt "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock h3,
+.nvxRpguContentStyleBlock .h3,
+.nvxRpguContentStyleBlock h4,
+.nvxRpguContentStyleBlock .h4,
+.nvxRpguContentStyleBlock .hdr {
+  display: inline-block;
+  width: 100%;
+  margin: 14px 0 6px;
+}
+.nvxRpguContentStyleBlock h1 .small,
+.nvxRpguContentStyleBlock h2 .small,
+.nvxRpguContentStyleBlock h3 .small,
+.nvxRpguContentStyleBlock h4 .small {
+  font-size: 85%;
+}
+.nvxRpguContentStyleBlock h2 + h3 {
+  margin-top: 0 !important;
+}
+.nvxRpguContentStyleBlock small,
+.nvxRpguContentStyleBlock .small {
+  font-size: 9pt;
+  line-height: 1.42857143;
+}
+@media screen and (max-width: 1300px) {
+  .nvxRpguContentStyleBlock .small-a {
+    font-size: 9pt;
+  }
+}
+.nvxRpguContentStyleBlock .inline {
+  display: inline-block !important;
+  float: inherit !important;
+}
+.nvxRpguContentStyleBlock .background-dark,
+.nvxRpguContentStyleBlock .background-light .background-dark {
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .background-dark:hover,
+.nvxRpguContentStyleBlock .background-light .background-dark:hover {
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .background-dark *:not(input):not(textarea),
+.nvxRpguContentStyleBlock .background-light .background-dark *:not(input):not(textarea),
+.nvxRpguContentStyleBlock .background-dark *:not(input):not(textarea):hover,
+.nvxRpguContentStyleBlock .background-light .background-dark *:not(input):not(textarea):hover {
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .background-light,
+.nvxRpguContentStyleBlock .background-dark .background-light {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .background-light:hover,
+.nvxRpguContentStyleBlock .background-dark .background-light:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .background-light *,
+.nvxRpguContentStyleBlock .background-dark .background-light *,
+.nvxRpguContentStyleBlock .background-light *:hover,
+.nvxRpguContentStyleBlock .background-dark .background-light *:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont {
+  display: inline-block;
+  position: relative;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 999;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  background: #fff;
+  border: 2px solid #000;
+  /*!!фикс к цветовой теме*/
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu *,
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu *:hover {
+  color: #000;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu > * {
+  display: block;
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  /*последнему элементу не нужен бордер*/
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu > *:last-child {
+  border: none;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu > *:hover {
+  background: #eaeaea;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu a {
+  background: inherit;
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock .dropdownMenuCont .dropdownMenu a:hover {
+  background: #eaeaea;
+}
+.nvxRpguContentStyleBlock object.hiddenObject {
+  display: block;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border-style: none;
+  border-width: 0;
+  max-width: 0;
+  max-height: 0;
+}
+.nvxRpguContentStyleBlock .hasPopUp {
+  position: relative;
+  padding: 5px;
+}
+.nvxRpguContentStyleBlock .hasPopUp .popUp {
+  display: inline-block !important;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  /*для множественного выбора, после запиливания общего оверлея будет не нужен*/
+  margin: 0 !important;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .hasPopUp:hover .popUp {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.nvxRpguContentStyleBlock .hasPopUp:hover .popUp.button:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .popUp {
+  display: none;
+}
+.nvxRpguContentStyleBlock .background-dark:not(.table-new) .hasPopUp:hover,
+.nvxRpguContentStyleBlock .hasPopUp.background-transparent:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .background-light:not(.table-new) .hasPopUp:hover,
+.nvxRpguContentStyleBlock .hasPopUp.background-light:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .table-new .hasPopUp {
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .bigText {
+  /*!!del*/
+  background-color: rgba(229, 229, 229, 0.8);
+  font-family: Cambria, Georgia, "Times New Roman", Times, serif;
+  padding: 15px;
+}
+.nvxRpguContentStyleBlock .bigText * {
+  font-family: Cambria, Georgia, "Times New Roman", Times, serif;
+}
+.nvxRpguContentStyleBlock .bigText h2 {
+  white-space: normal;
+}
+.nvxRpguContentStyleBlock .throbber {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100500;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+}
+.nvxRpguContentStyleBlock .throbber > * {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px;
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+  background-position: 0 0;
+}
+.nvxRpguContentStyleBlock .button {
+  display: inline-block;
+  position: relative;
+  /*для кнопки загрузки файла*/
+  min-width: 30px;
+  height: 30px;
+  padding: 2px 13px 0;
+  border: 2px solid #ffffff;
+  text-decoration: none !important;
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  vertical-align: middle;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  /*кнопка меню*/
+  /*если кнопок несколько, ставим последующим левый отступ */
+  /* a если они принудтельно уровнены влево или вправо, то правый отступ*/
+  /*если внутри кнопки инпут, скроем его с возможностю нажатия*/
+}
+.nvxRpguContentStyleBlock .button:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .button.nvxRpguContentStyleBlock .button.icon {
+  /* && - хак, чтобы прописать стиль не для .button .icon*/
+  background-size: 70% auto;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .button .icon {
+  float: left;
+  margin: 1px 10px 0 0;
+}
+.nvxRpguContentStyleBlock .button.b-modal {
+  float: right;
+  margin-top: 20px;
+}
+.nvxRpguContentStyleBlock .button.b-modal-left {
+  margin: 20px 0 0 20px;
+}
+.nvxRpguContentStyleBlock .button.b-modal-right {
+  margin: 0px 0 0 20px;
+  float: right;
+}
+.nvxRpguContentStyleBlock .button.button-solid,
+.nvxRpguContentStyleBlock .button.b-solid {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+}
+.nvxRpguContentStyleBlock .button.button-solid *,
+.nvxRpguContentStyleBlock .button.b-solid * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.button-solid.ok,
+.nvxRpguContentStyleBlock .button.b-solid.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.button-solid.no,
+.nvxRpguContentStyleBlock .button.b-solid.no,
+.nvxRpguContentStyleBlock .button.button-solid.danger,
+.nvxRpguContentStyleBlock .button.b-solid.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.button-menu {
+  float: left;
+  /*без этого дает нижний отступ*/
+  width: 30px;
+}
+.nvxRpguContentStyleBlock .button.button-menu.brand {
+  border-color: #3399cc;
+}
+.nvxRpguContentStyleBlock .button ~ .button {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .button.l,
+.nvxRpguContentStyleBlock .button.l ~ .button.l,
+.nvxRpguContentStyleBlock .button.b-modal ~ .button,
+.nvxRpguContentStyleBlock .button.r + .nvxRpguContentStyleBlock .button.r {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .button.b-brand {
+  color: #09c;
+  border-color: #09c;
+}
+.nvxRpguContentStyleBlock .button.b-brand:hover {
+  color: #09c;
+}
+.nvxRpguContentStyleBlock .button.b-create {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f90;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20enable-background=%22new%200%200%20841.9%20595.3%22%20width=%223000%22%20height=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M1509.37%202997.371c-825.985%200-1501.35-670.506-1501.35-1501.35%200-830.844%20675.364-1496.491%201501.35-1496.491%20825.985%200%201501.35%20670.506%201501.35%201501.35%200%20830.844-670.506%201496.491-1501.35%201496.491zm874.573-1622.818c0-68.022-58.305-126.327-126.327-126.327h-495.591v-500.45c0-68.022-58.305-126.327-126.327-126.327h-247.796c-68.022%200-126.327%2058.305-126.327%20126.327v500.45h-500.45c-68.022%200-126.327%2058.305-126.327%20126.327v247.796c0%2068.022%2058.305%20126.327%20126.327%20126.327h500.45v500.45c0%2068.022%2058.305%20126.327%20126.327%20126.327h247.796c68.022%200%20126.327-58.305%20126.327-126.327v-500.45h500.45c68.022%200%20126.327-58.305%20126.327-126.327v-247.796z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .button.b-create * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.b-create.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.b-create.no,
+.nvxRpguContentStyleBlock .button.b-create.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.b-create.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .button.b-accept {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #99ca3c;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+  -ms-background-position-x: 0;
+  -ms-background-position-y: 50%;
+}
+.nvxRpguContentStyleBlock .button.b-accept * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.b-accept.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.b-accept.no,
+.nvxRpguContentStyleBlock .button.b-accept.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.b-accept.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .button.b-delete {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f26667;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M27.6%202563l1042.4-1045-1042.4-1038%20442.4-450%201050%201044%201050-1044%20430%20450-1040%201038%201040%201047-430%20445-1050-1048.1-1050%201048.1-442.4-447z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .button.b-delete * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.b-delete.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.b-delete.no,
+.nvxRpguContentStyleBlock .button.b-delete.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.b-delete.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .button.b-trash-icon {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f26667 !important;
+  padding: 0;
+  background-size: 20px 70%;
+  background-position: 50% 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2426.58%20808.267v2043.038q-3.202%2048.034-9.607%2078.455-6.404%2030.421-24.017%2046.433-17.612%2016.011-46.433%2024.017-28.82%208.006-76.854%206.404h-1572.307q-46.433%200-76.854-6.404t-46.433-22.416q-16.011-16.011-24.017-48.034-8.006-32.023-6.405-78.455v-2043.038h1882.926zm-1256.885%20392.276q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.214%206.405-27.219%2024.017-8.006%2017.612-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.612%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-25.618-22.416-16.011-6.405-40.028-9.607-24.017-3.202-49.635-1.601h-59.242q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h59.242q25.618%200%2048.034-1.601t40.028-9.607q17.612-8.006%2027.219-24.017%209.607-16.011%209.607-44.832v-1413.795zm-312.22-1019.918h-629.243v-156.911h629.243v156.911zm782.951%20470.731h-2196.746v-313.821h2196.746v313.821z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .button.b-trash-icon * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.b-trash-icon.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.b-trash-icon.no,
+.nvxRpguContentStyleBlock .button.b-trash-icon.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.b-edit {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2830%20200q60%2070%2080%20120%2020%2060%2020%20110%200%2040-10%2080t-20%2060q-20%2030-30%2060l-30%2030q-30%2020-50%2040-10%2020-30%2040-20%2030-30%2040-20%2020-60%2020-30%200-60-20l-330-350q-30-30-30-60%200-40%2030-60l30-30q20-20%2030-40%2020-20%2040-50%2020-20%2040-30%2020-20%2050-30%2030-20%2060-30%2050-10%2090-10t100%2030q50%2020%20110%2080zm-370%20846l-1564%201575-477-473%201581-1578%20460%20476zm-2356%201889l161-472%20307%20325-468%20147z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .button.b-edit * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .button.b-edit.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .button.b-edit.no,
+.nvxRpguContentStyleBlock .button.b-edit.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .button.b-edit.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .button.b-back {
+  min-width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  padding-left: 60px;
+  line-height: 26.66666667px;
+  font-size: 20pt;
+  font-weight: 600;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 0 0;
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .button input {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  opacity: 0 !important;
+  padding-top: 30px !important;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .button.b-upload {
+  overflow: visible;
+}
+.nvxRpguContentStyleBlock .button.b-upload[data-line]:after {
+  content: attr(data-line);
+  position: absolute;
+  top: 2px;
+  left: 110%;
+  height: 100%;
+  background-color: inherit;
+  max-width: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .button.withIcon {
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+}
+.nvxRpguContentStyleBlock .button.withIcon.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .button.b-icon {
+  padding: 0;
+  background-size: 20px 70%;
+  background-position: 50% 50%;
+}
+.nvxRpguContentStyleBlock .button.inline {
+  margin-top: 0 !important;
+}
+.nvxRpguContentStyleBlock a.button:focus {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal {
+  display: inline-block;
+  position: relative;
+  /*для кнопки загрузки файла*/
+  min-width: 30px;
+  height: 30px;
+  padding: 2px 13px 0;
+  border: 2px solid #ffffff;
+  text-decoration: none !important;
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  vertical-align: middle;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  /*кнопка меню*/
+  /*если кнопок несколько, ставим последующим левый отступ */
+  /* a если они принудтельно уровнены влево или вправо, то правый отступ*/
+  /*если внутри кнопки инпут, скроем его с возможностю нажатия*/
+  border-radius: 4px;
+  line-height: 23px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 8pt;
+  color: #c59368 !important;
+  border-color: #c59368 !important;
+  color: #09c;
+  border-color: #09c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.nvxRpguContentStyleBlock .background-light .b-modal.icon {
+  /* && - хак, чтобы прописать стиль не для .button .icon*/
+  background-size: 70% auto;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal .icon {
+  float: left;
+  margin: 1px 10px 0 0;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-modal {
+  float: right;
+  margin-top: 20px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-modal-left {
+  margin: 20px 0 0 20px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-modal-right {
+  margin: 0px 0 0 20px;
+  float: right;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-solid,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-solid {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-solid *,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-solid * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-solid.ok,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-solid.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-solid.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-solid.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.button-solid.danger,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-solid.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-menu {
+  float: left;
+  /*без этого дает нижний отступ*/
+  width: 30px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.button-menu.brand {
+  border-color: #3399cc;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal ~ .button {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.l,
+.nvxRpguContentStyleBlock .background-light .b-modal.l ~ .button.l,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-modal ~ .button,
+.nvxRpguContentStyleBlock .background-light .b-modal.r + .nvxRpguContentStyleBlock .background-light .b-modal.r {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-brand {
+  color: #09c;
+  border-color: #09c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-brand:hover {
+  color: #09c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f90;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20enable-background=%22new%200%200%20841.9%20595.3%22%20width=%223000%22%20height=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M1509.37%202997.371c-825.985%200-1501.35-670.506-1501.35-1501.35%200-830.844%20675.364-1496.491%201501.35-1496.491%20825.985%200%201501.35%20670.506%201501.35%201501.35%200%20830.844-670.506%201496.491-1501.35%201496.491zm874.573-1622.818c0-68.022-58.305-126.327-126.327-126.327h-495.591v-500.45c0-68.022-58.305-126.327-126.327-126.327h-247.796c-68.022%200-126.327%2058.305-126.327%20126.327v500.45h-500.45c-68.022%200-126.327%2058.305-126.327%20126.327v247.796c0%2068.022%2058.305%20126.327%20126.327%20126.327h500.45v500.45c0%2068.022%2058.305%20126.327%20126.327%20126.327h247.796c68.022%200%20126.327-58.305%20126.327-126.327v-500.45h500.45c68.022%200%20126.327-58.305%20126.327-126.327v-247.796z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-create.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #99ca3c;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+  -ms-background-position-x: 0;
+  -ms-background-position-y: 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-accept.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f26667;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M27.6%202563l1042.4-1045-1042.4-1038%20442.4-450%201050%201044%201050-1044%20430%20450-1040%201038%201040%201047-430%20445-1050-1048.1-1050%201048.1-442.4-447z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-delete.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-trash-icon {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  background-color: #f26667 !important;
+  padding: 0;
+  background-size: 20px 70%;
+  background-position: 50% 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2426.58%20808.267v2043.038q-3.202%2048.034-9.607%2078.455-6.404%2030.421-24.017%2046.433-17.612%2016.011-46.433%2024.017-28.82%208.006-76.854%206.404h-1572.307q-46.433%200-76.854-6.404t-46.433-22.416q-16.011-16.011-24.017-48.034-8.006-32.023-6.405-78.455v-2043.038h1882.926zm-1256.885%20392.276q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.214%206.405-27.219%2024.017-8.006%2017.612-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.612%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-25.618-22.416-16.011-6.405-40.028-9.607-24.017-3.202-49.635-1.601h-59.242q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h59.242q25.618%200%2048.034-1.601t40.028-9.607q17.612-8.006%2027.219-24.017%209.607-16.011%209.607-44.832v-1413.795zm-312.22-1019.918h-629.243v-156.911h629.243v156.911zm782.951%20470.731h-2196.746v-313.821h2196.746v313.821z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-trash-icon * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-trash-icon.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-trash-icon.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-trash-icon.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+  background-color: #4395d1;
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2830%20200q60%2070%2080%20120%2020%2060%2020%20110%200%2040-10%2080t-20%2060q-20%2030-30%2060l-30%2030q-30%2020-50%2040-10%2020-30%2040-20%2030-30%2040-20%2020-60%2020-30%200-60-20l-330-350q-30-30-30-60%200-40%2030-60l30-30q20-20%2030-40%2020-20%2040-50%2020-20%2040-30%2020-20%2050-30%2030-20%2060-30%2050-10%2090-10t100%2030q50%2020%20110%2080zm-370%20846l-1564%201575-477-473%201581-1578%20460%20476zm-2356%201889l161-472%20307%20325-468%20147z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit.ok {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit.no,
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit.danger {
+  background-color: #f26667;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-edit.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-back {
+  min-width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  padding-left: 60px;
+  line-height: 26.66666667px;
+  font-size: 20pt;
+  font-weight: 600;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 0 0;
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal input {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  opacity: 0 !important;
+  padding-top: 30px !important;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-upload {
+  overflow: visible;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-upload[data-line]:after {
+  content: attr(data-line);
+  position: absolute;
+  top: 2px;
+  left: 110%;
+  height: 100%;
+  background-color: inherit;
+  max-width: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.withIcon {
+  padding-left: 45px;
+  background-size: auto 70%;
+  background-position: 15px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.withIcon.icon-signature-white {
+  background-size: 30px 70%;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.b-icon {
+  padding: 0;
+  background-size: 20px 70%;
+  background-position: 50% 50%;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal.inline {
+  margin-top: 0 !important;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal + .button.inline {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .background-light .b-modal:hover {
+  color: #09c;
+}
+.nvxRpguContentStyleBlock .inline + .button.inline,
+.nvxRpguContentStyleBlock input + .button.inline,
+.nvxRpguContentStyleBlock .button + .button.inline,
+.nvxRpguContentStyleBlock .select2-container + .button.inline {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .inputButtonCont {
+  display: none;
+  position: relative;
+  top: 0;
+  right: 0;
+  float: right;
+  height: 0;
+  z-index: 500;
+}
+.nvxRpguContentStyleBlock .inputButtonCont:hover {
+  display: inline-block;
+}
+.nvxRpguContentStyleBlock .inputButtonCont .buttonWrapper {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.nvxRpguContentStyleBlock .inputButtonCont .ok,
+.nvxRpguContentStyleBlock .inputButtonCont .no {
+  float: left;
+  width: 27px;
+  height: 27px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  background-color: #e4e4e4;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: 44% 50%;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .inputButtonCont .ok:hover,
+.nvxRpguContentStyleBlock .inputButtonCont .no:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .inputButtonCont .ok:first-child,
+.nvxRpguContentStyleBlock .inputButtonCont .no:first-child {
+  margin-left: 3px;
+}
+.nvxRpguContentStyleBlock .inputButtonCont .ok {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(102,102,102,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .inputButtonCont .no {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(102,102,102,1)%22%20d=%22M27.6%202563l1042.4-1045-1042.4-1038%20442.4-450%201050%201044%201050-1044%20430%20450-1040%201038%201040%201047-430%20445-1050-1048.1-1050%201048.1-442.4-447z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock input:focus ~ .inputButtonCont,
+.nvxRpguContentStyleBlock textarea:focus ~ .inputButtonCont {
+  display: inline-block;
+}
+.nvxRpguContentStyleBlock .more-button {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 50px;
+  background: #69c !important;
+  color: #fff !important;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .more-button:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .more-button .icon {
+  float: none;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  margin: -5px 10px 0 0;
+  background-size: 23px;
+}
+.nvxRpguContentStyleBlock .switch {
+  display: none !important;
+}
+.nvxRpguContentStyleBlock .switchTitle {
+  padding: 0 0 0 25px !important;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20fill=%22rgba(127,87,68,1)%22/%3E%3C/svg%3E');
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: 1% 60%;
+}
+.nvxRpguContentStyleBlock .switchTitle * {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .switchContent {
+  display: none;
+}
+.nvxRpguContentStyleBlock .switch:checked ~ .switchContent {
+  display: block !important;
+}
+.nvxRpguContentStyleBlock .switch:checked ~ .switchTitle {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(90,%20150,%20150)%22%20fill=%22rgba(127,87,68,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .custom-file-input-button {
+  position: relative;
+}
+.nvxRpguContentStyleBlock .custom-file-input-button .custom-file-input-button-text {
+  color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .custom-file-input-button input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding-top: 30px !important;
+  border: 0;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .custom-file-input-button,
+.nvxRpguContentStyleBlock .custom-file-input-clear-button {
+  transition: none !important;
+}
+.nvxRpguContentStyleBlock .custom-file-input-button-group .button {
+  margin-top: 5px !important;
+}
+.nvxRpguContentStyleBlock .background-dark .custom-file-input-button {
+  padding: 2px 13px 0;
+  border: 2px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+}
+.nvxRpguContentStyleBlock .file_upload,
+.nvxRpguContentStyleBlock .file_upload .button {
+  display: inline-block;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .file_upload {
+  position: relative;
+  font-size: 15px;
+  height: 30px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .file_upload:hover,
+.nvxRpguContentStyleBlock .file_upload:active,
+.nvxRpguContentStyleBlock .file_upload:focus,
+.nvxRpguContentStyleBlock .file_upload .button,
+.nvxRpguContentStyleBlock .file_upload input[type=file] {
+  outline: none;
+}
+.nvxRpguContentStyleBlock .file_upload:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .file_upload:active {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.nvxRpguContentStyleBlock .file_upload .button,
+.nvxRpguContentStyleBlock .file_upload input[type=file] {
+  top: 0px;
+  height: 30px;
+}
+.nvxRpguContentStyleBlock .file_upload .button {
+  position: absolute;
+  font-size: 15px;
+  padding: 2px 14px 2px 14px;
+  -webkit-padding-before: 2px;
+  border: 2px solid #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #63659C;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.nvxRpguContentStyleBlock .file_upload input[type=file] {
+  margin-left: 65px;
+  -webkit-margin-start: 10px;
+  -webkit-padding-before: 3px;
+}
+.nvxRpguContentStyleBlock label {
+  display: inline-block;
+  font-weight: normal;
+}
+.nvxRpguContentStyleBlock label + label {
+  display: block;
+  margin-top: 5px;
+}
+.nvxRpguContentStyleBlock label input {
+  margin-right: -20px !important;
+}
+.nvxRpguContentStyleBlock label input + * {
+  display: inline-block !important;
+  margin-left: 25px;
+}
+.nvxRpguContentStyleBlock label input:not(disabled) + * {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock label input:not(disabled) + *:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock h3 + label,
+.nvxRpguContentStyleBlock h2 + h3,
+.nvxRpguContentStyleBlock h2 + h4 {
+  margin-top: 0 !important;
+}
+.nvxRpguContentStyleBlock .input-big {
+  width: 400px;
+}
+.nvxRpguContentStyleBlock .min-headers h4 {
+  margin: 8px 0 4px;
+}
+.nvxRpguContentStyleBlock .labels {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+}
+.nvxRpguContentStyleBlock .labels label {
+  display: block;
+  overflow: hidden;
+  margin-left: 5px;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .labels label:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .input-required {
+  padding-left: 15px;
+  background-size: 10px;
+  background-position: 0 6px;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2225%22%20height%3D%2225%22%20viewBox%3D%220%200%2025%2025%22%3E%3Cpath%20d%3D%22M.15.15v24.75h24.75v-24.75h-24.75zm18.55%2017.45l-3.5%202.4-2.7-4.9-2.61%204.9-3.55-2.4%203.86-4.1-5.35-.7%201.38-3.91%204.87%202.11-.8-5.57h4.5l-.8%205.57%204.8-2.11%201.4%203.91-5.3.7%203.8%204.1z%22%2F%3E%3C%2Fsvg%3E');
+}
+label.nvxRpguContentStyleBlock .input-required {
+  display: inline-block;
+}
+.nvxRpguContentStyleBlock .button.not-valid,
+.nvxRpguContentStyleBlock .require-field {
+  color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .input-err + input,
+.nvxRpguContentStyleBlock .not-valid + input,
+.nvxRpguContentStyleBlock .input-err + textarea,
+.nvxRpguContentStyleBlock .not-valid + textarea,
+input.nvxRpguContentStyleBlock .input-err,
+input.nvxRpguContentStyleBlock .not-valid,
+textarea.nvxRpguContentStyleBlock .input-err,
+textarea.nvxRpguContentStyleBlock .not-valid,
+.nvxRpguContentStyleBlock .input-err.button,
+.nvxRpguContentStyleBlock .not-valid.button,
+.nvxRpguContentStyleBlock .input-err span,
+.nvxRpguContentStyleBlock .not-valid span {
+  border-color: #f26667 !important;
+  box-shadow: none;
+}
+.nvxRpguContentStyleBlock .input-err + .select2-container .select2-selection,
+.nvxRpguContentStyleBlock .not-valid + .select2-container .select2-selection,
+.nvxRpguContentStyleBlock .input-err.select2-container .select2-selection,
+.nvxRpguContentStyleBlock .not-valid.select2-container .select2-selection {
+  border-color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .input-err + * input,
+.nvxRpguContentStyleBlock .not-valid + * input,
+.nvxRpguContentStyleBlock .input-err + * textarea,
+.nvxRpguContentStyleBlock .not-valid + * textarea {
+  border-color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock .input-err + * .select2-container .select2-selection,
+.nvxRpguContentStyleBlock .not-valid + * .select2-container .select2-selection {
+  border-color: #f26667 !important;
+}
+label.nvxRpguContentStyleBlock .input-err input[type=checkbox],
+label.nvxRpguContentStyleBlock .not-valid input[type=checkbox] {
+  box-shadow: 0 0 0 2px #f26667;
+}
+.nvxRpguContentStyleBlock button[disabled],
+.nvxRpguContentStyleBlock button[disabled]:hover,
+.nvxRpguContentStyleBlock input[disabled],
+.nvxRpguContentStyleBlock input[disabled]:hover,
+.nvxRpguContentStyleBlock input[type=radio][disabled] + p,
+.nvxRpguContentStyleBlock input[type=checkbox][disabled] + p,
+.nvxRpguContentStyleBlock input[type=radio][disabled] + label,
+.nvxRpguContentStyleBlock input[type=checkbox][disabled] + label,
+.nvxRpguContentStyleBlock textarea[disabled],
+.nvxRpguContentStyleBlock .select2-container--disabled,
+.nvxRpguContentStyleBlock label input[disabled] ~ * {
+  opacity: .4 !important;
+  cursor: default;
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock .hdr.err + input,
+.nvxRpguContentStyleBlock .hdr.err + * input {
+  border-color: #f26667 !important;
+}
+.nvxRpguContentStyleBlock textarea {
+  min-height: 50px;
+  -moz-resize: vertical;
+  -ms-resize: vertical;
+  -o-resize: vertical;
+  resize: vertical;
+  max-height: 20vh;
+  overflow-y: auto;
+}
+.nvxRpguContentStyleBlock input:not([type=radio]):not([type=checkbox]):not([type=file]),
+.nvxRpguContentStyleBlock textarea {
+  width: 100%;
+  height: 30px;
+  padding: 0 5px;
+  border: 2px solid #999;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock input:not([type=radio]):not([type=checkbox]):not([type=file]):focus,
+.nvxRpguContentStyleBlock textarea:focus {
+  outline: none;
+}
+.nvxRpguContentStyleBlock .autoWidth {
+  width: auto;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .autoWidth input:not([type=radio]):not([type=checkbox]),
+.nvxRpguContentStyleBlock .autoWidth textarea,
+.nvxRpguContentStyleBlock .autoWidth .select2-container {
+  width: auto;
+}
+.nvxRpguContentStyleBlock .withIcon {
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+}
+.nvxRpguContentStyleBlock .withIconinput:not(textarea) {
+  padding-right: 30px;
+}
+.nvxRpguContentStyleBlock .withIcontextarea {
+  background-position: 99% 5px;
+}
+.nvxRpguContentStyleBlock .selectCont {
+  display: inline-block;
+  position: relative;
+  background-color: #ffffff;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .selectCont:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .niceSelect,
+.nvxRpguContentStyleBlock .selectCont select,
+.nvxRpguContentStyleBlock .ui-datepicker-title select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  height: 30px;
+  padding: 0 30px 0 8px;
+  background-color: #ffffff;
+  border-width: 0 10px 0 0;
+  border-right: 10px solid #ffffff;
+  outline: 2px solid #999;
+  outline-offset: -2px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: 15px auto;
+}
+.nvxRpguContentStyleBlock .niceSelect::-ms-expand,
+.nvxRpguContentStyleBlock .selectCont select::-ms-expand,
+.nvxRpguContentStyleBlock .ui-datepicker-title select::-ms-expand {
+  display: none;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .nvxRpguContentStyleBlock .niceSelect,
+  .nvxRpguContentStyleBlock .selectCont select,
+  .nvxRpguContentStyleBlock .ui-datepicker-title select {
+    height: 26px;
+    margin-top: 2px;
+  }
+}
+.nvxRpguContentStyleBlock input:not([type=radio]):not([type=checkbox]),
+.nvxRpguContentStyleBlock textarea,
+.nvxRpguContentStyleBlock .select2-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock input:not([type=radio]):not([type=checkbox]):focus,
+.nvxRpguContentStyleBlock textarea:focus,
+.nvxRpguContentStyleBlock .select2-container:focus {
+  background-color: #ffffff;
+}
+.nvxRpguContentStyleBlock .select2-container-active {
+  background-color: #ffffff;
+}
+.nvxRpguContentStyleBlock .checkbox {
+  display: inline-block;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .checkbox:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .checkbox:before {
+  content: "";
+  display: inline-block;
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin-bottom: -22px;
+  border: 2px solid #999;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 80%;
+}
+.nvxRpguContentStyleBlock .checkbox.checked:before {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .checkbox > * {
+  float: left;
+  display: inline-block !important;
+  margin-left: 30px;
+}
+.nvxRpguContentStyleBlock .checkbox ~ .checkbox {
+  display: block;
+  overflow: hidden;
+  margin-top: 5px !important;
+}
+.nvxRpguContentStyleBlock input[type="radio"],
+.nvxRpguContentStyleBlock input[type="checkbox"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  float: left;
+  margin: 2px;
+  border: 0;
+  box-shadow: 0 0 0 2px #999;
+  background-color: #fff;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock input[type="radio"]::-ms-expand,
+.nvxRpguContentStyleBlock input[type="checkbox"]::-ms-expand {
+  display: none;
+}
+.nvxRpguContentStyleBlock input[type="radio"]:hover,
+.nvxRpguContentStyleBlock input[type="checkbox"]:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock input[type="radio"] + *,
+.nvxRpguContentStyleBlock input[type="checkbox"] + * {
+  display: block;
+  padding-left: 7px;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock input[type="radio"]:focus,
+.nvxRpguContentStyleBlock input[type="checkbox"]:focus {
+  outline: none;
+}
+.nvxRpguContentStyleBlock input[type="radio"]:not(.disabled) + label,
+.nvxRpguContentStyleBlock input[type="checkbox"]:not(.disabled) + label {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock input[type="radio"]:not(.disabled) + label:hover,
+.nvxRpguContentStyleBlock input[type="checkbox"]:not(.disabled) + label:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock input[type="radio"].disabled + label,
+.nvxRpguContentStyleBlock input[type="checkbox"].disabled + label {
+  cursor: default;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock input[type="radio"] {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 42px;
+}
+.nvxRpguContentStyleBlock input[type="radio"]:checked:after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 0 3px 5px;
+  border-radius: 42px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+@-moz-document url-prefix() {
+  .nvxRpguContentStyleBlock input[type="radio"],
+  .nvxRpguContentStyleBlock input[type="checkbox"] {
+    outline: 2px solid #fff !important;
+  }
+  .nvxRpguContentStyleBlock input[type="checkbox"] {
+    outline-offset: -2px;
+  }
+  .nvxRpguContentStyleBlock input[type="radio"] {
+    outline-width: 5px !important;
+    outline-offset: -5px;
+    -moz-outline-radius: 42px;
+  }
+  .nvxRpguContentStyleBlock input[type="radio"]:checked:after {
+    outline: 2px solid #fff;
+  }
+}
+.nvxRpguContentStyleBlock input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"]:indeterminate:after {
+  content: "";
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 4px;
+  background-color: #dac6c0;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"]:checked {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+  background-size: 80%;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider {
+  display: none;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider + label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  cursor: pointer;
+  margin-top: 3px;
+  padding: 0;
+  background-color: #c6dbe0;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 10px;
+  height: 20px;
+  background-color: #285761;
+  transition: .2s;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider + label:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  float: left;
+  border: 2px solid rgba(255, 255, 255, 0);
+  box-shadow: 0 0 0 1px #71a6b1 inset;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider:checked ~ label {
+  background-color: #99ca3c;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider:checked ~ label:before {
+  left: 40px;
+}
+.nvxRpguContentStyleBlock input[type="checkbox"].slider:checked ~ label:after {
+  border-color: #fff;
+}
+.nvxRpguContentStyleBlock .pick {
+  float: left;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .pick .text {
+  font-style: italic;
+}
+.nvxRpguContentStyleBlock .custom-file-input-wrapper .custom-file-input-file-name {
+  display: none;
+}
+.nvxRpguContentStyleBlock .custom-file-input-wrapper .custom-file-input-button-text {
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .hasDatepicker {
+  min-width: 130px;
+  max-width: 150px;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: 97% 4px;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M234%2083.2h32.5v32.6h-32.5zm-50.4%200h32.5v32.6h-32.5zm-50.4%200h32.6v32.6h-32.6zm-50.3%200h32.5v32.6h-32.5zm101.2%20152.5h32.5v33.3h-32.5zm-50.5%200h32.6v33.3h-32.6zm-50.2%200h32.4v33.3h-32.4zm-50.4%200h32.5v33.3h-32.5zm201.4-50.9h32.5v32.6h-32.5zm-50.3%200h32.5v32.6h-32.5zm-50.5%200h32.6v32.6h-32.6zm-50.2%200h32.4v32.6h-32.4zm-50.4%200h32.5v32.6h-32.5zm201.5-50.7h32.5v32.5h-32.5zm-50.3%200h32.5v32.5h-32.5zm-50.5%200h32.6v32.5h-32.6zm-50.3%200h32.5v32.5h-32.5zm-50.3%200h32.5v32.5h-32.5zm250.3-134.4c9.2.8%2016.1%2010.5%2016.6%2019.1v264.2c-1.5%2010-7.4%2017-16.6%2017h-266.8c-8.9%200-16-8-16.6-17v-264.2c.6-8.4%207.7-19%2016.6-19.1zm0%2066.7h-266.8v216.6h266.8z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .separator {
+  padding-left: 3px;
+}
+.nvxRpguContentStyleBlock .datepickers {
+  display: inline-block;
+  max-width: 300px;
+}
+.nvxRpguContentStyleBlock .datepickers .hasDatepicker {
+  float: left;
+  width: 47% !important;
+  max-width: 47%;
+  min-width: 100px;
+}
+.nvxRpguContentStyleBlock .datepickers .separator {
+  float: left;
+  padding-top: 2px;
+  padding-left: 0;
+  width: 6%;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .ui-datepicker {
+  width: 260px;
+  border: 2px solid #666;
+  z-index: 9001 !important;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-header {
+  padding: 0;
+  border: 0;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-title select:first-child {
+  margin-right: -2px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-title select:first-child {
+    margin-top: 3px;
+  }
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-highlight {
+  background-color: #99ca3c !important;
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-highlight,
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-current-day a.ui-state-active {
+  font-weight: bold;
+}
+.nvxRpguContentStyleBlock .ui-datepicker-prev,
+.nvxRpguContentStyleBlock .ui-datepicker-next {
+  top: 1px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border: 0 !important;
+  color: #ffffff !important;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+  background-color: #06c !important;
+  background-size: 80% auto !important;
+  background-position: 50% !important;
+  background-repeat: no-repeat !important;
+}
+.nvxRpguContentStyleBlock .ui-datepicker-prev:hover,
+.nvxRpguContentStyleBlock .ui-datepicker-next:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .ui-datepicker-prev .ui-icon,
+.nvxRpguContentStyleBlock .ui-datepicker-next .ui-icon {
+  display: none !important;
+}
+.nvxRpguContentStyleBlock .ui-datepicker-prev {
+  left: 2px !important;
+  content: "\f060" !important;
+}
+.nvxRpguContentStyleBlock .ui-datepicker-next {
+  right: 2px !important;
+  content: "\f061" !important;
+}
+.nvxRpguContentStyleBlock .textLikeInput {
+  display: inline-block;
+  float: left;
+  padding: 0 40px 0 10px;
+  margin-right: -30px;
+  background-color: rgba(225, 225, 255, 0.2);
+  line-height: 30px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  max-width: 100%;
+}
+.nvxRpguContentStyleBlock .textLikeInput:not(a) {
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow {
+  position: relative;
+  z-index: 1;
+  overflow: auto;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 80%), -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 80%);
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 80%), -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 80%);
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 80%), linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 80%);
+  background-position: 0 0, 0 100%;
+  background-size: 100% 14px;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow input,
+.nvxRpguContentStyleBlock .scrollboxShadow textarea,
+.nvxRpguContentStyleBlock .scrollboxShadow .select2-container {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow:before,
+.nvxRpguContentStyleBlock .scrollboxShadow:after {
+  content: "";
+  position: relative;
+  z-index: -1;
+  display: block;
+  height: 30px;
+  width: 110%;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow:before {
+  margin: 0 0 -30px;
+  background: -webkit-linear-gradient(top, #fff, #fff 30%, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(top, #fff, #fff 30%, rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, #fff, #fff 30%, rgba(255, 255, 255, 0));
+}
+.nvxRpguContentStyleBlock .scrollboxShadow:after {
+  margin: -30px 0 0;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #fff 70%, #fff);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0), #fff 70%, #fff);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 70%, #fff);
+}
+.nvxRpguContentStyleBlock .scrollboxShadow .hasPopUp:hover input,
+.nvxRpguContentStyleBlock .scrollboxShadow .hasPopUp:hover textarea,
+.nvxRpguContentStyleBlock .scrollboxShadow .hasPopUp:hover .select2-container {
+  background-color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow.tab {
+  border: 8px solid transparent;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow.tab:before,
+.nvxRpguContentStyleBlock .scrollboxShadow.tab :after {
+  left: -20px;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow.tab:before {
+  top: -20px;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow.tab:after {
+  bottom: -20px;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow .select2-selection {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow label,
+.nvxRpguContentStyleBlock .scrollboxShadow label *,
+.nvxRpguContentStyleBlock .scrollboxShadow label span,
+.nvxRpguContentStyleBlock .scrollboxShadow input,
+.nvxRpguContentStyleBlock .scrollboxShadow input:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow .select2,
+.nvxRpguContentStyleBlock .scrollboxShadow .select2 *,
+.nvxRpguContentStyleBlock .scrollboxShadow textarea {
+  transition: none !important;
+  position: static;
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow label.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow label *.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow label span.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow input.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow input:hover.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow .select2.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow .select2 *.button:hover,
+.nvxRpguContentStyleBlock .scrollboxShadow textarea.button:hover {
+  color: rgba(0, 153, 204, 0.8) !important;
+  border-color: rgba(0, 153, 204, 0.8) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow label[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow label *[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow label span[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow input[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow input:hover[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow .select2[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow .select2 *[disabled],
+.nvxRpguContentStyleBlock .scrollboxShadow textarea[disabled] {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow .select2-container--disabled * {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow .select2-container--disabled .select2-selection {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow input[type="checkbox"][disabled] {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow input[type="checkbox"][disabled] + * {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.nvxRpguContentStyleBlock .scrollboxShadow .select2-selection__arrow {
+  position: static !important;
+  display: inline-block;
+  float: right;
+}
+.nvxRpguContentStyleBlock .inputLable label {
+  float: left;
+  width: 140px;
+  margin-top: 3px;
+  text-align: right;
+}
+.nvxRpguContentStyleBlock .inputLable .select {
+  padding-left: 150px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.nvxRpguContentStyleBlock .groupfiled {
+  border: 2px solid #999;
+}
+.nvxRpguContentStyleBlock .group {
+  display: inline-block;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .group.line {
+  border-left: 3px solid #dac6c0;
+  padding-left: 10px;
+  height: auto;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .group > .hdr:first-child,
+.nvxRpguContentStyleBlock .group > h3:first-child,
+.nvxRpguContentStyleBlock .group > .input-container .hdr,
+.nvxRpguContentStyleBlock .group > .input-container:first-child h4 {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .group + .group:not(.hasPopUp),
+.nvxRpguContentStyleBlock .group > .button:not(:first-child) {
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .group .hdr + .button {
+  /*между заголовком и кнопкой "добавить" появляются контролы*/
+  margin-top: 0;
+  margin-right: 100%;
+}
+.nvxRpguContentStyleBlock .group h4:first-of-type {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .background-dark .group.line {
+  border-color: #ffffff;
+}
+.nvxRpguContentStyleBlock .input-group {
+  display: inline-flex;
+  width: 100%;
+  float: left;
+}
+.nvxRpguContentStyleBlock .input-group + .input-group {
+  margin-top: 2px;
+}
+.nvxRpguContentStyleBlock .input-group h3 {
+  margin: 0;
+  padding: 4px 5px 0 0;
+  /*учитывая, что инпут 30px в высоту*/
+}
+.nvxRpguContentStyleBlock .input-small,
+.nvxRpguContentStyleBlock .input-tiny {
+  float: left;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .input-small {
+  width: 140px;
+}
+.nvxRpguContentStyleBlock .input-tiny {
+  width: 70px;
+}
+.nvxRpguContentStyleBlock input[type="text"] + .button {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock div[data-bind^="with: FormElements"] {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock div[data-bind^="with: FormElements"]:last-child {
+  margin-bottom: 0;
+}
+.nvxRpguContentStyleBlock .form-control-wrapper {
+  margin-bottom: 14px;
+}
+.nvxRpguContentStyleBlock .form-control-wrapper label {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.nvxRpguContentStyleBlock .textbox {
+  position: relative;
+  width: 100%;
+  /* иконка у поля фоном */
+  /* иконка у поля элементом */
+}
+.nvxRpguContentStyleBlock .textbox[class*="icon-"] {
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 100% 2px;
+}
+.nvxRpguContentStyleBlock .textbox span.icon {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock .columnsAuto {
+  -webkit-columns: 180px auto;
+  -moz-columns: 180px auto;
+  columns: 180px auto;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * {
+  display: inline-block;
+  position: relative;
+  top: -19px;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * > .hdr:first-child,
+.nvxRpguContentStyleBlock .columnsAuto > * .group h4:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * .hasPopUp {
+  position: static !important;
+  overflow: hidden;
+  margin-left: -5px;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * .hasPopUp:hover .popUp {
+  opacity: 1 !important;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * .hasDatepicker {
+  max-width: 100%;
+}
+.nvxRpguContentStyleBlock .columnsAuto > * .select2 {
+  min-width: 100%;
+}
+.nvxRpguContentStyleBlock .columnsAuto .button {
+  transition: none;
+}
+.nvxRpguContentStyleBlock .form-group {
+  margin-bottom: 3px;
+}
+.nvxRpguContentStyleBlock .fileLoaded {
+  margin-top: 17px;
+}
+.nvxRpguContentStyleBlock .fileLoaded .descr {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .fileLoaded .title {
+  display: inline-block;
+  float: inherit !important;
+  max-width: 100%;
+}
+.nvxRpguContentStyleBlock .formData dl {
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .formData dl dt {
+  float: left;
+  width: 200px;
+  padding-top: 1px;
+  padding-right: 10px;
+  text-align: right;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formData dl dd {
+  float: none;
+  display: block;
+  max-width: 100%;
+  min-height: 20px;
+  overflow: hidden;
+  line-height: 20px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+.nvxRpguContentStyleBlock .formData ul {
+  list-style-type: disc;
+}
+.nvxRpguContentStyleBlock .formData.wideLabel dt {
+  min-width: 220px;
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl {
+  font-size: 0;
+  /*когда несколько элементов подряд*/
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dt {
+  padding-top: 6px;
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd {
+  display: block;
+  float: none;
+  min-width: 150px;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 30px;
+  white-space: normal;
+  font-style: italic;
+  background-color: rgba(225, 225, 255, 0.2);
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd.withIcon:before {
+  position: relative;
+  float: right;
+  margin: 4px -4px 0 10px;
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dt:nth-of-type(n):not(:first-of-type),
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd:nth-of-type(n):not(:first-of-type),
+.nvxRpguContentStyleBlock .formData.likeInputs dl dt:nth-of-type(n):not(:last-of-type),
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd:nth-of-type(n):not(:last-of-type) {
+  float: left;
+}
+.nvxRpguContentStyleBlock .formData.withInputs dl dt {
+  padding-top: 6px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset {
+  width: 100%;
+  height: auto;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset * > h3:first-of-type {
+  margin-top: 5px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset h4 {
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset .group > *:first-child > h4 {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset *:not(h3):not(h4):last-child {
+  margin-bottom: 0;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset p {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset [data-control-type="checkbox"] {
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset [data-control-type="checkbox"] > label {
+  padding-left: 15px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-fieldset [data-control-type="file"] {
+  display: inline-block;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-formTitle {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-verticalLine {
+  border-left: 3px solid #FFFFFF;
+  padding-left: 10px;
+  height: auto;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-dateView {
+  width: 200px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tooltip {
+  width: 16px;
+  height: 16px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-header {
+  margin: 0 3px;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-size: 9pt;
+  line-height: normal;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  position: relative;
+  z-index: 2;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white {
+  background-color: #fff !important;
+  height: 17px;
+  margin-right: 2px;
+  padding-left: 8px;
+  margin-left: -4px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white .nvx-dfjsr-tab-header {
+  color: #000 !important;
+  padding-top: 0;
+  height: 18px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white:before {
+  border-bottom: 8px solid transparent;
+  border-left: 9px solid #0099cc;
+  border-top: 8px solid transparent;
+  content: " ";
+  left: -3px;
+  position: absolute;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white:after {
+  content: " ";
+  position: absolute;
+  right: -4px;
+  top: 8px;
+  z-index: 1;
+  height: 13px;
+  width: 13px;
+  background: white;
+  transform: rotate(45deg);
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white-selected {
+  background-color: #007ea8 !important;
+  height: 26px;
+  margin-right: 8px;
+  margin-top: -4px;
+  vertical-align: bottom;
+  margin-left: -8px;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white-selected .nvx-dfjsr-tab-header {
+  padding-top: 4px;
+  padding-left: 16px;
+  height: 18px;
+  color: #fff !important;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white-selected:before {
+  border-bottom: 13px solid transparent;
+  border-left: 17px solid #0099cc;
+  border-top: 13px solid transparent;
+  content: " ";
+  left: -7px;
+  position: absolute;
+  top: 2px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-tab-white-selected:after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 5px;
+  z-index: 1;
+  width: 20px;
+  background: #007ea8;
+  height: 20px;
+  transform: rotate(45deg);
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form {
+  display: inline-block;
+  position: relative;
+  font-size: 15px;
+  height: 30px;
+  font-family: "Segoe UI", "semilight";
+  color: white;
+  outline: none;
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form:hover,
+.nvxRpguContentStyleBlock .file_upload_dynamic_form:active,
+.nvxRpguContentStyleBlock .file_upload_dynamic_form:focus,
+.nvxRpguContentStyleBlock .file_upload_dynamic_form .button,
+.nvxRpguContentStyleBlock .file_upload_dynamic_form input[type=file] {
+  outline: none;
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  /*font-family: "Segoe UI", "semilight";*/
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form:active {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  /*font-family: "Segoe UI", "semilight";*/
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form .button {
+  font-size: 15px;
+  padding: 2px 14px 2px 14px;
+  -webkit-padding-before: 2px;
+  border: 2px solid white;
+  /*font-family: "Segoe UI", "semilight";*/
+  /*outline: none;*/
+  background-color: #0099cc;
+  position: absolute;
+  top: 0px;
+  height: 30px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form input[type=file] {
+  top: 0px;
+  height: 30px;
+  margin-left: 65px;
+  -webkit-margin-start: 13px;
+  padding: 0;
+  -webkit-padding-before: 3px;
+  color: white;
+}
+.nvxRpguContentStyleBlock .file_upload_dynamic_form .button,
+.nvxRpguContentStyleBlock .file_upload_dynamic_form {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .table {
+  display: table;
+}
+.nvxRpguContentStyleBlock .table .row {
+  display: table-row;
+}
+.nvxRpguContentStyleBlock .table .col {
+  display: table-cell;
+}
+.nvxRpguContentStyleBlock .cols-2 {
+  display: flex !important;
+  flex-direction: row;
+}
+.nvxRpguContentStyleBlock .cols-2 > * {
+  width: 50%;
+}
+.nvxRpguContentStyleBlock .cols-2 > *:first-child {
+  padding-right: 20px;
+}
+.nvxRpguContentStyleBlock .cols-2 > *.group {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle > * {
+  width: 46%;
+}
+.nvxRpguContentStyleBlock .cols-2.withMiddle > *:first-child {
+  padding-right: 0;
+  margin-right: 8%;
+}
+.nvxRpguContentStyleBlock .cols-2 .middle-cont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  width: 30px;
+}
+.nvxRpguContentStyleBlock .cols-3 > * {
+  float: left;
+  width: 33%;
+  padding-right: 20px;
+}
+.nvxRpguContentStyleBlock .cols-3 > *:last-child {
+  width: 34%;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .cols-3 > *.group {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .table-new {
+  position: relative;
+  display: table;
+  width: 100%;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .table-new + .tabsCont {
+  margin-top: -2px;
+}
+.nvxRpguContentStyleBlock .table-new a,
+.nvxRpguContentStyleBlock .table-new .a,
+.nvxRpguContentStyleBlock .table-new.a > *:not(.noa) {
+  text-decoration: none;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .table-new a:hover,
+.nvxRpguContentStyleBlock .table-new .a:hover,
+.nvxRpguContentStyleBlock .table-new.a > *:not(.noa):hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .table-new .noa {
+  cursor: default !important;
+}
+.nvxRpguContentStyleBlock .table-new p {
+  margin: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new > label,
+.nvxRpguContentStyleBlock .table-new > * > label {
+  margin: 0 0 1px 0;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .table-new .pointer {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .table-new .pointer:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .table-new.paddings > * > * {
+  padding: 5px 15px;
+}
+.nvxRpguContentStyleBlock .table-new > * {
+  display: table;
+  position: relative;
+  width: 100%;
+  margin-bottom: 2px;
+}
+.nvxRpguContentStyleBlock .table-new > *:last-child {
+  margin-bottom: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) {
+  display: table-cell;
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp):first-child:not([class*="col-"]) {
+  border: 0;
+  max-width: 0;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp).th {
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp).withIcon.icon-20 {
+  padding-left: 30px;
+  background-size: 20px;
+  background-position: 10px 50%;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp).withIcon.icon-30 {
+  padding-left: 40px;
+  background-size: 30px;
+  background-position: 10px 50% !important;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .pic,
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .pic {
+  min-width: 50px;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .pic > * {
+  vertical-align: middle;
+  min-height: 30px;
+  min-width: 30px;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .pic > img {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .text {
+  width: 100%;
+  padding: 0 10px;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) p {
+  max-height: 25px;
+  line-height: 25px;
+  padding: 0 15px;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) p.h2 {
+  max-height: 36px;
+  margin-top: -2px;
+  margin-bottom: -3px;
+  line-height: 34px;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) p + .h2 {
+  margin-top: -8px !important;
+  margin-bottom: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) > p,
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .text,
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .text p {
+  max-width: 0;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) h3 {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) > .pic + .text,
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) .pic + .text > p {
+  padding-left: 0;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp) > .pic + .text > p {
+  padding-right: 0;
+}
+.nvxRpguContentStyleBlock .table-new > * > *:not(.popUp).status {
+  float: left;
+  width: 10px;
+  max-width: 10px !important;
+}
+.nvxRpguContentStyleBlock .table-new > *.selection {
+  position: relative;
+  outline-offset: -3px;
+  background-color: #06c !important;
+  outline: 3px solid #002c93;
+}
+.nvxRpguContentStyleBlock .table-new > *.selection:before,
+.nvxRpguContentStyleBlock .table-new > *.selection:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.nvxRpguContentStyleBlock .table-new > *.selection:before {
+  border: 15px solid transparent;
+  border-top-color: #002c93;
+  border-right-color: #002c93;
+}
+.nvxRpguContentStyleBlock .table-new > *.selection:after {
+  top: 3px;
+  right: 3px;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+  width: 12px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-auto > * > * {
+  height: auto !important;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-40 > * > * {
+  height: 40px !important;
+  line-height: 20px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-45 > * > * {
+  height: 45px;
+  line-height: 20px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-45 > * > * p {
+  line-height: 20px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-45 > * > *.tableFlyout {
+  line-height: 44px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-50 > * > * {
+  height: 50px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-50 > * > * p {
+  line-height: 23px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-60 > * > * {
+  height: 60px;
+}
+.nvxRpguContentStyleBlock .table-new.rowh-60 > * > *.tableFlyout {
+  line-height: 57px;
+}
+.nvxRpguContentStyleBlock .table-new.cols-30p > * > * {
+  width: 30% !important;
+  min-width: 30% !important;
+  max-width: 30% !important;
+}
+.nvxRpguContentStyleBlock .table-new.cols-50p > * > * {
+  width: 50% !important;
+  min-width: 50% !important;
+  max-width: 50% !important;
+}
+.nvxRpguContentStyleBlock .table-new.limh > * > * p {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .table-new.text-ellipsis [class*="col-"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .table-new .col-checkbox {
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  padding: 0;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .table-new .col-checkbox input[type=checkbox] {
+  float: none;
+  margin: 5px 0 !important;
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock .table-new .col-60 {
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-100 {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-140 {
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-150 {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-170 {
+  width: 170px !important;
+  min-width: 170px !important;
+  max-width: 170px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-180 {
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-200 {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-210 {
+  width: 210px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-220 {
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-230 {
+  width: 230px !important;
+  min-width: 230px !important;
+  max-width: 230px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-245 {
+  width: 245px !important;
+  min-width: 245px !important;
+  max-width: 245px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-270 {
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-300 {
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-360 {
+  width: 20vw !important;
+  min-width: 20vw !important;
+  max-width: 20vw !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-400 {
+  width: 400px !important;
+  min-width: 400px !important;
+  max-width: 400px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-430 {
+  width: 430px !important;
+  min-width: 430px !important;
+  max-width: 430px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-600 {
+  width: 600px !important;
+  min-width: 600px !important;
+  max-width: 600px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-30p {
+  width: 30% !important;
+  min-width: 30% !important;
+  max-width: 30% !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-50p {
+  width: 50% !important;
+  min-width: 50% !important;
+  max-width: 50% !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-100p {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+.nvxRpguContentStyleBlock .table-new.background-dark {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+.nvxRpguContentStyleBlock .table-new.background-dark > * > * {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .table-new.default > * > *:not(.tableFlyout) {
+  height: auto;
+  padding: 3px 10px;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.nvxRpguContentStyleBlock .table-new.default > .th > *:not(.tableFlyout) {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.nvxRpguContentStyleBlock .table-new.default [class*="col-"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .table-new.null > * > *,
+.nvxRpguContentStyleBlock .table-new.clear > * > * {
+  height: auto !important;
+  border: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new.background-gray > * > * {
+  background-color: #e5e5e5;
+}
+.nvxRpguContentStyleBlock .table-new.background-gray > * > *:last-child {
+  background-color: #ccc;
+  border-left: 2px solid #fff;
+}
+.nvxRpguContentStyleBlock .table-new.background-default > * {
+  background-color: #369 !important;
+}
+.nvxRpguContentStyleBlock .table-new.background-task > * {
+  background-color: #669;
+}
+.nvxRpguContentStyleBlock .table-new.background-attach > * {
+  background-color: #369;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * > *:not(.tableFlyout) {
+  height: auto;
+  padding: 3px 10px;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > .th > *:not(.tableFlyout) {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.nvxRpguContentStyleBlock .table-new.table-admin [class*="col-"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * {
+  margin-bottom: 2px;
+  background-color: #e4e4e4;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > *:hover {
+  background-color: #dac6c0;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * > *:not(.tableFlyout) {
+  background-color: transparent;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * > *:not(.tableFlyout):not(:first-child) {
+  border-left: 2px solid #ffffff;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * .tableFlyout {
+  line-height: 32px;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin.th > *,
+.nvxRpguContentStyleBlock .table-new.table-admin > .th {
+  height: 35px;
+  background-color: #999;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin.th > * *,
+.nvxRpguContentStyleBlock .table-new.table-admin > .th * {
+  color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin.text-ellipsis > * > *:not(label):not(.col-checkbox) {
+  width: auto;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin.text-ellipsis > * > *:not(label):not(.col-checkbox) > *:not(input) {
+  display: inline-block;
+  max-width: 0;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > * .col-checkbox + * {
+  word-wrap: break-word;
+  max-width: 10vh;
+}
+.nvxRpguContentStyleBlock .table-new.niceInfo > * {
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .table-new.niceInfo > * > * {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .table-new.niceInfo > * > *:first-of-type {
+  width: 280px;
+  min-width: 280px;
+  padding-right: 10px;
+  font-weight: 600;
+  text-align: right;
+}
+.nvxRpguContentStyleBlock .koGrid {
+  border: none;
+  background: none;
+  width: 100%;
+  height: 82vh;
+  min-height: 400px;
+  font-size: 10.5pt;
+}
+.nvxRpguContentStyleBlock .koGrid .kgHeaderContainer {
+  width: 100% !important;
+}
+.nvxRpguContentStyleBlock .koGrid .kgHeaderContainer input {
+  width: 100% !important;
+  max-width: 100%;
+}
+.nvxRpguContentStyleBlock .koGrid .kgHeaderContainer .hasDatepicker {
+  background-position: 89% 4px;
+}
+.nvxRpguContentStyleBlock .koGrid .kgHeaderText {
+  font-weight: 500;
+}
+.nvxRpguContentStyleBlock .koGrid .kgTopPanel,
+.nvxRpguContentStyleBlock .koGrid .kgViewport {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.nvxRpguContentStyleBlock .koGrid .kgTopPanel,
+.nvxRpguContentStyleBlock .koGrid .kgFooterPanel {
+  border: none;
+}
+.nvxRpguContentStyleBlock .koGrid .kgFooterPanel {
+  background: none;
+}
+.nvxRpguContentStyleBlock .koGrid input {
+  vertical-align: inherit !important;
+}
+.nvxRpguContentStyleBlock .koGrid .koGridRow-pointer:hover .kgCell {
+  cursor: pointer;
+  background-color: #dfdfdf;
+}
+.nvxRpguContentStyleBlock .gridStyle {
+  width: 100%;
+  height: 600px;
+  -moz-min-width: 600px;
+  -ms-min-width: 600px;
+  -o-min-width: 600px;
+  -webkit-min-width: 600px;
+  min-width: 600px;
+}
+.nvxRpguContentStyleBlock .gridStyle .kgTopPanel {
+  z-index: 4;
+}
+.nvxRpguContentStyleBlock .tableFlyout {
+  float: left;
+  right: 0;
+  height: 100%;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff !important;
+  padding: 0 15px;
+  line-height: 48px;
+}
+.nvxRpguContentStyleBlock .tableFlyout.a {
+  transition: .2s !important;
+  transition-property: opacity, background-color, color, outline-color !important;
+  cursor: pointer !important;
+}
+.nvxRpguContentStyleBlock .tableFlyout.a:hover {
+  opacity: 0.8 !important;
+  filter: alpha(opacity=80) !important;
+}
+.nvxRpguContentStyleBlock .table-new [data-bind^="html"] p {
+  padding: 0;
+  overflow: visible;
+  max-height: inherit;
+  white-space: normal;
+}
+.nvxRpguContentStyleBlock .space-normal {
+  white-space: normal !important;
+}
+.nvxRpguContentStyleBlock .ui-dialog .ui-dialog-titlebar {
+  display: none;
+}
+.nvxRpguContentStyleBlock .ui-resizable-handle {
+  display: none !important;
+}
+.nvxRpguContentStyleBlock .modalWindowOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.nvxRpguContentStyleBlock .modalWindowOverlay:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.nvxRpguContentStyleBlock .modalWindow {
+  position: relative;
+  display: inline-block;
+  min-width: 750px;
+  max-width: 900px;
+  padding: 20px;
+  vertical-align: middle;
+  background-color: #ffffff;
+  text-align: left;
+  /*default - background-light*/
+  /*маленькое окно*/
+}
+.nvxRpguContentStyleBlock .modalWindow:not(.background-dark) *:not(a):not(.button),
+.nvxRpguContentStyleBlock .modalWindow:not(.background-dark) *:hover:not(a) {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .modalWindow .background-dark,
+.nvxRpguContentStyleBlock .modalWindow .background-light .background-dark {
+  color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .modalWindow .background-dark:hover,
+.nvxRpguContentStyleBlock .modalWindow .background-light .background-dark:hover {
+  color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .modalWindow .background-dark *,
+.nvxRpguContentStyleBlock .modalWindow .background-light .background-dark *,
+.nvxRpguContentStyleBlock .modalWindow .background-dark *:hover,
+.nvxRpguContentStyleBlock .modalWindow .background-light .background-dark *:hover {
+  color: #ffffff !important;
+}
+.nvxRpguContentStyleBlock .modalWindow.min {
+  min-width: 500px;
+  max-width: 500px;
+}
+.nvxRpguContentStyleBlock .modalWindow.default {
+  width: 750px;
+}
+.nvxRpguContentStyleBlock .modalWindow.fixHeight .modalWindowContent {
+  height: 50vh;
+}
+.nvxRpguContentStyleBlock .modalWindow h2 {
+  margin: -10px 0 16px -2px;
+}
+.nvxRpguContentStyleBlock .modalWindow > h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .modalWindow h2 + .hdr {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 48px;
+  max-height: 70vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent > .hdr:first-child,
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent > label:first-child,
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent > h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent.shadowTop:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.nvxRpguContentStyleBlock .modalWindow .modalWindowContent.tab {
+  min-height: 70vh;
+}
+.nvxRpguContentStyleBlock .modalWindow textarea {
+  width: 100%;
+  height: 50px;
+  padding: 2px 5px;
+}
+.nvxRpguContentStyleBlock .modalWindow .button {
+  float: right;
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .modalWindow:not(.background-dark) .button {
+  color: #09c;
+  border-color: #09c;
+}
+.nvxRpguContentStyleBlock .modalWindow:not(.background-dark) .button:hover {
+  color: #09c;
+}
+.nvxRpguContentStyleBlock .modalWindow > .button,
+.nvxRpguContentStyleBlock .modalWindow .b-modal,
+.nvxRpguContentStyleBlock .modalWindow .b-modal > form > .button {
+  margin-top: 20px;
+}
+.nvxRpguContentStyleBlock .modalWindow > .button ~ .button {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .modalWindow.background-task {
+  min-width: 500px;
+  width: 500px;
+}
+.nvxRpguContentStyleBlock .modalWindow.autoWidth {
+  min-width: inherit;
+}
+.nvxRpguContentStyleBlock .modalWindow label.inline {
+  text-align: right;
+  margin-right: 5px;
+}
+.nvxRpguContentStyleBlock .modalWindow table thead th {
+  border: 0;
+}
+.nvxRpguContentStyleBlock .modalDialogInputField {
+  height: 35px;
+  padding-left: 5px;
+}
+.nvxRpguContentStyleBlock .recordInfo {
+  margin-top: -12px;
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .recordInfo span {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.nvxRpguContentStyleBlock #filter-panel {
+  position: fixed;
+  right: 0;
+  width: 330px;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffffff;
+}
+.nvxRpguContentStyleBlock #filter-panel h2 {
+  margin-top: -5px;
+  margin-bottom: 16px;
+}
+.nvxRpguContentStyleBlock #filter-panel input + .label_check {
+  margin-top: 20px;
+}
+.nvxRpguContentStyleBlock #filter-panel .label_check + .label_check {
+  margin-top: 4px;
+}
+.nvxRpguContentStyleBlock .filterForm {
+  display: inline-block;
+}
+.nvxRpguContentStyleBlock .filterForm:not(.inline) {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-itm {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 40px;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-itm .filter-label {
+  float: left;
+  margin-top: 4px;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .filterForm.itms-bounded .filter-itm {
+  width: 300px;
+}
+.nvxRpguContentStyleBlock .filterForm.itms-bounded .filter-itm .filter-label {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .filterForm > .filter-label {
+  margin: 0 10px 5px 0;
+}
+.nvxRpguContentStyleBlock .filterForm * + .filter-label {
+  margin-left: 35px;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-control {
+  min-width: 100%;
+  height: 30px !important;
+  margin: 0;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .filterForm .filter-control input {
+  border-color: #999 !important;
+}
+.nvxRpguContentStyleBlock .filterForm .hasDatepicker {
+  min-width: 130px;
+}
+.nvxRpguContentStyleBlock .pave-table-header {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 2px;
+  padding: 15px 20px 13px 0;
+  font: 300 20pt "Segoe UI Light", "Segoe UI", Arial, sans-serif;
+}
+.nvxRpguContentStyleBlock .pave-table-header .icon {
+  transition: 0.2s;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer {
+  cursor: pointer;
+  padding-left: 20px;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer:hover {
+  background-color: rgba(231, 236, 241, 0.9);
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer > .icon {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .rotate90-counter-clockwise {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.nvxRpguContentStyleBlock .deal {
+  height: 60px;
+  margin-bottom: 2px;
+  margin-left: 10%;
+  overflow: hidden;
+  transition: opacity .2s;
+}
+.nvxRpguContentStyleBlock .deal:hover {
+  opacity: 0.8;
+}
+.nvxRpguContentStyleBlock .deal:last-child {
+  margin-bottom: 0;
+}
+.nvxRpguContentStyleBlock .deal-info {
+  width: 50%;
+  height: 100%;
+  background-color: #0099FF;
+  float: left;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .deal-owner {
+  width: 50%;
+  height: 100%;
+  background-color: #0099FF;
+  float: left;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  width: 40%;
+  background-color: #007ACC;
+}
+.nvxRpguContentStyleBlock .table-new .more_block .pic {
+  height: 60px;
+}
+.nvxRpguContentStyleBlock .table-new .more_block:hover {
+  background-color: #464646;
+}
+.nvxRpguContentStyleBlock #certDialogCloseButton {
+  height: 30px;
+  width: 30px;
+  float: right;
+  background-color: red;
+}
+.nvxRpguContentStyleBlock #certDialogCloseButton:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.nvxRpguContentStyleBlock .header-top {
+  padding-left: 100px !important;
+}
+.nvxRpguContentStyleBlock [class*="fa-"]:before,
+.nvxRpguContentStyleBlock [class*="icon-"]:before,
+.nvxRpguContentStyleBlock .addIconBefore {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.nvxRpguContentStyleBlock .fa-outdent:before {
+  content: "\f03b";
+  font-size: 40px;
+}
+.nvxRpguContentStyleBlock .fa-question:before {
+  content: "\f128";
+}
+.nvxRpguContentStyleBlock .fa-remove:before {
+  content: "\f00d";
+  color: #f26667;
+}
+.nvxRpguContentStyleBlock .fa-check:before {
+  content: "\f00c";
+  color: #99ca3c;
+}
+.nvxRpguContentStyleBlock .fa-info:before {
+  content: "\f129";
+}
+.nvxRpguContentStyleBlock .fa-rouble:before {
+  content: "\f158";
+}
+.nvxRpguContentStyleBlock .fa-bank:before {
+  content: "\f19c";
+}
+.nvxRpguContentStyleBlock .fa-legal:before {
+  content: "\f0e3";
+}
+.nvxRpguContentStyleBlock .fa-map-marker:before {
+  content: "\f041";
+}
+.nvxRpguContentStyleBlock .fa-newspaper-o:before {
+  content: "\f1ea";
+}
+.nvxRpguContentStyleBlock .fa-sign-in:before {
+  content: "\f090";
+}
+.nvxRpguContentStyleBlock .fa-sign-out:before {
+  content: "\f08b";
+}
+.nvxRpguContentStyleBlock .fa-calendar,
+.nvxRpguContentStyleBlock .fa-calendar:before {
+  content: "\f073";
+}
+.nvxRpguContentStyleBlock .fa-group:before {
+  content: "\f0c0";
+}
+.nvxRpguContentStyleBlock .fa-download:before {
+  content: "\f019";
+}
+.nvxRpguContentStyleBlock .fa-repeat:before {
+  content: "\f01e";
+  color: white;
+}
+.nvxRpguContentStyleBlock .fa-ambulance:before {
+  content: "\f0f9";
+}
+.nvxRpguContentStyleBlock .i-chevron-up {
+  content: "\f077";
+}
+.nvxRpguContentStyleBlock .i-chevron-down {
+  content: "\f078";
+}
+.nvxRpguContentStyleBlock .icon-arrow-right-white,
+.nvxRpguContentStyleBlock .icon-arrow-right-white:before {
+  content: "\f061";
+}
+.nvxRpguContentStyleBlock .icon-arrow-left-white,
+.nvxRpguContentStyleBlock .icon-arrow-left-white:before {
+  content: "\f060";
+}
+.nvxRpguContentStyleBlock .icon-arrowBBack {
+  content: "\f0a8";
+}
+.nvxRpguContentStyleBlock .fa-search:before {
+  content: "\f002";
+}
+.nvxRpguContentStyleBlock .fa-exclamation-triangle:before {
+  content: "\f071";
+}
+.nvxRpguContentStyleBlock .icon-print-white:before {
+  content: "\f02f";
+}
+.nvxRpguContentStyleBlock .icon-asterisk,
+.nvxRpguContentStyleBlock .icon-asterisk:before {
+  content: "\f069";
+}
+.nvxRpguContentStyleBlock .icon-showMore-white:before {
+  content: "\f141";
+}
+.nvxRpguContentStyleBlock .icon-chevron-down-gray:before {
+  content: "\f078";
+}
+.nvxRpguContentStyleBlock [class*="icon-"].withIcon {
+  position: relative;
+}
+.nvxRpguContentStyleBlock [class*="icon-"].withIcon:before {
+  position: absolute;
+  left: 17px;
+  font-size: 15pt;
+}
+.nvxRpguContentStyleBlock [class*="fa-"].withIcon,
+.nvxRpguContentStyleBlock [class*="fa-"].filter-itm {
+  position: relative;
+}
+.nvxRpguContentStyleBlock [class*="fa-"].withIcon:before,
+.nvxRpguContentStyleBlock [class*="fa-"].filter-itm:before {
+  position: absolute;
+}
+.nvxRpguContentStyleBlock [class*="fa-"].withIcon:before {
+  left: 15px;
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock [class*="fa-"].filter-itm:before {
+  top: 8px;
+  right: 10px;
+  font-size: 16pt;
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock [class*="fa-"].filter-itm input {
+  padding-right: 35px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.nvxRpguContentStyleBlock .icon-paddings {
+  background-size: 70% auto;
+}
+.nvxRpguContentStyleBlock .icon-add-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20enable-background=%22new%200%200%20841.9%20595.3%22%20width=%223000%22%20height=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M1509.37%202997.371c-825.985%200-1501.35-670.506-1501.35-1501.35%200-830.844%20675.364-1496.491%201501.35-1496.491%20825.985%200%201501.35%20670.506%201501.35%201501.35%200%20830.844-670.506%201496.491-1501.35%201496.491zm874.573-1622.818c0-68.022-58.305-126.327-126.327-126.327h-495.591v-500.45c0-68.022-58.305-126.327-126.327-126.327h-247.796c-68.022%200-126.327%2058.305-126.327%20126.327v500.45h-500.45c-68.022%200-126.327%2058.305-126.327%20126.327v247.796c0%2068.022%2058.305%20126.327%20126.327%20126.327h500.45v500.45c0%2068.022%2058.305%20126.327%20126.327%20126.327h247.796c68.022%200%20126.327-58.305%20126.327-126.327v-500.45h500.45c68.022%200%20126.327-58.305%20126.327-126.327v-247.796z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-calendar-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M234%2083.2h32.5v32.6h-32.5zm-50.4%200h32.5v32.6h-32.5zm-50.4%200h32.6v32.6h-32.6zm-50.3%200h32.5v32.6h-32.5zm101.2%20152.5h32.5v33.3h-32.5zm-50.5%200h32.6v33.3h-32.6zm-50.2%200h32.4v33.3h-32.4zm-50.4%200h32.5v33.3h-32.5zm201.4-50.9h32.5v32.6h-32.5zm-50.3%200h32.5v32.6h-32.5zm-50.5%200h32.6v32.6h-32.6zm-50.2%200h32.4v32.6h-32.4zm-50.4%200h32.5v32.6h-32.5zm201.5-50.7h32.5v32.5h-32.5zm-50.3%200h32.5v32.5h-32.5zm-50.5%200h32.6v32.5h-32.6zm-50.3%200h32.5v32.5h-32.5zm-50.3%200h32.5v32.5h-32.5zm250.3-134.4c9.2.8%2016.1%2010.5%2016.6%2019.1v264.2c-1.5%2010-7.4%2017-16.6%2017h-266.8c-8.9%200-16-8-16.6-17v-264.2c.6-8.4%207.7-19%2016.6-19.1zm0%2066.7h-266.8v216.6h266.8z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-down-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(90,%20150,%20150)%22%20fill=%22rgba(127,87,68,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-down-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(90,%20150,%20150)%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-left-gray,
+.nvxRpguContentStyleBlock .icon-chevron-left-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(180,%20150,%20150)%22%20fill=%22rgba(127,87,68,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-left-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(180,%20150,%20150)%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-right-brown,
+.nvxRpguContentStyleBlock .icon-chevron-right-gray,
+.nvxRpguContentStyleBlock .icon-chevron-right-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20fill=%22rgba(127,87,68,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-chevron-right-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-ok-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-ok-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-ok-gray {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20fill=%22rgba(102,102,102,1)%22%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-cross-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M27.6%202563l1042.4-1045-1042.4-1038%20442.4-450%201050%201044%201050-1044%20430%20450-1040%201038%201040%201047-430%20445-1050-1048.1-1050%201048.1-442.4-447z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-cross-gray {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(102,102,102,1)%22%20d=%22M27.6%202563l1042.4-1045-1042.4-1038%20442.4-450%201050%201044%201050-1044%20430%20450-1040%201038%201040%201047-430%20445-1050-1048.1-1050%201048.1-442.4-447z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-trash-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2426.58%20808.267v2043.038q-3.202%2048.034-9.607%2078.455-6.404%2030.421-24.017%2046.433-17.612%2016.011-46.433%2024.017-28.82%208.006-76.854%206.404h-1572.307q-46.433%200-76.854-6.404t-46.433-22.416q-16.011-16.011-24.017-48.034-8.006-32.023-6.405-78.455v-2043.038h1882.926zm-1256.885%20392.276q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.214%206.405-27.219%2024.017-8.006%2017.612-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.612%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-27.219-22.416-17.612-6.405-40.028-9.607-22.416-3.202-51.236-1.601h-57.641q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h57.641q27.219%200%2049.635-1.601%2022.416-1.601%2041.629-9.607%2019.213-8.006%2027.219-24.017t9.607-44.832v-1413.795zm470.731%200q0-28.82-9.607-44.832-9.607-16.011-25.618-22.416-16.011-6.405-40.028-9.607-24.017-3.202-49.635-1.601h-59.242q-27.219%200-49.635%201.601-22.416%201.601-41.629%208.006-19.213%206.405-27.219%2024.017t-9.607%2044.832v1413.795q0%2028.82%209.607%2044.832%209.607%2016.011%2027.219%2024.017%2017.613%208.006%2040.028%209.607%2022.416%201.601%2051.236%201.601h59.242q25.618%200%2048.034-1.601t40.028-9.607q17.612-8.006%2027.219-24.017%209.607-16.011%209.607-44.832v-1413.795zm-312.22-1019.918h-629.243v-156.911h629.243v156.911zm782.951%20470.731h-2196.746v-313.821h2196.746v313.821z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-edit-white {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%223000%22%20width=%223000%22%3E%3Cpath%20fill=%22rgba(255,255,255,1)%22%20d=%22M2830%20200q60%2070%2080%20120%2020%2060%2020%20110%200%2040-10%2080t-20%2060q-20%2030-30%2060l-30%2030q-30%2020-50%2040-10%2020-30%2040-20%2030-30%2040-20%2020-60%2020-30%200-60-20l-330-350q-30-30-30-60%200-40%2030-60l30-30q20-20%2030-40%2020-20%2040-50%2020-20%2040-30%2020-20%2050-30%2030-20%2060-30%2050-10%2090-10t100%2030q50%2020%20110%2080zm-370%20846l-1564%201575-477-473%201581-1578%20460%20476zm-2356%201889l161-472%20307%20325-468%20147z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .icon-required-black {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2225%22%20height%3D%2225%22%20viewBox%3D%220%200%2025%2025%22%3E%3Cpath%20d%3D%22M.15.15v24.75h24.75v-24.75h-24.75zm18.55%2017.45l-3.5%202.4-2.7-4.9-2.61%204.9-3.55-2.4%203.86-4.1-5.35-.7%201.38-3.91%204.87%202.11-.8-5.57h4.5l-.8%205.57%204.8-2.11%201.4%203.91-5.3.7%203.8%204.1z%22%2F%3E%3C%2Fsvg%3E');
+}
+.nvxRpguContentStyleBlock .icon-question-gray {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asodipodi%3D%22http%3A%2F%2Fsodipodi.sourceforge.net%2FDTD%2Fsodipodi-0.dtd%22%20xmlns%3Ainkscape%3D%22http%3A%2F%2Fwww.inkscape.org%2Fnamespaces%2Finkscape%22%20height%3D%223000%22%20width%3D%223000%22%20id%3D%22svg2995%22%20version%3D%221.1%22%20inkscape%3Aversion%3D%220.48.4%20r9939%22%20sodipodi%3Adocname%3D%22index.svg%22%3E%20%3Cmetadata%20id%3D%22metadata3003%22%3E%20%3Crdf%3ARDF%3E%20%3Ccc%3AWork%20rdf%3Aabout%3D%22%22%3E%20%3Cdc%3Aformat%3Eimage%2Fsvg%2Bxml%3C%2Fdc%3Aformat%3E%20%3Cdc%3Atype%20rdf%3Aresource%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Fdcmitype%2FStillImage%22%20%2F%3E%20%3C%2Fcc%3AWork%3E%20%3C%2Frdf%3ARDF%3E%20%3C%2Fmetadata%3E%20%3Cdefs%20id%3D%22defs3001%22%20%2F%3E%20%3Csodipodi%3Anamedview%20pagecolor%3D%22%23ffffff%22%20bordercolor%3D%22%23666666%22%20borderopacity%3D%221%22%20objecttolerance%3D%2210%22%20gridtolerance%3D%2210%22%20guidetolerance%3D%2210%22%20inkscape%3Apageopacity%3D%220%22%20inkscape%3Apageshadow%3D%222%22%20inkscape%3Awindow-width%3D%221920%22%20inkscape%3Awindow-height%3D%221018%22%20id%3D%22namedview2999%22%20showgrid%3D%22false%22%20inkscape%3Azoom%3D%220.22250293%22%20inkscape%3Acx%3D%221287.9351%22%20inkscape%3Acy%3D%221390.3936%22%20inkscape%3Awindow-x%3D%221272%22%20inkscape%3Awindow-y%3D%22-8%22%20inkscape%3Awindow-maximized%3D%221%22%20inkscape%3Acurrent-layer%3D%22svg2995%22%20%2F%3E%20%3Cpath%20d%3D%22M1750%202434v-372q0-26.7-20-44.7-20-17-50-17h-370q-20%200-40%2017-20%2018-20%2044.7v372q0%2030%2020%2050%2020%2010%2040%2010h370q30%200%2050-10%2020-20%2020-50zm490-1302q0-171-110-312-100-150-260-230t-330-80q-470%200-721%20410-29%2051%2015%2086l256%20194q10%2011%2040%2011t40-23q110-132%20170-178%2070-47%20170-47%2090%200%20160%2051%2080%2050%2080%20114%200%2074-40%20118-40%2045-130%2088-130%2054-230%20167t-100%20243v70q0%2027%2020%2045.3%2020%2017%2040%2017h370q30%200%2050-17%2020-18.3%2020-45.3%200-37%2040-96t100-96q70-35%20100-55t90-68q50-47%2080-93%2030-45%2060-117%2020-72%2020-157zm750%20372q0%20405.3-200%20747-200%20343-540%20543-350%20196-750%20196-410%200-748-196-342-200-541-543-199.6-341.7-199.6-747%200-405%20199.6-744%20199-350%20541-550%20338-200%20748-200%20400%200%20750%20200%20340%20200%20540%20550%20200%20339%20200%20744z%22%20id%3D%22path2997%22%20style%3D%22fill%3A%23000000%3Bfill-opacity%3A0.33725491%22%20%2F%3E%20%3C%2Fsvg%3E%20');
+}
+.nvxRpguContentStyleBlock .icon-question-white {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asodipodi%3D%22http%3A%2F%2Fsodipodi.sourceforge.net%2FDTD%2Fsodipodi-0.dtd%22%20xmlns%3Ainkscape%3D%22http%3A%2F%2Fwww.inkscape.org%2Fnamespaces%2Finkscape%22%20height%3D%223000%22%20width%3D%223000%22%20id%3D%22svg2995%22%20version%3D%221.1%22%20inkscape%3Aversion%3D%220.48.4%20r9939%22%20sodipodi%3Adocname%3D%22index.svg%22%3E%20%3Cmetadata%20id%3D%22metadata3003%22%3E%20%3Crdf%3ARDF%3E%20%3Ccc%3AWork%20rdf%3Aabout%3D%22%22%3E%20%3Cdc%3Aformat%3Eimage%2Fsvg%2Bxml%3C%2Fdc%3Aformat%3E%20%3Cdc%3Atype%20rdf%3Aresource%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Fdcmitype%2FStillImage%22%20%2F%3E%20%3C%2Fcc%3AWork%3E%20%3C%2Frdf%3ARDF%3E%20%3C%2Fmetadata%3E%20%3Cdefs%20id%3D%22defs3001%22%20%2F%3E%20%3Csodipodi%3Anamedview%20pagecolor%3D%22%23ffffff%22%20bordercolor%3D%22%23666666%22%20borderopacity%3D%221%22%20objecttolerance%3D%2210%22%20gridtolerance%3D%2210%22%20guidetolerance%3D%2210%22%20inkscape%3Apageopacity%3D%220%22%20inkscape%3Apageshadow%3D%222%22%20inkscape%3Awindow-width%3D%221920%22%20inkscape%3Awindow-height%3D%221018%22%20id%3D%22namedview2999%22%20showgrid%3D%22false%22%20inkscape%3Azoom%3D%220.22250293%22%20inkscape%3Acx%3D%221287.9351%22%20inkscape%3Acy%3D%221390.3936%22%20inkscape%3Awindow-x%3D%221272%22%20inkscape%3Awindow-y%3D%22-8%22%20inkscape%3Awindow-maximized%3D%221%22%20inkscape%3Acurrent-layer%3D%22svg2995%22%20%2F%3E%20%3Cpath%20d%3D%22M1750%202434v-372q0-26.7-20-44.7-20-17-50-17h-370q-20%200-40%2017-20%2018-20%2044.7v372q0%2030%2020%2050%2020%2010%2040%2010h370q30%200%2050-10%2020-20%2020-50zm490-1302q0-171-110-312-100-150-260-230t-330-80q-470%200-721%20410-29%2051%2015%2086l256%20194q10%2011%2040%2011t40-23q110-132%20170-178%2070-47%20170-47%2090%200%20160%2051%2080%2050%2080%20114%200%2074-40%20118-40%2045-130%2088-130%2054-230%20167t-100%20243v70q0%2027%2020%2045.3%2020%2017%2040%2017h370q30%200%2050-17%2020-18.3%2020-45.3%200-37%2040-96t100-96q70-35%20100-55t90-68q50-47%2080-93%2030-45%2060-117%2020-72%2020-157zm750%20372q0%20405.3-200%20747-200%20343-540%20543-350%20196-750%20196-410%200-748-196-342-200-541-543-199.6-341.7-199.6-747%200-405%20199.6-744%20199-350%20541-550%20338-200%20748-200%20400%200%20750%20200%20340%20200%20540%20550%20200%20339%20200%20744z%22%20id%3D%22path2997%22%20style%3D%22fill%3A%23000000%3Bfill-opacity%3A0.33725491%22%20%2F%3E%20%3C%2Fsvg%3E%20');
+}
+.nvxRpguContentStyleBlock .icon-throbber-black {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width=%22200%22%20height=%22200%22%20viewBox=%22100%20100%20300%20300%22%0A%20%20%20%20xmlns=%22http://www.w3.org/2000/svg%22%0A%20%20%20%20xmlns:xlink=%22http://www.w3.org/1999/xlink%22%20%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim4%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%221.2s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim4.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim3%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.9s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim3.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim2%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.6s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim2.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.3s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim1.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%20%20%20%20%3Ccircle%20cx=%22200%22%20cy=%22120%22%20r=%2212%22%20fill=%22black%22%20display=%22none%22%3E%0A%20%20%20%20%20%20%20%20%3CanimateTransform%20attributeType=%22xml%22%0A%20%20%20%20%20%20%20%20%20%20%20%20id=%22anim0%22%0A%20%20%20%20%20%20%20%20%20%20%20%20attributeName=%22transform%22%0A%20%20%20%20%20%20%20%20%20%20%20%20begin=%220.0s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20type=%22rotate%22%0A%20%20%20%20%20%20%20%20%20%20%20%20fill=%22freeze%22%0A%20%20%20%20%20%20%20%20%20%20%20%20from=%220%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20to=%22360%20200%20200%22%0A%20%20%20%20%20%20%20%20%20%20%20%20dur=%222s%22%0A%20%20%20%20%20%20%20%20%20%20%20%20calcMode%20=%20%22spline%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keySplines%20=%20%220.8%200.25%200.2%200.75%22%0A%20%20%20%20%20%20%20%20%20%20%20%20keyTimes%20%20%20%20%20%20=%20%220;1%22%0A%20%20%20%20%20%20%20%20%20%20%20%20repeatCount=%22indefinite%22/%3E%0A%20%20%20%20%20%20%20%20%3Cset%20attributeName=%22display%22%20to=%22block%22%20begin=%22anim0.begin%22%20/%3E%0A%20%20%20%20%3C/circle%3E%0A%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .throbber {
+  position: fixed;
+}
+.nvxRpguContentStyleBlock .throbber > * {
+  top: 40vh;
+}
+.nvxRpguContentStyleBlock .icon-throbber-black-ie-hook {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width=%22200%22%20height=%22200%22%20viewBox=%22100%20100%20300%20300%22%20xmlns=%22http://www.w3.org/2000/svg%22%20xmlns:xlink=%22http://www.w3.org/1999/xlink%22%20%3E%3Ccircle%20id=%22svg_1%22%20fill=%22black%22%20r=%2212%22%20cy=%22120%22%20cx=%22200%22%20transform=%22rotate(30%20200%20200)%22/%3E%3Ccircle%20id=%22svg_2%22%20fill=%22black%22%20r=%2212%22%20cy=%22120%22%20cx=%22200%22%20transform=%22rotate(60%20200%20200)%22/%3E%3Ccircle%20id=%22svg_2%22%20fill=%22black%22%20r=%2212%22%20cy=%22120%22%20cx=%22200%22%20transform=%22rotate(90%20200%20200)%22/%3E%3Ccircle%20id=%22svg_2%22%20fill=%22black%22%20r=%2212%22%20cy=%22120%22%20cx=%22200%22%20transform=%22rotate(120%20200%20200)%22/%3E%3Ccircle%20id=%22svg_3%22%20fill=%22black%22%20r=%2212%22%20cy=%22120%22%20cx=%22200%22/%3E%3C/svg%3E');
+}
+@keyframes trobber-ie-rotate-hook {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.nvxRpguContentStyleBlock #trobber-ie-rotate-hook-element {
+  animation: trobber-ie-rotate-hook 2s linear infinite;
+}
+.nvxRpguContentStyleBlock * {
+  font-family: Arial, sans-serif !important;
+  font-size: 11pt;
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock a,
+.nvxRpguContentStyleBlock .a {
+  text-decoration: none;
+  color: #562212;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock a:hover,
+.nvxRpguContentStyleBlock .a:hover {
+  color: #aa4324;
+}
+.nvxRpguContentStyleBlock a.fa-download,
+.nvxRpguContentStyleBlock .a.fa-download {
+  float: left;
+  clear: both;
+  margin: 0 0 10px 20px;
+  font-style: italic;
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock a.fa-download:before,
+.nvxRpguContentStyleBlock .a.fa-download:before {
+  margin-right: 8px;
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock a.fa-download:hover,
+.nvxRpguContentStyleBlock .a.fa-download:hover {
+  opacity: 0.8;
+}
+.nvxRpguContentStyleBlock ul {
+  list-style-type: none;
+}
+.nvxRpguContentStyleBlock h1 {
+  margin: 15px 0;
+  font: 600 14pt Arial, sans-serif;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock h1:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock h1[class*="fa-"] {
+  padding-left: 57px;
+}
+.nvxRpguContentStyleBlock h1[class*="fa-"]:before {
+  margin: 0 10px 0 -57px;
+  font-size: 40px;
+  line-height: 10px;
+}
+.nvxRpguContentStyleBlock h2:first-of-type {
+  margin-top: -5px;
+}
+.nvxRpguContentStyleBlock h3 a:hover {
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock h3 h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock h3 h3.b {
+  padding: 10px 0;
+  font-family: Arial, sans-serif;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .button {
+  border-radius: 4px;
+  line-height: 23px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 8pt;
+  color: #c59368 !important;
+  border-color: #c59368 !important;
+}
+.nvxRpguContentStyleBlock .b-solid {
+  background-color: #c59368 !important;
+}
+.nvxRpguContentStyleBlock .b-solid * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .b-brand {
+  border-color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .b-brand,
+.nvxRpguContentStyleBlock .b-brand:hover {
+  color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .b-upload {
+  padding: 4px 15px 5px;
+  color: #ffffff !important;
+  border: none;
+  background-color: #c59368 !important;
+}
+.nvxRpguContentStyleBlock .b-upload * {
+  font-size: 8pt;
+}
+.nvxRpguContentStyleBlock .b-back {
+  height: 32px !important;
+  padding-top: 5px;
+  padding-left: 40px !important;
+  font: 300 italic 14pt Arial, sans-serif !important;
+  color: #562212 !important;
+  cursor: pointer;
+  background-image: none !important;
+}
+.nvxRpguContentStyleBlock .b-back:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  content: "\f0a8";
+  font-size: 23pt;
+  margin: -4px 10px 0 -35px;
+}
+.nvxRpguContentStyleBlock .hasBack {
+  margin-left: 50px;
+}
+.nvxRpguContentStyleBlock .hasBack .b-back {
+  margin-left: -50px;
+}
+.nvxRpguContentStyleBlock .hasDatepicker {
+  max-width: 200px;
+}
+.nvxRpguContentStyleBlock .group.line {
+  border-left-color: transparent;
+}
+.nvxRpguContentStyleBlock .table-new a:hover {
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock .table-new .background-default {
+  background-color: #865648 !important;
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .table-new.paddings > * > *,
+.nvxRpguContentStyleBlock .table-new.table-admin > * > * {
+  height: auto !important;
+  padding: 10px 15px !important;
+}
+.nvxRpguContentStyleBlock .table-new .col-checkbox input[type="checkbox"] {
+  position: relative;
+  margin: 5px -5px !important;
+}
+.nvxRpguContentStyleBlock #certificates.table-new > * {
+  background-color: #888;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > *:nth-child(2n+1) {
+  background-color: rgba(197, 147, 104, 0.4);
+}
+.nvxRpguContentStyleBlock .table-new.table-admin > *:nth-child(2n) {
+  background-color: rgba(197, 147, 104, 0.2);
+}
+.nvxRpguContentStyleBlock .table-new.table-admin .th {
+  background-color: #865648;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .table-new.table-admin .th > * {
+  background-color: transparent !important;
+}
+.nvxRpguContentStyleBlock .more-button {
+  background-color: #562212 !important;
+  border-radius: 4px;
+}
+.nvxRpguContentStyleBlock .more-button .icon {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 300px;
+}
+.nvxRpguContentStyleBlock .more-button .icon:before {
+  margin-bottom: 100%;
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock .declinePlate {
+  height: 40px;
+  padding: 9px 12px 6px 45px;
+  font: 300 italic 14pt Arial, sans-serif;
+  color: #562212;
+  background-color: #d6ccc8;
+}
+.nvxRpguContentStyleBlock .declinePlate:before {
+  color: red;
+  top: 10px;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection,
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__option[aria-selected="true"] {
+  font-weight: 300 !important;
+}
+.nvxRpguContentStyleBlock .info {
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .info dl {
+  float: left;
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .info dl dt {
+  float: left;
+  width: 20%;
+}
+.nvxRpguContentStyleBlock .info dl dd {
+  margin-left: 20%;
+}
+.nvxRpguContentStyleBlock .change .col-200 {
+  white-space: normal !important;
+}
+.nvxRpguContentStyleBlock .pave-table-header:not(.pointer) {
+  font-size: 20pt;
+}
+.nvxRpguContentStyleBlock .pave-table-header:not(.pointer) * {
+  font-size: 20pt;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer {
+  padding: 8px 10px 10px 20px !important;
+  color: #562212;
+  font-weight: 600;
+  font-size: 14pt;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer:hover {
+  background-color: #e8d5c4 !important;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer * {
+  vertical-align: middle;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon {
+  float: right;
+  margin-top: 2px;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon:not(.rotate90-counter-clockwise) {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer .icon:before {
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer + * {
+  padding: 0 20px;
+}
+.nvxRpguContentStyleBlock .pave-table-header.pointer + * .table-new > * {
+  border-radius: 4px;
+}
+.nvxRpguContentStyleBlock .pave-table-header .small {
+  font-size: 100%;
+}
+.nvxRpguContentStyleBlock .pave-table-header .small * {
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .pave-content {
+  width: auto;
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .pave-content h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .pave-content h3 + ul {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .pave-content h4 {
+  width: auto;
+}
+.nvxRpguContentStyleBlock .pave-content > div:not(:first-of-type) {
+  margin-top: 10px;
+}
+.nvxRpguContentStyleBlock .pave-content ul {
+  list-style-type: disc;
+}
+.nvxRpguContentStyleBlock .pave-table-header ~ *:last-of-type {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.nvxRpguContentStyleBlock .color-success {
+  color: #4a6d20 !important;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs {
+  list-style-type: none;
+  position: relative;
+  top: -95px;
+  z-index: 500;
+  height: 0;
+  margin-left: 125px;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs > * {
+  display: inline-block;
+  padding: 8px;
+  line-height: 60px;
+  font: 500 14pt Arial, sans-serif;
+  cursor: pointer;
+  height: 59px;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs > *:before {
+  margin-top: -5px;
+  margin-right: 10px;
+  font-size: 40px;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs > *:hover {
+  color: #c59368 !important;
+  background: none;
+  border-radius: 5px;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs > *.current {
+  color: #e55132 !important;
+}
+.nvxRpguContentStyleBlock .menuCont > .tabs a {
+  text-decoration: none;
+}
+@media screen and (max-width: 1300px) {
+  .nvxRpguContentStyleBlock .menuCont > .tabs > * {
+    font-size: 12pt;
+  }
+  .nvxRpguContentStyleBlock .menuCont > .tabs > *:before {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .nvxRpguContentStyleBlock .menuCont > .tabs > * {
+    padding: 20px 5px 15px;
+  }
+  .nvxRpguContentStyleBlock .menuCont > .tabs > *:before {
+    margin-top: -3px;
+    font-size: 25px;
+  }
+}
+.nvxRpguContentStyleBlock .tabsCont {
+  background-color: #fff;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs {
+  float: left;
+  width: 100%;
+  padding-top: 5px;
+  padding-left: 15px;
+  background-color: #562212;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > * {
+  position: relative;
+  float: left;
+  height: 35px;
+  padding: 9px 10px 9px 20px;
+  background-color: #865648;
+  font: 600 11pt Arial, sans-serif;
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *.current {
+  z-index: 10;
+  background-color: #fff;
+  color: #562212;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *.current:hover {
+  background-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:before {
+  content: none;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 5px;
+  height: 100%;
+  background-color: #865648;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  z-index: 10;
+  float: left;
+  border-bottom: 35px solid #dac6c0;
+  border-right: 10px solid rgba(255, 255, 255, 0);
+  border-bottom-color: #865648;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:last-child:after {
+  border-bottom-color: #865648;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *.current:after {
+  border-bottom-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:hover {
+  background-color: #dac6c0 !important;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:hover:after {
+  border-bottom-color: #dac6c0;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:hover:after,
+.nvxRpguContentStyleBlock .tabsCont .tabs > *:last-child:after,
+.nvxRpguContentStyleBlock .tabsCont .tabs > *.current:after {
+  border-right-width: 10px;
+}
+.nvxRpguContentStyleBlock .tabsCont .tab {
+  display: inline-block;
+  width: 100%;
+  padding: 20px 0;
+}
+.nvxRpguContentStyleBlock .tabsCont .two-line {
+  display: inline-block;
+  float: none;
+}
+.nvxRpguContentStyleBlock .tabsCont .two-line > * {
+  height: 50px;
+  width: 350px;
+}
+.nvxRpguContentStyleBlock .tabsCont .two-line > *:after {
+  border-bottom-width: 50px;
+}
+.nvxRpguContentStyleBlock .tab > h1 {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .tab.paddings,
+.nvxRpguContentStyleBlock .tab > .paddings,
+.nvxRpguContentStyleBlock .tab > .formData {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.nvxRpguContentStyleBlock .newsList > * {
+  display: table;
+  min-height: 100px;
+  min-width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .newsList > *:hover {
+  background-color: rgba(197, 147, 104, 0.2);
+}
+.nvxRpguContentStyleBlock .newsList > * > * {
+  display: table-cell;
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .newsList > * h3 {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .newsList > * i {
+  display: block;
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .newsList > * img {
+  float: right;
+  width: 200px;
+  margin: -20px -20px 0 20px;
+}
+.nvxRpguContentStyleBlock .newsList > * .imageWrapper {
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .newsImg {
+  float: right;
+  height: 300px;
+  margin: 0 20px;
+}
+.nvxRpguContentStyleBlock .newsItem {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .newsItem i {
+  display: block;
+  margin: -10px 0 0 55px;
+}
+.nvxRpguContentStyleBlock .filter-itm {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .filter-itm > * {
+  float: left;
+  display: block;
+  width: auto;
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label {
+  height: 40px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  line-height: 32px;
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label span {
+  line-height: 32px;
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .filter-itm .filter-label input {
+  margin-top: 7px;
+}
+.nvxRpguContentStyleBlock .niceList {
+  line-height: 150%;
+}
+.nvxRpguContentStyleBlock .niceList li {
+  margin-bottom: 10px;
+}
+.nvxRpguContentStyleBlock .niceList li h3 {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .niceList li .fa-download {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.nvxRpguContentStyleBlock .serviceVariant {
+  margin: 0 0 10px 20px;
+}
+.nvxRpguContentStyleBlock .serviceVariant b {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .serviceVariant select,
+.nvxRpguContentStyleBlock .serviceVariant .select2 {
+  width: 80%;
+}
+.nvxRpguContentStyleBlock .stateStructure ul,
+.nvxRpguContentStyleBlock ul.stateStructure {
+  padding-left: 20px;
+  list-style-type: none !important;
+}
+.nvxRpguContentStyleBlock .stateStructure ul li,
+.nvxRpguContentStyleBlock ul.stateStructure li {
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > * {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 15px;
+  color: #562212;
+  text-decoration: none;
+  background-color: rgba(197, 147, 104, 0.2);
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *:hover {
+  background-color: rgba(187, 148, 114, 0.4);
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.current {
+  background-color: rgba(197, 147, 104, 0.8);
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.current * {
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.hasMap {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > * h4 {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > * dt {
+  min-width: 150px;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.formData h4 {
+  margin: 0 0 5px 0;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.formData .a {
+  display: inline-block;
+  margin-left: 0;
+}
+.nvxRpguContentStyleBlock .stateStructure.maps > *.formData .button {
+  opacity: 0.8;
+}
+.nvxRpguContentStyleBlock .mfc-map a {
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock .mfc-map a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock #MfcYMaps,
+.nvxRpguContentStyleBlock #MfcListYMaps {
+  position: relative;
+  height: 400px;
+}
+.nvxRpguContentStyleBlock #MfcYMaps .throbber,
+.nvxRpguContentStyleBlock #MfcListYMaps .throbber {
+  position: absolute;
+  opacity: .4;
+}
+.nvxRpguContentStyleBlock #MfcYMaps .throbber > *,
+.nvxRpguContentStyleBlock #MfcListYMaps .throbber > * {
+  top: 40%;
+}
+.nvxRpguContentStyleBlock dl {
+  margin: 0 0 10px 0;
+}
+.nvxRpguContentStyleBlock .formData h3 {
+  font-size: 14pt;
+}
+.nvxRpguContentStyleBlock .formData > h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .formData h4 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formData a,
+.nvxRpguContentStyleBlock .formData .a {
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock .formData a:hover,
+.nvxRpguContentStyleBlock .formData .a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock .formData dt {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .formData.withInputs dl dt {
+  padding-top: 12px;
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd {
+  background-color: #d6ccc8;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd * {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .formData.likeInputs dl dd.withIcon:before {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .formData .moreButton {
+  float: right;
+  margin-top: 10px;
+  color: #562212 !important;
+  border-color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .formData .moreButton:before {
+  color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .formData.current .moreButton {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formData.current .moreButton:before {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp dl {
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .formDataTosp dl dt {
+  float: left;
+  width: 200px;
+  padding-top: 1px;
+  padding-right: 10px;
+  text-align: right;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formDataTosp dl dd {
+  float: none;
+  display: block;
+  max-width: 100%;
+  min-height: 20px;
+  overflow: hidden;
+  line-height: 20px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+.nvxRpguContentStyleBlock .formDataTosp ul {
+  list-style-type: disc;
+}
+.nvxRpguContentStyleBlock .formDataTosp.wideLabel dt {
+  min-width: 220px;
+}
+.nvxRpguContentStyleBlock .formDataTosp h3 {
+  font-size: 14pt;
+}
+.nvxRpguContentStyleBlock .formDataTosp > h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .formDataTosp h4 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .formDataTosp a,
+.nvxRpguContentStyleBlock .formDataTosp .a {
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock .formDataTosp a:hover,
+.nvxRpguContentStyleBlock .formDataTosp .a:hover {
+  text-decoration: underline;
+}
+.nvxRpguContentStyleBlock .formDataTosp dt {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .formDataTosp.withInputs dl dt {
+  padding-top: 12px;
+}
+.nvxRpguContentStyleBlock .formDataTosp.likeInputs dl dd {
+  background-color: #d6ccc8;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .formDataTosp.likeInputs dl dd * {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .formDataTosp.likeInputs dl dd.withIcon:before {
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .formDataTosp .moreButton {
+  float: right;
+  margin-top: 10px;
+  color: #562212 !important;
+  border-color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp .moreButton:before {
+  color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp.current .moreButton {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp.current .moreButton:before {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .formDataTosp h4 {
+  margin-left: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.nvxRpguContentStyleBlock .departments {
+  margin: 0 20px;
+}
+.nvxRpguContentStyleBlock .departments > * > .itm {
+  min-height: 55px;
+  padding: 7px 10px;
+}
+.nvxRpguContentStyleBlock .departments .spoilerContent.showSubs {
+  position: relative;
+}
+.nvxRpguContentStyleBlock .departments .spoilerContent.showSubs:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  float: left;
+  width: 13px;
+  height: 100%;
+  margin-left: -13px;
+  border: 0 solid #7a493a;
+  border-width: 0 0 0 4px;
+}
+.nvxRpguContentStyleBlock .departments li:last-child > * > .spoilerContent:before {
+  content: none;
+}
+.nvxRpguContentStyleBlock .departments .itm {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  background-color: #b57945;
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .departments .itm.hasSubs {
+  padding-right: 40px;
+}
+.nvxRpguContentStyleBlock .departments .itm a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .departments .itm .spoiler {
+  width: 40px;
+  overflow: hidden;
+  min-width: 30px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 20px auto;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(90,%20150,%20150)%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .departments .itm .spoiler.hide {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .departments h3.itm > .spoiler:hover,
+.nvxRpguContentStyleBlock .departments h3.itm > a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.nvxRpguContentStyleBlock .departments .itm:not(h3) > .spoiler:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.nvxRpguContentStyleBlock .departments ul {
+  list-style-type: none;
+}
+.nvxRpguContentStyleBlock .departments ul li {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm {
+  background-color: #c59368;
+  padding: 0;
+}
+.nvxRpguContentStyleBlock .departments ul .itm > a {
+  width: 100%;
+  padding: 7px 10px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm > a:hover {
+  background-color: #be8656;
+}
+.nvxRpguContentStyleBlock .departments ul .itm:before {
+  content: "";
+  position: relative;
+  top: -10px;
+  left: 10px;
+  float: left;
+  width: 13px;
+  height: 25px;
+  margin-left: -23px;
+  border: 0 solid #7a493a;
+  border-width: 0 0 4px 4px;
+  border-radius: 0 0 0 3px;
+}
+.nvxRpguContentStyleBlock .departments ul .itm:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  float: left;
+  width: 0;
+  height: 100%;
+  margin-left: -13px;
+  border: 0 solid #7a493a;
+  border-width: 0 0 0 4px;
+}
+.nvxRpguContentStyleBlock .departments ul li:last-child > * > .itm:after {
+  content: none;
+}
+.nvxRpguContentStyleBlock .departments ul ul .itm {
+  background-color: #d3ad8d;
+}
+.nvxRpguContentStyleBlock .departments ul ul .itm > a:hover {
+  background-color: #cca07a;
+}
+.nvxRpguContentStyleBlock .departments ul ul ul .itm {
+  background-color: #e1c8b2;
+}
+.nvxRpguContentStyleBlock .departments ul ul ul .itm > a:hover {
+  background-color: #dabb9f;
+}
+.nvxRpguContentStyleBlock .departments ul ul ul .itm a {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .departments > * > * > .spoiler {
+  width: 100% !important;
+  border-right: 10px solid transparent;
+  background-position: 100% 50% !important;
+}
+.nvxRpguContentStyleBlock .departments > * > * > * .spoiler {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+.nvxRpguContentStyleBlock .itemsList {
+  list-style-type: disc;
+  padding-left: 15px;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .itemsList > * {
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .itemsList > *:last-child {
+  margin-bottom: 0;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form *:before {
+  color: rgba(0, 0, 0, 0.6);
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-formTitle {
+  margin-bottom: 0;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-formTitle:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form h4 {
+  margin-top: 10px !important;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .input-required {
+  position: relative;
+  padding-left: 20px;
+  background: none !important;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .input-required:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  content: "\f069";
+  position: absolute;
+  margin-left: -20px;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .group.line,
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-verticalLine {
+  padding-left: 25px;
+  padding-bottom: 2px;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-dateView {
+  position: relative !important;
+  display: inline-block !important;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-dateView input {
+  background: none;
+}
+.nvxRpguContentStyleBlock .nvx-dfjsr-form .nvx-dfjsr-dateView:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  content: "\f073";
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  font-size: 16pt;
+}
+.nvxRpguContentStyleBlock .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #c0b1aa !important;
+  border: none !important;
+  margin-left: 2px !important;
+  position: absolute;
+  padding: 0 !important;
+  max-height: 32px;
+}
+.nvxRpguContentStyleBlock .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #c0b1aa !important;
+}
+.nvxRpguContentStyleBlock .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #c0b1aa !important;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk {
+  color: #562212;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > *:hover {
+  background-color: rgba(187, 148, 114, 0.4);
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > * {
+  padding: 7px 3px !important;
+  border: 0 !important;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(2),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(2),
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(6) {
+  width: 100px;
+  min-width: 100px;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1) {
+  max-width: 100px !important;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(1) span {
+  position: relative;
+  top: -1px;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk > * > *:nth-of-type(4) {
+  width: 300px;
+  min-width: 300px;
+}
+.nvxRpguContentStyleBlock .table-new.paymentBlockLk a {
+  color: red;
+}
+.nvxRpguContentStyleBlock .serviceCatalogItem > * {
+  border-radius: 15px;
+  display: inline-block;
+  height: 135px;
+  /*margin: 10px 10px 10px 0;*/
+  margin-bottom: 10px;
+  margin-right: 2%;
+  margin-top: 10px;
+  padding: 0 15px 5px;
+  color: #562212;
+  width: 31%;
+  cursor: pointer;
+  background-color: #c59368;
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .serviceCatalogItem > *:hover {
+  background-color: #cca07a;
+}
+.nvxRpguContentStyleBlock .serviceCatalogItem > * label * {
+  font-size: 9pt;
+  color: #ffffff;
+}
+.nvxRpguContentStyleBlock .billDetailsTable {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .billDetailsTable tbody {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .billDetailsTable tbody td {
+  padding-top: 15px;
+}
+.nvxRpguContentStyleBlock .tdalignright {
+  text-align: right;
+  padding-right: 10px;
+}
+.nvxRpguContentStyleBlock .opa {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .withBBack {
+  margin-left: 60px;
+  margin-right: 20px;
+}
+.nvxRpguContentStyleBlock .withBBack .b-back {
+  margin-left: -40px !important;
+}
+.nvxRpguContentStyleBlock .withBBack .pave-table-header ~ * {
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .withBBack .b-modal:first-of-type {
+  margin-right: 0 !important;
+}
+.nvxRpguContentStyleBlock .bigText .ServiceText {
+  background-color: transparent;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup {
+  background-color: #c59368;
+  width: 100%;
+  cursor: pointer;
+  padding: 5px 10px 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup * {
+  color: #fff !important;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionGroup:hover {
+  border: 2px solid rgba(86, 34, 18, 0.8);
+  padding: 3px 8px 8px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace {
+  background-color: #c59368;
+  margin-top: 2px;
+  margin-left: 20px;
+  padding: 7px 10px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace * {
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace:hover {
+  border: 2px solid rgba(86, 34, 18, 0.8);
+  padding: 5px 8px 0;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionPlace .info {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate {
+  padding: 5px;
+  background-color: #c59368;
+  margin: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate * {
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .receptionDate:hover {
+  border: 2px #333 solid;
+  padding: 3px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave {
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave:hover span {
+  display: none;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-selected-pave:hover:before {
+  content: "Нажмите, чтобы изменить выбор";
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket {
+  border: 2px solid #333;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket .opa {
+  opacity: 0.75;
+  display: block;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container * {
+  vertical-align: top;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container * .opa {
+  opacity: 0.75;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  border: 2px solid #c59368;
+  padding: 7px;
+  text-align: left;
+  min-height: 50px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-1 {
+  flex: 0 1 180px;
+  min-width: 180px;
+  margin-right: 5px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-2 {
+  margin-right: 5px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-3 {
+  flex: 0 1 170px;
+  min-width: 170px;
+}
+.nvxRpguContentStyleBlock .reception-redoc-form .reception-ticket-container .reception-ticket-hrz .reception-ticket-hrz-4 {
+  flex: 0 1 70px;
+  min-width: 70px;
+}
+.nvxRpguContentStyleBlock body {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 1000px;
+  padding-bottom: 130px;
+  font: 300 11pt Arial, sans-serif;
+  color: #562212;
+  background: #435362 url('/rpgu/content/image/Portal/background44.jpg') no-repeat fixed 0 0;
+  background-size: 100% auto;
+  overflow-y: scroll;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 1.1) {
+  .nvxRpguContentStyleBlock body {
+    background-image: none;
+    background-color: #ccc;
+  }
+}
+.nvxRpguContentStyleBlock .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+.nvxRpguContentStyleBlock .header {
+  position: relative;
+  z-index: 500;
+  float: left;
+  width: 100%;
+  height: 185px;
+  background-color: #fff;
+  box-shadow: 0 -5px 70px #000;
+}
+.nvxRpguContentStyleBlock .header .header-top {
+  display: block;
+  position: relative;
+  float: left;
+  height: 75px;
+  margin: 15px 0 0 130px;
+  padding-left: 140px;
+  background: url('/rpgu/content/image/Portal/gerb44.png') 0 0 no-repeat;
+  background-size: auto 75px;
+  text-decoration: none;
+}
+.nvxRpguContentStyleBlock .header .header-top .logo {
+  position: absolute;
+  top: 5px;
+  left: -110px;
+  height: 115px;
+}
+.nvxRpguContentStyleBlock .header .header-top .title {
+  margin: 4px 0 0;
+  font: 800 20pt Arial, sans-serif;
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock .header .header-top b {
+  font: 600 12.5pt Arial, sans-serif;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .auth {
+  position: relative;
+  z-index: 500;
+  float: right;
+  width: 200px;
+  margin-top: -165px;
+  text-align: right;
+}
+.nvxRpguContentStyleBlock .auth .user-name {
+  margin-top: 5px;
+  display: block;
+  white-space: nowrap;
+}
+.nvxRpguContentStyleBlock .content {
+  display: inline-block;
+  position: relative;
+  z-index: 501;
+  width: 100%;
+  margin: 20px 0 60px;
+  padding: 20px 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+.nvxRpguContentStyleBlock .content > h1 {
+  margin-top: 0;
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .content *:not(.paddings) .b-modal {
+  margin-right: 20px;
+}
+.nvxRpguContentStyleBlock .content .b-back {
+  margin-left: 20px;
+}
+.nvxRpguContentStyleBlock .content > .paddings {
+  padding: 0 20px;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0 10px;
+  background-color: #fff;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont h2 {
+  margin-bottom: 5px;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .cont {
+  display: inline-flex;
+  height: 100px;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont a {
+  display: inline-block;
+  margin-right: 10px;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont a img {
+  height: 100px;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .usefulLinksWrapper-s {
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .arrowcontrol {
+  cursor: pointer;
+  background-color: white;
+  display: inline-flex;
+  height: 100px;
+  position: absolute;
+  width: 20px;
+  opacity: 0.7;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .leftarrow:hover {
+  box-shadow: -2px 0 10px #aaa;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .leftarrow:active {
+  box-shadow: -1px 0 4px #ccc;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .rightarrow:hover {
+  box-shadow: 2px 0 10px #aaa;
+}
+.nvxRpguContentStyleBlock .usefulLinksCont .usefulLinksWrapper .rightarrow:active {
+  box-shadow: 1px 0 4px #ccc;
+}
+.nvxRpguContentStyleBlock .crumbs {
+  position: relative;
+  float: left;
+  margin-top: -25px;
+  margin-left: 20px;
+  z-index: 500;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  max-width: 98%;
+}
+.nvxRpguContentStyleBlock .crumbs span:not(.sep) {
+  color: #e55132;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .crumbs .sep {
+  margin: 0 10px;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .crumbs a {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .crumbs a:hover {
+  opacity: 0.5;
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0px;
+  height: 100%;
+  padding-top: 20px;
+  text-align: center;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up * {
+  color: rgba(255, 255, 255, 0.6);
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up:before {
+  content: "\f062";
+  margin-bottom: 5px;
+  font-size: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+.nvxRpguContentStyleBlock .fa-button-scroll-up div {
+  font-size: 9pt;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .portalTechInfo {
+  float: right;
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+  z-index: 501;
+}
+.nvxRpguContentStyleBlock .portalTechInfo p {
+  padding: 0;
+  margin: 0;
+}
+.nvxRpguContentStyleBlock .portalpageTechInfo {
+  margin-top: -75px;
+}
+.nvxRpguContentStyleBlock .cabinetpageTechInfo {
+  margin-top: -110px;
+}
+.nvxRpguContentStyleBlock .mainPage .header {
+  height: 150px;
+}
+.nvxRpguContentStyleBlock .mainPage .auth {
+  margin-top: -130px;
+}
+.nvxRpguContentStyleBlock .mainPage .menuCont .tabs {
+  top: -60px;
+}
+.nvxRpguContentStyleBlock .mainPage .content {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.nvxRpguContentStyleBlock .mainPage .block {
+  margin-bottom: 10px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.nvxRpguContentStyleBlock .mainPage .block h3 {
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .mainPage h2 {
+  font-size: 14pt;
+  font-weight: 600;
+  color: #e55132;
+}
+.nvxRpguContentStyleBlock .slider {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  padding: 0 !important;
+}
+.nvxRpguContentStyleBlock .slider .control {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 50px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: 50% 50%;
+  cursor: pointer;
+  transition: .2s;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.nvxRpguContentStyleBlock .slider .control:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .slider .control.prev:hover,
+.nvxRpguContentStyleBlock .slider .control.next:hover {
+  background-position: 50% 50%;
+}
+.nvxRpguContentStyleBlock .slider .control.prev {
+  left: -50px;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20transform=%22rotate(180,%20150,%20150)%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+  background-position: 70% 50%;
+}
+.nvxRpguContentStyleBlock .slider .control.next {
+  right: -50px;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22300%22%20height=%22300%22%3E%3Cpath%20d=%22M201.8%20149.7l-151.8%20149.9h81.2l147.8-149.9-148.9-150h-80.1l151.8%20150z%22%20fill=%22rgba(255,255,255,1)%22/%3E%3C/svg%3E');
+  background-position: 30% 50%;
+}
+.nvxRpguContentStyleBlock .slider .sliderCont {
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .slider ul {
+  position: relative;
+}
+.nvxRpguContentStyleBlock .slider .slide {
+  display: block;
+  position: relative;
+  top: 0;
+  float: left;
+  height: 300px;
+  padding: 25px 25px 60px;
+  text-align: left;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .slider .slide img {
+  float: right;
+  height: 300px;
+  margin: -25px -25px 0 25px;
+}
+.nvxRpguContentStyleBlock .slider .slide .text {
+  overflow: hidden;
+  line-height: 20px;
+  max-height: 160px;
+  color: rgba(86, 34, 18, 0.8);
+}
+.nvxRpguContentStyleBlock .slider .slide .button {
+  position: absolute;
+  bottom: 20px;
+}
+.nvxRpguContentStyleBlock .popularServices,
+.nvxRpguContentStyleBlock .check-request,
+.nvxRpguContentStyleBlock .categoriesServices,
+.nvxRpguContentStyleBlock .lifeSituation {
+  position: relative;
+  height: 260px;
+  padding-bottom: 60px;
+}
+.nvxRpguContentStyleBlock .popularServices .itemsList,
+.nvxRpguContentStyleBlock .check-request .itemsList,
+.nvxRpguContentStyleBlock .categoriesServices .itemsList,
+.nvxRpguContentStyleBlock .lifeSituation .itemsList {
+  position: relative;
+  max-height: 145px;
+  overflow: hidden;
+}
+.nvxRpguContentStyleBlock .popularServices a,
+.nvxRpguContentStyleBlock .check-request a,
+.nvxRpguContentStyleBlock .categoriesServices a,
+.nvxRpguContentStyleBlock .lifeSituation a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.nvxRpguContentStyleBlock .popularServices .button,
+.nvxRpguContentStyleBlock .check-request .button,
+.nvxRpguContentStyleBlock .categoriesServices .button,
+.nvxRpguContentStyleBlock .lifeSituation .button {
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+}
+.nvxRpguContentStyleBlock .categoriesServices,
+.nvxRpguContentStyleBlock .lifeSituation {
+  margin-bottom: 0 !important;
+}
+.nvxRpguContentStyleBlock .popularServices {
+  margin-right: 280px;
+}
+.nvxRpguContentStyleBlock .check-request {
+  display: inline-block;
+  float: right;
+  width: 270px;
+  margin-top: -270px;
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .check-request h3:first-child {
+  margin-top: 0;
+}
+.nvxRpguContentStyleBlock .mainPage .cols-2 > *:first-child {
+  padding-right: 10px;
+}
+.nvxRpguContentStyleBlock .col-xs-1,
+.nvxRpguContentStyleBlock .col-sm-1,
+.nvxRpguContentStyleBlock .col-md-1,
+.nvxRpguContentStyleBlock .col-lg-1,
+.nvxRpguContentStyleBlock .col-xs-2,
+.nvxRpguContentStyleBlock .col-sm-2,
+.nvxRpguContentStyleBlock .col-md-2,
+.nvxRpguContentStyleBlock .col-lg-2,
+.nvxRpguContentStyleBlock .col-xs-3,
+.nvxRpguContentStyleBlock .col-sm-3,
+.nvxRpguContentStyleBlock .col-md-3,
+.nvxRpguContentStyleBlock .col-lg-3,
+.nvxRpguContentStyleBlock .col-xs-4,
+.nvxRpguContentStyleBlock .col-sm-4,
+.nvxRpguContentStyleBlock .col-md-4,
+.nvxRpguContentStyleBlock .col-lg-4,
+.nvxRpguContentStyleBlock .col-xs-5,
+.nvxRpguContentStyleBlock .col-sm-5,
+.nvxRpguContentStyleBlock .col-md-5,
+.nvxRpguContentStyleBlock .col-lg-5,
+.nvxRpguContentStyleBlock .col-xs-6,
+.nvxRpguContentStyleBlock .col-sm-6,
+.nvxRpguContentStyleBlock .col-md-6,
+.nvxRpguContentStyleBlock .col-lg-6,
+.nvxRpguContentStyleBlock .col-xs-7,
+.nvxRpguContentStyleBlock .col-sm-7,
+.nvxRpguContentStyleBlock .col-md-7,
+.nvxRpguContentStyleBlock .col-lg-7,
+.nvxRpguContentStyleBlock .col-xs-8,
+.nvxRpguContentStyleBlock .col-sm-8,
+.nvxRpguContentStyleBlock .col-md-8,
+.nvxRpguContentStyleBlock .col-lg-8,
+.nvxRpguContentStyleBlock .col-xs-9,
+.nvxRpguContentStyleBlock .col-sm-9,
+.nvxRpguContentStyleBlock .col-md-9,
+.nvxRpguContentStyleBlock .col-lg-9,
+.nvxRpguContentStyleBlock .col-xs-10,
+.nvxRpguContentStyleBlock .col-sm-10,
+.nvxRpguContentStyleBlock .col-md-10,
+.nvxRpguContentStyleBlock .col-lg-10,
+.nvxRpguContentStyleBlock .col-xs-11,
+.nvxRpguContentStyleBlock .col-sm-11,
+.nvxRpguContentStyleBlock .col-md-11,
+.nvxRpguContentStyleBlock .col-lg-11,
+.nvxRpguContentStyleBlock .col-xs-12,
+.nvxRpguContentStyleBlock .col-sm-12,
+.nvxRpguContentStyleBlock .col-md-12,
+.nvxRpguContentStyleBlock .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nvxRpguContentStyleBlock .col-xs-1,
+.nvxRpguContentStyleBlock .col-xs-2,
+.nvxRpguContentStyleBlock .col-xs-3,
+.nvxRpguContentStyleBlock .col-xs-4,
+.nvxRpguContentStyleBlock .col-xs-5,
+.nvxRpguContentStyleBlock .col-xs-6,
+.nvxRpguContentStyleBlock .col-xs-7,
+.nvxRpguContentStyleBlock .col-xs-8,
+.nvxRpguContentStyleBlock .col-xs-9,
+.nvxRpguContentStyleBlock .col-xs-10,
+.nvxRpguContentStyleBlock .col-xs-11 {
+  float: left;
+}
+.nvxRpguContentStyleBlock .col-xs-12 {
+  width: 100%;
+}
+.nvxRpguContentStyleBlock .col-xs-11 {
+  width: 91.66666667%;
+}
+.nvxRpguContentStyleBlock .col-xs-10 {
+  width: 83.33333333%;
+}
+.nvxRpguContentStyleBlock .col-xs-9 {
+  width: 75%;
+}
+.nvxRpguContentStyleBlock .col-xs-8 {
+  width: 66.66666667%;
+}
+.nvxRpguContentStyleBlock .col-xs-7 {
+  width: 58.33333333%;
+}
+.nvxRpguContentStyleBlock .col-xs-6 {
+  width: 50%;
+}
+.nvxRpguContentStyleBlock .col-xs-5 {
+  width: 41.66666667%;
+}
+.nvxRpguContentStyleBlock .col-xs-4 {
+  width: 33.33333333%;
+}
+.nvxRpguContentStyleBlock .col-xs-3 {
+  width: 25%;
+}
+.nvxRpguContentStyleBlock .col-xs-2 {
+  width: 16.66666667%;
+}
+.nvxRpguContentStyleBlock .col-xs-1 {
+  width: 8.33333333%;
+}
+.nvxRpguContentStyleBlock .inputWithIcon {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.nvxRpguContentStyleBlock input,
+.nvxRpguContentStyleBlock textarea,
+.nvxRpguContentStyleBlock .select2 .select2-selection,
+.nvxRpguContentStyleBlock .ui-autocomplete {
+  outline: none;
+  border-width: 4px !important;
+  border-color: transparent !important;
+  border-radius: 4px;
+  background-color: #c0b1aa !important;
+  font: 300 italic 100% Arial, sans-serif !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .filter-itm:before,
+.nvxRpguContentStyleBlock .select2-selection__arrow:before {
+  color: rgba(0, 0, 0, 0.6);
+}
+.nvxRpguContentStyleBlock input[type="radio"],
+.nvxRpguContentStyleBlock input[type="checkbox"] {
+  box-shadow: none;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: #c0b1aa;
+}
+@-moz-document url-prefix() {
+  .nvxRpguContentStyleBlock input[type="radio"],
+  .nvxRpguContentStyleBlock input[type="checkbox"] {
+    box-shadow: 0 0 50px #c0b1aa inset;
+    outline-color: #c0b1aa !important;
+    outline-width: 3px !important;
+  }
+  .nvxRpguContentStyleBlock input[type="radio"] {
+    outline-offset: -3px;
+  }
+  .nvxRpguContentStyleBlock input[type="checkbox"] {
+    -moz-outline-radius: 4px;
+  }
+}
+.nvxRpguContentStyleBlock input[type="radio"]:checked:after {
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
+.nvxRpguContentStyleBlock label input + * {
+  line-height: 25px;
+}
+.nvxRpguContentStyleBlock input.input30 {
+  height: 30px !important;
+}
+.nvxRpguContentStyleBlock input:not([type=radio]):not([type=checkbox]):not(.input30),
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__rendered {
+  height: 40px !important;
+  padding-left: 12px !important;
+}
+.nvxRpguContentStyleBlock label input[type=radio],
+.nvxRpguContentStyleBlock label input[type=checkbox] {
+  position: absolute;
+}
+.nvxRpguContentStyleBlock label input[type=radio] + *,
+.nvxRpguContentStyleBlock label input[type=checkbox] + * {
+  color: #562212;
+}
+.nvxRpguContentStyleBlock .select2 {
+  display: inline-block;
+  width: 100%;
+  min-width: 200px;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection {
+  height: 40px !important;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__rendered {
+  line-height: 38px;
+  padding-right: 35px;
+  outline: none;
+  max-width: 0;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__clear {
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__clear:hover {
+  background-color: #786359;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__arrow:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  float: right;
+  padding-right: 5px;
+  font-size: 16pt;
+  line-height: 36px;
+}
+.nvxRpguContentStyleBlock .select2 .select2-selection .select2-selection__arrow b {
+  display: none;
+}
+.nvxRpguContentStyleBlock .select2:not(.select2-container--open) .select2-selection .select2-selection__arrow:before {
+  content: "\f078";
+}
+.nvxRpguContentStyleBlock .select2.select2-container--open .select2-selection .select2-selection__arrow:before {
+  content: "\f077";
+}
+.nvxRpguContentStyleBlock .select2-dropdown {
+  margin-top: 5px;
+  border: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  font-style: italic;
+  outline: 2px solid #fff;
+}
+.nvxRpguContentStyleBlock .select2-dropdown * {
+  color: rgba(0, 0, 0, 0.8);
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-search {
+  position: relative;
+  padding: 0;
+  margin-bottom: 2px;
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-search:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.6);
+  content: "\f0b0";
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__options {
+  max-height: 400px !important;
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__options .select2-results__option {
+  padding: 10px 15px;
+  background-color: #c0b1aa;
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--highlighted {
+  background-color: #aa978d !important;
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true] {
+  background-color: #5b4b44 !important;
+  color: #fff !important;
+  font-weight: 600;
+  cursor: default;
+}
+.nvxRpguContentStyleBlock .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true] div:before {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Cpath%20d=%22M100%2017.044l-52.898%2078.956h-1.775l-45.326-39.164%2012.794-16.762%2029.869%2025.744%2040.888-61.044%2016.449%2012.272z%22/%3E%3C/svg%3E');
+}
+.nvxRpguContentStyleBlock .ui-autocomplete {
+  margin-top: 5px;
+  padding: 0;
+  border: 0;
+  outline: 2px solid #fff;
+}
+.nvxRpguContentStyleBlock .ui-autocomplete .ui-menu-item {
+  margin: 0;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.8);
+  transition: .2s;
+  transition-property: opacity, background-color, color, outline-color;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .ui-autocomplete .ui-menu-item:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.nvxRpguContentStyleBlock .ui-autocomplete .ui-menu-item.ui-state-focus {
+  background-color: #aa978d !important;
+  color: #000;
+  border: none;
+}
+.nvxRpguContentStyleBlock .hasDatepicker {
+  font-size: 100%;
+  background-size: auto 80%;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-prev,
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-next {
+  background-color: #562212 !important;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-prev:before,
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-next:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  pointer-events: none;
+  width: 100%;
+  padding-top: 4px;
+  font-size: 16pt;
+  text-align: center;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-prev:before {
+  content: "\f060";
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-datepicker-next:before {
+  content: "\f061";
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-icon,
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-default {
+  background-color: #865648;
+  border: 0;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-active,
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-highlight {
+  color: #fff;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-highlight {
+  background-color: #a76c5a;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-active {
+  background-color: #c59368;
+}
+.nvxRpguContentStyleBlock .ui-datepicker .ui-state-hover {
+  background-color: #e1c8b2 !important;
+}
+.nvxRpguContentStyleBlock .ui-autocomplete {
+  max-height: 300px !important;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+.nvxRpguContentStyleBlock .tabsCont .tabs > li:hover {
+  background-color: #dac6c0 !important;
+  cursor: pointer;
+}
+.nvxRpguContentStyleBlock .throbber-abs {
+  position: absolute;
+}

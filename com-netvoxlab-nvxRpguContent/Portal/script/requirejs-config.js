@@ -71,6 +71,7 @@ requirejs.config({
 		'opal-date': 'script/rubytojs/date.min',
 		'opal-datetime': 'script/rubytojs/DateTime.min',
 		'opal-guid': 'script/rubytojs/Guid.min',
+		'opal-arrayExt': 'script/rubytojs/ArrayExt.min',
 		'knockout-jqueryui/dialog': 'script/knockout-jqueryui/dialog',
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/ModalDialog': 'script/ModalDialog',
 		//fullcalendar.io
@@ -159,6 +160,9 @@ requirejs.config({
 			deps: ['opal']
 		},
 		'opal-guid': {
+			deps: ['opal']
+		},
+		'opal-arrayExt': {
 			deps: ['opal']
 		},
 		'fullcalendar.ru': {
