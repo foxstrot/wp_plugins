@@ -1406,6 +1406,9 @@
 				<dd data-bind="scriptdel: headName"></dd>
 			</dl>
 			<!-- /ko -->
+			<!--ko if: link-->
+			<span class="btn button primary moreButton" data-bind="attr: { href: link }, click: golink, clickBubble: false">Подробнее</span>
+			<!--/ko-->
 		</a>
 
 		<!-- ko if: tospList != null -->
@@ -1428,21 +1431,23 @@
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcView.tmpl.html">
 	<h1 data-bind="text: name"></h1>
 	<div class="tabsCont">
-		<nav class="nav-tabset nav-tabset-small">
-			<ul>
-				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
-				<li data-bind=" css: { 'active': tabs.services.active }"><a href="#services" data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }"></a></li>
-				<li data-bind="css: { 'active': tabs.tosp.active }, visible: visibleTospTab"><a href="#tosp" data-bind="text: tabs.tosp.title, event: { click: tabs.tosp.onclick }"></a></li>
-			</ul>
-		</nav>
+		<ul class="tabs">
+			<li data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }, css: { 'current': tabs.info.active }"></li>
+			<li data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }, css: { 'current': tabs.services.active }"></li>
+			<li data-bind="text: tabs.tosp.title, event: { click: tabs.tosp.onclick }, css: { 'current': tabs.tosp.active }, visible: visibleTospTab"></li>
+		</ul>
 
 		<div data-bind="visible: tabs.info.active">
 			<!-- ko template: {name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcContactInfoView.tmpl.html'} --><!-- /ko -->
 		</div>
+
 		<div class="tab" data-bind="visible: tabs.services.active">
+			<!--<h3>Услуги</h3>-->
 			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if: mfcServicesViewModel }"></div>
 		</div>
+
 		<div class="tab" data-bind="visible: tabs.tosp.active">
+			<!--<h3>Дополнительные офисы</h3>-->
 			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcTospListContacts.tmpl.html', data: mfcTospListViewModel, if: mfcTospListViewModel }"></div>
 		</div>
 	</div>
