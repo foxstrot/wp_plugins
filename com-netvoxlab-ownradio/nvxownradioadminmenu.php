@@ -18,6 +18,12 @@
 			<h2 style="cursor: pointer;" onclick="{ document.getElementById('nvxownradioshortcodes').hidden = !document.getElementById('nvxownradioshortcodes').hidden; }"><u>Список шорткодов</u></h2>
 			<div id="nvxownradioshortcodes" hidden="" style="position: absolute; background-color: white; padding: 10px; border: 2px solid black;">
 			[ownradio_player] — Вставка проигрывателя на страницу<br/>
+			[ownradio_GetTracksHistory] — Выводит последние активные устройства<br/>
+			[ownradio_GetLastDevices] — Выводит последние выданные устройству треки и историю их прослушивания<!--<br/>
+			<br/>
+			[ownradio_GetUserDevices] — Выводит все устройства пользователя<br/>
+			[ownradio_GetUsersRating] — Выводит рейтинг пользователей по количеству своих треков и количеству полученных за последние сутки треков<br/>
+			[ownradio_GetLastTracks] — Выводит последние выданные устройству треки <br/>-->
 			</div>
 			<form method="post" enctype="multipart/form-data" action="options.php">
 				<?php 
@@ -39,8 +45,8 @@
 		// Добавляем секцию
 		add_settings_section( 'netvoxlab_ownradio_player_optionsSection1', 'Основные настройки', '', $netvoxlab_ownradio_player_true_page );
 	 
-		// Создадим текстовое поле в первой секции
-		$true_field_params = array('type' => 'text', 'id' => 'nvxownradiourl', 'desc' => 'Адрес сервера ownRadio, на который будут отправляться запросы. Например: http://api.ownradio.ru/v4');
+		// Создадим текстовое поле в секции
+		$true_field_params = array('type' => 'text', 'id' => 'nvxownradiourl', 'desc' => 'Адрес сервера ownRadio, на который будут отправляться запросы. Например: https://api.ownradio.ru/v4');
 		add_settings_field( 'nvxownradiourl', 'Адрес сервера', 'netvoxlab_ownradio_player_option_display_settings', $netvoxlab_ownradio_player_true_page, 'netvoxlab_ownradio_player_optionsSection1', $true_field_params );
 		
 	}

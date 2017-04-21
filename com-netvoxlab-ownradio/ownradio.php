@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.ownradio
 Description: Broadcast radio ownRadio. Listen to your favorite music only.
-Version: 2017.04.06
+Version: 2017.04.21
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.04.06');
+define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.04.21');
 define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 
 	class netvoxlab_ownradio_player_shortcode {
@@ -32,30 +32,33 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 			add_shortcode('ownradio_GetUserDevices', array(__CLASS__, 'nvxOwnRadioGetUserDevices_shortcode'));
 			add_shortcode('ownradio_GetUsersRating', array(__CLASS__, 'nvxOwnRadioGetUsersRating_shortcode'));
 			add_shortcode('ownradio_GetLastTracks', array(__CLASS__, 'nvxOwnRadioGetLastTracks_shortcode'));
+			add_shortcode('ownradio_GetTracksHistory', array(__CLASS__, 'nvxOwnRadioGetTracksHistoryByDevice_shortcode'));
+			add_shortcode('ownradio_GetLastDevices', array(__CLASS__, 'nvxOwnRadioGetLastDevices_shortcode'));
 			add_action('init', array(__CLASS__, 'netvoxlab_ownradio_register_myscript'));
 			add_action( 'wp_footer', array(__CLASS__, 'netvoxlab_ownradio_enqueue_myscript' ));
-			add_action('init', array(__CLASS__, 'adminmenu_settings_update'));			
+			add_action('init', array(__CLASS__, 'adminmenu_settings_update'));				
 		}
 		
-		function adminmenu_settings_update(){
+		static function adminmenu_settings_update(){
 			$options = get_option('netvoxlab_ownradio_player_options');	
 				if (is_array($options)){
-					if (!array_key_exists("nvxownradiourl",$options) or $options[nvxownradiourl] == "") {
-						$options[nvxownradiourl] = 'http://api.ownradio.ru/v4';				
+					if (!array_key_exists("nvxownradiourl",$options) or $options["nvxownradiourl"] == "") {
+						$options["nvxownradiourl"] = 'https://api.ownradio.ru/v4';				
 						update_option('netvoxlab_ownradio_player_options', $options);
 					}
 				} else {
 					update_option('netvoxlab_ownradio_player_options', 
 					array(
-						'nvxownradiourl' => 'http://api.ownradio.ru/v4',
+						'nvxownradiourl' => 'https://api.ownradio.ru/v4',
 						));
 				}
 
-			$netvoxlab_ownradio_player_server_url = $options[nvxownradiourl];
+			$netvoxlab_ownradio_player_server_url = 'https://api.ownradio.ru/v4'; //$options["nvxownradiourl"];
 			
 			$scriptWithVar = "
 				<script type=\"text/javascript\">
 					var nvxOwnRadioServerUrl = '".$netvoxlab_ownradio_player_server_url."';
+					var browserInfo = '".getInfoBrowser()."';
 				</script>";
 				
 				echo $scriptWithVar;
@@ -99,22 +102,13 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 	//функция возвращает все устройства пользователя
 		static function nvxOwnRadioGetUserDevices_shortcode ($atts, $content = null) {
 		self::$netvoxlab_ownradio_add_script = true;
-		return $content . '<style type="text/css">
-					   nvxTable.table {
-						   border-collapse: collapse;
-					   }
-					  td,th {
-						padding: 0.4em;
-						/*border: 1px solid black;*/
-					   }
-				  </style>
-				<div id="nvxUserDevices" class="">
+		return $content . '<div id="nvxUserDevices" class="">
 						<form name="nvxFormaGetUserDevices">
 							<input type="button" onclick="return nvxGetUserDevices(nvxFormaGetUserDevices.userID.value);" value="Получить список всех устройств пользователя">
 							<input type="text" title="Введите userID" name="userID" id="nvxTxtUserID" placeholder="Введите userID" required style="min-width: 280px;">
 
 						</form>
-						<div id="nvxOwnradioSQLUserDevices">
+						<div id="nvxOwnradioSQLGetRequests">
 						</div>
 					</div>';
 		}
@@ -122,20 +116,12 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 		//функция просмотра рейтинга пользователей по количеству своих треков и количеству полученных за последние сутки треков
 		static function nvxOwnRadioGetUsersRating_shortcode ($atts, $content = null) {
 		self::$netvoxlab_ownradio_add_script = true;
-		return $content . '<style type="text/css">
-					   nvxTable.table {
-						   border-collapse: collapse;
-					   }
-					  td,th {
-						padding: 0.4em;
-						/*border: 1px solid black;*/
-					   }
-				  </style>
-				  <div id="nvxUsersRating" class="">
-						<input type="button" onclick="return nvxGetUsersRating()" value="Получить рейтинг активности пользователей">
-						<input type="text" title="Введите количество выводимых записей (-1 для вывода всех)" name="countRows" id="nvxTxtCountRows" placeholder="Введите количество выводимых записей(-1 для вывода всех записей)" value = "-1" required>
+		return $content . '<div id="nvxUsersRating" class="">
+						<input type="button" onclick="return nvxBtnUsersRating()" value="Получить рейтинг активности пользователей">
+						<!--<input type="text" title="Введите количество выводимых записей (-1 для вывода всех)" name="countRows" id="nvxTxtCountRows" placeholder="Введите количество выводимых записей(-1 для вывода всех записей)" value = "-1" required>
+						-->
 
-						<div id="nvxOwnradioSQLUsersRating">
+						<div id="nvxOwnradioSQLGetRequests">
 						</div>
 					</div>';
 		}
@@ -143,36 +129,70 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 		//функция просмотра последних выданных устройству треков
 		static function nvxOwnRadioGetLastTracks_shortcode ($atts, $content = null) {
 		self::$netvoxlab_ownradio_add_script = true;
-		return $content . '<style type="text/css">
-					   nvxTable.table {
-						   border-collapse: collapse;
-					   }
-					  td,th {
-						padding: 0.4em;
-						/*border: 1px solid black;*/
-					   }
-				  </style>
-				  <div id="nvxLastDeviceTracks" class="">
+		return $content . '<div id="nvxLastDeviceTracks" class="">
 						<form name="nvxFormaLastDeviceTracks">
 						<input type="button" onclick="return nvxGetLastTracks(nvxFormaLastDeviceTracks.deviceId.value, nvxFormaLastDeviceTracks.countRows.value)" value="Получить последние выданные треки">
 						<input type="text" title="Введите deviceId" name="deviceId" id="nvxTxtDeviceId" placeholder="Введите deviceId" required style="min-width: 280px;">
 						<input type="text" title="Введите количество выводимых записей (-1 для вывода всех)" name="countRows" id="nvxTxtCountRows" placeholder="Введите количество выводимых записей(-1 для вывода всех записей)" value = "-1" required>
 
 						</form>
-						<div id="nvxOwnradioSQLDevicesLastTracks">
+						<div id="nvxOwnradioSQLGetRequests">
+						</div>
+					</div>';
+		}
+		
+		
+		//функция просмотра последних выданных устройству треков и истории их прослушивания
+		static function nvxOwnRadioGetTracksHistoryByDevice_shortcode ($atts, $content = null) {
+		self::$netvoxlab_ownradio_add_script = true;
+		return $content . '<div id="nvxLastDeviceTracks" class="">
+						<form name="nvxFormaTracksHistory">
+						<input type="button" onclick="return nvxGetTracksHistory(nvxFormaTracksHistory.deviceId.value, nvxFormaTracksHistory.countRows.value)" value="Получить последние выданные треки">
+						<input type="text" title="Введите deviceId" name="deviceId" id="nvxTxtDeviceId" placeholder="Введите deviceId" required style="min-width: 280px;">
+						<input type="text" title="Введите количество выводимых записей (-1 для вывода всех)" name="countRows" id="nvxTxtCountRows" placeholder="Введите количество выводимых записей(-1 для вывода всех записей)" value = "-1" required>
+						</form>
+						<div id="nvxOwnradioSQLGetRequests">
+						</div>
+					</div>';
+		}
+		
+		
+		//функция возвращает последние активные устройства
+		static function nvxOwnRadioGetLastDevices_shortcode ($atts, $content = null) {
+		self::$netvoxlab_ownradio_add_script = true;
+		return $content . '<div id="nvxGetLastDevices" class="">
+						<form name="nvxFormaLastDevices">
+						<input type="button" onclick="return nvxBtnLastDevice()" value="Просмотреть последние активные устройства">
+						</form>
+						<div id="nvxOwnradioSQLGetRequests">
 						</div>
 					</div>';
 		}
     }
 	
-	netvoxlab_ownradio_player_shortcode::init();
+	function getInfoBrowser(){
+		$agent = $_SERVER['HTTP_USER_AGENT'];
+		preg_match("/(Edge|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", $agent, $bInfo);
+		$browserInfo = array();
+		if(strpos($agent, 'Edge')) {
+			$browserInfo['name'] = 'MS Edge';
+			$browserInfo['version'] = substr($agent, strpos($agent, 'Edge')+5, 7);
+		}
+		else {
+			$browserInfo['name'] = ($bInfo[1]=="Version") ? "Safari" : $bInfo[1];
+			$browserInfo['version'] = $bInfo[2];
+		}
+		return $browserInfo['name']. " v." . $browserInfo['version'];
+	}
+	
+	// netvoxlab_ownradio_player_shortcode::init();
 	
 		if (is_admin()){
 			//Добавляем меню в админку
 			// include_once('nvxownradioadminmenu.php');
 		} else {
 			// include_once('nvxOwnradioShotcodes.php');
-			
+			netvoxlab_ownradio_player_shortcode::init();
 			// nvxOwnradioShotcodes::init();
 		}
 		
