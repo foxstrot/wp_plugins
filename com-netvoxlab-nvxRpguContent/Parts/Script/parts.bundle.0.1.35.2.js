@@ -811,7 +811,18 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/modalWindowsFunction',
 				if (document.getElementById(self.trobberId) == null) {
 					$('body').append('<div id="{0}" class="nvxrpguthrobber" style="opacity:0">{1}</div>'.format(self.trobberId, throbberInnerContent));
 					$('#{0}'.format(self.trobberId)).animate({ 'opacity': .4 }, 500);
+
+
+
+
+
+
 				}
+
+
+
+
+
 				return guid;
 			};
 
@@ -1715,7 +1726,7 @@ define('Nvx/CategoryServiceList', ['knockout', 'jquery', 'Nvx.ReDoc.WebInterface
 			var self = this;
 
 			var keyId = window.getUrlVarsFunction()['categoryId'];
-			var key = 'Category';
+			var key = 'CatalogSection';
 			if (keyId == null || keyId == '') {
 				keyId = window.getUrlVarsFunction()['situationId'];
 				key = 'LifeSituation';
@@ -1858,8 +1869,10 @@ define('Nvx/DepartmentTreeViewModel', [
 			var self = this;
 			if (department != null) {
 				if (Array.isArray(department.subDepartments)) {
-					department.subDepartments.forEach(function(item, i) {
-						item.link = (window.nvxCommonPath != null ? window.nvxCommonPath.departmentView : '/department/index.php?departmentId=') + item.id; //todo
+					department.subDepartments.forEach(function (item, i) {
+						item.link = (window.nvxCommonPath != null ? window.nvxCommonPath.departmentView : '/department/index.php?departmentId=') + item.id;
+						if (department.id != null)
+							item.link += "&parentId=" + department.id;
 						self.setLink(item);
 					});
 				}
@@ -4419,7 +4432,7 @@ function (ko, $, ServiceMenuItem, ServiceGroupPagedViewModel) {
 		categoryParam: {
 			sortBy: 'FullName',
 			sortOrder: 'ASC',
-			groupBy: 'Category',
+			groupBy: 'CatalogSection',
 			filterBy: 'all',
 			onlyOnline: false
 		},
@@ -4525,8 +4538,8 @@ function (ko, $, ServiceMenuItem, ServiceGroupPagedViewModel) {
 				},
 				{
 					title: 'По категориям',
-					groupBy: 'Category',
-					id: 'Category'
+					groupBy: 'CatalogSection',
+					id: 'CatalogSection'
 				},
 				{
 					title: 'По жизненным обстоятельствам',
@@ -4762,7 +4775,7 @@ define('Nvx/ServiceListByCatsViewModel', ['knockout', 'jquery', 'Nvx.ReDoc.WebIn
 				data: {
 					"sortBy": "FullName",
 					"sortOrder": "ASC",
-					"groupBy": "Category",
+					"groupBy": "CatalogSection",
 					"filterBy": filterKey,
 					"onlyOnline": self.onlyOnline(),
 					"adminLevel": 1,
@@ -4866,7 +4879,7 @@ define('Nvx.ReDoc.StateStructureServiceModule/Service/Script/ServicesViewModel',
 			categoryParam: {
 				sortBy: 'FullName',
 				sortOrder: 'ASC',
-				groupBy: 'Category',
+				groupBy: 'CatalogSection',
 				filterBy: 'all',
 				onlyOnline: window.sessionStorage && window.sessionStorage.getItem('nvxOnlyOnline') === 'true'
 			},
@@ -4966,7 +4979,7 @@ define('Nvx.ReDoc.StateStructureServiceModule/Service/Script/ServicesViewModel',
 			self.item.selectionState.params = {
 				sortBy: 'FullName',
 				sortOrder: 'ASC',
-				groupBy: 'Category',
+				groupBy: 'CatalogSection',
 				filterBy: 'all',
 				onlyOnline: window.sessionStorage && window.sessionStorage.getItem('nvxOnlyOnline') === 'true',
 				adminLevel: 1, //региональные ведомства
@@ -5006,8 +5019,8 @@ define('Nvx.ReDoc.StateStructureServiceModule/Service/Script/ServicesViewModel',
 					},
 					{
 						title: 'По категориям',
-						groupBy: 'Category',
-						id: 'Category'
+						groupBy: 'CatalogSection',
+						id: 'CatalogSection'
 					},
 					{
 						title: 'По жизненным обстоятельствам',
@@ -5270,6 +5283,54 @@ define('Nvx/StartCreateFileViewModel', [
 		var StartCreateFileViewModel = function() {
 			var self = this;
 
+			self.tabs = {
+				customer: {
+					onclick: function() {
+						self.allTabsClear();
+						self.tabs.customer.active(true);
+						if (document.getElementById('nvxCustomerInfo') != null)
+							document.getElementById('nvxCustomerInfo').style.display = 'block';
+					},
+					active: ko.observable(true)
+				},
+				request: {
+					onclick: function() {
+						self.allTabsClear();
+						self.tabs.request.active(true);
+						if (document.getElementById('nvxRequestList') != null)
+							document.getElementById('nvxRequestList').style.display = 'block';
+					},
+					active: ko.observable(true)
+				},
+				payments: {
+					onclick: function() {
+						self.allTabsClear();
+						self.tabs.payments.active(true);
+						if (document.getElementById('nvxLkPayments') != null)
+							document.getElementById('nvxLkPayments').style.display = 'block';
+					},
+					active: ko.observable(true)
+				},
+				reception: {
+					onclick: function() {
+						self.allTabsClear();
+						self.tabs.reception.active(true);
+						if (document.getElementById('nvxLkReception')!= null)
+							document.getElementById('nvxLkReception').style.display = 'block';
+					},
+					active: ko.observable(true)
+				},
+				complaints: {
+					onclick: function() {
+						self.allTabsClear();
+						self.tabs.complaints.active(true);
+						if (document.getElementById('nvxLkComplaint') != null)
+							document.getElementById('nvxLkComplaint').style.display = 'block';
+					},
+					active: ko.observable(true)
+				}
+			};
+
 			// запрос на сервер создание дела
 			self.createFileRequest = function(data) {
 				var searchTrobberId = modal.CreateTrobberDiv2();
@@ -5302,6 +5363,25 @@ define('Nvx/StartCreateFileViewModel', [
 						modal.CloseTrobberDiv2(searchTrobberId);
 					});
 			};
+
+			self.allTabsClear = function() {
+				self.tabs.customer.active(false);
+				if (document.getElementById('nvxCustomerInfo') != null)
+					document.getElementById('nvxCustomerInfo').style.display = 'none';
+				self.tabs.request.active(false);
+				if (document.getElementById('nvxRequestList') != null)
+					document.getElementById('nvxRequestList').style.display = 'none';
+				self.tabs.payments.active(false);
+				if (document.getElementById('nvxLkPayments') != null)
+					document.getElementById('nvxLkPayments').style.display = 'none';
+				self.tabs.reception.active(false);
+				if (document.getElementById('nvxLkReception') != null)
+					document.getElementById('nvxLkReception').style.display = 'none';
+				self.tabs.complaints.active(false);
+				if (document.getElementById('nvxLkComplaint') != null)
+					document.getElementById('nvxLkComplaint').style.display = 'none';
+			};
+			self.tabs.customer.onclick();
 		};
 
 		StartCreateFileViewModel.prototype.start = function() {
@@ -7622,7 +7702,7 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DefaultController/serviceMe
 							},
 							{
 								title: 'По категориям',
-								groupBy: 'Category'
+								groupBy: 'CatalogSection'
 							},
 							{
 								title: 'По жизненным обстоятельствам',
@@ -9734,6 +9814,46 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/app/scripts/templateStore2',
 		userInfoListControl,
 		koPlaceholder) {
 
+		//issue1315
+		var reg = /<script ((type=["']text\/javascript["'])| |(src=["'][\d\w\S]*["'])|(charset=["']UTF-8["']))*><\/script>/igm;
+		
+		if (boolControlTemplate.contains("text/javascript") && boolControlTemplate.contains("text/x-jsrender"))
+			boolControlTemplate = boolControlTemplate.replace(reg, '');
+		if (collectionControlTemplate.contains("text/javascript") && collectionControlTemplate.contains("text/x-jsrender"))
+			collectionControlTemplate = collectionControlTemplate.replace(reg, '');
+		if (dateControlTemplate.contains("text/javascript") && dateControlTemplate.contains("text/x-jsrender"))
+			dateControlTemplate = dateControlTemplate.replace(reg, '');
+		if (enumControlTemplate.contains("text/javascript") && enumControlTemplate.contains("text/x-jsrender"))
+			enumControlTemplate = enumControlTemplate.replace(reg, '');
+		if (floatControl.contains("text/javascript") && floatControl.contains("text/x-jsrender"))
+			floatControl = floatControl.replace(reg, '');
+		if (formTemplate.contains("text/javascript") && formTemplate.contains("text/x-jsrender"))
+			formTemplate = formTemplate.replace(reg, '');
+		if (integerControl.contains("text/javascript") && integerControl.contains("text/x-jsrender"))
+			integerControl = integerControl.replace(reg, '');
+		if (placeholderTemplate.contains("text/javascript") && placeholderTemplate.contains("text/x-jsrender"))
+			placeholderTemplate = placeholderTemplate.replace(reg, '');
+		if (simpleAttachmentControl.contains("text/javascript") && simpleAttachmentControl.contains("text/x-jsrender"))
+			simpleAttachmentControl = simpleAttachmentControl.replace(reg, '');
+		if (currentUserControl.contains("text/javascript") && currentUserControl.contains("text/x-jsrender"))
+			currentUserControl = currentUserControl.replace(reg, '');
+		if (textControlTemplate.contains("text/javascript") && textControlTemplate.contains("text/x-jsrender"))
+			textControlTemplate = textControlTemplate.replace(reg, '');
+		if (uuidControlTemplate.contains("text/javascript") && uuidControlTemplate.contains("text/x-jsrender"))
+			uuidControlTemplate = uuidControlTemplate.replace(reg, '');
+		if (dictionaryRegistryControl.contains("text/javascript") && dictionaryRegistryControl.contains("text/x-jsrender"))
+			dictionaryRegistryControl = dictionaryRegistryControl.replace(reg, '');
+		if (titleControl.contains("text/javascript") && titleControl.contains("text/x-jsrender"))
+			titleControl = titleControl.replace(reg, '');
+		if (pageControl.contains("text/javascript") && pageControl.contains("text/x-jsrender"))
+			pageControl = pageControl.replace(reg, '');
+		if (pageContainerControl.contains("text/javascript") && pageContainerControl.contains("text/x-jsrender"))
+			pageContainerControl = pageContainerControl.replace(reg, '');
+		if (userInfoListControl.contains("text/javascript") && userInfoListControl.contains("text/x-jsrender"))
+			userInfoListControl = userInfoListControl.replace(reg, '');
+		if (koPlaceholder.contains("text/javascript") && koPlaceholder.contains("text/x-jsrender"))
+			koPlaceholder = koPlaceholder.replace(reg, '');
+
 		var templates = {
 			'BoolControlDescriptor': boolControlTemplate,
 			'CollectionFormDescriptor': collectionControlTemplate,
@@ -11474,9 +11594,10 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/knock
 	['jquery',
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/abstractHostObject',
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/pathUtil',
-		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/preferences'
+		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/preferences',
+		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/viewModelDataCollector'
 	],
-	function ($m, abstractHostObject, pathUtil, preferences) {
+	function ($m, abstractHostObject, pathUtil, preferences, viewModelDataCollector) {
 
 		var EnumWrapper = function (viewModel, id) {
 			var self = this;
@@ -11521,8 +11642,25 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/knock
 						) {
 						return self.getWrapedFias(element);
 					}
+					if (element.elementDescriptor.DescriptorKey === "CollectionFormDescriptor") {
+						return self.getWrapedCollection(element);
+					}
 					return element.Value();
 				}
+			};
+
+			self.getFormData = function (element) {
+				return viewModelDataCollector.collectCurrentElementDataFromKoVm(element);
+			}
+
+			self.getWrapedCollection = function(element) {
+				var col = element.CollectionItems()
+					.map(function(x) {
+						return self.getFormData(x);
+					});
+
+				col.Count = col.length;
+				return col;
 			};
 
 			self.getWrapedDate = function (element) {
@@ -11588,6 +11726,21 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/knock
 			}
 			return self.wrappersFactory.GetValue(element);
 		};
+		/// <summary>
+		/// Метод для использования с коллекциями
+		/// https://jira.egspace.ru/browse/SMEVBELIIX-105
+		/// сигнатура - hostObject.GetColItemValue("~coll1", i, "e1.l", j, "s")
+		/// </summary>
+		/// <returns>Прочитанное значение.</returns>
+		HostObject.prototype.GetColItemValue = function () {
+			var self = this;
+			var localPath = "";
+			for (var i = 0; i < arguments.length; i++) {
+				var split = arguments[i];
+				localPath += (i % 2 === 1) ? ("[" + split + "]" + ".") : split;
+			}
+			return self.GetValue(localPath);
+		};
 
 		// Получение переменной контекста формы
 		HostObject.prototype.GetContextVariable = function (key) {
@@ -11637,10 +11790,11 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormController
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/nvxRedocCommon',
 		'Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/ScriptMediator',
 		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/ClientJsonParser',
+		'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/viewModelDataCollector',
 		'jqueryExtention',
 		'select2lib'
 	],
-	function ($, ko, dynamicFormRender, preferences, Nvx, modalWindowsFunction, nvxRedocCommon, ScriptMediator, ClientJsonParser) {
+	function ($, ko, dynamicFormRender, preferences, Nvx, modalWindowsFunction, nvxRedocCommon, ScriptMediator, ClientJsonParser, viewModelDataCollector) {
 		var DynamicFormHub = function () {
 			var self = this;
 
@@ -12240,122 +12394,8 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormController
 			};
 
 			//обработка элемента модели динамической формы с целью получения его значения
-			self.collectCurrentElementDataFromKoVm = function (currentElement) {
-				if (currentElement == null)
-					return null;
-				if (currentElement.Pages) {
-					//Вкладки
-					var pageElementsKoData = {};
-					$.each(currentElement.Pages, function (pageid, page) {
-						$.each(page.PageElements, function (id, element) {
-							var elePath = element.Path;
-							var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
-							pageElementsKoData[realPath] = self.collectCurrentElementDataFromKoVm(element);
-						});
-					});
-					return pageElementsKoData;
-				} else if (currentElement.FormElements) {
-					//Форма!
-					var elementsKoData = {};
-					if (currentElement.ControlVisibility() === true) {
-						$.each(currentElement.FormElements, function(id, element) {
-							var elePath = element.Path;
-							var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
-							elementsKoData[realPath] = self.collectCurrentElementDataFromKoVm(element);
-						});
-					}
-					return elementsKoData;
-				} else if (currentElement.CollectionItems && typeof currentElement.CollectionItems == "function") {
-					//коллекция
-					var colElementsKoData = [];
-					for (var inde = 0; inde < currentElement.CollectionItems().length; inde++) {
-						var innerElements = {};
-						$.each(currentElement.CollectionItems()[inde].FormElements, function (id, element) {
-							var elePath = element.Path;
-							var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
-							innerElements[realPath] = self.collectCurrentElementDataFromKoVm(element);
-						});
-						colElementsKoData.push(innerElements);
-					}
-					return colElementsKoData;
-				}
-				//ФИАС.
-				if (currentElement.typeId === 'FiasRegionSelectControlViewModel' || currentElement.typeId === 'FIAS')
-					return currentElement.getValue();
-
-				//Виджет выбора участника
-				if (currentElement.typeId === 'UserInfoList') {
-					if (currentElement.Value() == null)
-						return null;
-					return {
-						'CredentialHash': currentElement.Value(),
-						'UserName': currentElement.element().children[0].selectedOptions.item(0).text
-					};
-				}
-				
-				//SimpleAttachment
-				if (currentElement.certificateFile !== undefined) {
-					var value = currentElement.previousExist() === true ? 
-									currentElement.certificateFileName() :
-									currentElement.getCleanValue();
-
-					console.log('Вернём ' + value);
-					return value;
-				}
-
-				//Остальные элементы.
-				if (typeof currentElement.Value == "function" && currentElement.Value() != undefined && currentElement.Value !== "") {
-					if (currentElement.Value() === "")
-						return null;
-					
-				    //это специально для float
-					if (typeof (currentElement.Value()) === "string") {
-						if (currentElement.element() != null && currentElement.element().children != null && currentElement.element().children.length > 1 && currentElement.element().children[1].attributes['step'] != null)
-							return currentElement.Value().replace(',', '.');
-						else
-							return currentElement.Value().replace(/"/g, '&quot;');
-					} else {
-						return currentElement.Value();
-					}
-				} else if (typeof currentElement.selectedValueS2 == "function" && currentElement.selectedValueS2() != undefined){
-					//Передаём UnderlineValue, так как для значений вида 00033333333333333 в literalValue будет ошибка
-					var s2Result = "";
-					//for multiselect
-					if (currentElement.multiflag === true) {
-						var outdata = currentElement.selectedValueS2();
-						var preResult = typeof outdata === 'string' ? [outdata] : outdata;
-						if (currentElement.DictionaryId != null)
-							return preResult;
-						var endResult = [];
-
-						for (var i = 0; i < preResult.length; i++) {
-							if (preResult[i] == null)
-								break;
-							for (var j = 0; j < currentElement.options.length; j++) {
-								if (currentElement.options[j].LV === preResult[i]) {
-									if (currentElement.isSave())
-										endResult.push({ enumId: currentElement.options[j].UV, enumValue: currentElement.options[j].UV, enumTitle: currentElement.options[j].DA });
-									else
-										endResult.push(currentElement.options[j].UV);
-									break;
-								}
-							}
-						}
-						return endResult;
-					}
-
-					$.each(currentElement.options, function (id, data) {
-						if (data.LV === currentElement.selectedValueS2()) {
-							if (currentElement.isSave())
-								s2Result = { enumId: data.UV, enumValue: data.UV, enumTitle: data.DA };
-							else
-								s2Result = data.UV;
-						}
-					});
-					return s2Result === "" ? currentElement.selectedValueS2() : s2Result;
-				} else {
-					return null;
-				}
+			self.collectCurrentElementDataFromKoVm = function (element) {
+				return viewModelDataCollector.collectCurrentElementDataFromKoVm(element);
 			};
 
 			self.goToTransition = function (transitionAction, to, formInfo, portalCallback) {
@@ -13824,9 +13864,154 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormController
 
 		return dynamicFormHubReadonly;
 	});
+define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/viewModelDataCollector',
+	[],
+	function() {
+
+		// объект для сбора данных с вью-моделей (т.к. у нас всё везде поразному и времени переделывать нет, я просто вынес эту логику суда чтобы использовать её в различных объектах)
+		var ViewModelDataCollector = function () {
+			var self = this;
+			self.collectCurrentElementDataFromKoVm = function(currentElement) {
+				if (currentElement == null)
+					return null;
+				if (currentElement.Pages) {
+					//Вкладки
+					var pageElementsKoData = {};
+					$.each(currentElement.Pages,
+						function(pageid, page) {
+							$.each(page.PageElements,
+								function(id, element) {
+									var elePath = element.Path;
+									var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
+									pageElementsKoData[realPath] = self.collectCurrentElementDataFromKoVm(element);
+								});
+						});
+					return pageElementsKoData;
+				} else if (currentElement.FormElements) {
+					//Форма!
+					var elementsKoData = {};
+					if (currentElement.ControlVisibility() === true) {
+						$.each(currentElement.FormElements,
+							function(id, element) {
+								var elePath = element.Path;
+								var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
+								elementsKoData[realPath] = self.collectCurrentElementDataFromKoVm(element);
+							});
+					}
+					return elementsKoData;
+				} else if (currentElement.CollectionItems && typeof currentElement.CollectionItems == "function") {
+					//коллекция
+					var colElementsKoData = [];
+					for (var inde = 0; inde < currentElement.CollectionItems().length; inde++) {
+						var innerElements = {};
+						$.each(currentElement.CollectionItems()[inde].FormElements,
+							function(id, element) {
+								var elePath = element.Path;
+								var realPath = elePath.substr(elePath.lastIndexOf('.') + 1);
+								innerElements[realPath] = self.collectCurrentElementDataFromKoVm(element);
+							});
+						colElementsKoData.push(innerElements);
+					}
+					return colElementsKoData;
+				}
+				//ФИАС.
+				if (currentElement.typeId === 'FiasRegionSelectControlViewModel' || currentElement.typeId === 'FIAS')
+					return currentElement.getValue();
+
+				//Виджет выбора участника
+				if (currentElement.typeId === 'UserInfoList') {
+					if (currentElement.Value() == null)
+						return null;
+					return {
+						'CredentialHash': currentElement.Value(),
+						'UserName': currentElement.element().children[0].selectedOptions.item(0).text
+					};
+				}
+
+				//SimpleAttachment
+				if (currentElement.certificateFile !== undefined) {
+					var value = currentElement.previousExist() === true
+						? currentElement.certificateFileName()
+						: currentElement.getCleanValue();
+
+					console.log('Вернём ' + value);
+					return value;
+				}
+
+				//Остальные элементы.
+				if (typeof currentElement
+					.Value ==
+					"function" &&
+					currentElement.Value() != undefined &&
+					currentElement.Value !== "") {
+					if (currentElement.Value() === "")
+						return null;
+
+					//это специально для float
+					if (typeof (currentElement.Value()) === "string") {
+						if (currentElement.element() != null &&
+							currentElement.element().children != null &&
+							currentElement.element().children.length > 1 &&
+							currentElement.element().children[1].attributes['step'] != null)
+							return currentElement.Value().replace(',', '.');
+						else
+							return currentElement.Value().replace(/"/g, '&quot;');
+					} else {
+						return currentElement.Value();
+					}
+				} else if (typeof currentElement.selectedValueS2 == "function" && currentElement.selectedValueS2() != undefined) {
+					//Передаём UnderlineValue, так как для значений вида 00033333333333333 в literalValue будет ошибка
+					var s2Result = "";
+					//for multiselect
+					if (currentElement.multiflag === true) {
+						var outdata = currentElement.selectedValueS2();
+						var preResult = typeof outdata === 'string' ? [outdata] : outdata;
+						if (currentElement.DictionaryId != null)
+							return preResult;
+						var endResult = [];
+
+						for (var i = 0; i < preResult.length; i++) {
+							if (preResult[i] == null)
+								break;
+							for (var j = 0; j < currentElement.options.length; j++) {
+								if (currentElement.options[j].LV === preResult[i]) {
+									if (currentElement.isSave())
+										endResult.push({
+											enumId: currentElement.options[j].UV,
+											enumValue: currentElement.options[j].UV,
+											enumTitle: currentElement.options[j].DA
+										});
+									else
+										endResult.push(currentElement.options[j].UV);
+									break;
+								}
+							}
+						}
+						return endResult;
+					}
+
+					$.each(currentElement.options,
+						function(id, data) {
+							if (data.LV === currentElement.selectedValueS2()) {
+								if (currentElement.isSave())
+									s2Result = { enumId: data.UV, enumValue: data.UV, enumTitle: data.DA };
+								else
+									s2Result = data.UV;
+							}
+						});
+					return s2Result === "" ? currentElement.selectedValueS2() : s2Result;
+				} else {
+					return null;
+				}
+			};
+		}
+
+		return new ViewModelDataCollector();
+});
 define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/BaseScript', [
-	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/knockoutHostObject'
-], function (HostObject) {
+	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/knockoutHostObject',
+	'Nvx.ReDoc.WebInterfaceModule/Content/Scripts/DynamicFormController/pathUtil'
+], function (HostObject, pathUtil) {
 	/** Базовый конструктор для объекта скрипта */
 	var BaseScript = function (elementViewModel, script, scriptPurpose) {
 
@@ -13845,10 +14030,58 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Ba
 
 		// удобно сохранить и назначение скрипта
 		self.Purpose = scriptPurpose;
+		//Purpose is analog of ScriptType
+		//self.ScriptType = scriptPurpose;
 
 		self.getDependentFields = function() {
 			return [];
-		}
+		};
+
+		// для "балансированных" скобок использовал http://stackoverflow.com/questions/546433/regular-expression-to-match-outer-brackets#answer-35271017
+		// testing https://regex101.com/r/KZMLP4/1
+		self.dynDepsRegex = /hostObject\.GetColItemValue\(((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\)/g;
+		self.matchAll = function (str, regexp) {
+			var matches = [];
+			str.replace(regexp, function () {
+				var arr = ([]).slice.call(arguments, 0);
+				var extras = arr.splice(-2);
+				arr.index = extras[0];
+				arr.input = extras[1];
+				matches.push(arr);
+			});
+			return matches.length ? matches : null;
+		};
+
+		self.dynArgsToRegexString = function (args) {
+			var colIndexReplacement = "\\[.*?\\]";
+
+			var regex = "";
+			var splits = args.split(',');
+			for (var i = 0; i < splits.length; i++) {
+				var split = splits[i];
+				regex += i % 2 === 1 ? colIndexReplacement + "." : split.trim().replace("\s+", "").replace(/['"]+/g, "");
+			}
+
+			var fullPath = pathUtil.toAbsolutePath(regex, self.contextElement.FullPath);
+			//var fullPath = self.contextElement.getViewModelByPath(regex);
+
+			return fullPath;
+		};
+
+		self.getDependentDynFieldRegexStrs = function() {
+			if (!self.Content) return [];
+
+			var matches = self.matchAll(self.Content, self.dynDepsRegex);
+
+			if (matches) {
+				return matches.map(function (item) {
+					return self.dynArgsToRegexString(item[1]);
+				});
+			}
+
+			return [];
+		};
+
 
 		self.LaunchCondition = null;
 		self.canLaunchScript = function () {
@@ -14113,15 +14346,17 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Ru
 					result = result.native;
 			} catch (e) {
 				console.log('ошибка выполнения ruby скрипта');
+				console.log(e);
 				console.log(this.Content);
-				console.log(self.OpalScript);
-				console.log(e.message);
+				console.log(self.OpalScript);				
+				console.log(e.message);		
 				console.log('\n');
 			}
 			return result;
 		};
 
-		self.convertRegex = /(hostObject.(?:GetValue|GetContextVariable|SetValue)\(".[^"]+"\))/g;
+		//self.convertRegex = /(hostObject.(?:GetValue|GetContextVariable|SetValue)\(".[^"]+"\))/g;
+		self.convertRegex = /(hostObject.(?:GetValue|GetContextVariable|SetValue|GetColItemValue)\((?:(?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\))/g;
 		//так дольше отрабатывает...
 		//self.convertRegex = /(hostObject)/g;
 
@@ -14195,6 +14430,8 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 		var self = this;
 
 		self.registeredScripts = {};
+		// structure can be seen from - self.registeredConditionalScripts[scriptModel.Purpose][depRegex].push(scriptModel.contextElement);
+		self.registeredConditionalScripts = {};
 
 		self.viewModel = null;
 
@@ -14215,13 +14452,43 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 		 */
 		self.registerScript = function(scriptModel) {
 
+			self.registerScriptByFieldsDeps(scriptModel);
+			self.registerScriptByConditionalDeps(scriptModel);
+
+			return scriptModel;
+		};
+
+		/**
+		* зарегать скрипт для выполнения при изменении значений зависимых полей (запуск скрипта осуществится при выполнении regex на путь элемента изменённого значения)
+		*/
+		self.registerScriptByConditionalDeps = function (scriptModel) {
+			var dependentRegexStrs = scriptModel.getDependentDynFieldRegexStrs();
+			if (scriptModel.LaunchCondition != null)
+				dependentRegexStrs = dependentRegexStrs.concat(scriptModel.LaunchCondition.getDependentDynFieldRegexStrs());
+
+			dependentRegexStrs.forEach(function (depRegex) {
+				if (!self.registeredConditionalScripts[scriptModel.Purpose])
+					self.registeredConditionalScripts[scriptModel.Purpose] = {};
+
+				if (self.registeredConditionalScripts[scriptModel.Purpose][depRegex] === undefined) {
+					self.registeredConditionalScripts[scriptModel.Purpose][depRegex] = [];
+				}
+
+				self.registeredConditionalScripts[scriptModel.Purpose][depRegex].push(scriptModel.contextElement);
+			});
+		};
+
+		/**
+		 * зарегать скрипт для выполнения при изменении значений зависимых полей (для заранее указанных статических путей)
+		 */
+		self.registerScriptByFieldsDeps = function(scriptModel) {
 			var dependentElements = scriptModel.getDependentFields();
 
 			//добавим зависимость для LaunchCondition
 			if (scriptModel.LaunchCondition != null)
 				dependentElements = dependentElements.concat(scriptModel.LaunchCondition.getDependentFields());
 
-			dependentElements.forEach(function (dependentElementPath) {
+			dependentElements.forEach(function(dependentElementPath) {
 				var dependentElement = scriptModel.contextElement.getViewModelByPath(dependentElementPath);
 				if (dependentElement != null) {
 					var dependentElementFullPath = dependentElement.FullPath;
@@ -14232,8 +14499,6 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 					console.error(scriptModel.Content);
 				}
 			});
-
-			return scriptModel;
 		};
 
 		/*
@@ -14388,6 +14653,28 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 			return scriptModel;
 		};
 
+		self.getConditionalScriptElementsForPath = function (fullPath, scriptType) {
+			var needToRunElements = [];
+			if (self.registeredConditionalScripts[scriptType]) {
+				var scriptsForType = self.registeredConditionalScripts[scriptType];
+				
+				for (var regex in scriptsForType) {
+					if (scriptsForType.hasOwnProperty(regex)) {
+						try {
+							var escRegex = regex.trim().replace("\s+", "");
+							var Reg = new RegExp(escRegex);
+							if (Reg.test(fullPath)) {
+								needToRunElements = needToRunElements.concat(scriptsForType[regex]);
+							}
+						} catch (e) {
+
+						}
+					}
+				}
+			}
+			return needToRunElements;
+		};
+
 		/**
 		 * Поменялось значение модели
 		 */
@@ -14411,6 +14698,17 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 						}
 					});
 				}
+
+				//выполнение скриптов для "нестатических" путей, например путь до элемента коллекции
+				if (self.registeredConditionalScripts[scriptType]) {
+					var needToRunElements = self.getConditionalScriptElementsForPath(modelPath, scriptType);
+					needToRunElements.forEach(function(element) {
+						if (element[scriptType]) {
+							self.runScriptOnElement(element, element[scriptType], scriptType);
+						}
+					});
+				}
+
 			});
 
 
@@ -14419,6 +14717,17 @@ define('Nvx.ReDoc.Workflow.DynamicForm/Web/Content/Scripts/DynamicFormScripts/Sc
 				self.registeredScripts.ValidationScript[modelPath].forEach(function (element) {
 
 					// выполняем скрипты для элемента
+					if (element.ValidationScripts) {
+						element.ValidationScripts.forEach(function(script) {
+							self.runScriptOnElement(element, script, 'ValidationScript');
+						});
+					}
+				});
+			}
+
+			if (self.registeredConditionalScripts.ValidationScript) {
+				var needToRunElements = self.getConditionalScriptElementsForPath(modelPath, 'ValidationScript');
+				needToRunElements.forEach(function(element) {
 					if (element.ValidationScripts) {
 						element.ValidationScripts.forEach(function(script) {
 							self.runScriptOnElement(element, script, 'ValidationScript');
@@ -17021,7 +17330,8 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/lib/rubytojs/opalRunner', [
 		'opal-native',
 		'opal-datetime',
 		'Nvx.ReDoc.WebInterfaceModule/Content/lib.fix/guid/guid',
-		'opal-guid'
+		'opal-guid',
+		'opal-arrayExt'
 	],
 	function (opal) {
 		//парсер ruby
@@ -17032,6 +17342,7 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/lib/rubytojs/opalRunner', [
 		//opal.load('date');
 		opal.load('DateTime');
 		opal.load('Guid');
+		opal.load('ArrayExt');
 
 
 		//этот модуль тянет парочку тяжёлых либ
@@ -19071,7 +19382,6 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/Reception4PositionViewModel',
 			var self = this;
 
 			self.level4objects = ko.observableArray([]);
-
 			self.currentDay = ko.observable(new Date(date.date));
 
 			self.goLevel5 = goLevel5;
@@ -19714,6 +20024,8 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/ReceptionTicketsViewModel',
 				data += '<td style="padding-top:5px; padding-right: 5px">' + mfcPic + '</td></tr></tbody></table>';
 				//полоска
 				data += '<div style="background-color: #EA5A38; height: 10px;">&nbsp;</div>';
+				if (model.ticketNumber != null)
+					data += '<p style="padding: 0 20px;">Номер талона: ' + model.ticketNumber + '</p>';
 				if (model.place != null) {
 					data += '<p style="padding: 0 20px;">Организация: ' + model.place.name + '</p>';
 					data += '<p style="padding: 0 20px;">Адрес: ' + model.place.address + '</p>';
@@ -19721,9 +20033,12 @@ define('Nvx.ReDoc.Rpgu.Reception/Web/Scripts/ReceptionTicketsViewModel',
 				if (model.service != null)
 					data += '<p style="padding: 0 20px; margin-bottom: 0;">Услуга: ' + model.service.name + '</p>';
 				if (model.ticketDateTime != null)
-					data += '<p style="background-color: #CD9660; height: 22px; font-size: 14pt; padding: 10px 20px; margin-top: 5px;margin-bottom:0;">Время приема: ' + dateFormater.toFullDateString(model.ticketDateTime) + '</p>';
-				if (model.specialist != null)
+					data += '<p style="background-color: #CD9660; height: 22px; font-size: 14pt; padding: 10px 20px; margin-top: 5px;margin-bottom:0;">Время приема: ' + model.ticketDateTime.replace('T', ' в ') + '</p>';
+				if (model.specialist != null && model.specialist.name != null) {
 					data += '<p style="padding: 0 20px; margin-bottom: 0;">ФИО специалиста: ' + model.specialist.name + '</p>';
+					if (model.specialist.receptionPlace != null)
+						data += '<p style="padding: 0 20px; margin-bottom: 0;">Номер кабинета: ' + model.specialist.receptionPlace + '</p>';
+				}
 				data += '<table style="padding: 0 20px;"><tbody><tr><td style="width: 95%; vertical-align: bottom;"><span style="font-size: 8pt;">Номер в системе: ' + model.recId + '</span><td>';
 				data += '<td style="padding-top:5px; padding-right: 5px">' + rdcPic + '</td></tr></tbody></table>';
 				data += '<div style="background-color: #EA5A38; height: 10px;">&nbsp;</div>';
@@ -26316,6 +26631,9 @@ define('Nvx.ReDoc.MfcUiModule/Web/Resources/Scripts/MfcUiWebController/mfcPagedV
 		self.commonMethods = new mfcCommonMethods();
 		self.modalDialog = self.commonMethods.modalDialog;
 		self.readAboutServiceInfo = self.commonMethods.readAboutServiceInfo;
+		//self.setServiceInfoFavourite = self.commonMethods.setServiceInfoFavourite;
+		//self.isServiceInfoFavouriteToIcon = self.commonMethods.isServiceInfoFavouriteToIcon;
+		//self.isServiceInfoFavouriteToButtonIcon = self.commonMethods.isServiceInfoFavouriteToButtonIcon;
 		self.readAboutCustomer = self.commonMethods.readAboutCustomer;
 
 		self.serviceTypeToString = self.commonMethods.serviceTypeToString;
@@ -27886,10 +28204,13 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/Helpers/signingHelper', [
 			//Подпись Xml плагином.
 			self.signXmlPlugin = function(thumbprint, digestXml) {
 
+				//Исходный xml
+				var xmlSourceString = digestXml || $("#digest").val();
+
 				//если загружен асинхронный плагин
 				var canAsync = !!cadesplugin.CreateObjectAsync;
 				if (canAsync) {
-					return asyncSignLib.signXml(thumbprint, digestXml);
+					return asyncSignLib.signXml(thumbprint, xmlSourceString);
 				}
 
 				var deferred = $.Deferred();
@@ -27911,9 +28232,6 @@ define('Nvx.ReDoc.WebInterfaceModule/Content/Scripts/Helpers/signingHelper', [
 				var XmlDsigGost3411Url = "urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr3411";
 				var CADESCOM_XML_SIGNATURE_TYPE_TEMPLATE = 2;
 				//ReSharper Restore InconsistentNaming 
-
-				//Исходный xml
-				var xmlSourceString = digestXml || $("#digest").val();
 
 				//Открываем хранилище и получаем сертификат.
 				var oStore = cadesplugin.CreateObject("CAPICOM.Store");

@@ -3,12 +3,12 @@
 	Plugin Name: com.netvoxlab.nvxRpguContent
 	Plugin URI: 
 	Description: nvx RPGU content for you pages
-	Version: 0.1.35
+	Version: v2017.04.19
 	Author: Ltd. NetVox Lab
 	Author URI: http://www.netvoxlab.ru/
 	*/
 	
-	define('nvxRpguContentVer', '0.1.35');
+	define('nvxRpguContentVer', 'v2017.04.19');
 	define('nvxRpguContentUri', plugin_dir_url( __FILE__ ));	
 	$GLOBALS['nvxRpguContentUriPluginDir'] = plugin_dir_path( __FILE__ );
 
