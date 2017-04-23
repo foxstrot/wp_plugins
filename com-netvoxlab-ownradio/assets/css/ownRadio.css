@@ -253,3 +253,12 @@
     font-size: 80px;
   }
 }
+
+.nvxTable.table {
+   border-collapse: collapse;
+}
+
+td,th {
+padding: 0.4em;
+/*border: 1px solid black;*/
+}

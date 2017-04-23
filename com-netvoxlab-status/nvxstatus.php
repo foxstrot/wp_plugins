@@ -40,13 +40,13 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 				$options = get_option('netvoxlab_check_status_options');	
 				if (is_array($options)){
 					if (!array_key_exists("nvxstatusurl",$options) or $options[nvxstatusurl] == "") {
-						$options[nvxstatusurl] = 'http://sq.mfc.ru/v1';				
+						$options[nvxstatusurl] = 'http://statustest.egspace.ru/v1';				
 						update_option('netvoxlab_check_status_options', $options);
 					}
 				} else {
 					update_option('netvoxlab_check_status_options', 
 					array(
-						'nvxstatusurl' => 'http://sq.mfc.ru/v1',
+						'nvxstatusurl' => 'http://statustest.egspace.ru/v1',
 						));
 				}
 
