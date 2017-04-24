@@ -12,7 +12,7 @@ function nvxCheckStatus(){
 		console.log(errorThrown);
     }).always(function () {
 		var checkStatus = document.getElementById('nvxStatus');
-		checkStatus.innerHTML = '<div class="nvxCheckStatus"><div class="lupa"><h3>Статус вашего заявления неизвестен.</h3>Вы ввели неверный номер дела<br/>или<br/>МФЦ не подключен к системе Re:Doc Status.</div></div><img class="nvxStatusImg center" src="'+NETVOXLAB_URL+'assets/img/img2.jpg">'
+		checkStatus.innerHTML = '<div class="nvxCheckStatus response"><div class="lupa"><h3>Статус вашего заявления неизвестен.</h3>Вы ввели неверный номер дела или<br/>МФЦ не подключен к системе Re:Doc Status.</div></div><img class="nvxStatusImg center" src="'+NETVOXLAB_URL+'assets/img/img2.jpg">'
 	});
 }
 

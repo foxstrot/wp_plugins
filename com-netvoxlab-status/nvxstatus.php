@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.status
 Description: Модуль фейкового просмотра статуса заявки. Shortcode [netvoxlab_check_status]
-Version: 2017.03.22
+Version: 2017.04.24
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.03.22');
+define('NETVOXLAB_CHECK_STATUS_PLUGIN_VERSION', '2017.04.24');
 $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 
 	class netvoxlab_check_status_shortcode {
@@ -31,6 +31,7 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 			add_shortcode('netvoxlab_check_status', array(__CLASS__, 'netvoxlab_check_status_func'));
 			add_action('init', array(__CLASS__, 'netvoxlab_check_status_register_myscript'));
 			add_action( 'wp_footer', array(__CLASS__, 'netvoxlab_check_status_enqueue_myscript' ));
+			add_action('init', array(__CLASS__, 'netvoxlab_check_status_func'));
 		}
 	
 	   static function netvoxlab_check_status_func ($atts, $content = null)
@@ -39,18 +40,18 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 
 				$options = get_option('netvoxlab_check_status_options');	
 				if (is_array($options)){
-					if (!array_key_exists("nvxstatusurl",$options) or $options[nvxstatusurl] == "") {
-						$options[nvxstatusurl] = 'http://statustest.egspace.ru/v1';				
+					if (!array_key_exists("nvxstatusurl",$options) or $options["nvxstatusurl"] == "") {
+						$options["nvxstatusurl"] = 'http://sq.mfc.ru/v1';				
 						update_option('netvoxlab_check_status_options', $options);
 					}
 				} else {
 					update_option('netvoxlab_check_status_options', 
 					array(
-						'nvxstatusurl' => 'http://statustest.egspace.ru/v1',
+						'nvxstatusurl' => 'http://sq.mfc.ru/v1',
 						));
 				}
 
-			$netvoxlab_check_status_server_url = $options[nvxstatusurl];
+			$netvoxlab_check_status_server_url = $options["nvxstatusurl"];
 			
 			$scriptWithVar = "
 				<script type=\"text/javascript\">
@@ -59,8 +60,8 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 				</script>";
 
 			$netvoxlab_check_status_wfm_sign = '
-				<div id="nvxStatus" class="">
-					<div  class="nvxCheckStatus">
+				<div id="nvxStatus" class="nvxStatus">
+					<div class="nvxCheckStatus">
 						<input type="text" value="" placeholder="Введите номер заявления" name="s" class="nvxCheckStatusForm" keyup="return fieldIsFilled()" id="nvxNumber"/>
 						<input type="button" id="checkStatusBtn"  onclick="return nvxCheckStatus()" class="nvxCheckStatusBtn" value="Узнать статус" disabled>
 							
@@ -87,10 +88,11 @@ $GLOBALS['NETVOXLAB_CHECK_STATUS_URL'] = plugin_dir_url( __FILE__ );
 		}
 	
 	}
-	netvoxlab_check_status_shortcode::init();
 	
 	if (is_admin()){
 		//Добавляем меню в админку
 		include_once('nvxstatusadminmenu.php');
+	} else {
+		netvoxlab_check_status_shortcode::init();
 	}
 ?>
