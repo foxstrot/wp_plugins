@@ -2730,10 +2730,12 @@
 		<input data-bind="checked: allowGetElkData, click: changeAllowGetElkData" name="allowGetEpguData" type="checkbox">
 		<span>Разрешить получение от ЛК ЕПГУ истории заявлений, платежей и записей на прием пользователя, а также новых заявлений, платежей и записей на прием пользователя</span>
 	</label>
-	<label>
-		<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
-		<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
-	</label>
+	<div class="m-top">
+		<label>
+			<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
+			<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
+		</label>
+	</div>
 </div>
 </script>
 <!-- /bundle -->
