@@ -1351,7 +1351,7 @@
 	</div>
 </script>
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html">
-	<div class="cols-2" style="position: relative; height: 100%">
+	<div class="cols-2" style="position: relative;">
 	<div style="padding-left: 5px">
 		<div id="MfcListYMaps" data-bind="value: mfcMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
 			<div class="throbber">
@@ -2730,10 +2730,12 @@
 		<input data-bind="checked: allowGetElkData, click: changeAllowGetElkData" name="allowGetEpguData" type="checkbox">
 		<span>Разрешить получение от ЛК ЕПГУ истории заявлений, платежей и записей на прием пользователя, а также новых заявлений, платежей и записей на прием пользователя</span>
 	</label>
-	<label>
-		<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
-		<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
-	</label>
+	<div class="m-top">
+		<label>
+			<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
+			<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
+		</label>
+	</div>
 </div>
 </script>
 <!-- /bundle -->
