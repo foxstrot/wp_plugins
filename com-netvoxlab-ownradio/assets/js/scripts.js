@@ -103,6 +103,25 @@ function player(){
 						obj.group.innerHTML = prm.nextTrack.artist;
 						
 						obj.audio.src = api+'/tracks/'+prm.nextTrack.id;
+						
+						// ОБРЕЗАЕМ ИМЯ ТРЕКА ДЛИННЕЕ 26 СИМВОЛОВ
+						var strTrakName = document.getElementById('radioName');
+						var cutTrakName = strTrakName.innerText;
+						var slicedName = cutTrakName.slice(0,32);
+						if (slicedName.length < cutTrakName.length) {
+							slicedName += '...';
+							obj.name.innerHTML = slicedName;
+						}
+
+						var strTrakGroup = document.getElementById('radioGroup');
+						var cutTrakGroup = strTrakGroup.innerText;
+						var slicedGroup = cutTrakGroup.slice(0,26);
+						if (slicedGroup.length < cutTrakGroup.length) {
+							slicedGroup += '...';
+							obj.group.innerHTML = slicedGroup;
+						}
+					
+					//
 						console.log('upload path ' + prm.nextTrack.pathupload)
 						console.log('time execute: ' + prm.nextTrack.timeexecute)
 					}
