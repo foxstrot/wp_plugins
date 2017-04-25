@@ -3,7 +3,7 @@ Contributors: netvoxlab
 Tags: radio, ownRadio, broadcast, music online
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 2017.04.21
+Stable tag: 2017.04.25.1
 License: GPLv3
 
 == Description ==
