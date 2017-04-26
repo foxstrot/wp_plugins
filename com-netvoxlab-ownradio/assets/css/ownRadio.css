@@ -282,6 +282,7 @@
   flex-direction: row;
   padding: 12px;
   justify-content: space-between;
+  margin: 0 auto;
 }
 .ownProgress-bar {
   height: 3px;
