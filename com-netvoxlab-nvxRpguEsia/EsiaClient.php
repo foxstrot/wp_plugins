@@ -13,7 +13,7 @@ class EsiaClient
 	public $tokenUrl = 'aas/oauth2/te';
 	public $codeUrl = 'aas/oauth2/ac';
 	public $personUrl = 'rs/prns';
-	public $orgInfoUrl = '/orgs?embed=(elements-1)';
+	public $orgInfoUrl = '/roles';
 	public $privateKeyPath;
 	public $privateKeyPassword;
 	public $certPath;
@@ -21,8 +21,8 @@ class EsiaClient
 	private $orgOid = null;//Идентификатор организации (ЮЛ/ИП), от лица которой хочет авторизоваться субъект
 	private $esiaAuthResult = null;
 
-	protected $scope = 'http://esia.gosuslugi.ru/usr_inf http://esia.gosuslugi.ru/usr_brf';
-	protected $scopeOrg = 'http://esia.gosuslugi.ru/usr_inf http://esia.gosuslugi.ru/usr_brf http://esia.gosuslugi.ru/org_ful?org_oid=';
+	protected $scope = 'openid fullname birthdate birthplace gender snils inn id_doc medical_doc military_doc foreign_passport_doc drivers_licence_doc birth_cert_doc residence_doc vehicles email mobile contacts usr_org';
+	protected $scopeOrg = '%2$sorg_shortname%1$s %2$sorg_fullname%1$s %2$sorg_type%1$s %2$sorg_ogrn%1$s %2$sorg_inn%1$s %2$sorg_kpp%1$s %2$sorg_agencytype%1$s %2$sorg_oktmo%1$s %2$sorg_ctts%1$s %2$sorg_addrs%1$s %2$sorg_emps%1$s %2$sorg_leg%1$s %2$sorg_agencyterrange%1$s %2$sorg_vhls%1$s %2$sorg_brhs%1$s %2$sorg_brhs_ctts%1$s %2$sorg_brhs_addrs%1$s';
 
 	protected $clientSecret = null;	
 	protected $state = null;
@@ -47,7 +47,7 @@ class EsiaClient
 		$currentScope = $this->scope;
 		if (isset($oid) && $oid) {
 			//Получаем код для доступа к организации
-			$currentScope = $this->scopeOrg.$oid;
+			$currentScope = $currentScope.' '.sprintf($this->scopeOrg, "?org_oid=".$oid, "http://esia.gosuslugi.ru/");
 		}
 		$this->timestamp = $this->getTimeStamp();
 		$this->state = $this->getState();
@@ -83,7 +83,7 @@ class EsiaClient
 		$currentScope = $this->scope;
 		if (isset($oid) && $oid) {
 			//Запрос маркера для авторизации ЮЛ/ИП
-			$currentScope = $this->scopeOrg.$oid;
+			$currentScope = $currentScope.' '.sprintf($this->scopeOrg, "?org_oid=".$oid, "http://esia.gosuslugi.ru/");
 		}
 		$this->timestamp = $this->getTimeStamp();
 		$this->state = $this->getState();
@@ -170,7 +170,10 @@ class EsiaClient
 								<a href="'.$GLOBALS['nvxRpguEsiaUriPluginUri'].'esialoginswitch.php">'.$userInfo->lastName.' '.$userInfo->firstName.' '.$userInfo->middleName.'</a>
 							</div>';
 			for ($orgindex = 0; $orgindex < count($orgsInfo->elements); $orgindex++) {
-				echo '<div class="optionPanel organization"><a href="'.$GLOBALS['nvxRpguEsiaUriPluginUri'].'esialoginswitch.php?oid='.$orgsInfo->elements[$orgindex]->oid.'">'.$orgsInfo->elements[$orgindex]->shortName.'</a></div>';
+				echo '<div class="optionPanel organization"><a href="'.$GLOBALS['nvxRpguEsiaUriPluginUri'].'esialoginswitch.php?oid='.$orgsInfo->elements[$orgindex]->oid.'">'.$orgsInfo->elements[$orgindex]->fullName;
+				if (isset($orgsInfo->elements[$orgindex]->branchName) && $orgsInfo->elements[$orgindex]->branchName)
+					echo ' ('.$orgsInfo->elements[$orgindex]->branchName.')';				
+				echo '</a></div>';
 			}
 			echo '</div></div></body></html>';
 			exit();
@@ -469,7 +472,7 @@ class EsiaClient
 			$shortName = 'esia'.$currentOid;
 			for ($orgindex = 0; $orgindex < count($orgsInfo->elements); $orgindex++) {
 				if ($orgsInfo->elements[$orgindex]->oid == $currentOid) {
-					$shortName = $orgsInfo->elements[$orgindex]->shortName;
+					$shortName = $orgsInfo->elements[$orgindex]->fullName;
 					break;
 				}
 			}			
