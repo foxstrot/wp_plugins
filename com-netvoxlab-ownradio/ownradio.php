@@ -36,19 +36,24 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 	   static function netvoxlab_ownradio_player_func ($atts, $content = null)
 		{
 			self::$netvoxlab_ownradio_add_script = true; 
-			$netvoxlab_ownradio_wfm_sign = '
-				<!-- <div class="ownRadio"> -->
-					<div class="ownRadioPlayer">
-						<div class="ownRadioPlayer-wrap"><div class="ownRadioPlayer-phone">
-							<div class="ownRadioPlayer-track">
-								<div class="ownRadioPlayer-name" id="radioGroup"></div>
-								<div class="ownRadioPlayer-group" id="radioName"></div>
-							</div>
+			$netvoxlab_ownradio_wfm_sign = '		
+						<div class="ownRadioPlayer-min">
 							<div class="ownRadioPlayer-play" id="radioPlay"></div>
+							<div class="ownRadioPlayer-track">
+								<div class="ownRadioPlayer-group" id="radioName"></div>
+								<div class="ownProgress-bar" id="radioProgress"></div>
+								<div class="ownRadioPlayer-name" id="radioGroup"></div>
+								<div class="ownTrak-time" id="radioTime">
+									<div class="ownTrak-time__progress">
+										<span class="strin-time"></span>
+									</div>
+									<div class="ownTrak-time__all">
+										<span class="strin-time"></span>
+									</div>
+								</div>
+							</div>
 							<div class="ownRadioPlayer-nextButton" id="radioNext"><div class="ownRadioPlayer-next"></div></div>
-						</div></div>
 						</div>
-				<!-- </div>				 -->
 					';
 
 			return $content . $netvoxlab_ownradio_wfm_sign ;
@@ -68,4 +73,5 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 	
 	}
 	netvoxlab_ownradio_player_shortcode::init();
+
 ?>
