@@ -96,8 +96,8 @@
 }
 
 .ownRadioPlayer-play.pause:after {
-  width: 4px;
-  height: 18px;
+  width: 0;
+  height: 16px;
   margin-left: 0;
   border-width: 0px 8px;
   border-right-color: #3a404c;
@@ -117,6 +117,7 @@
   align-items: flex-start;
   overflow: hidden;
 }
+
 .ownRadioPlayer-name {
   font-size: 12px;
   line-height: 1.2em;
@@ -129,6 +130,7 @@
   position: relative;
   z-index: 10;
 }
+
 .ownRadioPlayer-group {
   font-size: 14px;
   line-height: 1.15em;
@@ -154,6 +156,7 @@
   background: #ffffff;
   box-shadow: -4px 5px 8px -1px #282c35;
   z-index: 20;
+  cursor: pointer;
 }
 .ownRadioPlayer-next {
   display: -ms-flexbox;
@@ -296,3 +299,4 @@
   color: #778a95;
   font-size: 12px;
 }
+td,th{padding: 0.4em;}
