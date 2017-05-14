@@ -1,12 +1,20 @@
+.nvxStatus{
+	width: 550px;
+	margin: 40px 0 0 0;
+}
+
 .nvxCheckStatus{
 	background-color: #e4d4c4;
 	color: #623b2a;
     padding: 40px;
+	height: 120px;
+	margin: 0 0 40px 0;
 }
 
 .lupa{
 	background: url("img/lupa.png") right no-repeat;
-	min-height: 128px;
+	background-size: 20% auto;
+	/* min-height: 128px; */
 }
 
 .nvxCheckStatusForm{
@@ -23,6 +31,11 @@
     border-style: solid;
 	min-width: 300px;
 
+}
+
+.nvxCheckStatus.response{
+	/* height: 160px; */
+	padding: 5px 10px 10px 40px;
 }
 
 .nvxCheckStatusBtn, #checkStatusBtn {
@@ -45,6 +58,11 @@
 
 .nvxCheckStatusBtn:hover, #checkStatusBtn:hover {
     opacity: 0.9;
+}
+
+.nvxStatusImg{
+	width: 210px;
+	height: 210px;
 }
 
 .nvxStatusImg.center{

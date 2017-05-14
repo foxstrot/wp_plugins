@@ -62,7 +62,11 @@
   width: 5em;
   height: 5em;
   border-radius: 100%;
+<<<<<<< HEAD
   background:#ffffff;
+=======
+  background:#348ea4;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   position: relative;
   cursor: pointer;
   box-sizing: content-box;
@@ -79,7 +83,11 @@
   margin-left: 6px;
   border: 0.18em solid rgba(255, 255, 255, 0);
   border-width: 9px 0 9px 14px;
+<<<<<<< HEAD
   border-left-color: #3a404c;
+=======
+  border-left-color: #fff;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   position: relative;
 }
 .ownRadioPlayer-play:active:after,
@@ -100,7 +108,11 @@
   height: 16px;
   margin-left: 0;
   border-width: 0px 8px;
+<<<<<<< HEAD
   border-right-color: #3a404c;
+=======
+  border-right-color: #fff;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   box-sizing: content-box;
 }
 .ownRadioPlayer-play.pause:active:after {
@@ -110,7 +122,11 @@
 
 .ownRadioPlayer-track {
   width: 50%;
+<<<<<<< HEAD
   padding-top: 7px;
+=======
+  padding-top: 5px;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -119,10 +135,18 @@
 }
 
 .ownRadioPlayer-name {
+<<<<<<< HEAD
   font-size: 12px;
   line-height: 1.2em;
   color: #607d8b;
   text-align: left;
+=======
+  font-size: 14px;
+  line-height: 1.15em;
+  margin-bottom: .25em;
+  color: #fff;
+  font-weight: 500;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   max-height: 2.4em;
   overflow: hidden;
   word-break: break-word;
@@ -132,14 +156,26 @@
 }
 
 .ownRadioPlayer-group {
+<<<<<<< HEAD
   font-size: 14px;
   line-height: 1.15em;
   color: #fff;
   font-weight: 500;
+=======
+  font-size: 12px;
+  line-height: 1.2em;
+  color: #607d8b;
+  text-align: left;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   max-height: 2.4em;
   overflow: hidden;
   word-break: break-word;
   white-space: nowrap;
+<<<<<<< HEAD
+=======
+  position: relative;
+  z-index: 10;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 }
 
 .ownRadioPlayer-nextButton {
@@ -147,23 +183,37 @@
   display: flex;
   width: 5em;
   height: 5em;
+<<<<<<< HEAD
   padding-right: 0em;
+=======
+  padding-right: .04em;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   transition: all .1s linear;
   border-radius: 50%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   background: #ffffff;
   box-shadow: -4px 5px 8px -1px #282c35;
   z-index: 20;
   cursor: pointer;
+=======
+  background: #348ea4;
+  box-shadow: -4px 5px 8px -1px #282c35;
+  z-index: 20;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 }
 .ownRadioPlayer-next {
   display: -ms-flexbox;
   display: flex;
   height: 17px;
   padding-right: 0px;
+<<<<<<< HEAD
   border-right: 4px solid #3a404c;
+=======
+  border-right: 4px solid #fff;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 }
 
 .ownRadioPlayer-next:before,.ownRadioPlayer-next:after {
@@ -173,7 +223,11 @@
   height: 0;
   border: 10px solid rgba(255, 255, 255, 0);
   border-width: 9px 0 9px 14px;
+<<<<<<< HEAD
   border-left-color: #3a404c;
+=======
+  border-left-color: #fff;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 }
 .ownRadioPlayer-next:active {
   transform: scale(0.9, 0.9);
@@ -186,7 +240,11 @@
 }
 .ownRadioPlayer-nextButton:active .ownRadioPlayer-next {
   border-color: #3a404c;
+<<<<<<< HEAD
   background: #ffffff;
+=======
+  background: #348fa4;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
   transform: scale(0.9, 0.9);
   transition: none;
 }
@@ -283,6 +341,7 @@
   flex-direction: row;
   padding: 12px;
   justify-content: space-between;
+<<<<<<< HEAD
   z-index: 9999;
 }
 .ownProgress-bar {
@@ -290,6 +349,15 @@
   width: 100%;
   background-color: #4c5662;
   margin: 11px 0;
+=======
+  margin: 0 auto;
+}
+.ownProgress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: #4c5662;
+  margin-top: 10px;
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 }
 .ownTrak-time {
   width: 100%;

@@ -68,12 +68,21 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 		{
 			self::$netvoxlab_ownradio_add_script = true; 
 			$netvoxlab_ownradio_wfm_sign = '		
+<<<<<<< HEAD
 							<div class="ownRadioPlayer-min">
 							<div class="ownRadioPlayer-play" id="radioPlay"></div>
 							<div class="ownRadioPlayer-track">
 								<div class="ownRadioPlayer-group" id="radioName"></div>
 								<div class="ownProgress-bar" id="radioProgress"></div>
 								<div class="ownRadioPlayer-name" id="radioGroup"></div>
+=======
+						<div class="ownRadioPlayer-min">
+							<div class="ownRadioPlayer-play" id="radioPlay"></div>
+							<div class="ownRadioPlayer-track">
+								<div class="ownRadioPlayer-name" id="radioName"></div>
+								<div class="ownRadioPlayer-group" id="radioGroup"></div>
+								<div class="ownProgress-bar" id="radioProgress"></div>
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 								<div class="ownTrak-time" id="radioTime">
 									<div class="ownTrak-time__progress">
 										<span class="strin-time"></span>

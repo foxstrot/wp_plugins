@@ -769,32 +769,30 @@
 </script>
 
 <script id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentView.tmpl.html" type="text/html">
-	<h1  data-bind="text: $data.name, css: $data.departmentId " class="headerPave"></h1>
-	<div class="servicePassportContent">
-		<nav class="nav-tabset nav-tabset-small">
-			<ul>
-				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
-				<li data-bind=" css: { 'active': tabs.services.active }"><a href="#services" data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }"></a></li>
-				<li data-bind="css: { 'active': tabs.funcs.active }"><a href="#funcs" data-bind="text: tabs.funcs.title, event: { click: tabs.funcs.onclick }"></a></li>
-				<!-- ko if: visibleTabSubDepartments -->
-				<li data-bind="css: { 'active': tabs.subDepartments.active }"><a href="#subDepartments" data-bind="text: tabs.subDepartments.title, event: { click: tabs.subDepartments.onclick }"></a></li>
-				<!-- /ko -->
-				<!-- ko if: visibleTabTerritorialSubDepartment -->
-				<li data-bind="css: { 'active': tabs.territorialSubDepartments.active }"><a href="#territorialSubDepartments" data-bind="text: tabs.territorialSubDepartments.title, event: { click: tabs.territorialSubDepartments.onclick }"></a></li>
-				<!-- /ko -->
-			</ul>
-		</nav>
-		<!-- Информация о ведомстве -->
-		<div class="tab" data-bind="'visible': tabs.info.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentInfo.tmpl.html', data: $data, if: $data }"></div>
-		<!-- Список услуг -->
-		<div class="tab" data-bind="'visible': tabs.services.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if:mfcServicesViewModel }"></div>
-		<!-- Список функций -->
-		<div class="tab" data-bind="'visible': tabs.funcs.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcFunctionsViewModel, if: mfcFunctionsViewModel }"></div>
-		<!-- Подведомсва -->
-		<div class="tab" data-bind="'visible': tabs.subDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: subDepartments, if: subDepartments }"></div>
-		<!-- Территориальные органы -->
-		<div class="tab" data-bind="'visible': tabs.territorialSubDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: territorialSubDepartments, if: territorialSubDepartments }"></div>
-	</div>	
+<h1 class="fa-bank" data-bind="text: $data.name"></h1>
+<div class="tabsCont">
+	<ul class="tabs">
+		<li data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }, css: { 'current': tabs.info.active }"></li>
+		<li data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }, css: { 'current': tabs.services.active }"></li>
+		<li data-bind="text: tabs.funcs.title, event: { click: tabs.funcs.onclick }, css: { 'current': tabs.funcs.active }"></li>
+		<!-- ko if: visibleTabSubDepartments -->
+		<li data-bind="text: tabs.subDepartments.title, event: { click: tabs.subDepartments.onclick }, css: { 'current': tabs.subDepartments.active }"></li>
+		<!-- /ko -->
+		<!-- ko if: visibleTabTerritorialSubDepartment -->
+		<li data-bind="text: tabs.territorialSubDepartments.title, event: { click: tabs.territorialSubDepartments.onclick }, css: { 'current': tabs.territorialSubDepartments.active }"></li>
+		<!-- /ko -->
+	</ul>
+	<!-- Информация о ведомстве -->
+	<div class="tab" data-bind="'visible': tabs.info.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentInfo.tmpl.html', data: $data, if: $data }"></div>
+	<!-- Список услуг -->
+	<div class="tab" data-bind="'visible': tabs.services.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if:mfcServicesViewModel }"></div>
+	<!-- Список функций -->
+	<div class="tab" data-bind="'visible': tabs.funcs.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcFunctionsViewModel, if: mfcFunctionsViewModel }"></div>
+	<!-- Подведомсва -->
+	<div class="tab" data-bind="'visible': tabs.subDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: subDepartments, if: subDepartments }"></div>
+	<!-- Территориальные органы -->
+	<div class="tab" data-bind="'visible': tabs.territorialSubDepartments.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/subDepartmentsList.tmpl.html', data: territorialSubDepartments, if: territorialSubDepartments }"></div>
+</div>
 </script>
 
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentInfo.tmpl.html">
@@ -920,7 +918,7 @@
 </script>
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/groupedPagerTemplate.tmpl.html">
 	<!-- ko if: initialized -->
-	<div class="filterForm">
+<div class="filterForm">
 		<!--ko if: canFilter-->
 		<span class="filter-itm">
 			<span class="filter-label" data-bind="text: filterTitle"></span>
@@ -938,118 +936,112 @@
 		<!--если у вью-модели нет свойства checkOnline то не показываем чекбокс-->
 		<!--ko if: $data.hasOwnProperty('checkOnline')-->
 		<span class="filter-itm">
-			<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span>Только электронные услуги</span></label>
+			<label class="filter-label"><input type="checkbox" data-bind="checked: onlyOnline"><span>Только услуги онлайн</span></label>
 		</span>
 		<!--/ko-->
-		<div class="filter-itm input-big" data-bind="visible: canSearch">
+		<div class="filter-itm input-big fa-search" data-bind="visible: canSearch">
 			<input class="withIcon" type="text" name="title" data-bind="value: searchText, valueUpdate: 'afterkeydown', event: { keypress: filterKeypress }" placeholder="Поиск по услугам">
 		</div>
-	</div>
-	<!-- /ko -->
+</div>
+<!-- /ko -->
 
-	<div id="select-content" data-bind="if: initialized">
-		<!--ko if: title-->
-		<h1 data-bind="text: title"></h1>
-		<!--/ko-->
-		<div data-bind="if: showPageControls, element: listElement">
-			<!-- Вкладки для ведомств -->
-			<div class="tabsCont" data-bind="visible: visibleTabsAdminLevel">
-				<ul class="tabs two-line">
-					<li data-bind="text: tabsAdminLevels.regional.title, event: { click: tabsAdminLevels.regional.onclick }, css: { 'current': tabsAdminLevels.regional.active }"></li>
-					<li data-bind="text: tabsAdminLevels.municipal.title, event: { click: tabsAdminLevels.municipal.onclick }, css: { 'current': tabsAdminLevels.municipal.active }"></li>
-					<li data-bind="text: tabsAdminLevels.federal.title, event: { click: tabsAdminLevels.federal.onclick }, css: { 'current': tabsAdminLevels.federal.active }"></li>
-				</ul>
-			</div>
+<div id="select-content" data-bind="if: initialized">
+	<!--ko if: title-->
+	<h1 data-bind="text: title"></h1>
+	<!--/ko-->
+	<div data-bind="if: showPageControls, element: listElement">
+		<!-- Вкладки для ведомств -->
+		<div class="tabsCont" data-bind="visible: visibleTabsAdminLevel">
+			<ul class="tabs two-line">
+				<li data-bind="text: tabsAdminLevels.regional.title, event: { click: tabsAdminLevels.regional.onclick }, css: { 'current': tabsAdminLevels.regional.active }"></li>
+				<li data-bind="text: tabsAdminLevels.municipal.title, event: { click: tabsAdminLevels.municipal.onclick }, css: { 'current': tabsAdminLevels.municipal.active }"></li>
+				<li data-bind="text: tabsAdminLevels.federal.title, event: { click: tabsAdminLevels.federal.onclick }, css: { 'current': tabsAdminLevels.federal.active }"></li>
+			</ul>
+		</div>
 		
-			<!--Группы-->
-			<div data-bind="foreach: items">
-				<!--Если в группе есть записи-->
-				<div data-bind="if: count() > 0">
-					<div class="pave-table-header pointer" data-bind="element: groupElement, click: groupClick, slideArrowBefore: { minimizedGroup: minimizedGroup }, attr: { 'groupId': groupId }">
-						<span data-bind="text: rowTitle"></span>
-					</div>
+		<!--Группы-->
+		<div data-bind="foreach: items">
+			<!--Если в группе есть записи-->
+			<div data-bind="if: count() > 0">
+				<div class="pave-table-header pointer" data-bind="element: groupElement, click: groupClick, slideArrowBefore: { minimizedGroup: minimizedGroup }, attr: { 'groupId': groupId }">
+					<span data-bind="text: rowTitle"></span>
 				</div>
-			</div>
-			<div data-bind="if: allItemsCount() == 0">
-				<h2 class="declinePlate withIcon m-top">Не найдены</h2>
+
+				<!--
+					А сюда вставляются элементы для биндинга с шаблоном услуг и кнопкой подгрузки
+					Раньше биндинг был прописан в самом шаблоное, но это работало медлено, если групп было много.
+					Поэтому элементы теперь вставляются динамически во вью-моделе
+				 -->
 			</div>
 		</div>
+		<div data-bind="if: allItemsCount() == 0">
+			<h2 class="declinePlate withIcon fa-exclamation-triangle m-top">Не найдены</h2>
+		</div>
 	</div>
+</div>
 </script>
 <script id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceListTemplate.tmpl.html" type="text/html">
-	<div class="table-new rowh-60 pave-content paddings background-dark m-btm" id="serviceListPlaceHolder">
-		<ul class="department-sevice-list" data-bind="foreach: items">
-			<li class="department-service-item"><a href="#" data-bind="event: { click: function () { $parent.readAboutServiceInfo(id); return false; } }">
-													<span data-bind="attr: {title : name}, scriptdel: name"></span>
-													<span class="icon-arrow-right"></span>
-												</a></li>
-		</ul>
+	<div class="table-new rowh-60 paddings background-dark m-btm" id="serviceListPlaceHolder" data-bind="foreach: items">
+	<div class="background-default a" data-bind="event: { click: function () { $parent.readAboutServiceInfo(id); return false; } }">
+		<div rel="tooltip" data-bind="attr: {title : name}, scriptdel: name"></div>
 	</div>
+</div>
 </script>
 
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/servicePassportInfo.tmpl.html">
 	<!-- ko with: department -->
-	<div class="departmentAside">
-		<img src="<?=SITE_TEMPLATE_PATH?>/../rpgu-main/Parts/Img/img_RUSSIA.png">
-		<a href="#department" data-bind="text: name, click: $parent.goToProfile"></a>
-	</div>
-	<!-- /ko -->
+<h1 style="padding-left: 57px"> <a style="text-decoration: underline" href="#" data-bind="text: name, click: $parent.goToProfile"></a></h1>
+<!-- /ko -->
 
-	<h1 data-bind="text: passportFullName" class="headerPave"></h1>
+<h1 class="fa-bank" data-bind="text: passportFullName"></h1>
 
-	<!-- ko if: servicesView().length > 1 -->
-	<div class="serviceVariant">
-		<b class="b-brand">Вариант услуги</b>
-		<select data-bind="select2simpleArray: { placeholder: 'Выберите услугу', data: servicesView }, value: currentServiceId"></select>
-	</div>
-	<!-- /ko -->
+<!-- ko if: servicesView().length > 1 -->
+<div class="serviceVariant">
+	<b class="b-brand">Вариант услуги</b>
+	<select data-bind="select2simpleArray: { placeholder: 'Выберите услугу', data: servicesView }, value: currentServiceId"></select>
+</div>
+<!-- /ko -->
 
-	<div class="tabs-area servicePassportContent">
-		<nav class="nav-tabset nav-tabset-small">
-			<ul>
-				<!-- Описание -->
-				<li data-bind="css: { 'active': tabs.description.active }"><a href="#tabDescription" data-bind="text: tabs.description.title, event: { click: tabs.description.onclick }"></a></li>
-				<!-- ko if: hasDocuments -->
-				<!-- Документы -->
-				<li data-bind=" css: { 'active': tabs.documents.active }"><a href="#tabDocs" data-bind="text: tabs.documents.title, event: { click: tabs.documents.onclick }"></a></li>
-				<!-- /ko -->
-				<!-- Дополнительная информация -->
-				<li data-bind="css: { 'active': tabs.additionalInformation.active }"><a href="#tabInfo" data-bind="text: tabs.additionalInformation.title, event: { click: tabs.additionalInformation.onclick }"></a></li>
-				<!-- ko if: tabs.mfcList.visible -->
-				<!-- МФЦ -->
-				<li data-bind="css: { 'active': tabs.mfcList.active }"><a href="#tabInfo" data-bind="text: tabs.mfcList.title, event: { click: tabs.mfcList.onclick }"></a></li>
-				<!-- /ko -->
-			</ul>
-		</nav>
-
-		<!-- ko if: currentService -->
-		<div class="btn" data-bind="click: createTreatment, visible: currentService().description.canCreateTreatment">Получить консультацию и оформить заявку</div>
-		<!-- /ko -->
-		
-		<!-- ko if: canComplaint -->
-		<div style="margin: 20px 20px 0 0; float: right" class="btn b-create" data-bind="click: createComplaint">Подать жалобу</div>
-		<!-- /ko -->
-
-		<!-- ko if: canGoIgtn -->
-		<a style="margin: 20px 20px 0 0; float: right" class="btn" href="/igtn/">Получить документ на оплату</a>
-		<!-- /ko -->
-
+<div class="tabsCont servicePassportContent">
+	<ul class="tabs">
 		<!-- Описание -->
-		<div id="tabDescription" class="tab" data-bind="'visible': tabs.description.active">			
-			<div class="service-name" data-bind="'visible': tabs.description.active, if: currentService">
-				<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDescription.tmpl.html', data: currentService().description }"></div>
-			</div>
-		</div>
-		<!-- Документы. -->
-		<div id="tabDocs" class="tab" data-bind="'visible': tabs.documents.active, if: currentService">
-			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocuments.tmpl.html', data: currentService().documents }"></div>
-		</div>
-		<!-- Дополнительная информация. -->
-		<div id="tabInfo" class="tab" data-bind="'visible': tabs.additionalInformation.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceAditionalInformation.tmpl.html', data: additionalInformation, if: additionalInformation }"></div>
-		<!-- МФЦ. -->
-		<div id="tabMFC" class="tab" data-bind="'visible': tabs.mfcList.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html', data: mfcListViewModel, if: mfcListViewModel }"></div>
+		<li data-bind="text: tabs.description.title, event: { click: tabs.description.onclick }, css: { 'current': tabs.description.active }"></li>
+		<!-- ko if: hasDocuments -->
+		<!-- Документы -->
+		<li data-bind="text: tabs.documents.title, event: { click: tabs.documents.onclick }, css: { 'current': tabs.documents.active }"></li>
+		<!-- /ko -->
+		<!-- Дополнительная информация -->
+		<li data-bind="text: tabs.additionalInformation.title, event: { click: tabs.additionalInformation.onclick }, css: { 'current': tabs.additionalInformation.active }"></li>
+		<!-- ko if: tabs.mfcList.visible -->
+		<!-- МФЦ -->
+		<li data-bind="text: tabs.mfcList.title, event: { click: tabs.mfcList.onclick }, css: { 'current': tabs.mfcList.active }"></li>
+		<!-- /ko -->
+	</ul>
 
+	<!-- ko if: currentService -->
+		<div style="margin-bottom: -10px" class="button b-create b-modal-left" data-bind="click: createTreatment, visible: currentService().description.canCreateTreatment">Получить консультацию и оформить заявку</div>
+	
+		<!-- ko if: canComplaint -->
+		<div style="margin: 20px 20px 0 0; float: right" class="button b-create" data-bind="click: createComplaint">Подать жалобу</div>
+		<!-- /ko -->
+	<!-- /ko -->
+
+	<!-- Описание -->
+	<div class="tab" data-bind="'visible': tabs.description.active">
+		<!--<div class="service-name" data-bind="scriptdel: serviceDescription"></div>-->
+		<div class="service-name" data-bind="'visible': tabs.description.active, if: currentService">
+			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDescription.tmpl.html', data: currentService().description }"></div>
+		</div>
 	</div>
+	<!-- Документы. -->
+	<div class="tab" data-bind="'visible': tabs.documents.active, if: currentService">
+		<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceDocuments.tmpl.html', data: currentService().documents }"></div>
+	</div>
+	<!-- Дополнительная информация. -->
+	<div class="tab" data-bind="'visible': tabs.additionalInformation.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceAditionalInformation.tmpl.html', data: additionalInformation, if: additionalInformation }"></div>
+	<!-- МФЦ. -->
+	<div class="tab" data-bind="'visible': tabs.mfcList.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html', data: mfcListViewModel, if: mfcListViewModel }"></div>
+</div>
 </script>
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/Service/View/serviceAditionalInformation.tmpl.html">
 	<!-- ko if: appealDescription != null && appealDescription.length > 0 -->
@@ -1359,100 +1351,103 @@
 	</div>
 </script>
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html">
-	<div class="cols-2" style="position: relative; height: 100%">
-		<div style="padding-left: 5px">
-			<div id="MfcListYMaps" data-bind="value: mfcMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
-				<div class="throbber">
-					<div class="icon-throbber-black"></div>
-				</div>
-			</div>
-			<div style="padding: 10px 0 0 10px">
-				<span class="filter-itm">
-					<label class="filter-label"><input type="checkbox" data-bind="checked: visibleTosp"><span>Показывать дополнительные офисы</span></label>	
-				</span>
+	<div class="cols-2" style="position: relative;">
+	<div style="padding-left: 5px">
+		<div id="MfcListYMaps" data-bind="value: mfcMapInfo, showManyOnYMap: {}, element: map" style="z-index: 2; position: relative">
+			<div class="throbber">
+				<div class="icon-throbber-black"></div>
 			</div>
 		</div>
-		<div type="1" class="stateStructure maps" data-bind="foreach: stateStructureList">
-			<!-- Если есть функция обработки клика по блоку, то вызываем ее. Иначе - перейти на страницу с МФЦ -->
-			<a class="formData" data-bind="css: { hasMap: $data.hasOwnProperty('clickBlock') },
-	attr: { href: $data.hasOwnProperty('clickBlock') ? '#' : link },
-	click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
-	element: element">
-				<h4 data-bind="scriptdel: name"></h4>
-				<!-- ko if: address && address != '' -->
-				<dl>
-					<dt>Адрес</dt>
-					<dd data-bind="scriptdel: address"></dd>
-				</dl>
-				<!-- /ko -->
-				<!-- ko if: workTime && workTime != '' -->
-				<dl>
-					<dt>График работы</dt>
-					<dd data-bind="scriptdel: workTime"></dd>
-				</dl>
-				<!-- /ko -->
-				<!-- ko if: phone && phone != '' -->
-				<dl>
-					<dt>Телефон</dt>
-					<dd data-bind="scriptdel: phone"></dd>
-				</dl>
-				<!-- /ko -->
-				<!-- ko if: email && email != '' -->
-				<dl>
-					<dt>Email</dt>
-					<dd data-bind="scriptdel: email"></dd>
-				</dl>
-				<!-- /ko -->
-				<!-- ko if: webSite && webSite != '' -->
-				<dl>
-					<dt>Сайт</dt>
-					<dd class="a" data-bind="scriptdel: webSite, attr: { href: webSite }, click: function () { window.open(webSite, '_blank') }, clickBubble: false"></dd>
-				</dl>
-				<!-- /ko -->
-				<!-- ko if: headName && headName != '' -->
-				<dl>
-					<dt>Руководитель</dt>
-					<dd data-bind="scriptdel: headName"></dd>
-				</dl>
-				<!-- /ko -->
-				<!--ko if: $data.hasOwnProperty('openBalloon')-->
-				<span class="btn primary moreButton" data-bind="attr: { href: link }, click: golink, clickBubble: false">Подробнее</span>
-				<!--/ko-->
-			</a>
-
-			<!-- ko if: tospList != null -->
-			<!-- ko foreach:tospList -->
-			<div class="formDataTosp" data-bind="visible: $parents[1].visibleTosp,
-			click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
-			element: element" style="width: 95%; margin-left: 5%; padding-bottom: 5px; padding-top: 5px">
-				<h4 data-bind="scriptdel: name"></h4>
-				<span data-bind="text: address"></span>	   
-				<a class="btn primary withIcon icon-arrow-right-white moreButton" data-bind="attr: { href: link }, click: function () { document.location.href = link }">Подробнее</a>
-			</div>
-			<!-- /ko -->
-			<!-- /ko -->
+		<div style="padding: 10px 0 0 10px">
+			<span class="filter-itm">
+				<label class="filter-label"><input type="checkbox" data-bind="checked: visibleTosp"><span>Показывать дополнительные офисы</span></label>	
+			</span>
 		</div>
 	</div>
+	<div type="1" class="stateStructure maps" data-bind="foreach: stateStructureList">
+		<!-- Если есть функция обработки клика по блоку, то вызываем ее. Иначе - перейти на страницу с МФЦ -->
+		<a class="formData" data-bind="css: { hasMap: $data.hasOwnProperty('clickBlock') },
+	click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
+	element: element">
+			<h4 data-bind="scriptdel: name"></h4>
+			<!-- ko if: address && address != '' -->
+			<dl>
+				<dt>Адрес</dt>
+				<dd data-bind="scriptdel: address"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: workTime && workTime != '' -->
+			<dl>
+				<dt>График работы</dt>
+				<dd data-bind="scriptdel: workTime"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: phone && phone != '' -->
+			<dl>
+				<dt>Телефон</dt>
+				<dd data-bind="scriptdel: phone"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: email && email != '' -->	
+			<dl>
+				<dt>Email</dt>
+				<dd data-bind="scriptdel: email"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: webSite && webSite != '' -->
+			<dl>
+				<dt>Сайт</dt>
+				<dd class="a" data-bind="scriptdel: webSite, attr: { href: webSite }, click: function () { window.open(webSite, '_blank') }, clickBubble: false"></dd>
+			</dl>
+			<!-- /ko -->
+			<!-- ko if: headName && headName != '' -->
+			<dl>
+				<dt>Руководитель</dt>
+				<dd data-bind="scriptdel: headName"></dd>
+			</dl>
+			<!-- /ko -->
+			<!--ko if: link-->
+			<span class="btn button primary moreButton" data-bind="attr: { href: link }, click: golink, clickBubble: false">Подробнее</span>
+			<!--/ko-->
+		</a>
+
+		<!-- ko if: tospList != null -->
+		<!-- ko foreach:tospList -->
+		<div class="formDataTosp" data-bind="visible: $parents[1].visibleTosp,
+			click: $data.hasOwnProperty('clickBlock') ? function (obj, evn) { clickBlock(obj, evn); return false; } : null,
+			element: element" style="width: 95%; margin-left: 5%; padding-bottom: 5px; padding-top: 5px">
+			<h4 data-bind="scriptdel: name"></h4>
+			<span data-bind="text: address"></span>	   
+			<a class="button withIcon fa- icon-arrow-right-white moreButton" data-bind="attr: { href: link }, click: function () { document.location.href = link }">Подробнее</a>
+		</div>
+
+		<!-- /ko -->
+		<!-- /ko -->
+
+	</div>
+</div>
 </script>
 
 <script type="text/html" id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcView.tmpl.html">
 	<h1 data-bind="text: name"></h1>
 	<div class="tabsCont">
-		<nav class="nav-tabset nav-tabset-small">
-			<ul>
-				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
-				<li data-bind=" css: { 'active': tabs.services.active }"><a href="#services" data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }"></a></li>
-				<li data-bind="css: { 'active': tabs.tosp.active }, visible: visibleTospTab"><a href="#tosp" data-bind="text: tabs.tosp.title, event: { click: tabs.tosp.onclick }"></a></li>
-			</ul>
-		</nav>
+		<ul class="tabs">
+			<li data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }, css: { 'current': tabs.info.active }"></li>
+			<li data-bind="text: tabs.services.title, event: { click: tabs.services.onclick }, css: { 'current': tabs.services.active }"></li>
+			<li data-bind="text: tabs.tosp.title, event: { click: tabs.tosp.onclick }, css: { 'current': tabs.tosp.active }, visible: visibleTospTab"></li>
+		</ul>
 
 		<div data-bind="visible: tabs.info.active">
 			<!-- ko template: {name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcContactInfoView.tmpl.html'} --><!-- /ko -->
 		</div>
+
 		<div class="tab" data-bind="visible: tabs.services.active">
+			<!--<h3>Услуги</h3>-->
 			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/departmentServiceList.tmpl.html', data: mfcServicesViewModel, if: mfcServicesViewModel }"></div>
 		</div>
+
 		<div class="tab" data-bind="visible: tabs.tosp.active">
+			<!--<h3>Дополнительные офисы</h3>-->
 			<div data-bind="template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcTospListContacts.tmpl.html', data: mfcTospListViewModel, if: mfcTospListViewModel }"></div>
 		</div>
 	</div>
@@ -1527,20 +1522,23 @@
 </script>
 <script id="Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcList.tmpl.html" type="text/html">
 	<div class="tabsCont">
-		<nav class="nav-tabset nav-tabset-small">
-			<ul>
-				<li data-bind="css: { 'active': tabs.info.active }"><a href="#info" data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }"></a></li>
-				<!-- ko if: tabs.rating -->
-				<li data-bind=" css: { 'active': tabs.rating.active }"><a href="#rating" data-bind="text: tabs.rating.title, event: { click: tabs.rating.onclick }"></a></li>
-				<!-- /ko -->
-			</ul>
-		</nav>
-
+		<ul class="tabs">
+			<li data-bind="text: tabs.info.title, event: { click: tabs.info.onclick }, css: { 'current': tabs.info.active }"></li>
+			<!-- ko if: tabs.rating -->
+			<li data-bind="text: tabs.rating.title, event: { click: tabs.rating.onclick }, css: { 'current': tabs.rating.active }"></li>
+			<!-- /ko -->
+			<!-- ko with: tabs.queue -->
+			<li data-bind="text: title, event: { click: onclick }, css: { 'current': active }"></li>
+			<!-- /ko -->
+		</ul>
 		<!-- Список МФЦ с контактами -->
 		<div class="tab" data-bind="'visible': tabs.info.active, template: { name: 'Nvx.ReDoc.StateStructureServiceModule/StateStructure/View/mfcListContacts.tmpl.html', data: $data }"></div>
 		<!-- Рейтинг МФЦ -->
 		<!-- ko if: tabs.rating -->
 		<div class="tab" data-bind="'visible': tabs.rating.active, template: { name: 'Nvx.ReDoc.Rpgu.PortalModule/FilePage/View/filePage.tmpl.html', data: ratingModel, if: ratingModel }"></div>
+		<!-- /ko -->
+		<!-- ko if: tabs.queue -->
+		<div class="tab" data-bind="'visible': tabs.queue.active, template: { name: 'Nvx.ReDoc.DoCashQ2Module/Web/View/registration.tmpl.html', data: registrationViewModel, if: registrationViewModel }"></div>
 		<!-- /ko -->
 	</div>
 </script>
@@ -2732,10 +2730,12 @@
 		<input data-bind="checked: allowGetElkData, click: changeAllowGetElkData" name="allowGetEpguData" type="checkbox">
 		<span>Разрешить получение от ЛК ЕПГУ истории заявлений, платежей и записей на прием пользователя, а также новых заявлений, платежей и записей на прием пользователя</span>
 	</label>
-	<label>
-		<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
-		<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
-	</label>
+	<div class="m-top">
+		<label>
+			<input data-bind="checked: allowSendElkData, click: changeAllowSendElkData" name="allowSendElkData" type="checkbox">
+			<span>Разрешить отправку заявлений из РПГУ в ЛК ЕПГУ</span>
+		</label>
+	</div>
 </div>
 </script>
 <!-- /bundle -->

@@ -41,9 +41,10 @@ class nvxRpguContentShortcodes {
 	static function register_script() {
 		wp_register_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js', [], false, true);
 		wp_register_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js', [], false, true);
-		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.1.js', [], false, true);
-		wp_register_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css', [], false, 'all');
-		wp_register_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css', [], false, 'all');
+		wp_register_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.2.js', [], false, true);
+		wp_register_style('nvxrpgucontentwpselect44css', nvxRpguContentUri . 'Parts/Style/select2.css', [], false, 'all');
+		wp_register_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/portalStyleWp.css', [], false, 'all');
+		wp_register_style('nvxrpgucontentwpmodalWindowcss', nvxRpguContentUri . 'Parts/Style/modalWindow.css', [], false, 'all');
 	}
 
 	static function print_script() {
@@ -53,9 +54,10 @@ class nvxRpguContentShortcodes {
 		
 		wp_enqueue_script('requireJs', nvxRpguContentUri . 'Portal/script/requirejs/require.min.js' );
 		wp_enqueue_script('requireJsConfig', nvxRpguContentUri . 'Portal/script/requirejs-config.js' );
-		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.1.js' );
-		wp_enqueue_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/wp.css');
-		wp_enqueue_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/wpselect.css');
+		wp_enqueue_script('partsBundle', nvxRpguContentUri . 'Parts/Script/parts.bundle.0.1.35.2.js' );
+		wp_enqueue_style('nvxrpgucontentwpselectcss', nvxRpguContentUri . 'Parts/Style/select2.css');
+		wp_enqueue_style('nvxrpgucontentwpcss', nvxRpguContentUri . 'Parts/Style/portalStyleWp.css');
+		wp_enqueue_style('nvxrpgucontentwpmodalWindowcss', nvxRpguContentUri . 'Parts/Style/modalWindow.css');
 	}
 
 	//Страница с поиском услуг
@@ -191,7 +193,7 @@ class nvxRpguContentShortcodes {
 		self::$add_script = true;
 		return $content.'<div id="nvxCategoryServiceList" class="nvxRpguContentStyleBlock">
 				<h2 data-bind="text: title"></h2>				
-				<a data-bind="click: goCatalog" class="btn primary larr"><span></span>Вернуться в каталог</a>
+				<a data-bind="click: goCatalog" class="button btn primary larr"><span></span>Вернуться в каталог</a>
 				<div class="brdr"></div>				
 				<ul class="list">
 					<!-- ko foreach: services -->
@@ -204,7 +206,7 @@ class nvxRpguContentShortcodes {
 					</li>
 					<!-- /ko -->
 				</ul>
-				<div class="btn primary" data-bind="visible: loadMoreVisible, click: loadList">Показать ещё</div>
+				<div class="button btn primary" data-bind="visible: loadMoreVisible, click: loadList">Показать ещё</div>
 			</div>';
     }
 	
@@ -359,7 +361,7 @@ class nvxRpguContentShortcodes {
 					</div>
 					<div class="m-top-dbl" data-bind="template: { name: templateId, data: templateViewModel, if: templateViewModel }"></div>
 					<!-- ko if: useNextButton -->
-					<div class="btn primary b-solid b-modal" data-bind="click: nextAction, text: nextText"></div>
+					<div class="button btn primary b-solid b-modal" data-bind="click: nextAction, text: nextText"></div>
 					<!-- /ko -->
 				</div>
 			</div>';
@@ -420,7 +422,7 @@ class nvxRpguContentShortcodes {
 						<li><a href="#" data-bind="html: name + \'<span class=\'icon-arrow-right\'></span>\', click: goPassport"></a></li>
 						<!-- /ko -->
 					</ul>
-					<a class="btn primary" href="#">Все услуги</a>
+					<a class="button btn primary" href="#">Все услуги</a>
 				</article>
 				<!-- /ko -->
 				<!-- ko if: cats().length == 0 -->
@@ -432,244 +434,236 @@ class nvxRpguContentShortcodes {
 	//Личный кабинет
 	static function nvxLkFullPage_shortcode ($atts, $content = null) {
 		self::$add_script = true;
-		return $content.'<div class="container tabs-area" class="nvxRpguContentStyleBlock">	
-			<div id="nvxStartCreateFile"></div>
-			<nav class="nav-tabset tabset">
-				<ul> 
-					<li class="active"><a href="#tab1">Персональная информация</a></li>
-					<li><a href="#tab2">Заявления</a></li>
-					<li><a href="#tab3">Платежи</a></li>
-					<li><a href="#tab4">Жалобы</a></li>
-					<li><a href="#tab5">Запись на приём</a></li>
-				</ul>
-			</nav>
-					
-			<div>
-				<div id="tab1" class="row">
-					<div id="nvxCustomerInfo">
-						<!-- Информация о заявителе. -->
-						<!-- ko if: (isPhysical() && !isIndividual()) -->
-						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/customer.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
-						<!-- /ko -->
-						<!-- ko if: (!isPhysical()) -->
-						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/juridical.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
-						<!-- /ko -->
-
-						<!-- ko if: (isPhysical() && isIndividual()) -->
-						<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/individual.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
-						<!-- /ko -->
-					</div>
-					</div>
-				</div>
-				<div id="tab2" class="row">
-					<div id="nvxRequestList">
-						<!--ko if: requestList().length > 0-->
-						<table class="table-new">
-							<tr class="table-new-header">
-								<th>Заявление</th>
-								<th class="col-150">Дата подачи</th>
-								<th class="col-150">Статус</th>
-							</tr>
-							<!--ko foreach: requestList-->
-							<tr class="table-new-row" data-bind="click: $parent.goFile">
-								<td>
-									<span data-bind="text: identificator" style="font-weight: bold;"></span>
-									<span data-bind="text: title"></span>
-								</td>
-
-								<td class="col-150" data-bind="text: createdStr"></td>
-								<td class="col-150" data-bind="text: rpguFileStatus">
-									<span data-bind="text: rpguFileStatus"></span>
-									<!-- ko if: isArchived && status <= 1 -->
-									<span>(Архивировано)</span>
-									<!-- /ko -->
-								</td>
-							</tr>
-							<!--/ko-->
-						</table>
-						<!--/ko-->
-						<!--ko if: requestList().length == 0-->
-						<h2>Заявлений нет</h2>
-						<!--/ko-->
-					</div>
-				</div>
-				<div id="tab3" class="row">
-					<div id="nvxLkPayments">
-						<!--штрафы мвд отсутствуют-->
-
-						<!-- ko if: taxes().length > 0 -->
-						<div class="table-new table-admin a paymentBlockLk m-top-dbl">
-							<div class="th">
-								<span class="col-180">Дата и время</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span class="col-100">Тип</span>
-								<span style="width: 100%; text-align: left;">Статус</span>
-							</div>
-							<!--ko foreach: taxes -->
-							<div>
-								<span class="col-180" data-bind="text: breachDateTime, click: $parent.taxWindow"></span>
-								<span class="col-100" data-bind="text: decisionSumma, click: $parent.taxWindow"></span>
-								<span class="col-100" data-bind="text: penalty, click: $parent.taxWindow"></span>
-								<span style="word-break: break-all; width: 100%; text-align: left;" data-bind="text: executionState, click: $parent.taxWindow"></span>
-								<!-- ko if: mvdServiceCode != null && roskaznaIn != \'1\'-->
-								<div>
-									<div class="btn b-solid" data-bind="event: { click: $parent.paythis }">
-										Оплатить
-									</div>
-								</div>
-								<!-- /ko -->
-							</div>
-							<!-- /ko -->
-						</div>
-						<!-- /ko -->
-
-						<!-- ko if: savedData().length > 0 -->
-						<h1>Список сохранённых услуг</h1>
-						<div class="table-new table-admin a paymentBlockLk">
-							<div class="th">
-								<span>Поставщик и наименование услуги</span>
-								<span>Данные</span>
-							</div>
-							<!-- ko foreach: savedData -->
-							<div>
-								<span data-bind="text: $data[0]"></span>
-								<span data-bind="text: $data[1]"></span>
-							</div>
-							<!-- /ko -->
-						</div>
-						<!-- /ko -->
-
-						<!-- ko if: paymentsList().length > 0-->
-						<h1>Список платежей</h1>
-						<div class="table-new table-admin a paymentBlockLk">
-							<div class="th">
-								<span class="col-100">Статус</span>
-								<span class="col-100">Дата</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span>Идентификатор плательщика</span>
-								<span>Назначение платежа</span>
-								<span class="col-100">Файлы</span>
-							</div>
-							<!--ko foreach: paymentsList-->
-							<div>
-								<span class="col-100" data-bind="click: goLink">
-									<span data-bind="css: statusCss"></span>
-								</span>
-								<span class="col-100" data-bind="text: created, click: goLink"></span>
-								<span class="col-100" data-bind="text: amount, click: goLink"></span>
-								<span style="word-break: break-all;" data-bind="text: payerIdentifier, click: goLink"></span>
-								<span style="word-break: break-all;" data-bind="text: narrative, click: goLink"></span>
-								<span class="col-100">
-									<!-- ko if: file1Exist-->
-									<a data-bind="attr: { href: getfile1 }">Квитанция</a>
-									<!-- /ko-->
-									<!-- ko if: file2Exist-->
-									<br/>
-									<a data-bind="attr: { href: getfile2 }">Чек</a>
-									<!-- /ko-->
-								</span>
-							</div>
-							<!-- /ko -->
-						</div>
-						<!-- /ko -->
-
-						<div class="btn b-solid m-lft m-top m-btm" data-bind="click: getPayments">
-							Запросить платежи ИПШ
-						</div>
-
-						<!-- ko if: paymentsIpsh().length > 0 -->
-						<div class="table-new table-admin a paymentBlockLk">
-							<div class="th">
-								<span class="col-100">Статус</span>
-								<span class="col-100">Дата</span>
-								<span class="col-100">Сумма&nbsp;(р.)</span>
-								<span>Наименование платежа</span>
-								<span class="col-100">Файлы</span>
-							</div>
-							<!--ko foreach: paymentsIpsh-->
-							<div>
-								<span class="col-100" data-bind="click: $parent.paymentWindow">
-									<span data-bind="text: status.name"></span>
-								</span>
-								<span class="col-100" data-bind="text: createTime, click: $parent.paymentWindow"></span>
-								<span class="col-100" data-bind="text: amount, click: $parent.paymentWindow"></span>
-								<span style="word-break: break-all;" data-bind="text: paymentName, click: $parent.paymentWindow"></span>
-								<span class="col-100">
-									<!-- ko if: paymentHref-->
-									<a data-bind="attr: { href: paymentHref }" target="blank">Чек</a>
-									<!-- /ko-->
-								</span>
-							</div>
-							<!-- /ko -->
-						</div>
-						<!-- /ko -->
-
-						<!-- ko if: errors-->
-						<h2 class="declinePlate withIcon m-top-hlf" data-bind="text: errors"></h2>
-						<!-- /ko -->
-
-						<div data-bind="template: { name: \'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html\', data: taxModalDialog }"></div>
-					</div>
-				</div>
-				<div id="tab4" class="row">
-					<div id="nvxLkComplaint">
-						<!--ko if: complaintList().length > 0-->
-						<div class="table-new table-admin a">
-							<div class="th noa">
-								<span class="col-140">Дата подачи</span>
-								<span class="col-200">Номер</span>
-								<span>Ведомство</span>
-								<span class="col-245">Статус</span>
-							</div>
-							<!--ko foreach: complaintList-->
-							<a data-bind="attr: { href: fileLink }">
-								<span class="col-140" data-bind="text: date"></span>
-								<span class="col-200" data-bind="text: number"></span>
-								<span data-bind="text: oiv"></span>
-								<span class="col-245" data-bind="text: status"></span>
-							</a>
-							<!--/ko-->
-						</div>
-						<!--/ko-->
-						<!--ko if: complaintList().length == 0-->
-						<h2 class="declinePlate withIcon m-top-hlf">Жалоб нет</h2>
-						<!--/ko-->
-					</div>
-				</div>
-				<div id="tab5" class="row">
-					<div id="nvxLkReception">
-						<div class="reception-redoc-form paddings">
-							<p class="m-top-dbl" data-bind="text: commonInfoString, visible: commonInfoString() != null"></p>
-							<!-- ko if: tickets().length > 0 -->
-							<div class="reception-ticket-container">
-								<!-- ko foreach: tickets -->
-								<div class="reception-ticket-hrz m-btm">
-									<div class="reception-ticket-hrz-1">
-										<span data-bind="dateFormat: ticketDateTime, format: \'Simple\'"></span>
-										<br/>
-										<!-- ko if: status -->
-										<span class="opa">Статус: </span><span data-bind="text: status.recName"></span>
-										<!-- /ko -->
-									</div>
-									<div class="reception-ticket-hrz-2">
-										<!-- ko if: service -->
-										<span class="opa">Услуга: </span><span data-bind="text: service.name"></span>
-										<br/>
-										<!-- /ko -->
-										<!-- ko if: specialist -->
-										<span class="opa">Специалист: </span><span data-bind="text: specialist.name"></span>
-										<!-- /ko -->
-									</div>
-									<div class="reception-ticket-hrz-4 button btn primary" data-bind="click: $parent.printTicket">Печать</div>
-									<div class="reception-ticket-hrz-3 button btn b-delete" data-bind="click: $parent.cancelReception, visible: canCancel">Отменить запись</div>
-								</div>
-								<!-- /ko -->
-							</div>
-							<!-- /ko -->
-						</div>
-					</div>
+		return $content.'<div class="tabs-area nvxRpguContentStyleBlock">	
+			<div id="nvxStartCreateFile">	
+				<div class="tabsCont">
+					<ul class="tabs m-btm-dbl">
+						<li data-bind="click: tabs.customer.onclick, css: { \'current\': tabs.customer.active }">Персональная информация</li>
+						<li data-bind="click: tabs.request.onclick, css: { \'current\': tabs.request.active }">Заявления</li>
+						<!--<li data-bind="click: tabs.payments.onclick, css: { \'current\': tabs.payments.active }">Платежи</li>-->
+						<li data-bind="click: tabs.reception.onclick, css: { \'current\': tabs.reception.active }">Запись на приём</li>
+						<!--<li data-bind="click: tabs.complaints.onclick, css: { \'current\': tabs.complaints.active }">Жалобы</li>-->
+					</ul>
 				</div>
 			</div>
+			
+				<div class="tab" id="nvxCustomerInfo">
+					<!-- Информация о заявителе. -->
+					<!-- ko if: (isPhysical() && !isIndividual()) -->
+					<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/customer.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+					<!-- /ko -->
+					<!-- ko if: (!isPhysical()) -->
+					<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/juridical.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+					<!-- /ko -->
+
+					<!-- ko if: (isPhysical() && isIndividual()) -->
+					<div data-bind="template: { name: \'Nvx.ReDoc.Rpgu.PortalModule/Cabinet/View/customer/individual.tmpl.html\', data: customerViewModel, if: customerViewModel }"></div>
+					<!-- /ko -->
+				</div>
+				<div class="tab" id="nvxRequestList" style="display: none;">
+					<!--ko if: requestList-->
+						<!-- -->
+					<table class="table-new">
+						<tr class="table-new-header">
+							<th>Заявление</th>
+							<th class="col-150">Дата подачи</th>
+							<th class="col-150">Статус</th>
+						</tr>
+						<!--ko foreach: requestList-->
+						<tr class="table-new-row" data-bind="click: $parent.goFile">
+							<td>
+								<span data-bind="text: identificator" style="font-weight: bold;"></span>
+								<span data-bind="text: title"></span>
+							</td>
+
+							<td class="col-150" data-bind="text: createdStr"></td>
+							<td class="col-150" data-bind="text: rpguFileStatus">
+								<span data-bind="text: rpguFileStatus"></span>
+								<!-- ko if: isArchived && status <= 1 -->
+								<span>(Архивировано)</span>
+								<!-- /ko -->
+							</td>
+						</tr>
+						<!--/ko-->
+					</table>
+					<!--/ko-->
+					<!--ko ifnot: requestList-->
+					<h3>Заявлений нет</h3>
+					<!--/ko-->				
+				</div>
+				<div class="tab" id="nvxLkPayments_"  style="display: none;">
+
+					<!--штрафы мвд отсутствуют-->
+
+					<!-- ko if: taxes().length > 0 -->
+					<div class="table-new table-admin a paymentBlockLk m-top-dbl">
+						<div class="th">
+							<span class="col-180">Дата и время</span>
+							<span class="col-100">Сумма&nbsp;(р.)</span>
+							<span class="col-100">Тип</span>
+							<span style="width: 100%; text-align: left;">Статус</span>
+						</div>
+						<!--ko foreach: taxes -->
+						<div>
+							<span class="col-180" data-bind="text: breachDateTime, click: $parent.taxWindow"></span>
+							<span class="col-100" data-bind="text: decisionSumma, click: $parent.taxWindow"></span>
+							<span class="col-100" data-bind="text: penalty, click: $parent.taxWindow"></span>
+							<span style="word-break: break-all; width: 100%; text-align: left;" data-bind="text: executionState, click: $parent.taxWindow"></span>
+							<!-- ko if: mvdServiceCode != null && roskaznaIn != \'1\'-->
+							<div>
+								<div class="button btn b-solid" data-bind="event: { click: $parent.paythis }">
+									Оплатить
+								</div>
+							</div>
+							<!-- /ko -->
+						</div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+
+					<!-- ko if: savedData().length > 0 -->
+					<h1>Список сохранённых услуг</h1>
+					<div class="table-new table-admin a paymentBlockLk">
+						<div class="th">
+							<span>Поставщик и наименование услуги</span>
+							<span>Данные</span>
+						</div>
+						<!-- ko foreach: savedData -->
+						<div>
+							<span data-bind="text: $data[0]"></span>
+							<span data-bind="text: $data[1]"></span>
+						</div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+
+					<!-- ko if: paymentsList().length > 0-->
+					<h1>Список платежей</h1>
+					<div class="table-new table-admin a paymentBlockLk">
+						<div class="th">
+							<span class="col-100">Статус</span>
+							<span class="col-100">Дата</span>
+							<span class="col-100">Сумма&nbsp;(р.)</span>
+							<span>Идентификатор плательщика</span>
+							<span>Назначение платежа</span>
+							<span class="col-100">Файлы</span>
+						</div>
+						<!--ko foreach: paymentsList-->
+						<div>
+							<span class="col-100" data-bind="click: goLink">
+								<span data-bind="css: statusCss"></span>
+							</span>
+							<span class="col-100" data-bind="text: created, click: goLink"></span>
+							<span class="col-100" data-bind="text: amount, click: goLink"></span>
+							<span style="word-break: break-all;" data-bind="text: payerIdentifier, click: goLink"></span>
+							<span style="word-break: break-all;" data-bind="text: narrative, click: goLink"></span>
+							<span class="col-100">
+								<!-- ko if: file1Exist-->
+								<a data-bind="attr: { href: getfile1 }">Квитанция</a>
+								<!-- /ko-->
+								<!-- ko if: file2Exist-->
+								<br/>
+								<a data-bind="attr: { href: getfile2 }">Чек</a>
+								<!-- /ko-->
+							</span>
+						</div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+
+					<div class="button btn b-solid m-lft m-top m-btm" data-bind="click: getPayments">
+						Запросить платежи ИПШ
+					</div>
+
+					<!-- ko if: paymentsIpsh().length > 0 -->
+					<div class="table-new table-admin a paymentBlockLk">
+						<div class="th">
+							<span class="col-100">Статус</span>
+							<span class="col-100">Дата</span>
+							<span class="col-100">Сумма&nbsp;(р.)</span>
+							<span>Наименование платежа</span>
+							<span class="col-100">Файлы</span>
+						</div>
+						<!--ko foreach: paymentsIpsh-->
+						<div>
+							<span class="col-100" data-bind="click: $parent.paymentWindow">
+								<span data-bind="text: status.name"></span>
+							</span>
+							<span class="col-100" data-bind="text: createTime, click: $parent.paymentWindow"></span>
+							<span class="col-100" data-bind="text: amount, click: $parent.paymentWindow"></span>
+							<span style="word-break: break-all;" data-bind="text: paymentName, click: $parent.paymentWindow"></span>
+							<span class="col-100">
+								<!-- ko if: paymentHref-->
+								<a data-bind="attr: { href: paymentHref }" target="blank">Чек</a>
+								<!-- /ko-->
+							</span>
+						</div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+
+					<!-- ko if: errors-->
+					<h2 class="declinePlate withIcon m-top-hlf" data-bind="text: errors"></h2>
+					<!-- /ko -->
+
+					<div data-bind="template: { name: \'Nvx.ReDoc.WebInterfaceModule/View/modalDialog.tmpl.html\', data: taxModalDialog }"></div>
+
+				</div>
+				<div class="tab" id="nvxLkComplaint_" style="display: none;">
+					<!--ko if: complaintList().length > 0-->
+					<div class="table-new table-admin a">
+						<div class="th noa">
+							<span class="col-140">Дата подачи</span>
+							<span class="col-200">Номер</span>
+							<span>Ведомство</span>
+							<span class="col-245">Статус</span>
+						</div>
+						<!--ko foreach: complaintList-->
+						<a data-bind="attr: { href: fileLink }">
+							<span class="col-140" data-bind="text: date"></span>
+							<span class="col-200" data-bind="text: number"></span>
+							<span data-bind="text: oiv"></span>
+							<span class="col-245" data-bind="text: status"></span>
+						</a>
+						<!--/ko-->
+					</div>
+					<!--/ko-->
+					<!--ko if: complaintList().length == 0-->
+					<h2 class="declinePlate withIcon m-top-hlf">Жалоб нет</h2>
+					<!--/ko-->
+				</div>
+				<div class="tab" id="nvxLkReception" style="display: none;">
+					<div class="reception-redoc-form paddings">
+						<p class="m-top-dbl" data-bind="text: commonInfoString, visible: commonInfoString() != null"></p>
+						<!-- ko if: tickets().length > 0 -->
+						<div class="reception-ticket-container">
+							<!-- ko foreach: tickets -->
+							<div class="reception-ticket-hrz m-btm">
+								<div class="reception-ticket-hrz-1">
+									<span data-bind="dateFormat: ticketDateTime, format: \'Simple\'"></span>
+									<br/>
+									<!-- ko if: status -->
+									<span class="opa">Статус: </span><span data-bind="text: status.recName"></span>
+									<!-- /ko -->
+								</div>
+								<div class="reception-ticket-hrz-2">
+									<!-- ko if: service -->
+									<span class="opa">Услуга: </span><span data-bind="text: service.name"></span>
+									<br/>
+									<!-- /ko -->
+									<!-- ko if: specialist -->
+									<span class="opa">Специалист: </span><span data-bind="text: specialist.name"></span>
+									<!-- /ko -->
+								</div>
+								<div class="reception-ticket-hrz-4 button btn primary" data-bind="click: $parent.printTicket">Печать</div>
+								<div class="reception-ticket-hrz-3 button btn b-delete" data-bind="click: $parent.cancelReception, visible: canCancel">Отменить запись</div>
+							</div>
+							<!-- /ko -->
+						</div>
+						<!-- /ko -->
+					</div>
+				</div>
+			
 		</div>';
 	}
 	
@@ -690,7 +684,7 @@ class nvxRpguContentShortcodes {
 						<div class="container">
 							<div class="field-holder">
 								<input type="search" class="form-control" placeholder="Введите название услуги" data-bind="value: searchText">
-								<button class="btn" type="submit" data-bind="click: goSearch"><i class="icon-zoom_white_desk"></i></button>
+								<button class="button btn" type="submit" data-bind="click: goSearch"><i class="icon-zoom_white_desk"></i></button>
 							</div>
 						</div>
 						<span class="filter-itm">

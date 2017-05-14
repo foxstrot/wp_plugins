@@ -29,6 +29,9 @@ class netvoxlab_suo_admin_shortcode {
 		
 		$wfm_sign = '';
 		$user_id = get_current_user_id();
+		$app_id = get_option('netvoxlab_suo_app_id');
+		$region_id = get_option('netvoxlab_suo_region_id');
+		$suo_host = get_option('netvoxlab_suo_host');
 
 		if($user_id <= 0) {
 			$wfm_sign = '<p>Страница доступна только авторизованным пользователям!</p>';
@@ -43,7 +46,7 @@ class netvoxlab_suo_admin_shortcode {
 			    'blocking'    => true,
 			    'headers'     => array(
 			    	'user_token' => 'esia@'.$meta,
-			    	'portal_id' => '9b1bae07-3852-412f-b26f-c4b8b3bad5f1'
+			    	'app_id' => '9b1bae07-3852-412f-b26f-c4b8b3bad5f1'
 			    )
 			);
 
@@ -59,10 +62,18 @@ class netvoxlab_suo_admin_shortcode {
 
 			$wfm_sign = '
 				<script language="javascript">
+					SuoSettings = {};
+					
+					SuoSettings.app_id = "'.$app_id.'";
+					SuoSettings.region_id = "'.$region_id.'";
+					SuoSettings.host = "'.$suo_host.'";
+
 					var suo_user_token =  "'.$meta.'";
 					console.log(suo_user_token);
 					var suo_user_token_response = '.$body.';
 					console.log(suo_user_token_response);
+					console.log(suo_user_token_response.recId);
+					SuoSettings.user_token = suo_user_token_response;
 				</script>
 
 				<div class="nvx-suo-admin"></div>
@@ -119,17 +130,17 @@ class netvoxlab_suo_shortcode {
 	static function netvoxlab_suo_func ($atts, $content = null) {
 		self::$add_script = true;
 		
-		$portal_id = get_option('netvoxlab_suo_portal_id');
+		$app_id = get_option('netvoxlab_suo_app_id');
 		$region_id = get_option('netvoxlab_suo_region_id');
 		$suo_host = get_option('netvoxlab_suo_host');
 		
 		$wfm_sign = '
 		<script language="javascript">
-			var suo_portal_id = "'.$portal_id.'";
+			var suo_app_id = "'.$app_id.'";
 			var suo_region_id = "'.$region_id.'";
 
 			SuoSettings = {};
-			SuoSettings.portal_id = "'.$portal_id.'";
+			SuoSettings.app_id = "'.$app_id.'";
 			SuoSettings.region_id = "'.$region_id.'";
 			SuoSettings.host = "'.$suo_host.'";
 		</script>
@@ -163,32 +174,32 @@ class netvoxlab_suo_shortcode {
 	}
 	
 	static function register_myscript() {
-		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.28');
+		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.30');
 		//wp_register_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
 		wp_register_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_register_script('eowp-jqueryiu', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
 		//wp_register_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_register_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.28');
+		wp_register_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.30');
 	}
 	
 	static function enqueue_myscripts() {
 		if ( !self::$add_script ) return;
-		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.28');
+		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.30');
 		wp_enqueue_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		//wp_enqueue_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
 		wp_enqueue_script('eowp-jqueryui', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
 		//wp_enqueue_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_enqueue_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.28');
+		wp_enqueue_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.30');
 	}
 
 	static function netvoxlab_suo_install() {
-		add_option('netvoxlab_suo_portal_id', '9b1bae07-3852-412f-b26f-c4b8b3bad5f1');
+		add_option('netvoxlab_suo_app_id', '9b1bae07-3852-412f-b26f-c4b8b3bad5f1');
 		add_option('netvoxlab_suo_region_id', '55e8da0b-afbf-4110-a1a8-bf06e7dde2d4');
 		add_option('netvoxlab_suo_host', 'http://sqtest.egspace.ru/');
 	}
 	
 	static function netvoxlab_suo_uninstall() {
-		delete_option('netvoxlab_suo_portal_id');
+		delete_option('netvoxlab_suo_app_id');
 		delete_option('netvoxlab_suo_region_id');
 		delete_option('netvoxlab_suo_host');
 	}
@@ -212,11 +223,11 @@ class netvoxlab_suo_shortcode {
 				check_admin_referer('netvoxlab_suo_setup_form');
 			}
 
-			$netvoxlab_suo_portal_id = $_POST['netvoxlab_suo_portal_id'];
+			$netvoxlab_suo_app_id = $_POST['netvoxlab_suo_app_id'];
 			$netvoxlab_suo_region_id = $_POST['netvoxlab_suo_region_id'];
 			$netvoxlab_suo_host = $_POST['netvoxlab_suo_host'];
 
-			update_option('netvoxlab_suo_portal_id', $netvoxlab_suo_portal_id);
+			update_option('netvoxlab_suo_app_id', $netvoxlab_suo_app_id);
 			update_option('netvoxlab_suo_region_id', $netvoxlab_suo_region_id);
 			update_option('netvoxlab_suo_host', $netvoxlab_suo_host);
 		}
@@ -239,8 +250,8 @@ class netvoxlab_suo_shortcode {
 				</tr>
 				<tr>
 					<td style='text-align:right;'>Идентификатор портала:</td>
-					<td><input type='text' style='width:300px;' name='netvoxlab_suo_portal_id' value='".get_option('netvoxlab_suo_portal_id')."'/></td>
-					<td style='color:#666666;'><i>* portal_id</i></td>
+					<td><input type='text' style='width:300px;' name='netvoxlab_suo_app_id' value='".get_option('netvoxlab_suo_app_id')."'/></td>
+					<td style='color:#666666;'><i>* app_id</i></td>
 				</tr>
 				<tr>
 					<td style='text-align:right;'>Идентификатор региона:</td>
@@ -276,35 +287,35 @@ class netvoxlab_suo_operator_shortcode {
 	static function netvoxlab_suo_operator_func ($atts, $content = null) {
 		self::$add_script = true;
 		
-		$portal_id = get_option('netvoxlab_suo_portal_id');
+		$app_id = get_option('netvoxlab_suo_app_id');
 		$region_id = get_option('netvoxlab_suo_region_id');
 		$suo_host = get_option('netvoxlab_suo_host');
 		
 		$wfm_sign = '
 		<script language="javascript">
-			var suo_portal_id = "'.$portal_id.'";
+			var suo_app_id = "'.$app_id.'";
 			var suo_region_id = "'.$region_id.'";
 
 			SuoSettings = {};
-			SuoSettings.portal_id = "'.$portal_id.'";
+			SuoSettings.app_id = "'.$app_id.'";
 			SuoSettings.region_id = "'.$region_id.'";
 			SuoSettings.host = "'.$suo_host.'";
 		</script>
 		<div id="suo">
 			<div class="suo-header">
-				<h2>Предварительная запись через Интернет</h2>
+				<h2>Оператор</h2>
 			</div>
 			<div class="suo-form">
 				<label>Выберите МФЦ*:</label>
 				<select id="suoOrg">
 				</select>
-				<label>Выберите дату приема*:</label>
+				<label>Выберите дату*:</label>
 				<div id="datepicker"></div>
-				<label>Занятые слоты:</label>
-			</div>
-
-			<div class="suo-footer">
-				<input type="button" value="Сохранить"/>
+				<label>Выберите время приема*:</label>
+				<table id="suoTimepicker">
+				</table>
+				<label>Информация о записи:</label>
+				<div class="suo-operator-info"></div>
 			</div>
 		</div>
 		';
@@ -313,21 +324,17 @@ class netvoxlab_suo_operator_shortcode {
 	
 	static function register_myscript() {
 		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.24');
-		//wp_register_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
 		wp_register_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_register_script('eowp-jqueryiu', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		//wp_register_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_register_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.24');
+		wp_register_script('suo-oper', NVX_EOWP_URL . 'assets/js/opersuoscript.js?v=2017.03.24');
 	}
 	
 	static function enqueue_myscripts() {
 		if ( !self::$add_script ) return;
 		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.24');
 		wp_enqueue_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
-		//wp_enqueue_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
 		wp_enqueue_script('eowp-jqueryui', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		//wp_enqueue_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_enqueue_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.24');
+		wp_enqueue_script('suo-oper', NVX_EOWP_URL . 'assets/js/opersuoscript.js?v=2017.03.24');
 	}
 
 	static function netvoxlab_suo_install() {
