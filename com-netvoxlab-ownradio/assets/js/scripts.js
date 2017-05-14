@@ -107,7 +107,11 @@ function player(){
 						// ОБРЕЗАЕМ ИМЯ ТРЕКА ДЛИННЕЕ 26 СИМВОЛОВ
 						var strTrakName = document.getElementById('radioName');
 						var cutTrakName = strTrakName.innerText;
+<<<<<<< HEAD
+						var slicedName = cutTrakName.slice(0,20);
+=======
 						var slicedName = cutTrakName.slice(0,32);
+>>>>>>> 21e12573539294d6bbeff90f1320890c881517f0
 						if (slicedName.length < cutTrakName.length) {
 							slicedName += '...';
 							obj.name.innerHTML = slicedName;
