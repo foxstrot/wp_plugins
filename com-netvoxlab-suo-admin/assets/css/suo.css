@@ -1,7 +1,10 @@
-﻿*,
+*,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+#suo {
+	min-width: 550px;
 }
 .suo-header {
 	background: #623b2a;
@@ -76,6 +79,14 @@
 .suo-active:hover {
 	background: #623b2a !important;
 	color: #fdf8fb !important;
+}
+.suo-time-filled {
+	background: #bb9e84;
+	font-weight: bold;
+}
+.suo-time-filled:hover {
+	background: #fff;
+	color: #abc;
 }
 .suo-footer {
 	width: 100%;
@@ -206,8 +217,9 @@
 }
 
 .suo-ticket {
-	border: solid #cd9660 2px;
+	border: solid #dbbea4 2px;
 	color: #681f00;
+	width: 450px;
 }
 .suo-ticket h2 {
 	margin: 0;
@@ -223,13 +235,17 @@
 	margin: 0;
 }
 .suo-ticket-date {
-	background: #cd9660;
+	background: #dbbea4;
 	margin-bottom: 5px;
+}
+.suo-ticket-time {
+	background: #dbbea4;
+	margin-bottom: 0;
 }
 .suo-ticket-line {
 	display: block;
-	background-color: #ea5a38;
-	height: 10px;
+	background: #623b2a;
+	height: 2px;
 }
 .suo-ticket-action input[type="button"] {
 	border: 0;

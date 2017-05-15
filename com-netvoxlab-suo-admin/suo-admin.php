@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.suo.admin
 Description: Модуль администрирования записи в ЭО для WP
-Version: 2017.02.20
+Version: 2017.05.15
 Author: Ltd. Netvox Lab
 Author URI: http://www.netvoxlab.ru/
 */
@@ -42,7 +42,6 @@ class netvoxlab_suo_admin_shortcode {
 
 			$args = array(
 			    'httpversion' => '1.0',
-			    'user-agent'  => 'WordPress/' . $wp_version . '; ' . home_url(),
 			    'blocking'    => true,
 			    'headers'     => array(
 			    	'user_token' => 'esia@'.$meta,
@@ -79,31 +78,31 @@ class netvoxlab_suo_admin_shortcode {
 				<div class="nvx-suo-admin"></div>
 			';
 		}
-		/*
-		$wfm_sign = '
-				<div class="nvx-suo-admin"></div>
-			';*/
 
 		return $content . $wfm_sign ;
 	}
 	
 	static function register_myscript() {
-		wp_register_style('suo-admin-style', NVX_SUO_ADMIN_URL . 'assets/css/style2.css?v=2017.03.24');
+		wp_register_style('suo-admin-style', NVX_SUO_ADMIN_URL . 'assets/css/admin.css?v=2017.03.24');
+		wp_register_style('suo-admin-datepicker', NVX_SUO_ADMIN_URL . 'assets/css/datepicker.css?v=2017.03.24');
 		wp_register_style('suo-admin-suggestions-style', 'https://cdn.jsdelivr.net/jquery.suggestions/16.10/css/suggestions.css');
 		wp_register_script('suo-admin-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_register_script('suo-admin-suggestions', 'https://cdn.jsdelivr.net/jquery.suggestions/16.10/js/jquery.suggestions.min.js');
 		wp_register_script('suo-admin-icons', 'https://use.fontawesome.com/ad94e67e3b.js');
-		wp_register_script('suo-admin-script', NVX_SUO_ADMIN_URL . 'assets/js/scriptv2.js?v=2017.03.24');
+		wp_register_script('suo-admin-script', NVX_SUO_ADMIN_URL . 'assets/js/admin.js?v=2017.03.24');
+		wp_register_script('suo-admin-jqueryui', NVX_SUO_ADMIN_URL . 'assets/js/jquery-ui.min.js?v=2017.03.24');
 	}
 	
 	static function enqueue_myscripts() {
 		if ( !self::$add_script ) return;
-		wp_enqueue_style('suo-admin-style', NVX_SUO_ADMIN_URL . 'assets/css/style2.css?v=2017.03.24');
+		wp_enqueue_style('suo-admin-style', NVX_SUO_ADMIN_URL . 'assets/css/admin.css?v=2017.03.24');
+		wp_enqueue_style('suo-admin-datepicker', NVX_SUO_ADMIN_URL . 'assets/css/datepicker.css?v=2017.03.24');
 		wp_enqueue_style('suo-admin-suggestions-style', 'https://cdn.jsdelivr.net/jquery.suggestions/16.10/css/suggestions.css');
 		wp_enqueue_script('suo-admin-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_enqueue_script('suo-admin-suggestions', 'https://cdn.jsdelivr.net/jquery.suggestions/16.10/js/jquery.suggestions.min.js');
 		wp_enqueue_script('suo-admin-icons', 'https://use.fontawesome.com/ad94e67e3b.js');
-		wp_enqueue_script('suo-admin-script', NVX_SUO_ADMIN_URL . 'assets/js/scriptv2.js?v=2017.03.24');
+		wp_enqueue_script('suo-admin-script', NVX_SUO_ADMIN_URL . 'assets/js/admin.js?v=2017.03.24');
+		wp_enqueue_script('suo-admin-jqueryui', NVX_SUO_ADMIN_URL . 'assets/js/jquery-ui.min.js?v=2017.03.24');
 	}
 
 	static function netvoxlab_suo_admin_install() {
@@ -174,22 +173,18 @@ class netvoxlab_suo_shortcode {
 	}
 	
 	static function register_myscript() {
-		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.30');
-		//wp_register_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
+		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suo.css?v=2017.04.10');
 		wp_register_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_register_script('eowp-jqueryiu', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		//wp_register_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_register_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.30');
+		wp_register_script('eowp-admin', NVX_EOWP_URL . 'assets/js/suo.js?v=2017.04.10');
 	}
 	
 	static function enqueue_myscripts() {
 		if ( !self::$add_script ) return;
-		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.30');
+		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suo.css?v=2017.04.10');
 		wp_enqueue_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
-		//wp_enqueue_script('eowp-jquery', NVX_EOWP_URL . 'assets/js/jquery-3.1.1.min.js');
 		wp_enqueue_script('eowp-jqueryui', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		//wp_enqueue_script('eowp-script', NVX_EOWP_URL . 'assets/js/script.js?v=2017.02.20');
-		wp_enqueue_script('eowp-scriptv2', NVX_EOWP_URL . 'assets/js/suoscript.js?v=2017.03.30');
+		wp_enqueue_script('eowp-admin', NVX_EOWP_URL . 'assets/js/suo.js?v=2017.04.10');
 	}
 
 	static function netvoxlab_suo_install() {
@@ -323,18 +318,18 @@ class netvoxlab_suo_operator_shortcode {
 	}
 	
 	static function register_myscript() {
-		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.24');
+		wp_register_style('eowp-style', NVX_EOWP_URL . 'assets/css/suo.css?v=2017.03.24');
 		wp_register_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_register_script('eowp-jqueryiu', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		wp_register_script('suo-oper', NVX_EOWP_URL . 'assets/js/opersuoscript.js?v=2017.03.24');
+		wp_register_script('suo-oper', NVX_EOWP_URL . 'assets/js/operator.js?v=2017.03.24');
 	}
 	
 	static function enqueue_myscripts() {
 		if ( !self::$add_script ) return;
-		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suostyle.css?v=2017.03.24');
+		wp_enqueue_style('eowp-style', NVX_EOWP_URL . 'assets/css/suo.css?v=2017.03.24');
 		wp_enqueue_script('eowp-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 		wp_enqueue_script('eowp-jqueryui', NVX_EOWP_URL . 'assets/js/jquery-ui.min.js');
-		wp_enqueue_script('suo-oper', NVX_EOWP_URL . 'assets/js/opersuoscript.js?v=2017.03.24');
+		wp_enqueue_script('suo-oper', NVX_EOWP_URL . 'assets/js/operator.js?v=2017.03.24');
 	}
 
 	static function netvoxlab_suo_install() {
