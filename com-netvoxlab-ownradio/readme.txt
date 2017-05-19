@@ -3,7 +3,7 @@ Contributors: netvoxlab
 Tags: radio, ownRadio, broadcast, music online
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 2017.04.25.4
+Stable tag: 2017.05.16
 License: GPLv3
 
 == Description ==
@@ -46,11 +46,13 @@ You need to insert shortcode `[ownradio_player]` in the page.
 
 == Screenshots ==
 
-1. This is example of web site with the ownRadio player.
-
-2. This is the main view of ownRadio player.
+1. This is the main view of ownRadio player.
+2. This is example of web site with the ownRadio player.
 
 == Changelog ==
+
+= 2017.04.28 =
+Changed application design.
 
 = 2017.04.21 =
 Fixed bug of collecting statistics.

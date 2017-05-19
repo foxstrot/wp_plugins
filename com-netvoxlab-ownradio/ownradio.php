@@ -2,7 +2,7 @@
 /*
 Plugin Name: com.netvoxlab.ownradio
 Description: Broadcast radio ownRadio. Listen to your favorite music only.
-Version: 2017.04.25.4
+Version: 2017.05.16
 Author: Ltd. NetVox Lab
 Author URI: http://www.netvoxlab.ru/
 License: GPLv3
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with com.netvoxlab.ownradio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.04.25.4');
+define('NETVOXLAB_OWNRADIO_PLUGIN_VERSION', '2017.05.16');
 define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 
 	class netvoxlab_ownradio_player_shortcode {
@@ -29,9 +29,15 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 					
 		static function init () {
 			add_shortcode('ownradio_player', array(__CLASS__, 'netvoxlab_ownradio_player_func'));
+			add_shortcode('ownradio_vkcomment', array(__CLASS__, 'nvxOwnRadioPrintVKCommenScripts_func'));
 			add_shortcode('ownradio_GetUserDevices', array(__CLASS__, 'nvxOwnRadioGetUserDevices_shortcode'));
 			add_shortcode('ownradio_GetUsersRating', array(__CLASS__, 'nvxOwnRadioGetUsersRating_shortcode'));
 			add_shortcode('ownradio_GetLastTracks', array(__CLASS__, 'nvxOwnRadioGetLastTracks_shortcode'));
+			
+			add_shortcode('ownradio_GetLastTracksWithRating', array(__CLASS__, 'nvxOwnRadioGetTracksHistoryByDeviceWithRating_shortcode'));
+			
+			add_shortcode('ownradio_GetLastUsers', array(__CLASS__, 'nvxOwnRadioGetLastUsers_shortcode'));
+			
 			add_shortcode('ownradio_GetTracksHistory', array(__CLASS__, 'nvxOwnRadioGetTracksHistoryByDevice_shortcode'));
 			add_shortcode('ownradio_GetLastDevices', array(__CLASS__, 'nvxOwnRadioGetLastDevices_shortcode'));
 			add_action('init', array(__CLASS__, 'netvoxlab_ownradio_register_myscript'));
@@ -161,6 +167,19 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 					</div>';
 		}
 		
+		//функция просмотра последних выданных устройству треков и их рейтинг
+		static function nvxOwnRadioGetTracksHistoryByDeviceWithRating_shortcode ($atts, $content = null) {
+		self::$netvoxlab_ownradio_add_script = true;
+		return $content . '<div id="nvxLastDeviceTracks" class="">
+						<form name="nvxFormaTracksHistoryWithRating">
+						<input type="button" onclick="return nvxGetTracksHistoryWithRating(nvxFormaTracksHistory.deviceId.value, nvxFormaTracksHistory.countRows.value)" value="Получить последние выданные треки">
+						<input type="text" title="Введите deviceId" name="deviceId" id="nvxTxtDeviceId" placeholder="Введите deviceId" required style="min-width: 280px;">
+						<input type="text" title="Введите количество выводимых записей (-1 для вывода всех)" name="countRows" id="nvxTxtCountRows" placeholder="Введите количество выводимых записей(-1 для вывода всех записей)" value = "-1" required>
+						</form>
+						<div id="nvxOwnradioSQLGetRequests">
+						</div>
+					</div>';
+		}
 		
 		//функция возвращает последние активные устройства
 		static function nvxOwnRadioGetLastDevices_shortcode ($atts, $content = null) {
@@ -173,8 +192,42 @@ define('NETVOXLAB_OWNRADIO_PLAYER_URL', plugin_dir_url( __FILE__ ));
 						</div>
 					</div>';
 		}
+		
+		//функция возвращает последниx активных пользователей
+		static function nvxOwnRadioGetLastUsers_shortcode ($atts, $content = null) {
+		self::$netvoxlab_ownradio_add_script = true;
+		return $content . '<div id="nvxGetLastUsers" class="">
+						<form name="nvxFormaLastUsers">
+						<input type="button" onclick="return nvxBtnLastUsers()" value="Просмотреть последних активных пользователей">
+						</form>
+						<div id="nvxOwnradioSQLGetRequests">
+						</div>
+					</div>';
+		}
+		
+		//функция выводит скрипт комментирования вк 
+		static function nvxOwnRadioPrintVKCommenScripts_func($atts, $content = null) {
+			self::$netvoxlab_ownradio_add_script = true;
+			$atts = shortcode_atts( array(
+				'id' => '5978191',
+				'limit' => '20'
+			), $atts ) ;
+			return $content . '<!-- Put this script tag to the <head> of your page -->
+				<script type="text/javascript" src="//vk.com/js/api/openapi.js?144"></script>
+
+				<script type="text/javascript">
+				  VK.init({apiId:'. esc_html($atts['id']) .', onlyWidgets: true});
+				</script>
+
+				<!-- Put this div tag to the place, where the Comments block will be -->
+				<div id="vk_comments"></div>
+				<script type="text/javascript">
+				VK.Widgets.Comments("vk_comments", {limit:' .esc_html($atts['limit']). ', attach: "*"});
+				</script>';
+		}
     }
 	
+	//функция получает имя и версию используемого браузера
 	function getInfoBrowser(){
 		$agent = $_SERVER['HTTP_USER_AGENT'];
 		preg_match("/(Edge|Opera|Firefox|Chrome|Version)(?:\/| )([0-9.]+)/", $agent, $bInfo);
