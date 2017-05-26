@@ -1,0 +1,38 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.suo-queue {
+	text-align: center;
+}
+.suo-queue-button {
+	display: block;
+	padding: 30px;
+	margin: 10px auto;
+	background: #623b2a;
+	color: #fdf8fb;
+	font: 26px Arial, sans-serif !important;
+	text-decoration: none;
+	width: 500px;
+}
+.suo-queue-category {
+	display: inline-block;
+	width: 48%;
+	padding: 20px;
+	margin: 5px;
+	background: #623b2a;
+	color: #fdf8fb;
+	font: 26px Arial, sans-serif !important;
+	text-decoration: none;
+}
+.suo-queue-service {
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
+	margin: 5px;
+	background: #623b2a;
+	color: #fdf8fb;
+	font: 26px Arial, sans-serif !important;
+	text-decoration: none;
+}
