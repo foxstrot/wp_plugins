@@ -339,7 +339,63 @@ class netvoxlab_suo_operator_shortcode {
 	}
 }
 
+class netvoxlab_suo_queue_shortcode {
+	
+	static $add_script;
+				
+	static function init () {
+		add_shortcode('netvoxlab_suo_queue', array(__CLASS__, 'netvoxlab_suo_queue_func'));
+		add_action('init', array(__CLASS__, 'register_myscript'));
+		add_action('wp_footer', array(__CLASS__, 'enqueue_myscripts'));
+		
+		register_activation_hook( __FILE__, array(__CLASS__, 'netvoxlab_suo_install'));
+		register_deactivation_hook( __FILE__, array(__CLASS__, 'netvoxlab_suo_uninstall'));
+	}
+	
+	static function netvoxlab_suo_queue_func ($atts, $content = null) {
+		self::$add_script = true;
+		
+		$app_id = get_option('netvoxlab_suo_app_id');
+		$region_id = get_option('netvoxlab_suo_region_id');
+		$suo_host = get_option('netvoxlab_suo_host');
+		
+		$wfm_sign = '
+		<script language="javascript">
+			var SuoSettings = {
+				"app_id" : "'.$app_id.'",
+				"region_id" : "'.$region_id.'",
+				"host" : "'.$suo_host.'"
+			}
+		</script>
+		<div class="suo-queue">
+			<p>Добро пожаловать!</p>
+		</div>
+		';
+		return $content . $wfm_sign ;
+	}
+	
+	static function register_myscript() {
+		wp_register_style('suo-queue-style', NVX_EOWP_URL . 'assets/css/queue.css?v=2017.05.24');
+		wp_register_script('suo-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+		wp_register_script('suo-queue', NVX_EOWP_URL . 'assets/js/queue.js?v=2017.05.24');
+	}
+	
+	static function enqueue_myscripts() {
+		if ( !self::$add_script ) return;
+		wp_enqueue_style('suo-queue-style', NVX_EOWP_URL . 'assets/css/suo.css?v=2017.05.24');
+		wp_enqueue_script('suo-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+		wp_enqueue_script('suo-queue', NVX_EOWP_URL . 'assets/js/queue.js?v=2017.05.24');
+	}
+
+	static function netvoxlab_suo_install() {
+	}
+	
+	static function netvoxlab_suo_uninstall() {
+	}
+}
+
 netvoxlab_suo_shortcode::init();
 netvoxlab_suo_admin_shortcode::init();
 netvoxlab_suo_operator_shortcode::init();
+netvoxlab_suo_queue_shortcode::init();
 ?>
